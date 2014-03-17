@@ -29,11 +29,11 @@
 #include <IOKit/hid/IOHIDKeys.h>
 #include <ForceFeedback/ForceFeedback.h>
 
-#include "MyCentreButtons.h"
-#include "MyDigitalStick.h"
-#include "MyAnalogStick.h"
-#include "MyMainButtons.h"
-#include "MyShoulderButton.h"
+#import "MyCentreButtons.h"
+#import "MyDigitalStick.h"
+#import "MyAnalogStick.h"
+#import "MyMainButtons.h"
+#import "MyShoulderButton.h"
 
 @class DeviceLister;
 
@@ -54,7 +54,7 @@
     CFRunLoopSourceRef notifySource;
     io_iterator_t onIteratorWired, offIteratorWired;
     io_iterator_t onIteratorWireless, offIteratorWireless;
-
+    
     FFEFFECT *effect;
     FFCUSTOMFORCE *customforce;
     FFEffectObjectReference effectRef;

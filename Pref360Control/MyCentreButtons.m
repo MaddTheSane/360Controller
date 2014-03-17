@@ -29,10 +29,26 @@
 
 - (id)initWithFrame:(NSRect)frameRect
 {
-	if ((self = [super initWithFrame:frameRect]) != nil) {
-		back=start=appSpecific=NO;
-	}
-	return self;
+    if ((self = [super initWithFrame:frameRect]) != nil) {
+        [self addObserver:self forKeyPath:@"back" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+        [self addObserver:self forKeyPath:@"start" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+        [self addObserver:self forKeyPath:@"specific" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"back"];
+    [self removeObserver:self forKeyPath:@"start"];
+    [self removeObserver:self forKeyPath:@"specific"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (object == self) {
+        [self setNeedsDisplay:YES];
+    }
 }
 
 - (void)drawButton:(NSString*)button inRectangle:(NSRect)rect pressed:(BOOL)down
@@ -62,7 +78,7 @@
 - (void)drawRect:(NSRect)rect
 {
     NSRect area,button;
-
+    
     area=[self bounds];
     button.size.height=area.size.height/2;
     button.size.width=area.size.width/4;
@@ -76,24 +92,6 @@
     button.origin.x=area.origin.x+((area.size.width-button.size.width)/2);
     button.origin.y=area.origin.y+1;
     [self drawButton:@"" inRectangle:button pressed:appSpecific];
-}
-
-- (void)setBack:(BOOL)bBack
-{
-    back=bBack;
-    [self setNeedsDisplay:YES];
-}
-
-- (void)setStart:(BOOL)bStart
-{
-    start=bStart;
-    [self setNeedsDisplay:YES];
-}
-
-- (void)setSpecific:(BOOL)bSpecific
-{
-    appSpecific=bSpecific;
-    [self setNeedsDisplay:YES];
 }
 
 @end

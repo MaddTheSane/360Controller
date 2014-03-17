@@ -24,11 +24,17 @@
 
 #define DRIVER_NAME @"360Controller.kext"
 
+#ifdef DEBUG
+#define NSCurrentExtensionDomainMask NSSystemDomainMask
+#else
+#define NSCurrentExtensionDomainMask NSLocalDomainMask
+#endif
+
 static NSDictionary *infoPlistAttributes = nil;
 
 static NSString* GetDriverDirectory(void)
 {
-    NSArray *data = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSLocalDomainMask, YES);
+    NSArray *data = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSCurrentExtensionDomainMask, YES);
     return [data[0] stringByAppendingPathComponent:@"Extensions"];
 }
 
@@ -70,10 +76,10 @@ static void WriteDriverConfig(NSString *driver, id config)
     data = [NSPropertyListSerialization dataFromPropertyList:config format:NSPropertyListXMLFormat_v1_0 errorDescription:&errorString];
     if (data == nil)
         NSLog(@"Error writing config for driver: %@", errorString);
-	
+    
     if (![data writeToFile:filename atomically:NO])
         NSLog(@"Failed to write file!");
-	
+    
     if (infoPlistAttributes != nil) {
         NSError *error = nil;
         if (![[NSFileManager defaultManager] setAttributes:infoPlistAttributes ofItemAtPath:filename error:&error]) {
@@ -87,7 +93,7 @@ static void ScrubDevices(NSMutableDictionary *devices)
     NSMutableArray *deviceKeys;
     
     deviceKeys = [NSMutableArray arrayWithCapacity:10];
-    for (NSString *key in [devices allKeys]) {
+    for (NSString *key in devices) {
         NSDictionary *device = devices[key];
         if ([(NSString*)device[@"IOClass"] compare:@"Xbox360Peripheral"] == NSOrderedSame)
             [deviceKeys addObject:key];
@@ -98,17 +104,15 @@ static void ScrubDevices(NSMutableDictionary *devices)
 static id MakeMutableCopy(id object)
 {
     return CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault,
-														  (CFTypeRef)object,
-														  kCFPropertyListMutableContainers));
+                                                          (CFTypeRef)object,
+                                                          kCFPropertyListMutableContainers));
 }
 
 static void AddDevice(NSMutableDictionary *personalities, NSString *name, int vendor, int product)
 {
-    NSMutableDictionary *controller;
+    NSMutableDictionary *controller = [NSMutableDictionary dictionaryWithCapacity:10];
     
-    controller = [NSMutableDictionary dictionaryWithCapacity:10];
-    
-    // Standard 
+    // Standard
     controller[@"CFBundleIdentifier"] = @"com.mice.driver.Xbox360Controller";
     controller[@"IOCFPlugInTypes"] = @{@"F4545CE5-BF5B-11D6-A4BB-0003933E3E3E": @"360Controller.kext/Contents/PlugIns/Feedback360.plugin"};
     controller[@"IOClass"] = @"Xbox360Peripheral";
@@ -165,11 +169,15 @@ int main (int argc, const char * argv[]) {
             ScrubDevices(devices);
             AddDevices(devices, argc, argv);
             WriteDriverConfig(DRIVER_NAME, saving);
-
+            
+#ifdef DEBUG
+            system("/usr/bin/touch /System/Library/Extensions");
+#else
             system("/usr/bin/touch /Library/Extensions");
+#endif
         } else
             NSLog(@"Invalid number of parameters (%i)", argc);
-    
-		return 0;
+        
+        return 0;
     }
 }
