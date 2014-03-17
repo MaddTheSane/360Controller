@@ -41,19 +41,18 @@ static NSString* GetDriverDirectory(void)
 static NSString* GetDriverConfigPath(NSString *driver)
 {
     NSString *root = GetDriverDirectory();
-    NSString *driverPath = [root stringByAppendingPathComponent:driver];
-    NSString *contents = [driverPath stringByAppendingPathComponent:@"Contents"];
-    return [contents stringByAppendingPathComponent:@"Info.plist"];
+    NSArray *pathComp = [root pathComponents];
+    pathComp = [pathComp arrayByAddingObjectsFromArray:@[driver, @"Contents", @"Info.plist"]];
+    return [NSString pathWithComponents:pathComp];
 }
 
 static id ReadDriverConfig(NSString *driver)
 {
-    NSString *filename;
-    NSError *error = nil;
+    NSString *filename = GetDriverConfigPath(driver);
+    NSError *error;
     NSData *data;
     NSDictionary *config;
     
-    filename = GetDriverConfigPath(driver);
     infoPlistAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filename error:&error];
     if (infoPlistAttributes == nil)
     {
@@ -90,9 +89,8 @@ static void WriteDriverConfig(NSString *driver, id config)
 
 static void ScrubDevices(NSMutableDictionary *devices)
 {
-    NSMutableArray *deviceKeys;
+    NSMutableArray *deviceKeys = [[NSMutableArray alloc] initWithCapacity:10];
     
-    deviceKeys = [NSMutableArray arrayWithCapacity:10];
     for (NSString *key in devices) {
         NSDictionary *device = devices[key];
         if ([(NSString*)device[@"IOClass"] compare:@"Xbox360Peripheral"] == NSOrderedSame)
@@ -110,7 +108,7 @@ static id MakeMutableCopy(id object)
 
 static void AddDevice(NSMutableDictionary *personalities, NSString *name, int vendor, int product)
 {
-    NSMutableDictionary *controller = [NSMutableDictionary dictionaryWithCapacity:10];
+    NSMutableDictionary *controller = [[NSMutableDictionary alloc] initWithCapacity:10];
     
     // Standard
     controller[@"CFBundleIdentifier"] = @"com.mice.driver.Xbox360Controller";
@@ -129,9 +127,7 @@ static void AddDevice(NSMutableDictionary *personalities, NSString *name, int ve
 
 static void AddDevices(NSMutableDictionary *personalities, int argc, const char *argv[])
 {
-    int i, count;
-    
-    count = (argc - 2) / 3;
+    int i, count = (argc - 2) / 3;
     for (i = 0; i < count; i++) {
         NSString *name = @(argv[(i * 3) + 2]);
         int vendor = atoi(argv[(i * 3) + 3]);
@@ -150,8 +146,7 @@ int main (int argc, const char * argv[]) {
             
             types = config[@"IOKitPersonalities"];
             keys = [types allKeys];
-            for (NSString *key in keys)
-            {
+            for (NSString *key in keys) {
                 NSDictionary *device = types[key];
                 if ([(NSString*)device[@"IOClass"] compare:@"Xbox360Peripheral"] != NSOrderedSame)
                     continue;

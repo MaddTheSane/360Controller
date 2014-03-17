@@ -53,6 +53,27 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 }
 
 @implementation Pref360ControlPref
+{
+    // Internal info
+    NSMutableArray *deviceArray;
+    IOHIDElementCookie axis[6],buttons[15];
+    
+    IOHIDDeviceInterface122 **device;
+    IOHIDQueueInterface **hidQueue;
+    FFDeviceObjectReference ffDevice;
+    io_registry_entry_t registryEntry;
+    
+    int largeMotor, smallMotor;
+    
+    IONotificationPortRef notifyPort;
+    CFRunLoopSourceRef notifySource;
+    io_iterator_t onIteratorWired, offIteratorWired;
+    io_iterator_t onIteratorWireless, offIteratorWireless;
+    
+    FFEFFECT *effect;
+    FFCUSTOMFORCE *customforce;
+    FFEffectObjectReference effectRef;
+}
 @synthesize centreButtons;
 @synthesize deviceList;
 @synthesize digiStick;
@@ -649,7 +670,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     notifySource=IONotificationPortGetRunLoopSource(notifyPort);
     CFRunLoopAddSource(CFRunLoopGetCurrent(),notifySource,kCFRunLoopCommonModes);
     // Prepare other fields
-    deviceArray=[NSMutableArray arrayWithCapacity:1];
+    deviceArray=[[NSMutableArray alloc] initWithCapacity:1];
     device=NULL;
     hidQueue=NULL;
     // Activate callbacks
@@ -721,6 +742,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                            @"DeadzoneRight": @((UInt16)[rightStickDeadzone doubleValue]),
                            @"RelativeLeft": ([leftLinked state]==NSOnState) ? @YES : @NO,
                            @"RelativeRight":([rightLinked state]==NSOnState) ? @YES : @NO};
+    
     // Set property
     IORegistryEntrySetCFProperties(registryEntry, (__bridge CFTypeRef)(dict));
     SetController(GetSerialNumber(registryEntry), dict);
