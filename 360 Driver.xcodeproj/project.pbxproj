@@ -97,6 +97,13 @@
 		55B6383418C10EBE00CE933D /* WirelessHIDDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6382A18C10EBE00CE933D /* WirelessHIDDevice.h */; };
 		55B6384618C10FE200CE933D /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375818C109E600CE933D /* ForceFeedback.framework */; };
 		55B6384718C10FE700CE933D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375A18C109ED00CE933D /* IOKit.framework */; };
+		55BD614018F0878900F36FA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55BD613E18F0878900F36FA4 /* InfoPlist.strings */; };
+		55BD614318F0878900F36FA4 /* _60Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD614218F0878900F36FA4 /* _60Audio.cpp */; };
+		55BD614F18F087E500F36FA4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6372018C108A500CE933D /* CoreFoundation.framework */; };
+		55BD615518F087E500F36FA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55BD615318F087E500F36FA4 /* InfoPlist.strings */; };
+		55BD615B18F0880400F36FA4 /* 360AudioDriver.bundle in Copy Plug-ins */ = {isa = PBXBuildFile; fileRef = 55BD614E18F087E500F36FA4 /* 360AudioDriver.bundle */; };
+		55BD615E18F0883200F36FA4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375A18C109ED00CE933D /* IOKit.framework */; };
+		55BD616118F08ACE00F36FA4 /* 360Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD615F18F08ACE00F36FA4 /* 360Driver.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +156,20 @@
 			remoteGlobalIDString = 55B6380D18C10E8700CE933D;
 			remoteInfo = WirelessGamingReceiver;
 		};
+		55BD614818F087B000F36FA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55BD613918F0878900F36FA4;
+			remoteInfo = 360Audio;
+		};
+		55BD615C18F0880B00F36FA4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55BD614D18F087E500F36FA4;
+			remoteInfo = 360AudioDriver;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -170,6 +191,17 @@
 			files = (
 				55B6375718C1099F00CE933D /* Feedback360.plugin in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55BD615A18F087F500F36FA4 /* Copy Plug-ins */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				55BD615B18F0880400F36FA4 /* 360AudioDriver.bundle in Copy Plug-ins */,
+			);
+			name = "Copy Plug-ins";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -266,6 +298,18 @@
 		55B6382518C10EBE00CE933D /* WirelessGamingReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessGamingReceiver.h; sourceTree = "<group>"; usesTabs = 0; };
 		55B6382918C10EBE00CE933D /* WirelessHIDDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessHIDDevice.cpp; sourceTree = "<group>"; usesTabs = 0; };
 		55B6382A18C10EBE00CE933D /* WirelessHIDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessHIDDevice.h; sourceTree = "<group>"; usesTabs = 0; };
+		55BD613A18F0878900F36FA4 /* 360Audio.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 360Audio.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		55BD613D18F0878900F36FA4 /* 360Audio-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "360Audio-Info.plist"; sourceTree = "<group>"; };
+		55BD613F18F0878900F36FA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55BD614118F0878900F36FA4 /* _60Audio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _60Audio.h; sourceTree = "<group>"; };
+		55BD614218F0878900F36FA4 /* _60Audio.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _60Audio.cpp; sourceTree = "<group>"; };
+		55BD614418F0878900F36FA4 /* 360Audio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "360Audio-Prefix.pch"; sourceTree = "<group>"; };
+		55BD614E18F087E500F36FA4 /* 360AudioDriver.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 360AudioDriver.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		55BD615218F087E500F36FA4 /* 360AudioDriver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "360AudioDriver-Info.plist"; sourceTree = "<group>"; };
+		55BD615418F087E500F36FA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55BD615618F087E500F36FA4 /* 360AudioDriver-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "360AudioDriver-Prefix.pch"; sourceTree = "<group>"; };
+		55BD615F18F08ACE00F36FA4 /* 360Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = 360Driver.cpp; sourceTree = "<group>"; };
+		55BD616018F08ACE00F36FA4 /* 360Driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 360Driver.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +371,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55BD613518F0878900F36FA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55BD614B18F087E500F36FA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD614F18F087E500F36FA4 /* CoreFoundation.framework in Frameworks */,
+				55BD615E18F0883200F36FA4 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +453,8 @@
 				55B636BD18C104DB00CE933D /* 360DaemonApp */,
 				55B6376A18C10A5400CE933D /* DriverTool */,
 				55B6378118C10B0B00CE933D /* Pref360Control */,
+				55BD613B18F0878900F36FA4 /* 360Audio */,
+				55BD615018F087E500F36FA4 /* 360AudioDriver */,
 				55B636B618C104DB00CE933D /* Frameworks */,
 				55B636B518C104DB00CE933D /* Products */,
 			);
@@ -408,6 +470,8 @@
 				55B6377D18C10B0B00CE933D /* Pref360Control.prefPane */,
 				55B637E818C10D5000CE933D /* Wireless360Controller.kext */,
 				55B6380E18C10E8700CE933D /* WirelessGamingReceiver.kext */,
+				55BD613A18F0878900F36FA4 /* 360Audio.kext */,
+				55BD614E18F087E500F36FA4 /* 360AudioDriver.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -565,6 +629,46 @@
 			path = WirelessGamingReceiver;
 			sourceTree = "<group>";
 		};
+		55BD613B18F0878900F36FA4 /* 360Audio */ = {
+			isa = PBXGroup;
+			children = (
+				55BD614118F0878900F36FA4 /* _60Audio.h */,
+				55BD614218F0878900F36FA4 /* _60Audio.cpp */,
+				55BD613C18F0878900F36FA4 /* Supporting Files */,
+			);
+			path = 360Audio;
+			sourceTree = "<group>";
+		};
+		55BD613C18F0878900F36FA4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55BD613D18F0878900F36FA4 /* 360Audio-Info.plist */,
+				55BD613E18F0878900F36FA4 /* InfoPlist.strings */,
+				55BD614418F0878900F36FA4 /* 360Audio-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55BD615018F087E500F36FA4 /* 360AudioDriver */ = {
+			isa = PBXGroup;
+			children = (
+				55BD616018F08ACE00F36FA4 /* 360Driver.h */,
+				55BD615F18F08ACE00F36FA4 /* 360Driver.cpp */,
+				55BD615118F087E500F36FA4 /* Supporting Files */,
+			);
+			path = 360AudioDriver;
+			sourceTree = "<group>";
+		};
+		55BD615118F087E500F36FA4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55BD615218F087E500F36FA4 /* 360AudioDriver-Info.plist */,
+				55BD615318F087E500F36FA4 /* InfoPlist.strings */,
+				55BD615618F087E500F36FA4 /* 360AudioDriver-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -616,6 +720,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55BD613618F0878900F36FA4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -651,6 +762,7 @@
 			);
 			dependencies = (
 				55B6374E18C1097D00CE933D /* PBXTargetDependency */,
+				55BD614918F087B000F36FA4 /* PBXTargetDependency */,
 			);
 			name = 360Controller;
 			productName = 360Controller2;
@@ -746,6 +858,43 @@
 			productReference = 55B6380E18C10E8700CE933D /* WirelessGamingReceiver.kext */;
 			productType = "com.apple.product-type.kernel-extension";
 		};
+		55BD613918F0878900F36FA4 /* 360Audio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55BD614518F0878900F36FA4 /* Build configuration list for PBXNativeTarget "360Audio" */;
+			buildPhases = (
+				55BD613418F0878900F36FA4 /* Sources */,
+				55BD613518F0878900F36FA4 /* Frameworks */,
+				55BD613618F0878900F36FA4 /* Headers */,
+				55BD613718F0878900F36FA4 /* Resources */,
+				55BD615A18F087F500F36FA4 /* Copy Plug-ins */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55BD615D18F0880B00F36FA4 /* PBXTargetDependency */,
+			);
+			name = 360Audio;
+			productName = 360Audio;
+			productReference = 55BD613A18F0878900F36FA4 /* 360Audio.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+		55BD614D18F087E500F36FA4 /* 360AudioDriver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55BD615718F087E500F36FA4 /* Build configuration list for PBXNativeTarget "360AudioDriver" */;
+			buildPhases = (
+				55BD614A18F087E500F36FA4 /* Sources */,
+				55BD614B18F087E500F36FA4 /* Frameworks */,
+				55BD614C18F087E500F36FA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 360AudioDriver;
+			productName = 360AudioDriver;
+			productReference = 55BD614E18F087E500F36FA4 /* 360AudioDriver.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -776,6 +925,8 @@
 				55B6370618C1057100CE933D /* 360Controller */,
 				55B637E718C10D5000CE933D /* Wireless360Controller */,
 				55B6380D18C10E8700CE933D /* WirelessGamingReceiver */,
+				55BD613918F0878900F36FA4 /* 360Audio */,
+				55BD614D18F087E500F36FA4 /* 360AudioDriver */,
 				55B6383818C10F8E00CE933D /* Whole Driver */,
 			);
 		};
@@ -836,6 +987,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B6382C18C10EBE00CE933D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55BD613718F0878900F36FA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD614018F0878900F36FA4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55BD614C18F087E500F36FA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD615518F087E500F36FA4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,6 +1091,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55BD613418F0878900F36FA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD614318F0878900F36FA4 /* _60Audio.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55BD614A18F087E500F36FA4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BD616118F08ACE00F36FA4 /* 360Driver.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -961,6 +1144,16 @@
 			isa = PBXTargetDependency;
 			target = 55B6380D18C10E8700CE933D /* WirelessGamingReceiver */;
 			targetProxy = 55B6384418C10FA200CE933D /* PBXContainerItemProxy */;
+		};
+		55BD614918F087B000F36FA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55BD613918F0878900F36FA4 /* 360Audio */;
+			targetProxy = 55BD614818F087B000F36FA4 /* PBXContainerItemProxy */;
+		};
+		55BD615D18F0880B00F36FA4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55BD614D18F087E500F36FA4 /* 360AudioDriver */;
+			targetProxy = 55BD615C18F0880B00F36FA4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1034,6 +1227,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				55B6381F18C10EBE00CE933D /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55BD613E18F0878900F36FA4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55BD613F18F0878900F36FA4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		55BD615318F087E500F36FA4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55BD615418F087E500F36FA4 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1316,6 +1525,70 @@
 			};
 			name = Release;
 		};
+		55BD614618F0878900F36FA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "360Audio/360Audio-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				INFOPLIST_FILE = "360Audio/360Audio-Info.plist";
+				MODULE_NAME = com.mice._60Audio;
+				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		55BD614718F0878900F36FA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "360Audio/360Audio-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				INFOPLIST_FILE = "360Audio/360Audio-Info.plist";
+				MODULE_NAME = com.mice._60Audio;
+				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
+		55BD615818F087E500F36FA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "360AudioDriver/360AudioDriver-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "360AudioDriver/360AudioDriver-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		55BD615918F087E500F36FA4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "360AudioDriver/360AudioDriver-Prefix.pch";
+				INFOPLIST_FILE = "360AudioDriver/360AudioDriver-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1399,6 +1672,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		55BD614518F0878900F36FA4 /* Build configuration list for PBXNativeTarget "360Audio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55BD614618F0878900F36FA4 /* Debug */,
+				55BD614718F0878900F36FA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		55BD615718F087E500F36FA4 /* Build configuration list for PBXNativeTarget "360AudioDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55BD615818F087E500F36FA4 /* Debug */,
+				55BD615918F087E500F36FA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
