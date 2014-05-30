@@ -28,20 +28,28 @@
 //----------------------------------------------------------------------------------------------
 // CEffect
 //----------------------------------------------------------------------------------------------
-Feedback360Effect::Feedback360Effect()
+Feedback360Effect::Feedback360Effect() : Type(NULL), Status(0), PlayCount(0),
+StartTime(0), Index(0), LastTime(0), Handle(0), DiEffect({0}), DiEnvelope({0}),
+DiCustomForce({0}), DiConstantForce({0}), DiPeriodic({0}), DiRampforce({0})
 {
-    Type  = NULL;
-    memset(&DiEffect, 0, sizeof(FFEFFECT));
-    memset(&DiEnvelope, 0, sizeof(FFENVELOPE));
-    memset(&DiCustomForce, 0, sizeof(FFCUSTOMFORCE));
-    memset(&DiConstantForce, 0, sizeof(FFCONSTANTFORCE));
-    memset(&DiPeriodic, 0, sizeof(FFPERIODIC));
-    memset(&DiRampforce, 0, sizeof(FFRAMPFORCE));
-    Status  = 0;
-    PlayCount = 0;
-    StartTime = 0;
-    Index = 0;
-    LastTime = 0;
+    
+}
+
+Feedback360Effect::Feedback360Effect(FFEffectDownloadID theHand) : Feedback360Effect()
+{
+    Handle = theHand;
+}
+
+Feedback360Effect::Feedback360Effect(const Feedback360Effect &src) : Type(src.Type),
+Handle(src.Handle), Status(src.Status), PlayCount(src.PlayCount),
+StartTime(src.StartTime), Index(src.Index), LastTime(src.LastTime)
+{
+    memcpy(&DiEffect, &src.DiEffect, sizeof(FFEFFECT));
+    memcpy(&DiEnvelope, &src.DiEnvelope, sizeof(FFENVELOPE));
+    memcpy(&DiCustomForce, &src.DiCustomForce, sizeof(FFCUSTOMFORCE));
+    memcpy(&DiConstantForce, &src.DiConstantForce, sizeof(FFCONSTANTFORCE));
+    memcpy(&DiPeriodic, &src.DiPeriodic, sizeof(FFPERIODIC));
+    memcpy(&DiRampforce, &src.DiRampforce, sizeof(FFRAMPFORCE));
 }
 
 //----------------------------------------------------------------------------------------------
@@ -103,13 +111,13 @@ LONG Feedback360Effect::Calc(LONG *LeftLevel, LONG *RightLevel)
                       ,&NormalLevel );
             //fprintf(stderr, "DeltaT %f\n", CurrentTime - BeginTime);
             //fprintf(stderr, "Duration %f; NormalRate: %d; AttackLevel: %d; FadeLevel: %d\n", Duration, NormalRate, AttackLevel, FadeLevel);
-            
+
             WorkLeftLevel = (NormalLevel > 0) ? NormalLevel : -NormalLevel;
             WorkRightLevel = (NormalLevel > 0) ? NormalLevel : -NormalLevel;
         }
         WorkLeftLevel = MIN( SCALE_MAX, WorkLeftLevel * SCALE_MAX / 10000 );
         WorkRightLevel = MIN( SCALE_MAX, WorkRightLevel * SCALE_MAX / 10000 );
-        
+
         *LeftLevel = *LeftLevel + WorkLeftLevel;
         *RightLevel = *RightLevel + WorkRightLevel;
     }
@@ -180,10 +188,10 @@ void Feedback360Effect::CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalR
         Period	= MAX( 1, ( DiPeriodic.dwPeriod / 1000 ) );
         R		= (CurrentPos%Period) * 360 / Period;
         R		= ( R + ( DiPeriodic.dwPhase / 100 ) ) % 360;
-        
+
         Magnitude	= DiPeriodic.dwMagnitude;
         Magnitude	= ( Magnitude * NormalRate + AttackLevel + FadeLevel ) / 100;
-        
+
         Magnitude	= ( int)( Magnitude * sin( R * M_PI / 180.0 ) );
 
         Magnitude	= Magnitude + DiPeriodic.lOffset;

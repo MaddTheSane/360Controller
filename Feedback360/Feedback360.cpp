@@ -27,10 +27,7 @@
 
 #define LoopGranularity 10000 // Microseconds
 
-// static var initialization
-UInt32 Feedback360::sFactoryRefCount = 0;
-
-IOCFPlugInInterface functionMap360_IOCFPlugInInterface = {
+static IOCFPlugInInterface functionMap360_IOCFPlugInInterface = {
     // Padding required for COM
     NULL,
     // IUnknown
@@ -44,7 +41,7 @@ IOCFPlugInInterface functionMap360_IOCFPlugInInterface = {
     &Feedback360::sStop
 };
 
-IOForceFeedbackDeviceInterface functionMap360_IOForceFeedbackDeviceInterface = {
+static IOForceFeedbackDeviceInterface functionMap360_IOForceFeedbackDeviceInterface = {
     // Padding required for COM
     NULL,
     // IUnknown
@@ -66,33 +63,27 @@ IOForceFeedbackDeviceInterface functionMap360_IOForceFeedbackDeviceInterface = {
     &Feedback360::sStopEffect
 };
 
-
-Feedback360::Feedback360() : fRefCount(1)
+Feedback360::Feedback360() : fRefCount(1),  EffectIndex(1), Stopped(true),
+Paused(false), PausedTime(0), LastTime(0), Gain(10000), PrvLeftLevel(0),
+PrvRightLevel(0), Actuator(true), Manual(false)
 {
-    EffectCount = 0;
-    EffectIndex = 1;
-    EffectList = NULL;
-    Stopped = TRUE;
-    Paused = FALSE;
-    PausedTime = 0;
-    LastTime = 0;
-    Gain = 10000;
-    Actuator = TRUE;
-    Manual = FALSE;
-    PrvLeftLevel = 0;
-    PrvRightLevel = 0;
+    EffectList = Feedback360EffectVector();
+
     iIOCFPlugInInterface.pseudoVTable = (IUnknownVTbl *) &functionMap360_IOCFPlugInInterface;
     iIOCFPlugInInterface.obj = this;
 
     iIOForceFeedbackDeviceInterface.pseudoVTable = (IUnknownVTbl *) &functionMap360_IOForceFeedbackDeviceInterface;
     iIOForceFeedbackDeviceInterface.obj = this;
 
-    sFactoryAddRef();
+    FactoryID = kFeedback360Uuid;
+    CFRetain(FactoryID);
+    CFPlugInAddInstanceForFactory(FactoryID);
 }
 
 Feedback360::~Feedback360()
 {
-    sFactoryRelease();
+    CFPlugInRemoveInstanceForFactory(FactoryID);
+    CFRelease(FactoryID);
 }
 
 HRESULT Feedback360::QueryInterface(REFIID iid, LPVOID *ppv)
@@ -127,8 +118,7 @@ HRESULT Feedback360::QueryInterface(REFIID iid, LPVOID *ppv)
 
 ULONG Feedback360::AddRef()
 {
-    fRefCount++;
-    return fRefCount;
+    return ++fRefCount;
 }
 
 ULONG Feedback360::Release()
@@ -152,26 +142,6 @@ IOCFPlugInInterface** Feedback360::Alloc(void)
         return NULL;
     }
     return (IOCFPlugInInterface **)(&me->iIOCFPlugInInterface.pseudoVTable);
-}
-
-void Feedback360::sFactoryAddRef (void)
-{
-    if (sFactoryRefCount++ == 0)
-    {
-        CFUUIDRef factoryID = kFeedback360Uuid;
-        CFRetain(factoryID);
-        CFPlugInAddInstanceForFactory(factoryID);
-    }
-}
-
-void Feedback360::sFactoryRelease (void)
-{
-    if (sFactoryRefCount-- == 1)
-    {
-        CFUUIDRef factoryID = kFeedback360Uuid;
-        CFPlugInRemoveInstanceForFactory(factoryID);
-        CFRelease(factoryID);
-    }
 }
 
 IOReturn Feedback360::Probe(CFDictionaryRef propertyTable, io_service_t service, SInt32 *order)
@@ -217,18 +187,17 @@ HRESULT Feedback360::SetProperty(FFProperty property, void *value)
 HRESULT Feedback360::StartEffect(FFEffectDownloadID EffectHandle, FFEffectStartFlag Mode, UInt32 Count)
 {
     dispatch_sync(Queue, ^{
-        for (LONG Index = 0; Index < EffectCount; Index ++)
+        for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
         {
-            if(EffectList[Index]->Handle == EffectHandle)
+            if (effectIterator->Handle == EffectHandle)
             {
-                EffectList[Index]->Status  = FFEGES_PLAYING;
-                EffectList[Index]->PlayCount = Count;
-                EffectList[Index]->StartTime = CFAbsoluteTimeGetCurrent();
-                Stopped = FALSE;
+                effectIterator->Status  = FFEGES_PLAYING;
+                effectIterator->PlayCount = Count;
+                effectIterator->StartTime = CFAbsoluteTimeGetCurrent();
+                Stopped = false;
             } else {
-                if (Mode & FFES_SOLO)
-                {
-                    EffectList[Index]->Status = NULL;
+                if (Mode & FFES_SOLO) {
+                    effectIterator->Status = NULL;
                 }
             }
         }
@@ -239,11 +208,11 @@ HRESULT Feedback360::StartEffect(FFEffectDownloadID EffectHandle, FFEffectStartF
 HRESULT Feedback360::StopEffect(UInt32 EffectHandle)
 {
     dispatch_sync(Queue, ^{
-        for (LONG Index = 0; Index < EffectCount; Index++)
+        for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
         {
-            if (EffectList[Index]->Handle == EffectHandle)
+            if (effectIterator->Handle == EffectHandle)
             {
-                EffectList[Index]->Status = NULL;
+                effectIterator->Status = NULL;
                 break;
             }
         }
@@ -254,35 +223,21 @@ HRESULT Feedback360::StopEffect(UInt32 EffectHandle)
 HRESULT Feedback360::DownloadEffect(CFUUIDRef EffectType, FFEffectDownloadID *EffectHandle, FFEFFECT *DiEffect, FFEffectParameterFlag Flags)
 {
     __block HRESULT Result = FF_OK;
-    __block Feedback360Effect *Effect = NULL;
-
-    if (Flags & FFEP_NODOWNLOAD)
-    {
+    
+    if (Flags & FFEP_NODOWNLOAD) {
         return FF_OK;
     }
 
     dispatch_sync(Queue, ^{
-        if (*EffectHandle == 0)
-        {
-            Effect = new Feedback360Effect();
-            Effect->Handle = ( EffectIndex ++ );
-            EffectCount ++;
-            Feedback360Effect **NewEffectList;
-            NewEffectList = (Feedback360Effect **)realloc( EffectList, sizeof(Feedback360Effect*) * EffectCount );
-            if (NewEffectList == NULL)
-            {
-                Result = -1;
-            } else {
-                EffectList = NewEffectList;
-                EffectList[EffectCount - 1] = Effect;
-                *EffectHandle = Effect->Handle;
-            }
+        Feedback360Effect *Effect = NULL;
+        if (*EffectHandle == 0) {
+            EffectList.push_back(Feedback360Effect(EffectIndex++));
+            Effect = &(EffectList.back());
+            *EffectHandle = Effect->Handle;
         } else {
-            for (LONG Index = 0; Index < EffectCount; Index++)
-            {
-                if (EffectList[Index]->Handle == *EffectHandle)
-                {
-                    Effect = EffectList[Index];
+            for (LONG Index = 0; Index < EffectList.size(); Index++) {
+                if (EffectList[Index].Handle == *EffectHandle) {
+                    Effect = &(EffectList[Index]);
                     break;
                 }
             }
@@ -410,19 +365,19 @@ HRESULT Feedback360::GetForceFeedbackState(ForceFeedbackDeviceState *DeviceState
 
     dispatch_sync(Queue, ^{
         DeviceState->dwState = NULL;
-        if( EffectCount == 0 )
+        if( EffectList.size() == 0 )
         {
             DeviceState->dwState |= FFGFFS_EMPTY;
         }
-        if( Stopped == TRUE )
+        if( Stopped == true )
         {
             DeviceState->dwState |= FFGFFS_STOPPED;
         }
-        if( Paused == TRUE )
+        if( Paused == true )
         {
             DeviceState->dwState |= FFGFFS_PAUSED;
         }
-        if (Actuator == TRUE)
+        if (Actuator == true)
         {
             DeviceState->dwState |= FFGFFS_ACTUATORSON;
         } else {
@@ -475,21 +430,15 @@ HRESULT Feedback360::SendForceFeedbackCommand(FFCommandFlag state)
         switch (state) {
 
             case FFSFFC_RESET:
-                for (LONG Index = 0; Index < EffectCount; Index++)
-                {
-                    delete EffectList[Index];
-                }
-                EffectCount = 0;
-                free( EffectList );
-                EffectList = NULL;
-                Stopped = TRUE;
-                Paused = FALSE;
+                EffectList.clear();
+                Stopped = true;
+                Paused = false;
                 break;
                 
             case FFSFFC_STOPALL:
-                for( LONG Index = 0; Index < EffectCount; Index ++ )
+                for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
                 {
-                    EffectList[Index]->Status = NULL;
+                    effectIterator->Status = NULL;
                 }
                 Stopped = true;
                 Paused = false;
@@ -501,9 +450,9 @@ HRESULT Feedback360::SendForceFeedbackCommand(FFCommandFlag state)
                 break;
                 
             case FFSFFC_CONTINUE:
-                for( LONG Index = 0; Index < EffectCount; Index ++ )
+                for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
                 {
-                    EffectList[Index]->StartTime += ( CFAbsoluteTimeGetCurrent() - PausedTime );
+                    effectIterator->StartTime += ( CFAbsoluteTimeGetCurrent() - PausedTime );
                 }
                 Paused = false;
                 break;
@@ -567,29 +516,11 @@ HRESULT Feedback360::DestroyEffect(FFEffectDownloadID EffectHandle)
 {
     __block HRESULT Result = FF_OK;
     dispatch_sync(Queue, ^{
-        for (LONG Index = 0; Index < EffectCount; Index++)
+        for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
         {
-            if (EffectList[Index]->Handle == EffectHandle)
+            if (effectIterator->Handle == EffectHandle)
             {
-                delete EffectList[Index];
-                EffectCount --;
-                if (EffectCount > 0)
-                {
-                    memcpy(&EffectList[Index]
-                           ,&EffectList[Index + 1]
-                           ,sizeof( Feedback360Effect * ) * ( EffectCount - Index ) );
-                    Feedback360Effect **NewEffectList;
-                    NewEffectList = (Feedback360Effect * *)realloc( EffectList, sizeof( Feedback360Effect * ) * EffectCount );
-                    if (NewEffectList != NULL)
-                    {
-                        EffectList = NewEffectList;
-                    } else {
-                        Result = E_OUTOFMEMORY;
-                    }
-                } else {
-                    free(EffectList);
-                    EffectList = NULL;
-                }
+                EffectList.erase(effectIterator);
                 break;
             }
         }
@@ -664,12 +595,12 @@ void Feedback360::EffectProc( void *params )
     LONG Gain  = cThis->Gain;
     LONG CalcResult =0;
 
-    if (cThis->Actuator == TRUE)
+    if (cThis->Actuator == true)
     {
-        for (UInt32 Index = 0; Index < cThis->EffectCount; Index++)
+        for (Feedback360EffectIterator effectIterator = cThis->EffectList.begin() ; effectIterator != cThis->EffectList.end(); ++effectIterator)
         {
-            if((CFAbsoluteTimeGetCurrent() - cThis->LastTime*1000*1000) >= cThis->EffectList[Index]->DiEffect.dwSamplePeriod) {
-                CalcResult = cThis->EffectList[Index]->Calc(&LeftLevel, &RightLevel);
+            if((CFAbsoluteTimeGetCurrent() - cThis->LastTime*1000*1000) >= effectIterator->DiEffect.dwSamplePeriod) {
+                CalcResult = effectIterator->Calc(&LeftLevel, &RightLevel);
             }
         }
     }
@@ -687,11 +618,10 @@ void Feedback360::EffectProc( void *params )
 HRESULT Feedback360::GetEffectStatus(FFEffectDownloadID EffectHandle, FFEffectStatusFlag *Status)
 {
     dispatch_sync(Queue, ^{
-        for (LONG Index = 0; Index < EffectCount; Index++)
+        for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
         {
-            if (EffectList[Index]->Handle == EffectHandle)
-            {
-                *Status = EffectList[Index]->Status;
+            if (effectIterator->Handle == EffectHandle) {
+                *Status = effectIterator->Status;
                 break;
             }
         }

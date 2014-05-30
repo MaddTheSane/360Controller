@@ -28,6 +28,7 @@
 #include <IOKit/usb/IOUSBLib.h>
 #include <ForceFeedback/ForceFeedback.h>
 #import "ControlPrefs.h"
+#import "DaemonLEDs.h"
 
 #define CHECK_SHOWAGAIN     @"Do not show this message again"
 
@@ -43,7 +44,7 @@ static io_iterator_t onIteratorOther;
 static io_iterator_t offIteratorWired;
 static io_iterator_t offIteratorWireless;
 static BOOL foundWirelessReceiver;
-static NSString *leds[4];
+static DaemonLEDs *leds;
 
 static CFUserNotificationRef activeAlert = nil;
 static CFRunLoopSourceRef activeAlertSource;
@@ -141,19 +142,17 @@ static void callbackConnected(void *param,io_iterator_t iterator)
 #endif
         if (IOObjectConformsTo(object, "WirelessHIDDevice") || IOObjectConformsTo(object, "Xbox360ControllerClass"))
         {
-            FFDeviceObjectReference forceFeedback;
-            NSString *serialNumber;
+            FFDeviceObjectReference forceFeedback = 0;
+            NSString *serialNumber = GetSerialNumber(object);
             
-            serialNumber = GetSerialNumber(object);
             // Supported device - load settings
             ConfigController(object, GetController(serialNumber));
             // Set LEDs
-            forceFeedback = 0;
             if (FFCreateDevice(object, &forceFeedback) != FF_OK)
                 forceFeedback = 0;
             if (forceFeedback != 0)
             {
-                FFEFFESCAPE escape;
+                FFEFFESCAPE escape = {0};
                 unsigned char c;
                 int i;
                 
@@ -162,12 +161,13 @@ static void callbackConnected(void *param,io_iterator_t iterator)
                 {
                     for (i = 0; i < 4; i++)
                     {
-                        if ((leds[i] == nil) || ([leds[i] caseInsensitiveCompare:serialNumber] == NSOrderedSame))
+                        if ([leds serialNumberAtLEDIsBlank:i] || ([[leds serialNumberAtLED:i] caseInsensitiveCompare:serialNumber] == NSOrderedSame))
                         {
                             c = 0x06 + i;
-                            if (leds[i] == nil)
-                                leds[i] = serialNumber;
-                            // NSLog(@"Added controller with LED %i", i);
+                            if ([leds serialNumberAtLEDIsBlank:i]) {
+                                [leds setLED:i toSerialNumber:serialNumber];
+                                // NSLog(@"Added controller with LED %i", i);
+							}
                             break;
                         }
                     }
@@ -176,20 +176,18 @@ static void callbackConnected(void *param,io_iterator_t iterator)
                 escape.dwCommand = 0x02;
                 escape.cbInBuffer = sizeof(c);
                 escape.lpvInBuffer = &c;
-                escape.cbOutBuffer = 0;
-                escape.lpvOutBuffer = NULL;
                 FFDeviceEscape(forceFeedback, &escape);
                 FFReleaseDevice(forceFeedback);
             }
         }
         else
         {
-            CFTypeRef vendorID = IORegistryEntrySearchCFProperty(object,kIOServicePlane,CFSTR("idVendor"),kCFAllocatorDefault,kIORegistryIterateRecursively | kIORegistryIterateParents);
-            CFTypeRef productID = IORegistryEntrySearchCFProperty(object,kIOServicePlane,CFSTR("idProduct"),kCFAllocatorDefault,kIORegistryIterateRecursively | kIORegistryIterateParents);
+            NSNumber *vendorID = CFBridgingRelease(IORegistryEntrySearchCFProperty(object,kIOServicePlane,CFSTR("idVendor"),kCFAllocatorDefault,kIORegistryIterateRecursively | kIORegistryIterateParents));
+            NSNumber *productID = CFBridgingRelease(IORegistryEntrySearchCFProperty(object,kIOServicePlane,CFSTR("idProduct"),kCFAllocatorDefault,kIORegistryIterateRecursively | kIORegistryIterateParents));
             if ((vendorID != NULL) && (productID != NULL))
             {
-                UInt32 idVendor = [((__bridge NSNumber*)vendorID) unsignedIntValue];
-                UInt32 idProduct = [((__bridge NSNumber*)productID) unsignedIntValue];
+                UInt32 idVendor = [vendorID unsignedIntValue];
+                UInt32 idProduct = [productID unsignedIntValue];
                 if (idVendor == 0x045e)
                 {
                     // Microsoft
@@ -207,10 +205,6 @@ static void callbackConnected(void *param,io_iterator_t iterator)
                     }
                 }
             }
-            if (vendorID != NULL)
-                CFRelease(vendorID);
-            if (productID != NULL)
-                CFRelease(productID);
         }
         IOObjectRelease(object);
     }
@@ -237,11 +231,11 @@ static void callbackDisconnected(void *param, io_iterator_t iterator)
         {
             for (i = 0; i < 4; i++)
             {
-                if (leds[i] == nil)
+                if ([leds serialNumberAtLEDIsBlank:i])
                     continue;
-                if ([leds[i] caseInsensitiveCompare:serial] == NSOrderedSame)
+                if ([[leds serialNumberAtLED:i] caseInsensitiveCompare:serial] == NSOrderedSame)
                 {
-                    leds[i] = nil;
+                    [leds clearSerialNumberAtLED:i];
                     // NSLog(@"Removed controller with LED %i", i);
                 }
             }
@@ -256,7 +250,7 @@ int main (int argc, const char * argv[])
 {
 @autoreleasepool {
     foundWirelessReceiver = NO;
-    memset(leds, 0, sizeof(leds));
+    leds = [[DaemonLEDs alloc] init];
     // Get master port, for accessing I/O Kit
     IOMasterPort(MACH_PORT_NULL,&masterPort);
     // Set up notification of USB device addition/removal
