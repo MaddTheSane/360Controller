@@ -25,7 +25,7 @@
 #import "Pref360ControlPref.h"
 #import "ControlPrefs.h"
 
-#define TOOL_FILENAME @"DriverTool"
+//#define TOOL_FILENAME @"DriverTool"
 
 #define Three60LocalizedString(key, comment) NSLocalizedStringWithDefaultValue(key, nil, [NSBundle bundleForClass:[self class]], key, comment)
 
@@ -191,102 +191,13 @@ static BOOL IsXBox360Controller(io_service_t device)
     return self;
 }
 
-- (NSString*)toolPath
-{
-    // Find the path of our tool in our bundle - should it be in the driver's bundle?
-    return [[[owner bundle] resourcePath] stringByAppendingPathComponent:TOOL_FILENAME];
-}
-
 - (OSStatus)writeToolWithAuthorisation:(AuthorizationRef)authorisationRef
 {
-    OSStatus result;
-    NSString *toolPath = [self toolPath];
-    NSMutableArray *parameters;
-    const char **argv;
-    int i;
-    
-    // Build array of parameters
-    parameters = [[NSMutableArray alloc] initWithCapacity:10];
-    [parameters addObject:@"edit"];
-    
-    for (NSNumber *key in enabled)
-    {
-        NSString *name = entries[key];
-        NSUInteger keyValue = [key unsignedIntValue];
-        UInt16 vendor = (keyValue >> 16) & 0xFFFF;
-        UInt16 product = keyValue & 0xFFFF;
-        [parameters addObject:name];
-        [parameters addObject:[NSString stringWithFormat:@"%i", vendor]];
-        [parameters addObject:[NSString stringWithFormat:@"%i", product]];
-    }
-    
-    // Convert parameters to a C array
-    argv = malloc(sizeof(char*) * ([parameters count] + 1));
-    i = 0;
-    for (NSString *item in parameters)
-        argv[i++] = [item UTF8String];
-    argv[i] = NULL;
-    
-    // Execute the command
-    result = AuthorizationExecuteWithPrivileges(authorisationRef,
-                                                [toolPath fileSystemRepresentation],
-                                                kAuthorizationFlagDefaults,
-                                                (char**)argv,
-                                                NULL);
-    
-    // Done
-    free(argv);
-    return result;
+    return unimpErr;
 }
 
 - (NSString*)readTool
 {
-    NSTask *task;
-    NSPipe *pipe, *error;
-    NSData *data;
-    NSString *response;
-    NSArray *lines;
-    
-    // Prepare to run the tool
-    task = [[NSTask alloc] init];
-    [task setLaunchPath:[self toolPath]];
-    
-    // Hook up the pipe to catch the output
-    pipe = [NSPipe pipe];
-    [task setStandardOutput:pipe];
-    error = [NSPipe pipe];
-    [task setStandardError:error];
-    
-    // Run the tool
-    [task launch];
-    [task waitUntilExit];
-    
-    // Check result
-    if ([task terminationStatus] != 0)
-    {
-        data = [[error fileHandleForReading] readDataToEndOfFile];
-        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    }
-    
-    // Read the data back
-    data = [[pipe fileHandleForReading] readDataToEndOfFile];
-    response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    // Parse the results
-    lines = [response componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    for (NSString *line in lines)
-    {
-        NSArray *values = [line componentsSeparatedByString:@","];
-        if ([values count] != 3)
-            continue;
-        unsigned int vendor = [values[1] unsignedIntValue];
-        unsigned int product = [values[2] unsignedIntValue];
-        NSNumber *key = @((UInt32)((vendor << 16) | product));
-        [enabled addObject:key];
-        if (entries[key] == nil)
-            entries[key] = SanitiseName(values[0]);
-    }
-    
     return nil;
 }
 
