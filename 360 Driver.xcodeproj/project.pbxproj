@@ -70,8 +70,6 @@
 		55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379B18C10C0C00CE933D /* DeviceItem.m */; };
 		55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379C18C10C0C00CE933D /* DeviceLister.h */; };
 		55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379D18C10C0C00CE933D /* DeviceLister.m */; };
-		55B637B418C10C0C00CE933D /* MyMainButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A418C10C0C00CE933D /* MyMainButtons.h */; };
-		55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A518C10C0C00CE933D /* MyMainButtons.m */; };
 		55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A618C10C0C00CE933D /* MyShoulderButton.h */; };
 		55B637B718C10C0C00CE933D /* MyShoulderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A718C10C0C00CE933D /* MyShoulderButton.m */; };
 		55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A818C10C0C00CE933D /* Pref360ControlPref.h */; };
@@ -102,6 +100,7 @@
 		55DA1CF01970B901000C9C35 /* batt2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55DA1CE81970B901000C9C35 /* batt2@2x.png */; };
 		55DA1CF11970B901000C9C35 /* batt3.png in Resources */ = {isa = PBXBuildFile; fileRef = 55DA1CE91970B901000C9C35 /* batt3.png */; };
 		55DA1CF21970B901000C9C35 /* batt3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55DA1CEA1970B901000C9C35 /* batt3@2x.png */; };
+		55F37AB31A0D707A0091256A /* MyMainButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F37AB21A0D707A0091256A /* MyMainButtons.swift */; };
 		55F7E7C319D8C32000525388 /* DriverTool in Copy Tools */ = {isa = PBXBuildFile; fileRef = 55B6376018C10A3200CE933D /* DriverTool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55FE3CA218D7B77800D69E84 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6372018C108A500CE933D /* CoreFoundation.framework */; };
 		55FE3CAB18D7B78D00D69E84 /* testhaptic.c in Sources */ = {isa = PBXBuildFile; fileRef = 55B6373918C108D200CE933D /* testhaptic.c */; };
@@ -269,8 +268,6 @@
 		55B6379B18C10C0C00CE933D /* DeviceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceItem.m; sourceTree = "<group>"; };
 		55B6379C18C10C0C00CE933D /* DeviceLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLister.h; sourceTree = "<group>"; };
 		55B6379D18C10C0C00CE933D /* DeviceLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLister.m; sourceTree = "<group>"; };
-		55B637A418C10C0C00CE933D /* MyMainButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMainButtons.h; sourceTree = "<group>"; };
-		55B637A518C10C0C00CE933D /* MyMainButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMainButtons.m; sourceTree = "<group>"; };
 		55B637A618C10C0C00CE933D /* MyShoulderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShoulderButton.h; sourceTree = "<group>"; };
 		55B637A718C10C0C00CE933D /* MyShoulderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShoulderButton.m; sourceTree = "<group>"; };
 		55B637A818C10C0C00CE933D /* Pref360ControlPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pref360ControlPref.h; sourceTree = "<group>"; };
@@ -310,6 +307,7 @@
 		55E1C62919708E7300EC9DD8 /* clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = clean.sh; sourceTree = SOURCE_ROOT; };
 		55E1C62A19708F8600EC9DD8 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.md; sourceTree = SOURCE_ROOT; };
 		55E1C62B1970921E00EC9DD8 /* Readme.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Readme.rtf; sourceTree = SOURCE_ROOT; };
+		55F37AB21A0D707A0091256A /* MyMainButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMainButtons.swift; sourceTree = "<group>"; usesTabs = 1; };
 		55FE3CA118D7B77800D69E84 /* testhaptic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testhaptic; sourceTree = BUILT_PRODUCTS_DIR; };
 		55FE3CAC18D7B7B600D69E84 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -608,8 +606,7 @@
 				550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */,
 				550B04A51A0D60D5002BD56E /* MyCentreButtons.swift */,
 				550B04A71A0D66DE002BD56E /* MyDigitalStick.swift */,
-				55B637A418C10C0C00CE933D /* MyMainButtons.h */,
-				55B637A518C10C0C00CE933D /* MyMainButtons.m */,
+				55F37AB21A0D707A0091256A /* MyMainButtons.swift */,
 				55B637A618C10C0C00CE933D /* MyShoulderButton.h */,
 				55B637A718C10C0C00CE933D /* MyShoulderButton.m */,
 				55B637A818C10C0C00CE933D /* Pref360ControlPref.h */,
@@ -686,7 +683,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637B418C10C0C00CE933D /* MyMainButtons.h in Headers */,
 				55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */,
 				55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */,
 				55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */,
@@ -1012,10 +1008,10 @@
 				550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */,
 				550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */,
 				550B04A81A0D66DE002BD56E /* MyDigitalStick.swift in Sources */,
-				55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */,
 				55B637B718C10C0C00CE933D /* MyShoulderButton.m in Sources */,
 				550B04A61A0D60D5002BD56E /* MyCentreButtons.swift in Sources */,
 				55B637DD18C10CCC00CE933D /* ControlPrefs.m in Sources */,
+				55F37AB31A0D707A0091256A /* MyMainButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1367,6 +1363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
@@ -1389,6 +1386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CLANG_ENABLE_MODULES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
