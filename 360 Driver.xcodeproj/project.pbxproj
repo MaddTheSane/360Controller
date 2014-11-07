@@ -28,6 +28,7 @@
 		550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */; };
 		550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */; };
 		550B04A61A0D60D5002BD56E /* MyCentreButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A51A0D60D5002BD56E /* MyCentreButtons.swift */; };
+		550B04A81A0D66DE002BD56E /* MyDigitalStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A71A0D66DE002BD56E /* MyDigitalStick.swift */; };
 		551CDFF9196EEE76000869B6 /* Pref360ControlPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551CDFFB196EEE76000869B6 /* Pref360ControlPref.xib */; };
 		553BDB44196DF3BA00D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
 		553BDB45196DF41500D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
@@ -69,8 +70,6 @@
 		55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379B18C10C0C00CE933D /* DeviceItem.m */; };
 		55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379C18C10C0C00CE933D /* DeviceLister.h */; };
 		55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379D18C10C0C00CE933D /* DeviceLister.m */; };
-		55B637B218C10C0C00CE933D /* MyDigitalStick.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A218C10C0C00CE933D /* MyDigitalStick.h */; };
-		55B637B318C10C0C00CE933D /* MyDigitalStick.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A318C10C0C00CE933D /* MyDigitalStick.m */; };
 		55B637B418C10C0C00CE933D /* MyMainButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A418C10C0C00CE933D /* MyMainButtons.h */; };
 		55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A518C10C0C00CE933D /* MyMainButtons.m */; };
 		55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A618C10C0C00CE933D /* MyShoulderButton.h */; };
@@ -207,6 +206,7 @@
 		550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COMUUIDs.swift; sourceTree = "<group>"; };
 		550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAnalogStick.swift; sourceTree = "<group>"; usesTabs = 1; };
 		550B04A51A0D60D5002BD56E /* MyCentreButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCentreButtons.swift; sourceTree = "<group>"; usesTabs = 1; };
+		550B04A71A0D66DE002BD56E /* MyDigitalStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDigitalStick.swift; sourceTree = "<group>"; usesTabs = 1; };
 		551CDFFD196EF52F000869B6 /* Pref360Control_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pref360Control_Prefix.pch; sourceTree = "<group>"; };
 		551CDFFF196EFD34000869B6 /* Install360Controller.pkgproj */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Install360Controller.pkgproj; sourceTree = "<group>"; };
 		551CE001196EFD34000869B6 /* finish.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = finish.sh; sourceTree = "<group>"; };
@@ -269,8 +269,6 @@
 		55B6379B18C10C0C00CE933D /* DeviceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceItem.m; sourceTree = "<group>"; };
 		55B6379C18C10C0C00CE933D /* DeviceLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLister.h; sourceTree = "<group>"; };
 		55B6379D18C10C0C00CE933D /* DeviceLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLister.m; sourceTree = "<group>"; };
-		55B637A218C10C0C00CE933D /* MyDigitalStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDigitalStick.h; sourceTree = "<group>"; };
-		55B637A318C10C0C00CE933D /* MyDigitalStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDigitalStick.m; sourceTree = "<group>"; };
 		55B637A418C10C0C00CE933D /* MyMainButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMainButtons.h; sourceTree = "<group>"; };
 		55B637A518C10C0C00CE933D /* MyMainButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMainButtons.m; sourceTree = "<group>"; };
 		55B637A618C10C0C00CE933D /* MyShoulderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShoulderButton.h; sourceTree = "<group>"; };
@@ -609,8 +607,7 @@
 				55B6379D18C10C0C00CE933D /* DeviceLister.m */,
 				550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */,
 				550B04A51A0D60D5002BD56E /* MyCentreButtons.swift */,
-				55B637A218C10C0C00CE933D /* MyDigitalStick.h */,
-				55B637A318C10C0C00CE933D /* MyDigitalStick.m */,
+				550B04A71A0D66DE002BD56E /* MyDigitalStick.swift */,
 				55B637A418C10C0C00CE933D /* MyMainButtons.h */,
 				55B637A518C10C0C00CE933D /* MyMainButtons.m */,
 				55B637A618C10C0C00CE933D /* MyShoulderButton.h */,
@@ -694,7 +691,6 @@
 				55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */,
 				55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */,
 				55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */,
-				55B637B218C10C0C00CE933D /* MyDigitalStick.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1015,11 +1011,11 @@
 				55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */,
 				550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */,
 				550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */,
+				550B04A81A0D66DE002BD56E /* MyDigitalStick.swift in Sources */,
 				55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */,
 				55B637B718C10C0C00CE933D /* MyShoulderButton.m in Sources */,
 				550B04A61A0D60D5002BD56E /* MyCentreButtons.swift in Sources */,
 				55B637DD18C10CCC00CE933D /* ControlPrefs.m in Sources */,
-				55B637B318C10C0C00CE933D /* MyDigitalStick.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

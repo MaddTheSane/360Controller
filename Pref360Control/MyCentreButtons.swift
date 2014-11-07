@@ -46,7 +46,7 @@ private func DrawButton(button: NSString, inRectangle rect: NSRect, pressed down
 	button.drawAtPoint(point, withAttributes: attributes)
 }
 
-class MyCentreButtons: NSView {
+final class MyCentreButtons: NSView {
 	var back: Bool = false {
 		didSet {
 			self.needsDisplay = true
