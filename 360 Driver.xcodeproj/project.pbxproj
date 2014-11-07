@@ -25,6 +25,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */; };
+		550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */; };
 		551CDFF9196EEE76000869B6 /* Pref360ControlPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551CDFFB196EEE76000869B6 /* Pref360ControlPref.xib */; };
 		553BDB44196DF3BA00D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
 		553BDB45196DF41500D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
@@ -66,8 +68,6 @@
 		55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379B18C10C0C00CE933D /* DeviceItem.m */; };
 		55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379C18C10C0C00CE933D /* DeviceLister.h */; };
 		55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379D18C10C0C00CE933D /* DeviceLister.m */; };
-		55B637AE18C10C0C00CE933D /* MyAnalogStick.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379E18C10C0C00CE933D /* MyAnalogStick.h */; };
-		55B637AF18C10C0C00CE933D /* MyAnalogStick.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379F18C10C0C00CE933D /* MyAnalogStick.m */; };
 		55B637B018C10C0C00CE933D /* MyCentreButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A018C10C0C00CE933D /* MyCentreButtons.h */; };
 		55B637B118C10C0C00CE933D /* MyCentreButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A118C10C0C00CE933D /* MyCentreButtons.m */; };
 		55B637B218C10C0C00CE933D /* MyDigitalStick.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A218C10C0C00CE933D /* MyDigitalStick.h */; };
@@ -205,6 +205,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COMUUIDs.swift; sourceTree = "<group>"; };
+		550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAnalogStick.swift; sourceTree = "<group>"; usesTabs = 1; };
 		551CDFFD196EF52F000869B6 /* Pref360Control_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pref360Control_Prefix.pch; sourceTree = "<group>"; };
 		551CDFFF196EFD34000869B6 /* Install360Controller.pkgproj */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Install360Controller.pkgproj; sourceTree = "<group>"; };
 		551CE001196EFD34000869B6 /* finish.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = finish.sh; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 		554B55691971CFBE00D762BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Pref360ControlPref.xib; sourceTree = "<group>"; };
 		554B556B1971CFE300D762BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Pref360ControlPref.strings; sourceTree = "<group>"; };
 		55699CD51971D96E00C40A31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		557305851A0D538300196C72 /* Pref360Control-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pref360Control-Bridging-Header.h"; sourceTree = "<group>"; };
 		55750C07190AFB5B0047FF41 /* DaemonLEDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaemonLEDs.h; sourceTree = "<group>"; usesTabs = 1; };
 		55750C08190AFB5B0047FF41 /* DaemonLEDs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaemonLEDs.m; sourceTree = "<group>"; usesTabs = 1; };
 		55852E2018D6B5580009BF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -266,8 +269,6 @@
 		55B6379B18C10C0C00CE933D /* DeviceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceItem.m; sourceTree = "<group>"; };
 		55B6379C18C10C0C00CE933D /* DeviceLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLister.h; sourceTree = "<group>"; };
 		55B6379D18C10C0C00CE933D /* DeviceLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLister.m; sourceTree = "<group>"; };
-		55B6379E18C10C0C00CE933D /* MyAnalogStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnalogStick.h; sourceTree = "<group>"; };
-		55B6379F18C10C0C00CE933D /* MyAnalogStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnalogStick.m; sourceTree = "<group>"; };
 		55B637A018C10C0C00CE933D /* MyCentreButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCentreButtons.h; sourceTree = "<group>"; };
 		55B637A118C10C0C00CE933D /* MyCentreButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCentreButtons.m; sourceTree = "<group>"; };
 		55B637A218C10C0C00CE933D /* MyDigitalStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDigitalStick.h; sourceTree = "<group>"; };
@@ -602,12 +603,13 @@
 		55B6378118C10B0B00CE933D /* Pref360Control */ = {
 			isa = PBXGroup;
 			children = (
+				557305851A0D538300196C72 /* Pref360Control-Bridging-Header.h */,
+				550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */,
 				55B6379A18C10C0C00CE933D /* DeviceItem.h */,
 				55B6379B18C10C0C00CE933D /* DeviceItem.m */,
 				55B6379C18C10C0C00CE933D /* DeviceLister.h */,
 				55B6379D18C10C0C00CE933D /* DeviceLister.m */,
-				55B6379E18C10C0C00CE933D /* MyAnalogStick.h */,
-				55B6379F18C10C0C00CE933D /* MyAnalogStick.m */,
+				550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */,
 				55B637A018C10C0C00CE933D /* MyCentreButtons.h */,
 				55B637A118C10C0C00CE933D /* MyCentreButtons.m */,
 				55B637A218C10C0C00CE933D /* MyDigitalStick.h */,
@@ -690,7 +692,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637AE18C10C0C00CE933D /* MyAnalogStick.h in Headers */,
 				55B637B418C10C0C00CE933D /* MyMainButtons.h in Headers */,
 				55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */,
 				55B637B018C10C0C00CE933D /* MyCentreButtons.h in Headers */,
@@ -1013,11 +1014,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637AF18C10C0C00CE933D /* MyAnalogStick.m in Sources */,
 				55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */,
 				55B637B118C10C0C00CE933D /* MyCentreButtons.m in Sources */,
 				55B637B918C10C0C00CE933D /* Pref360ControlPref.m in Sources */,
 				55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */,
+				550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */,
+				550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */,
 				55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */,
 				55B637B718C10C0C00CE933D /* MyShoulderButton.m in Sources */,
 				55B637DD18C10CCC00CE933D /* ControlPrefs.m in Sources */,
@@ -1372,6 +1374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
@@ -1380,7 +1383,10 @@
 				);
 				INFOPLIST_FILE = Pref360Control/Info.plist;
 				INSTALL_PATH = "${LOCAL_LIBRARY_DIR}/PreferencePanes";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pref360Control/Pref360Control-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Debug;
@@ -1389,6 +1395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				CLANG_ENABLE_MODULES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
@@ -1398,7 +1405,9 @@
 				);
 				INFOPLIST_FILE = Pref360Control/Info.plist;
 				INSTALL_PATH = "${LOCAL_LIBRARY_DIR}/PreferencePanes";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pref360Control/Pref360Control-Bridging-Header.h";
 				WRAPPER_EXTENSION = prefPane;
 			};
 			name = Release;
