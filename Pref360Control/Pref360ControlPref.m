@@ -26,6 +26,10 @@
 #import "DeviceItem.h"
 #import "ControlPrefs.h"
 #import "DeviceLister.h"
+#import "Pref360Control-Swift.h"
+#import "MyDigitalStick.h"
+#import "MyMainButtons.h"
+#import "MyShoulderButton.h"
 
 #define NO_ITEMS @"No devices found"
 

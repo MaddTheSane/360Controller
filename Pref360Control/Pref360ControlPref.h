@@ -29,11 +29,11 @@
 #include <IOKit/hid/IOHIDKeys.h>
 #include <ForceFeedback/ForceFeedback.h>
 
-#import "MyCentreButtons.h"
-#import "MyDigitalStick.h"
-#import "MyAnalogStick.h"
-#import "MyMainButtons.h"
-#import "MyShoulderButton.h"
+@class MyCentreButtons;
+@class MyDigitalStick;
+@class MyAnalogStick;
+@class MyMainButtons;
+@class MyShoulderButton;
 
 @class DeviceLister;
 
