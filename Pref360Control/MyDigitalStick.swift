@@ -52,10 +52,26 @@ private func MakeTriangle(start: Int, inRectangle rect: NSRect) -> NSBezierPath 
 }
 
 final class MyDigitalStick: NSView {
-    var up: Bool = false
-    var down: Bool = false
-    var left: Bool = false
-    var right: Bool = false
+	var up: Bool = false {
+		didSet {
+			self.needsDisplay = true
+		}
+	}
+	var down: Bool = false {
+		didSet {
+			self.needsDisplay = true
+		}
+	}
+	var left: Bool = false {
+		didSet {
+			self.needsDisplay = true
+		}
+	}
+	var right: Bool = false {
+		didSet {
+			self.needsDisplay = true
+		}
+	}
 	private var bezierUp: NSBezierPath!
 	private var bezierDown: NSBezierPath!
 	private var bezierLeft: NSBezierPath!
