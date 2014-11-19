@@ -36,6 +36,8 @@
 		55A2B8D518C116BD006829A2 /* 360Daemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637C718C10CB400CE933D /* 360Daemon.m */; };
 		55A2B8D818C116E0006829A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A2B8DA18C116E0006829A2 /* Localizable.strings */; };
 		55A2B8DD18C11A2F006829A2 /* com.mice.360Daemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B637CD18C10CB400CE933D /* com.mice.360Daemon.plist */; };
+		55A91B391A1D28370053E2C9 /* MyBatteryView.h in Headers */ = {isa = PBXBuildFile; fileRef = 55A91B371A1D28370053E2C9 /* MyBatteryView.h */; };
+		55A91B3A1A1D28370053E2C9 /* MyBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A91B381A1D28370053E2C9 /* MyBatteryView.m */; };
 		55B636B818C104DB00CE933D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B636B718C104DB00CE933D /* Cocoa.framework */; };
 		55B636C218C104DB00CE933D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B636C018C104DB00CE933D /* InfoPlist.strings */; };
 		55B6371618C1058E00CE933D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B636F918C1054F00CE933D /* InfoPlist.strings */; };
@@ -218,6 +220,8 @@
 		55750C08190AFB5B0047FF41 /* DaemonLEDs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaemonLEDs.m; sourceTree = "<group>"; usesTabs = 1; };
 		55852E2018D6B5580009BF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55A2B8DB18C116E2006829A2 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		55A91B371A1D28370053E2C9 /* MyBatteryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBatteryView.h; sourceTree = "<group>"; };
+		55A91B381A1D28370053E2C9 /* MyBatteryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBatteryView.m; sourceTree = "<group>"; };
 		55B13FC018C51DD400ACD9AC /* Feedback360.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; path = Feedback360.exp; sourceTree = "<group>"; };
 		55B636B418C104DB00CE933D /* 360Daemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 360Daemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B636B718C104DB00CE933D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -608,6 +612,8 @@
 				55B6379D18C10C0C00CE933D /* DeviceLister.m */,
 				55B6379E18C10C0C00CE933D /* MyAnalogStick.h */,
 				55B6379F18C10C0C00CE933D /* MyAnalogStick.m */,
+				55A91B371A1D28370053E2C9 /* MyBatteryView.h */,
+				55A91B381A1D28370053E2C9 /* MyBatteryView.m */,
 				55B637A018C10C0C00CE933D /* MyCentreButtons.h */,
 				55B637A118C10C0C00CE933D /* MyCentreButtons.m */,
 				55B637A218C10C0C00CE933D /* MyDigitalStick.h */,
@@ -693,6 +699,7 @@
 				55B637AE18C10C0C00CE933D /* MyAnalogStick.h in Headers */,
 				55B637B418C10C0C00CE933D /* MyMainButtons.h in Headers */,
 				55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */,
+				55A91B391A1D28370053E2C9 /* MyBatteryView.h in Headers */,
 				55B637B018C10C0C00CE933D /* MyCentreButtons.h in Headers */,
 				55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */,
 				55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */,
@@ -1017,6 +1024,7 @@
 				55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */,
 				55B637B118C10C0C00CE933D /* MyCentreButtons.m in Sources */,
 				55B637B918C10C0C00CE933D /* Pref360ControlPref.m in Sources */,
+				55A91B3A1A1D28370053E2C9 /* MyBatteryView.m in Sources */,
 				55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */,
 				55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */,
 				55B637B718C10C0C00CE933D /* MyShoulderButton.m in Sources */,

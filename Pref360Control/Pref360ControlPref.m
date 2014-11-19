@@ -26,6 +26,7 @@
 #import "DeviceItem.h"
 #import "ControlPrefs.h"
 #import "DeviceLister.h"
+#import "MyBatteryView.h"
 
 #define NO_ITEMS @"No devices found"
 
@@ -364,7 +365,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     [self inputEnable:NO];
     [powerOff setHidden:YES];
     // Hide battery icon
-    [batteryLevel setImage:nil];
+    //[batteryLevel setImage:nil];
 }
 
 // Stop using the HID device
@@ -576,6 +577,16 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     largeMotor = 0;
     smallMotor = 0;
     // Battery level?
+    
+    {
+        CFTypeRef prop = NULL;
+        if (IOObjectConformsTo(registryEntry, "WirelessHIDDevice")) {
+            batteryLevel.wirelessController = YES;
+        } else {
+            batteryLevel.wirelessController = NO;
+        }
+    }
+    
     {
         NSString *imageName = nil;
         CFTypeRef prop;
@@ -592,9 +603,9 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
             [powerOff setHidden:NO];
         }
         if (imageName) {
-            [batteryLevel setImage:[NSImage imageNamed:imageName]];
+            //[batteryLevel setImage:[NSImage imageNamed:imageName]];
         } else {
-            [batteryLevel setImage:nil];
+            //[batteryLevel setImage:nil];
         }
     }
 }

@@ -36,6 +36,7 @@
 #import "MyShoulderButton.h"
 
 @class DeviceLister;
+@class MyBatteryView;
 
 @interface Pref360ControlPref : NSPreferencePane 
 // Window components
@@ -57,7 +58,7 @@
 @property (weak) IBOutlet NSButton *rightStickInvertX;
 @property (weak) IBOutlet NSButton *rightStickInvertY;
 @property (weak) IBOutlet NSLevelIndicator *rightTrigger;
-@property (weak) IBOutlet NSImageView *batteryLevel;
+@property (weak) IBOutlet MyBatteryView *batteryLevel;
 @property (weak) IBOutlet DeviceLister *deviceLister;
 @property (weak) IBOutlet NSButton *powerOff;
 
