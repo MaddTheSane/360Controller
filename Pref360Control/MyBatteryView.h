@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+IB_DESIGNABLE
 @interface MyBatteryView : NSView
-@property unsigned char chargeLevel;
-@property (getter=isWirelessController) BOOL wirelessController;
+@property (nonatomic) IBInspectable NSInteger chargeLevel;
+@property (nonatomic, getter=isWirelessController) IBInspectable BOOL wirelessController;
 @end

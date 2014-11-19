@@ -364,8 +364,9 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     // Disable inputs
     [self inputEnable:NO];
     [powerOff setHidden:YES];
-    // Hide battery icon
-    //[batteryLevel setImage:nil];
+    // Hide battery view
+    batteryLevel.wirelessController = NO;
+    batteryLevel.chargeLevel = 255;
 }
 
 // Stop using the HID device
@@ -577,35 +578,22 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     largeMotor = 0;
     smallMotor = 0;
     // Battery level?
-    
     {
         CFTypeRef prop = NULL;
         if (IOObjectConformsTo(registryEntry, "WirelessHIDDevice")) {
             batteryLevel.wirelessController = YES;
-        } else {
-            batteryLevel.wirelessController = NO;
-        }
-    }
-    
-    {
-        NSString *imageName = nil;
-        CFTypeRef prop;
-        
-        if (IOObjectConformsTo(registryEntry, "WirelessHIDDevice")) {
             prop = IORegistryEntryCreateCFProperty(registryEntry, CFSTR("BatteryLevel"), NULL, 0);
             if (prop != nil) {
                 unsigned char level;
                 
-                if (CFNumberGetValue(prop, kCFNumberCharType, &level))
-                    imageName = [NSString stringWithFormat:@"batt%i", level / 64];
+                if (CFNumberGetValue(prop, kCFNumberCharType, &level)) {
+                    batteryLevel.chargeLevel = level;
+                }
                 CFRelease(prop);
             }
-            [powerOff setHidden:NO];
-        }
-        if (imageName) {
-            //[batteryLevel setImage:[NSImage imageNamed:imageName]];
+            powerOff.hidden = NO;
         } else {
-            //[batteryLevel setImage:nil];
+            batteryLevel.wirelessController = NO;
         }
     }
 }
