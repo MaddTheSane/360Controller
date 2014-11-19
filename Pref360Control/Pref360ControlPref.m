@@ -23,7 +23,7 @@
 #include <mach/mach.h>
 #include <IOKit/usb/IOUSBLib.h>
 #import "Pref360ControlPref.h"
-#import "DeviceItem.h"
+//#import "DeviceItem.h"
 #import "ControlPrefs.h"
 #import "DeviceLister.h"
 #import "Pref360Control-Swift.h"

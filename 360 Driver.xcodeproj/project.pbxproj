@@ -37,6 +37,8 @@
 		55699CD71971DA8100C40A31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55699CD51971D96E00C40A31 /* Images.xcassets */; };
 		55750C09190AFB5B0047FF41 /* DaemonLEDs.m in Sources */ = {isa = PBXBuildFile; fileRef = 55750C08190AFB5B0047FF41 /* DaemonLEDs.m */; };
 		55852E1F18D6B5580009BF55 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55852E2118D6B5580009BF55 /* Localizable.strings */; };
+		558725871A1C156B009FE9BF /* COMHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 558725861A1C156B009FE9BF /* COMHelpers.m */; };
+		558725891A1C15A2009FE9BF /* DeviceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558725881A1C15A2009FE9BF /* DeviceItem.swift */; };
 		55A2B8D518C116BD006829A2 /* 360Daemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637C718C10CB400CE933D /* 360Daemon.m */; };
 		55A2B8D818C116E0006829A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A2B8DA18C116E0006829A2 /* Localizable.strings */; };
 		55A2B8DD18C11A2F006829A2 /* com.mice.360Daemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B637CD18C10CB400CE933D /* com.mice.360Daemon.plist */; };
@@ -66,8 +68,6 @@
 		55B6377E18C10B0B00CE933D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B636B718C104DB00CE933D /* Cocoa.framework */; };
 		55B6378018C10B0B00CE933D /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6377F18C10B0B00CE933D /* PreferencePanes.framework */; };
 		55B6378618C10B0B00CE933D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B6378418C10B0B00CE933D /* InfoPlist.strings */; };
-		55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379A18C10C0C00CE933D /* DeviceItem.h */; };
-		55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379B18C10C0C00CE933D /* DeviceItem.m */; };
 		55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379C18C10C0C00CE933D /* DeviceLister.h */; };
 		55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379D18C10C0C00CE933D /* DeviceLister.m */; };
 		55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A818C10C0C00CE933D /* Pref360ControlPref.h */; };
@@ -218,6 +218,9 @@
 		55750C07190AFB5B0047FF41 /* DaemonLEDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaemonLEDs.h; sourceTree = "<group>"; usesTabs = 1; };
 		55750C08190AFB5B0047FF41 /* DaemonLEDs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaemonLEDs.m; sourceTree = "<group>"; usesTabs = 1; };
 		55852E2018D6B5580009BF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		558725851A1C1550009FE9BF /* COMHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COMHelpers.h; sourceTree = "<group>"; };
+		558725861A1C156B009FE9BF /* COMHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COMHelpers.m; sourceTree = "<group>"; };
+		558725881A1C15A2009FE9BF /* DeviceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceItem.swift; sourceTree = "<group>"; usesTabs = 1; };
 		55A2B8DB18C116E2006829A2 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55B13FC018C51DD400ACD9AC /* Feedback360.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; path = Feedback360.exp; sourceTree = "<group>"; };
 		55B636B418C104DB00CE933D /* 360Daemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 360Daemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,8 +266,6 @@
 		55B6377D18C10B0B00CE933D /* Pref360Control.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pref360Control.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B6377F18C10B0B00CE933D /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		55B6378518C10B0B00CE933D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		55B6379A18C10C0C00CE933D /* DeviceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceItem.h; sourceTree = "<group>"; };
-		55B6379B18C10C0C00CE933D /* DeviceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceItem.m; sourceTree = "<group>"; };
 		55B6379C18C10C0C00CE933D /* DeviceLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLister.h; sourceTree = "<group>"; };
 		55B6379D18C10C0C00CE933D /* DeviceLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLister.m; sourceTree = "<group>"; };
 		55B637A818C10C0C00CE933D /* Pref360ControlPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pref360ControlPref.h; sourceTree = "<group>"; };
@@ -596,9 +597,10 @@
 			isa = PBXGroup;
 			children = (
 				557305851A0D538300196C72 /* Pref360Control-Bridging-Header.h */,
+				558725851A1C1550009FE9BF /* COMHelpers.h */,
+				558725861A1C156B009FE9BF /* COMHelpers.m */,
 				550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */,
-				55B6379A18C10C0C00CE933D /* DeviceItem.h */,
-				55B6379B18C10C0C00CE933D /* DeviceItem.m */,
+				558725881A1C15A2009FE9BF /* DeviceItem.swift */,
 				55B6379C18C10C0C00CE933D /* DeviceLister.h */,
 				55B6379D18C10C0C00CE933D /* DeviceLister.m */,
 				550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */,
@@ -680,7 +682,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */,
 				55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */,
 				55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */,
 			);
@@ -998,15 +999,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558725871A1C156B009FE9BF /* COMHelpers.m in Sources */,
 				55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */,
 				55B637B918C10C0C00CE933D /* Pref360ControlPref.m in Sources */,
-				55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */,
 				550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */,
 				550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */,
 				550B04A81A0D66DE002BD56E /* MyDigitalStick.swift in Sources */,
 				55F37AB51A0D75960091256A /* MyShoulderButton.swift in Sources */,
 				550B04A61A0D60D5002BD56E /* MyCentreButtons.swift in Sources */,
 				55B637DD18C10CCC00CE933D /* ControlPrefs.m in Sources */,
+				558725891A1C15A2009FE9BF /* DeviceItem.swift in Sources */,
 				55F37AB31A0D707A0091256A /* MyMainButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
