@@ -35,9 +35,8 @@ final class DeviceItem: NSObject {
 		}
 		
 		var tmpHIDDevice: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDDeviceInterface122>> = nil
-		var anotherTmp = UnsafeMutablePointer<LPVOID>(tmpHIDDevice)
 		
-		ret = QueryIOKitInterface(plugInInterface.memory.memory.QueryInterface, plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID122), anotherTmp)
+		ret = QueryIOKitInterface(plugInInterface.memory.memory.QueryInterface, plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID122), tmpHIDDevice)
 		ReleaseIOKitInterface(plugInInterface.memory.memory.Release, plugInInterface)
 		if ret != kIOReturnSuccess {
 			name = ""

@@ -25,7 +25,6 @@
 #import "Pref360ControlPref.h"
 //#import "DeviceItem.h"
 #import "ControlPrefs.h"
-#import "DeviceLister.h"
 #import "Pref360Control-Swift.h"
 
 #define NO_ITEMS @"No devices found"

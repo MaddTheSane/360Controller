@@ -24,7 +24,7 @@ NSString* GetDeviceName(io_service_t device)
     return deviceName;
 }
 
-HRESULT QueryIOKitInterface(HRESULT ( *QueryInterface)(void *thisPointer, REFIID iid, LPVOID *ppv), void *thisPointer, REFIID uuid, LPVOID *ppv)
+HRESULT QueryIOKitInterface(HRESULT ( *QueryInterface)(void *thisPointer, REFIID iid, LPVOID *ppv), void *thisPointer, REFIID uuid, void *ppv)
 {
     return (*QueryInterface)(thisPointer, uuid, ppv);
 }
@@ -32,5 +32,15 @@ HRESULT QueryIOKitInterface(HRESULT ( *QueryInterface)(void *thisPointer, REFIID
 HRESULT ReleaseIOKitInterface(ULONG (STDMETHODCALLTYPE *Release)(void *thisPointer), void *thisPointer)
 {
     return (*Release)(thisPointer);
+}
+
+IOReturn GetIOKitDeviceType(IOReturn (*GetDeviceClass)(void *aself, UInt8 *devClass), void *aself, UInt8 *devValue)
+{
+    return (*GetDeviceClass)(aself, devValue);
+}
+
+IOReturn CreateIOKitInterfaceIterator(IOReturn (*CreateInterfaceIterator)(void *aself, IOUSBFindInterfaceRequest *req, io_iterator_t *iter), void *aself, IOUSBFindInterfaceRequest *req, io_iterator_t *iter)
+{
+    return (*CreateInterfaceIterator)(aself, req, iter);
 }
 
