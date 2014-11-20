@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		872993CE167751DE00CDE91A /* DWXBoxHIDDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 876927881675A53400A2EA18 /* DWXBoxHIDDriver.h */; };
+		876927871675A53400A2EA18 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 876927851675A53400A2EA18 /* InfoPlist.strings */; };
+		8769278A1675A53400A2EA18 /* DWXBoxHIDDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876927891675A53400A2EA18 /* DWXBoxHIDDriver.cpp */; };
+		876927971675A5C000A2EA18 /* DWXBoxHIDDriverKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 876927961675A5C000A2EA18 /* DWXBoxHIDDriverKeys.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8769277D1675A53400A2EA18 /* DWXBoxHIDDriver.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DWXBoxHIDDriver.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		876927811675A53400A2EA18 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
+		876927841675A53400A2EA18 /* Info-DWXBoxHIDDriver__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-DWXBoxHIDDriver__Upgraded_.plist"; sourceTree = "<group>"; };
+		876927861675A53400A2EA18 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		876927881675A53400A2EA18 /* DWXBoxHIDDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DWXBoxHIDDriver.h; sourceTree = "<group>"; };
+		876927891675A53400A2EA18 /* DWXBoxHIDDriver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DWXBoxHIDDriver.cpp; sourceTree = "<group>"; };
+		8769278B1675A53400A2EA18 /* DWXBoxHIDDriver-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DWXBoxHIDDriver-Prefix.pch"; sourceTree = "<group>"; };
+		876927961675A5C000A2EA18 /* DWXBoxHIDDriverKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWXBoxHIDDriverKeys.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		876927781675A53400A2EA18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		876927701675A53300A2EA18 = {
+			isa = PBXGroup;
+			children = (
+				876927821675A53400A2EA18 /* DWXBoxHIDDriver */,
+				8769277F1675A53400A2EA18 /* Frameworks */,
+				8769277E1675A53400A2EA18 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8769277E1675A53400A2EA18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8769277D1675A53400A2EA18 /* DWXBoxHIDDriver.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8769277F1675A53400A2EA18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				876927801675A53400A2EA18 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		876927801675A53400A2EA18 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				876927811675A53400A2EA18 /* Kernel.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		876927821675A53400A2EA18 /* DWXBoxHIDDriver */ = {
+			isa = PBXGroup;
+			children = (
+				876927881675A53400A2EA18 /* DWXBoxHIDDriver.h */,
+				876927891675A53400A2EA18 /* DWXBoxHIDDriver.cpp */,
+				876927961675A5C000A2EA18 /* DWXBoxHIDDriverKeys.h */,
+				876927831675A53400A2EA18 /* Supporting Files */,
+			);
+			name = DWXBoxHIDDriver;
+			sourceTree = "<group>";
+		};
+		876927831675A53400A2EA18 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				876927841675A53400A2EA18 /* Info-DWXBoxHIDDriver__Upgraded_.plist */,
+				876927851675A53400A2EA18 /* InfoPlist.strings */,
+				8769278B1675A53400A2EA18 /* DWXBoxHIDDriver-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		876927791675A53400A2EA18 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876927971675A5C000A2EA18 /* DWXBoxHIDDriverKeys.h in Headers */,
+				872993CE167751DE00CDE91A /* DWXBoxHIDDriver.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8769277C1675A53400A2EA18 /* DWXBoxHIDDriver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8769278E1675A53400A2EA18 /* Build configuration list for PBXNativeTarget "DWXBoxHIDDriver" */;
+			buildPhases = (
+				876927771675A53400A2EA18 /* Sources */,
+				876927781675A53400A2EA18 /* Frameworks */,
+				876927791675A53400A2EA18 /* Headers */,
+				8769277A1675A53400A2EA18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DWXBoxHIDDriver;
+			productName = DWXBoxHIDDriver;
+			productReference = 8769277D1675A53400A2EA18 /* DWXBoxHIDDriver.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		876927721675A53300A2EA18 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+			};
+			buildConfigurationList = 876927751675A53300A2EA18 /* Build configuration list for PBXProject "DWXBoxHIDDriver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 876927701675A53300A2EA18;
+			productRefGroup = 8769277E1675A53400A2EA18 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8769277C1675A53400A2EA18 /* DWXBoxHIDDriver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8769277A1675A53400A2EA18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876927871675A53400A2EA18 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		876927771675A53400A2EA18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8769278A1675A53400A2EA18 /* DWXBoxHIDDriver.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		876927851675A53400A2EA18 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				876927861675A53400A2EA18 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8769278C1675A53400A2EA18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 1;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8769278D1675A53400A2EA18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8769278F1675A53400A2EA18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.1.0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DWXBoxHIDDriver-Prefix.pch";
+				INFOPLIST_FILE = "Info-DWXBoxHIDDriver__Upgraded_.plist";
+				MODULE_NAME = org.walisser.driver.DWXBoxHIDDriver;
+				MODULE_VERSION = 2.1.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		876927901675A53400A2EA18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.1.0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DWXBoxHIDDriver-Prefix.pch";
+				INFOPLIST_FILE = "Info-DWXBoxHIDDriver__Upgraded_.plist";
+				MODULE_NAME = org.walisser.driver.DWXBoxHIDDriver;
+				MODULE_VERSION = 2.1.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		876927751675A53300A2EA18 /* Build configuration list for PBXProject "DWXBoxHIDDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8769278C1675A53400A2EA18 /* Debug */,
+				8769278D1675A53400A2EA18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8769278E1675A53400A2EA18 /* Build configuration list for PBXNativeTarget "DWXBoxHIDDriver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8769278F1675A53400A2EA18 /* Debug */,
+				876927901675A53400A2EA18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 876927721675A53300A2EA18 /* Project object */;
+}

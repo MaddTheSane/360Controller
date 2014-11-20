@@ -1,0 +1,6 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "DWXBoxController";
+CFBundleShortVersionString = "2.1.0";
+CFBundleGetInfoString = "2.1.0, Universal Binary 6/3/2007";
+NSHumanReadableCopyright = "Copyright Darrell Walisser 2007";
