@@ -2401,7 +2401,7 @@ DWXBoxHIDDriver::ChangeOutstandingIO(OSObject *target, void *param1, void *param
         USBLog(1, "DWXBoxHIDDriver::ChangeOutstandingIO - invalid target");
         return kIOReturnSuccess;
     }
-    switch (direction)
+    switch ((SInt64)direction)
     {
         case 1:
             me->_outstandingIO++;

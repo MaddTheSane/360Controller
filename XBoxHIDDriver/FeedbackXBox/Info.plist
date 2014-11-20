@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.github.MaddTheSane.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>CFPlugInFactories</key>
+	<dict>
+		<key>55D89979-FD2A-4753-BD1C-BB3FE8750C0C</key>
+		<string>ControlXBoxFactory</string>
+	</dict>
+	<key>CFPlugInTypes</key>
+	<dict>
+		<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+		<array>
+			<string>55D89979-FD2A-4753-BD1C-BB3FE8750C0C</string>
+		</array>
+	</dict>
+	<key>NSPrincipalClass</key>
+	<string></string>
+</dict>
+</plist>
