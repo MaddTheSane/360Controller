@@ -196,7 +196,7 @@ HRESULT Feedback360::StartEffect(FFEffectDownloadID EffectHandle, FFEffectStartF
     return FF_OK;
 }
 
-HRESULT Feedback360::StopEffect(UInt32 EffectHandle)
+HRESULT Feedback360::StopEffect(FFEffectDownloadID EffectHandle)
 {
     dispatch_sync(Queue, ^{
         for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
@@ -722,7 +722,7 @@ HRESULT Feedback360::sStartEffect(void * self, FFEffectDownloadID downloadID, FF
     return Feedback360::getThis(self)->StartEffect(downloadID, mode, iterations);
 }
 
-HRESULT Feedback360::sStopEffect(void * self, UInt32 downloadID)
+HRESULT Feedback360::sStopEffect(void * self, FFEffectDownloadID downloadID)
 {
     return Feedback360::getThis(self)->StopEffect(downloadID);
 }

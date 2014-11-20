@@ -82,7 +82,7 @@ public:
     static HRESULT  sSendForceFeedbackCommand( void * interface, FFCommandFlag state );
     static HRESULT  sSetProperty( void * interface, FFProperty property, void * pValue );
     static HRESULT  sStartEffect( void * interface, FFEffectDownloadID downloadID, FFEffectStartFlag mode, UInt32 iterations );
-    static HRESULT  sStopEffect( void * interface, UInt32 downloadID );
+    static HRESULT  sStopEffect( void * interface, FFEffectDownloadID downloadID );
 
     virtual HRESULT QueryInterface(REFIID iid, LPVOID* ppv);
     virtual ULONG   AddRef(void);
@@ -139,7 +139,7 @@ private:
     virtual HRESULT SendForceFeedbackCommand(FFCommandFlag state);
     virtual HRESULT SetProperty(FFProperty property, void * pValue);
     virtual HRESULT StartEffect(FFEffectDownloadID downloadID, FFEffectStartFlag mode, UInt32 iterations);
-    virtual HRESULT StopEffect(UInt32 downloadID);
+    virtual HRESULT StopEffect(FFEffectDownloadID downloadID);
 };
 
 // B8ED278F-EC8A-4E8E-B4CF-13E2A9D68E83
