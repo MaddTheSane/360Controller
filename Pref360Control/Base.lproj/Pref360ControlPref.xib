@@ -242,10 +242,10 @@ Please consider donating if you enjoy this driver!</string>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="174" customClass="MyBatteryView">
-                        <rect key="frame" x="212" y="194" width="38" height="24"/>
+                        <rect key="frame" x="211" y="194" width="40" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="K71-5x-oaA"/>
-                            <constraint firstAttribute="width" constant="38" id="uZK-rs-KV7"/>
+                            <constraint firstAttribute="width" constant="40" id="uZK-rs-KV7"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="chargeLevel">
@@ -337,7 +337,7 @@ Please consider donating if you enjoy this driver!</string>
                     <constraint firstItem="98" firstAttribute="leading" secondItem="103" secondAttribute="trailing" constant="8" symbolic="YES" id="Urp-co-RJA"/>
                     <constraint firstItem="110" firstAttribute="top" secondItem="VCv-HS-YkX" secondAttribute="bottom" constant="8" symbolic="YES" id="V7G-xN-9LB"/>
                     <constraint firstItem="104" firstAttribute="top" secondItem="107" secondAttribute="top" id="WWe-UI-P61"/>
-                    <constraint firstItem="107" firstAttribute="leading" secondItem="174" secondAttribute="trailing" constant="74" id="Xqa-OU-WfD"/>
+                    <constraint firstItem="107" firstAttribute="leading" secondItem="174" secondAttribute="trailing" constant="73" id="Xqa-OU-WfD"/>
                     <constraint firstItem="107" firstAttribute="leading" secondItem="110" secondAttribute="leading" id="XxX-U7-dsn"/>
                     <constraint firstItem="157" firstAttribute="leading" secondItem="107" secondAttribute="leading" id="Z9s-wY-p0f"/>
                     <constraint firstItem="114" firstAttribute="top" secondItem="104" secondAttribute="bottom" constant="8" symbolic="YES" id="aHa-hO-m2r"/>
