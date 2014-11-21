@@ -330,52 +330,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 		self.changed = false
 		return true;
 	}
-	/*
 	
-	// attempt to authenticate so we can edit the driver's list of supported devices as root
-	- (BOOL)trySave
-	{
-	OSStatus status;
-	AuthorizationRef authorisationRef;
-	BOOL success = NO;
-	
-	status = AuthorizationCreate(NULL,
-	kAuthorizationEmptyEnvironment,
-	kAuthorizationFlagDefaults,
-	&authorisationRef);
-	if (status != errAuthorizationSuccess)
-	{
-	[self showFailure:Three60LocalizedString(@"Unable to create authorisation request", @"")];
-	return NO;
-	}
-	
-	AuthorizationItem right = {kAuthorizationRightExecute, 0, NULL, 0};
-	AuthorizationRights rights = {1, &right};
-	status = AuthorizationCopyRights(authorisationRef,
-	&rights,
-	NULL,
-	kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights,
-	NULL);
-	if (status != errAuthorizationSuccess)
-	{
-	[self showFailure:Three60LocalizedString(@"Unable to acquire authorisation", @"")];
-	goto fail;
-	}
-	
-	status = [self writeToolWithAuthorisation:authorisationRef];
-	if (status != errAuthorizationSuccess)
-	{
-	[self showFailure:Three60LocalizedString(@"Failed to execute the driver tool", @"")];
-	goto fail;
-	}
-	
-	success = YES;
-	
-	fail:
-	AuthorizationFree(authorisationRef, kAuthorizationFlagDestroyRights);
-	return success;
-	}*/
-
 	var allEntries: [UInt32] {
 		var anEtries = entries.keys.array
 		var moreEntries = [Int]()
@@ -463,8 +418,46 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 		NSApplication.sharedApplication().beginSheet(sheet, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
 	}
 	
-	func trySave() {
+	/// attempt to authenticate so we can edit the driver's list of supported devices as root
+	func trySave() -> Bool {
+		func Three60LocalizedString(message: String, comment: String) -> String {
+			return NSLocalizedString(message, bundle: NSBundle(forClass: self.dynamicType), comment: comment)
+		}
 		
+		var status: OSStatus = 0
+		var authorisationRef: AuthorizationRef = nil
+		var success = false
+		
+		status = AuthorizationCreate(nil, nil, AuthorizationFlags(kAuthorizationFlagDefaults), &authorisationRef)
+		
+		if status != OSStatus(errAuthorizationSuccess) {
+			showFailure(Three60LocalizedString("Unable to create authorisation request", ""))
+			return false
+		}
+		var right = AuthorizationItem(name: kAuthorizationRightExecute, valueLength: 0, value: nil, flags: 0)
+		var rights = AuthorizationRights(count: 1, items: &right)
+		
+		status = AuthorizationCopyRights(authorisationRef, &rights, nil, AuthorizationFlags(kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights), nil)
+		
+		func gotoFail() -> Bool {
+			AuthorizationFree(authorisationRef, AuthorizationFlags(kAuthorizationFlagDestroyRights))
+			return success
+		}
+		
+		if status != OSStatus(errAuthorizationSuccess) {
+			showFailure(Three60LocalizedString("Unable to acquire authorisation", ""))
+			return gotoFail()
+		}
+		
+		status = writeToolWithAuthorisation(authorisationRef)
+		if status != OSStatus(errAuthorizationSuccess) {
+			showFailure(Three60LocalizedString("Failed to execute the driver tool", ""))
+			return gotoFail()
+		}
+		
+		success = true
+		
+		return gotoFail()
 	}
 	
 	@IBAction func done(sender: AnyObject?) {
