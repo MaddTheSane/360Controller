@@ -27,7 +27,7 @@
 #include <IOKit/hid/IOHIDLib.h>
 
 typedef struct {
-    IOHIDDeviceInterface121 **interface;
+    IOHIDDeviceRef interface;
 } DeviceLink;
 
 bool Device_Initialise(DeviceLink *link,io_object_t device);
