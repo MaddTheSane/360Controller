@@ -1248,11 +1248,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "compiler-default";
-				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
-				"CLANG_CXX_LIBRARY[sdk=macosx10.7]" = "libstdc++";
-				"CLANG_CXX_LIBRARY[sdk=macosx10.8]" = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1283,8 +1279,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.7]" = 10.6;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.6;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.7]" = 10.7;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1301,11 +1297,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "compiler-default";
-				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
-				"CLANG_CXX_LIBRARY[sdk=macosx10.7]" = "libstdc++";
-				"CLANG_CXX_LIBRARY[sdk=macosx10.8]" = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1331,8 +1323,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.7]" = 10.6;
-				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.6;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.7]" = 10.7;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.7;
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 				WARNING_CFLAGS = (
@@ -1351,6 +1343,7 @@
 				GCC_PREFIX_HEADER = "360Daemon/360DaemonApp-Prefix.pch";
 				INFOPLIST_FILE = "360Daemon/360DaemonApp-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application Support/MICE";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1366,6 +1359,7 @@
 				GCC_PREFIX_HEADER = "360Daemon/360DaemonApp-Prefix.pch";
 				INFOPLIST_FILE = "360Daemon/360DaemonApp-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application Support/MICE";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1377,6 +1371,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
@@ -1392,6 +1387,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
@@ -1408,6 +1404,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				"CLANG_CXX_LIBRARY[sdk=macosx10.7]" = "libstdc++";
+				"CLANG_CXX_LIBRARY[sdk=macosx10.8]" = "libstdc++";
 				INFOPLIST_FILE = Feedback360/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1424,6 +1423,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				"CLANG_CXX_LIBRARY[sdk=macosx10.7]" = "libstdc++";
+				"CLANG_CXX_LIBRARY[sdk=macosx10.8]" = "libstdc++";
 				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = Feedback360/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1443,6 +1445,7 @@
 				GCC_PREFIX_HEADER = DriverTool/DriverTool_Prefix.pch;
 				INFOPLIST_FILE = DriverTool/Info.plist;
 				MACH_O_TYPE = mh_execute;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1458,6 +1461,7 @@
 				GCC_PREFIX_HEADER = DriverTool/DriverTool_Prefix.pch;
 				INFOPLIST_FILE = DriverTool/Info.plist;
 				MACH_O_TYPE = mh_execute;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1483,6 +1487,7 @@
 				);
 				INFOPLIST_FILE = Pref360Control/Info.plist;
 				INSTALL_PATH = "${LOCAL_LIBRARY_DIR}/PreferencePanes";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = prefPane;
 			};
@@ -1509,6 +1514,7 @@
 				);
 				INFOPLIST_FILE = Pref360Control/Info.plist;
 				INSTALL_PATH = "${LOCAL_LIBRARY_DIR}/PreferencePanes";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = prefPane;
 			};
@@ -1520,6 +1526,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
@@ -1535,6 +1542,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
@@ -1550,6 +1558,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
@@ -1565,6 +1574,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
@@ -1597,6 +1607,7 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = /Library/Frameworks;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1610,6 +1621,7 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = /Library/Frameworks;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

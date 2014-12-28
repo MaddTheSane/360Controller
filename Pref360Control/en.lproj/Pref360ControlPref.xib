@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1090</int>
+		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">14B25</string>
-		<string key="IBDocument.InterfaceBuilderVersion">5056</string>
+		<string key="IBDocument.InterfaceBuilderVersion">6254</string>
 		<string key="IBDocument.AppKitVersion">1343.16</string>
 		<string key="IBDocument.HIToolboxVersion">755.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">5056</string>
+			<string key="NS.object.0">6254</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBNSLayoutConstraint</string>
@@ -72,13 +72,14 @@
 							<string key="NSFrame">{{112, 267}, {471, 26}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="453234514"/>
 							<string key="NSHuggingPriority">{249, 750}</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSPopUpButtonCell" key="NSCell" id="920192307">
 								<int key="NSCellFlags">-2076180416</int>
 								<int key="NSCellFlags2">2048</int>
 								<object class="NSFont" key="NSSupport">
-									<string key="NSName">.HelveticaNeueDeskInterface-Regular</string>
+									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">13</double>
 									<int key="NSfFlags">1301</int>
 								</object>
@@ -154,6 +155,7 @@
 							<string key="NSFrame">{{58, 273}, {50, 17}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="800128214"/>
 							<string key="NSAntiCompressionPriority">{250, 750}</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="151243669">
@@ -161,7 +163,7 @@
 								<int key="NSCellFlags2">71303168</int>
 								<string key="NSContents">Device:</string>
 								<object class="NSFont" key="NSSupport" id="544980985">
-									<string key="NSName">.HelveticaNeueDeskInterface-Regular</string>
+									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">13</double>
 									<int key="NSfFlags">1044</int>
 								</object>
@@ -195,6 +197,7 @@
 							<string key="NSFrame">{{49, 131}, {77, 77}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="38638383"/>
 							<string key="NSClassName">MyAnalogStick</string>
 						</object>
 						<object class="NSCustomView" id="956167361">
@@ -203,6 +206,7 @@
 							<string key="NSFrame">{{130, 47}, {77, 77}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="774798650"/>
 							<string key="NSClassName">MyDigitalStick</string>
 						</object>
 						<object class="NSCustomView" id="774798650">
@@ -211,6 +215,7 @@
 							<string key="NSFrame">{{233, 47}, {77, 77}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="842660234"/>
 							<string key="NSClassName">MyAnalogStick</string>
 						</object>
 						<object class="NSCustomView" id="695967500">
@@ -219,6 +224,7 @@
 							<string key="NSFrame">{{318, 131}, {77, 77}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="88754282"/>
 							<string key="NSClassName">MyMainButtons</string>
 						</object>
 						<object class="NSCustomView" id="99699514">
@@ -227,6 +233,7 @@
 							<string key="NSFrame">{{157, 145}, {126, 39}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="695967500"/>
 							<string key="NSClassName">MyCentreButtons</string>
 						</object>
 						<object class="NSCustomView" id="266671659">
@@ -235,6 +242,7 @@
 							<string key="NSFrame">{{49, 216}, {77, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="408750557"/>
 							<string key="NSClassName">MyShoulderButton</string>
 						</object>
 						<object class="NSCustomView" id="408750557">
@@ -243,6 +251,7 @@
 							<string key="NSFrame">{{318, 216}, {77, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="49833308"/>
 							<string key="NSClassName">MyShoulderButton</string>
 						</object>
 						<object class="NSButton" id="88754282">
@@ -251,6 +260,7 @@
 							<string key="NSFrame">{{47, 107}, {72, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="195019499"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="436931286">
 								<int key="NSCellFlags">67108864</int>
@@ -280,6 +290,7 @@
 							<string key="NSFrame">{{47, 87}, {70, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="956167361"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="772081833">
 								<int key="NSCellFlags">67108864</int>
@@ -304,6 +315,7 @@
 							<string key="NSFrame">{{316, 107}, {69, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="980755319"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="421963542">
 								<int key="NSCellFlags">67108864</int>
@@ -328,6 +340,7 @@
 							<string key="NSFrame">{{316, 87}, {69, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="490077479"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="760547365">
 								<int key="NSCellFlags">67108864</int>
@@ -352,6 +365,7 @@
 							<string key="NSFrame">{{231, 20}, {166, 21}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="248708747"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="131634239">
 								<int key="NSCellFlags">67108864</int>
@@ -379,6 +393,7 @@
 							<string key="NSFrame">{{47, 67}, {63, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="311966997"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="385468261">
 								<int key="NSCellFlags">67108864</int>
@@ -403,6 +418,7 @@
 							<string key="NSFrame">{{316, 67}, {63, 18}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="442523006"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="322386618">
 								<int key="NSCellFlags">67108864</int>
@@ -435,6 +451,7 @@
 											<string key="NSFrame">{{13, 203}, {153, 11}}</string>
 											<reference key="NSSuperview" ref="322022002"/>
 											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="917531976"/>
 											<string key="NSAntiCompressionPriority">{250, 750}</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="813635216">
@@ -442,7 +459,7 @@
 												<int key="NSCellFlags2">272891904</int>
 												<string key="NSContents">Xbox 360 Controller Driver</string>
 												<object class="NSFont" key="NSSupport" id="22">
-													<string key="NSName">.HelveticaNeueDeskInterface-Regular</string>
+													<bool key="IBIsSystemFont">YES</bool>
 													<double key="NSSize">9</double>
 													<int key="NSfFlags">3614</int>
 												</object>
@@ -460,6 +477,7 @@
 											<string key="NSFrame">{{13, 184}, {129, 11}}</string>
 											<reference key="NSSuperview" ref="322022002"/>
 											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="166973145"/>
 											<string key="NSAntiCompressionPriority">{250, 750}</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="670991985">
@@ -481,6 +499,7 @@
 											<string key="NSFrame">{{13, 164}, {108, 12}}</string>
 											<reference key="NSSuperview" ref="322022002"/>
 											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="793889297"/>
 											<string key="NSAntiCompressionPriority">{250, 750}</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="361022003">
@@ -502,6 +521,7 @@
 											<string key="NSFrame">{{13, 144}, {100, 12}}</string>
 											<reference key="NSSuperview" ref="322022002"/>
 											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="813541964"/>
 											<string key="NSAntiCompressionPriority">{250, 750}</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="913333730">
@@ -523,6 +543,7 @@
 											<string key="NSFrame">{{13, 125}, {151, 11}}</string>
 											<reference key="NSSuperview" ref="322022002"/>
 											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="142079897"/>
 											<string key="NSAntiCompressionPriority">{250, 750}</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="855256643">
@@ -565,18 +586,20 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 									<string key="NSFrame">{{2, 2}, {179, 225}}</string>
 									<reference key="NSSuperview" ref="248708747"/>
 									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView" ref="476799129"/>
 								</object>
 							</array>
 							<string key="NSFrame">{{400, 16}, {183, 242}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="322022002"/>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">About</string>
 								<object class="NSFont" key="NSSupport">
-									<string key="NSName">.HelveticaNeueDeskInterface-Regular</string>
+									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">11</double>
 									<int key="NSfFlags">1558</int>
 								</object>
@@ -616,6 +639,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 							<string key="NSFrame">{{209, 194}, {32, 24}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="99699514"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSImageCell" key="NSCell" id="682158597">
 								<int key="NSCellFlags">0</int>
@@ -634,6 +658,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 							<string key="NSFrame">{{23, 44}, {21, 166}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="978153954"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="30380314">
 								<int key="NSCellFlags">0</int>
@@ -656,6 +681,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 							<string key="NSFrame">{{8, 251}, {39, 38}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="815912907"/>
 							<string key="NSHuggingPriority">{750, 750}</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="991872818">
@@ -663,7 +689,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 								<int key="NSCellFlags2">268435456</int>
 								<string key="NSContents"/>
 								<object class="NSFont" key="NSSupport">
-									<string key="NSName">.HelveticaNeueDeskInterface-Regular</string>
+									<bool key="IBIsSystemFont">YES</bool>
 									<double key="NSSize">18</double>
 									<int key="NSfFlags">1044</int>
 								</object>
@@ -687,6 +713,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 							<string key="NSFrame">{{87, 13}, {100, 32}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="470790135"/>
 							<string key="NSHuggingPriority">{250, 750}</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="105594490">
@@ -711,6 +738,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 							<string key="NSFrame">{{49, 242}, {169, 16}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="288971491"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSLevelIndicatorCell" key="NSCell" id="415845577">
 								<int key="NSCellFlags">0</int>
@@ -727,6 +755,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 							<string key="NSFrame">{{226, 242}, {169, 16}}</string>
 							<reference key="NSSuperview" ref="786634195"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="266671659"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSLevelIndicatorCell" key="NSCell" id="919226708">
 								<int key="NSCellFlags">0</int>
@@ -741,6 +770,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 					<string key="NSFrameSize">{600, 308}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView" ref="928711095"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1057}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
@@ -792,7 +822,7 @@ eW91IGVuam95IHRoaXMgZHJpdmVyIQ</string>
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents"/>
 														<object class="NSFont" key="NSSupport" id="26">
-															<string key="NSName">.HelveticaNeueDeskInterface-Regular</string>
+															<bool key="IBIsSystemFont">YES</bool>
 															<double key="NSSize">11</double>
 															<int key="NSfFlags">3100</int>
 														</object>
@@ -1004,7 +1034,7 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<bool key="usesAutoincrementingIDs">NO</bool>
-			<array class="NSMutableArray" key="connectionRecords">
+			<array key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">_window</string>
@@ -2772,11 +2802,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 						<reference key="parent" ref="815912907"/>
 					</object>
 					<object class="IBObjectRecord">
-						<string key="id">t30-ez-Z9k</string>
-						<reference key="object" ref="563973898"/>
-						<reference key="parent" ref="815912907"/>
-					</object>
-					<object class="IBObjectRecord">
 						<string key="id">104</string>
 						<reference key="object" ref="978153954"/>
 						<array class="NSMutableArray" key="children">
@@ -2818,16 +2843,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 							</object>
 						</array>
 						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">PKp-ph-84K</string>
-						<reference key="object" ref="576685391"/>
-						<reference key="parent" ref="978153954"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">wDt-rN-0ds</string>
-						<reference key="object" ref="596384736"/>
-						<reference key="parent" ref="978153954"/>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">105</string>
@@ -2888,16 +2903,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 						<reference key="parent" ref="786634195"/>
 					</object>
 					<object class="IBObjectRecord">
-						<string key="id">L32-OU-r3X</string>
-						<reference key="object" ref="955976439"/>
-						<reference key="parent" ref="99699514"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">yLF-RD-QHM</string>
-						<reference key="object" ref="809575740"/>
-						<reference key="parent" ref="99699514"/>
-					</object>
-					<object class="IBObjectRecord">
 						<string key="id">109</string>
 						<reference key="object" ref="266671659"/>
 						<array class="NSMutableArray" key="children">
@@ -2921,11 +2926,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 							</object>
 						</array>
 						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">2rs-g7-BCp</string>
-						<reference key="object" ref="948535302"/>
-						<reference key="parent" ref="266671659"/>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">110</string>
@@ -3422,91 +3422,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 						<reference key="parent" ref="142079897"/>
 					</object>
 					<object class="IBObjectRecord">
-						<string key="id">2lx-oY-CyH</string>
-						<reference key="object" ref="106261567"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">6zb-Uq-30m</string>
-						<reference key="object" ref="759668772"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">BQe-b5-KJX</string>
-						<reference key="object" ref="939412042"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">DWz-rm-SX1</string>
-						<reference key="object" ref="515011124"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">TBr-Al-9mQ</string>
-						<reference key="object" ref="460723599"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">WEm-So-oMu</string>
-						<reference key="object" ref="611468027"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">XPM-tC-VdO</string>
-						<reference key="object" ref="778727953"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">cWE-2G-jVa</string>
-						<reference key="object" ref="604300433"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">d0h-iO-gEs</string>
-						<reference key="object" ref="59740712"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">fPL-nl-96S</string>
-						<reference key="object" ref="421935473"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">hla-nv-xYW</string>
-						<reference key="object" ref="1036847757"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">lpc-g0-SKb</string>
-						<reference key="object" ref="210983381"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">nRA-hm-Wo7</string>
-						<reference key="object" ref="985906374"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">oAJ-90-RDj</string>
-						<reference key="object" ref="539791323"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">pP0-wY-p04</string>
-						<reference key="object" ref="807367118"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">pVo-jz-DlU</string>
-						<reference key="object" ref="868138990"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">vsn-Ni-0gZ</string>
-						<reference key="object" ref="275623240"/>
-						<reference key="parent" ref="248708747"/>
-					</object>
-					<object class="IBObjectRecord">
 						<string key="id">174</string>
 						<reference key="object" ref="38638383"/>
 						<array class="NSMutableArray" key="children">
@@ -3553,16 +3468,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					<object class="IBObjectRecord">
 						<string key="id">193</string>
 						<reference key="object" ref="682158597"/>
-						<reference key="parent" ref="38638383"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">K71-5x-oaA</string>
-						<reference key="object" ref="231328451"/>
-						<reference key="parent" ref="38638383"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">uZK-rs-KV7</string>
-						<reference key="object" ref="1047704074"/>
 						<reference key="parent" ref="38638383"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -3636,11 +3541,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 						<reference key="parent" ref="453234514"/>
 					</object>
 					<object class="IBObjectRecord">
-						<string key="id">uEv-ot-Mg4</string>
-						<reference key="object" ref="240515613"/>
-						<reference key="parent" ref="453234514"/>
-					</object>
-					<object class="IBObjectRecord">
 						<string key="id">VCv-HS-YkX</string>
 						<reference key="object" ref="288971491"/>
 						<array class="NSMutableArray" key="children">
@@ -3652,376 +3552,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 						<string key="id">TBS-cd-qyS</string>
 						<reference key="object" ref="919226708"/>
 						<reference key="parent" ref="288971491"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">1Yt-vm-Hh7</string>
-						<reference key="object" ref="13093740"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">1sw-Fa-LUA</string>
-						<reference key="object" ref="601536617"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">3w2-xR-H5u</string>
-						<reference key="object" ref="758816616"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">4xg-L1-vRj</string>
-						<reference key="object" ref="868349383"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">5BT-ck-CWd</string>
-						<reference key="object" ref="844983156"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">5f2-2V-vu2</string>
-						<reference key="object" ref="865077183"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">6Ou-dd-CyR</string>
-						<reference key="object" ref="554274332"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">6oU-dY-n2O</string>
-						<reference key="object" ref="710651375"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">7hF-Mb-yhW</string>
-						<reference key="object" ref="306344484"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">8Vz-V3-fOQ</string>
-						<reference key="object" ref="1014996932"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">8k3-zx-qVK</string>
-						<reference key="object" ref="248377578"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">98F-ob-k78</string>
-						<reference key="object" ref="11328614"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">9k9-HA-Gnk</string>
-						<reference key="object" ref="545555540"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">BDE-OQ-412</string>
-						<reference key="object" ref="308117290"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Bsx-6x-TDq</string>
-						<reference key="object" ref="433263087"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Ckx-2p-QRg</string>
-						<reference key="object" ref="508659474"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">CxK-Jz-wtE</string>
-						<reference key="object" ref="519099671"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">DDh-2P-xgp</string>
-						<reference key="object" ref="345425638"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Fcg-JV-gnC</string>
-						<reference key="object" ref="1048449798"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">HBh-NE-5LF</string>
-						<reference key="object" ref="252722966"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">I5j-7j-pbc</string>
-						<reference key="object" ref="139822803"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">JU7-GU-cMs</string>
-						<reference key="object" ref="250329215"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">KDk-Y9-Cbk</string>
-						<reference key="object" ref="934880563"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">L3w-MG-uPf</string>
-						<reference key="object" ref="371148256"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Om2-q5-1k1</string>
-						<reference key="object" ref="224289466"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">PHZ-I4-2IS</string>
-						<reference key="object" ref="965257879"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">QKW-IL-DNz</string>
-						<reference key="object" ref="289279249"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Qmg-74-RWf</string>
-						<reference key="object" ref="329882956"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">QqO-lF-dEJ</string>
-						<reference key="object" ref="307361632"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">R3h-rQ-lM1</string>
-						<reference key="object" ref="529793863"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">R67-oo-hBR</string>
-						<reference key="object" ref="175365842"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">S7l-eI-J10</string>
-						<reference key="object" ref="320454372"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">TwO-To-Hbz</string>
-						<reference key="object" ref="57586657"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">UCy-xN-I2h</string>
-						<reference key="object" ref="934181458"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Urp-co-RJA</string>
-						<reference key="object" ref="115059932"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">V7G-xN-9LB</string>
-						<reference key="object" ref="902568813"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">WWe-UI-P61</string>
-						<reference key="object" ref="725516816"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Xqa-OU-WfD</string>
-						<reference key="object" ref="669333264"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">XxX-U7-dsn</string>
-						<reference key="object" ref="539476366"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Z9s-wY-p0f</string>
-						<reference key="object" ref="1031860300"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">aHa-hO-m2r</string>
-						<reference key="object" ref="610588371"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">b2W-PZ-HMC</string>
-						<reference key="object" ref="787852944"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">bEZ-NK-TWU</string>
-						<reference key="object" ref="1043187914"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">bdQ-dV-FsS</string>
-						<reference key="object" ref="82400088"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">bog-km-7Y9</string>
-						<reference key="object" ref="22226411"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">bqh-Dp-1U4</string>
-						<reference key="object" ref="402707178"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">dD2-Cz-BCK</string>
-						<reference key="object" ref="591058563"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">eHH-AF-zSW</string>
-						<reference key="object" ref="541323084"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">eml-t8-t1a</string>
-						<reference key="object" ref="748131817"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">fOB-hg-zIY</string>
-						<reference key="object" ref="565764538"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">gFX-lZ-iPF</string>
-						<reference key="object" ref="794045051"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">gS1-Fa-DqQ</string>
-						<reference key="object" ref="887951622"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">gzD-0h-Uhd</string>
-						<reference key="object" ref="816092753"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">hNd-VC-czn</string>
-						<reference key="object" ref="655181791"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">i6G-xg-OSN</string>
-						<reference key="object" ref="185358054"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">lVX-Fj-a3W</string>
-						<reference key="object" ref="1040381220"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">n6V-uX-QiU</string>
-						<reference key="object" ref="546695848"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">o7g-0W-xLP</string>
-						<reference key="object" ref="474634305"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">oA3-2t-qR8</string>
-						<reference key="object" ref="296520353"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">p1h-yC-FdV</string>
-						<reference key="object" ref="854056480"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">peP-4E-cmz</string>
-						<reference key="object" ref="1004427168"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">pq7-JO-Rfb</string>
-						<reference key="object" ref="471885195"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">qjT-9J-45T</string>
-						<reference key="object" ref="100767029"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">sBc-uW-rhY</string>
-						<reference key="object" ref="1062012825"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">uAD-JX-WBn</string>
-						<reference key="object" ref="332322830"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">ueY-Zc-4WS</string>
-						<reference key="object" ref="215825961"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">uey-ZE-FMc</string>
-						<reference key="object" ref="890837816"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">wCL-qK-eEH</string>
-						<reference key="object" ref="1057838646"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">wDI-ZX-NiS</string>
-						<reference key="object" ref="885158225"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">xH6-6A-FVa</string>
-						<reference key="object" ref="356570359"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">xjy-gg-0f0</string>
-						<reference key="object" ref="1015955123"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">ybf-eL-C4L</string>
-						<reference key="object" ref="422002774"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">z4y-jf-7mi</string>
-						<reference key="object" ref="70679480"/>
-						<reference key="parent" ref="786634195"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">zSA-zo-fAJ</string>
-						<reference key="object" ref="985399214"/>
-						<reference key="parent" ref="786634195"/>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">200</string>
@@ -4283,56 +3813,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 						<reference key="parent" ref="635583076"/>
 					</object>
 					<object class="IBObjectRecord">
-						<string key="id">12S-tG-ssi</string>
-						<reference key="object" ref="21714604"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">4RI-kE-Pov</string>
-						<reference key="object" ref="634226975"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Ag9-bw-w6y</string>
-						<reference key="object" ref="1062491389"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">M6u-JZ-dT8</string>
-						<reference key="object" ref="587478142"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">VtO-au-xee</string>
-						<reference key="object" ref="354528203"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">a7T-40-Zx4</string>
-						<reference key="object" ref="876701186"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">fKM-JG-Ify</string>
-						<reference key="object" ref="329827073"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">g8z-23-ZWg</string>
-						<reference key="object" ref="1009706997"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">qSO-1Y-m0k</string>
-						<reference key="object" ref="1062056242"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">rIJ-6v-wQD</string>
-						<reference key="object" ref="296464470"/>
-						<reference key="parent" ref="702970985"/>
-					</object>
-					<object class="IBObjectRecord">
 						<string key="id">221</string>
 						<reference key="object" ref="184267655"/>
 						<reference key="parent" ref="0"/>
@@ -4345,14 +3825,6 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 							<reference ref="462948723"/>
 						</array>
 						<reference key="parent" ref="920766378"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">208</string>
-						<reference key="object" ref="482661020"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="592981825"/>
-						</array>
-						<reference key="parent" ref="445142067"/>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">207</string>
@@ -4368,9 +3840,567 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 						<reference key="parent" ref="462948723"/>
 					</object>
 					<object class="IBObjectRecord">
+						<string key="id">208</string>
+						<reference key="object" ref="482661020"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="592981825"/>
+						</array>
+						<reference key="parent" ref="445142067"/>
+					</object>
+					<object class="IBObjectRecord">
 						<string key="id">209</string>
 						<reference key="object" ref="592981825"/>
 						<reference key="parent" ref="482661020"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">g8z-23-ZWg</string>
+						<reference key="object" ref="1009706997"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">fKM-JG-Ify</string>
+						<reference key="object" ref="329827073"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">a7T-40-Zx4</string>
+						<reference key="object" ref="876701186"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">VtO-au-xee</string>
+						<reference key="object" ref="354528203"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">M6u-JZ-dT8</string>
+						<reference key="object" ref="587478142"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">rIJ-6v-wQD</string>
+						<reference key="object" ref="296464470"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">qSO-1Y-m0k</string>
+						<reference key="object" ref="1062056242"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">12S-tG-ssi</string>
+						<reference key="object" ref="21714604"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Ag9-bw-w6y</string>
+						<reference key="object" ref="1062491389"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">4RI-kE-Pov</string>
+						<reference key="object" ref="634226975"/>
+						<reference key="parent" ref="702970985"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">p1h-yC-FdV</string>
+						<reference key="object" ref="854056480"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">eHH-AF-zSW</string>
+						<reference key="object" ref="541323084"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">bdQ-dV-FsS</string>
+						<reference key="object" ref="82400088"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Qmg-74-RWf</string>
+						<reference key="object" ref="329882956"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">ueY-Zc-4WS</string>
+						<reference key="object" ref="215825961"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">uAD-JX-WBn</string>
+						<reference key="object" ref="332322830"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">qjT-9J-45T</string>
+						<reference key="object" ref="100767029"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">dD2-Cz-BCK</string>
+						<reference key="object" ref="591058563"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Z9s-wY-p0f</string>
+						<reference key="object" ref="1031860300"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">7hF-Mb-yhW</string>
+						<reference key="object" ref="306344484"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">ybf-eL-C4L</string>
+						<reference key="object" ref="422002774"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">eml-t8-t1a</string>
+						<reference key="object" ref="748131817"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">L3w-MG-uPf</string>
+						<reference key="object" ref="371148256"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">pq7-JO-Rfb</string>
+						<reference key="object" ref="471885195"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">bog-km-7Y9</string>
+						<reference key="object" ref="22226411"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">zSA-zo-fAJ</string>
+						<reference key="object" ref="985399214"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">b2W-PZ-HMC</string>
+						<reference key="object" ref="787852944"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">TwO-To-Hbz</string>
+						<reference key="object" ref="57586657"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">KDk-Y9-Cbk</string>
+						<reference key="object" ref="934880563"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">hNd-VC-czn</string>
+						<reference key="object" ref="655181791"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">XxX-U7-dsn</string>
+						<reference key="object" ref="539476366"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Xqa-OU-WfD</string>
+						<reference key="object" ref="669333264"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">5f2-2V-vu2</string>
+						<reference key="object" ref="865077183"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">V7G-xN-9LB</string>
+						<reference key="object" ref="902568813"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">BDE-OQ-412</string>
+						<reference key="object" ref="308117290"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">1sw-Fa-LUA</string>
+						<reference key="object" ref="601536617"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">uey-ZE-FMc</string>
+						<reference key="object" ref="890837816"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">oA3-2t-qR8</string>
+						<reference key="object" ref="296520353"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">gS1-Fa-DqQ</string>
+						<reference key="object" ref="887951622"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">bEZ-NK-TWU</string>
+						<reference key="object" ref="1043187914"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Fcg-JV-gnC</string>
+						<reference key="object" ref="1048449798"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">DDh-2P-xgp</string>
+						<reference key="object" ref="345425638"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">CxK-Jz-wtE</string>
+						<reference key="object" ref="519099671"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">98F-ob-k78</string>
+						<reference key="object" ref="11328614"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">xH6-6A-FVa</string>
+						<reference key="object" ref="356570359"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">6Ou-dd-CyR</string>
+						<reference key="object" ref="554274332"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">3w2-xR-H5u</string>
+						<reference key="object" ref="758816616"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">o7g-0W-xLP</string>
+						<reference key="object" ref="474634305"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">n6V-uX-QiU</string>
+						<reference key="object" ref="546695848"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">8k3-zx-qVK</string>
+						<reference key="object" ref="248377578"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">1Yt-vm-Hh7</string>
+						<reference key="object" ref="13093740"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Ckx-2p-QRg</string>
+						<reference key="object" ref="508659474"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">gzD-0h-Uhd</string>
+						<reference key="object" ref="816092753"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">gFX-lZ-iPF</string>
+						<reference key="object" ref="794045051"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">PHZ-I4-2IS</string>
+						<reference key="object" ref="965257879"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">8Vz-V3-fOQ</string>
+						<reference key="object" ref="1014996932"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">lVX-Fj-a3W</string>
+						<reference key="object" ref="1040381220"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">i6G-xg-OSN</string>
+						<reference key="object" ref="185358054"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Bsx-6x-TDq</string>
+						<reference key="object" ref="433263087"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">xjy-gg-0f0</string>
+						<reference key="object" ref="1015955123"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">wDI-ZX-NiS</string>
+						<reference key="object" ref="885158225"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">aHa-hO-m2r</string>
+						<reference key="object" ref="610588371"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">R3h-rQ-lM1</string>
+						<reference key="object" ref="529793863"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Urp-co-RJA</string>
+						<reference key="object" ref="115059932"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">UCy-xN-I2h</string>
+						<reference key="object" ref="934181458"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">R67-oo-hBR</string>
+						<reference key="object" ref="175365842"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">QKW-IL-DNz</string>
+						<reference key="object" ref="289279249"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">fOB-hg-zIY</string>
+						<reference key="object" ref="565764538"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">WWe-UI-P61</string>
+						<reference key="object" ref="725516816"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">S7l-eI-J10</string>
+						<reference key="object" ref="320454372"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">6oU-dY-n2O</string>
+						<reference key="object" ref="710651375"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">sBc-uW-rhY</string>
+						<reference key="object" ref="1062012825"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">peP-4E-cmz</string>
+						<reference key="object" ref="1004427168"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">HBh-NE-5LF</string>
+						<reference key="object" ref="252722966"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">4xg-L1-vRj</string>
+						<reference key="object" ref="868349383"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">z4y-jf-7mi</string>
+						<reference key="object" ref="70679480"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">bqh-Dp-1U4</string>
+						<reference key="object" ref="402707178"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">QqO-lF-dEJ</string>
+						<reference key="object" ref="307361632"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">9k9-HA-Gnk</string>
+						<reference key="object" ref="545555540"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">5BT-ck-CWd</string>
+						<reference key="object" ref="844983156"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">JU7-GU-cMs</string>
+						<reference key="object" ref="250329215"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">wCL-qK-eEH</string>
+						<reference key="object" ref="1057838646"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">Om2-q5-1k1</string>
+						<reference key="object" ref="224289466"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">I5j-7j-pbc</string>
+						<reference key="object" ref="139822803"/>
+						<reference key="parent" ref="786634195"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">uEv-ot-Mg4</string>
+						<reference key="object" ref="240515613"/>
+						<reference key="parent" ref="453234514"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">uZK-rs-KV7</string>
+						<reference key="object" ref="1047704074"/>
+						<reference key="parent" ref="38638383"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">K71-5x-oaA</string>
+						<reference key="object" ref="231328451"/>
+						<reference key="parent" ref="38638383"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">pVo-jz-DlU</string>
+						<reference key="object" ref="868138990"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">DWz-rm-SX1</string>
+						<reference key="object" ref="515011124"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">6zb-Uq-30m</string>
+						<reference key="object" ref="759668772"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">2lx-oY-CyH</string>
+						<reference key="object" ref="106261567"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">oAJ-90-RDj</string>
+						<reference key="object" ref="539791323"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">hla-nv-xYW</string>
+						<reference key="object" ref="1036847757"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">XPM-tC-VdO</string>
+						<reference key="object" ref="778727953"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">d0h-iO-gEs</string>
+						<reference key="object" ref="59740712"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">BQe-b5-KJX</string>
+						<reference key="object" ref="939412042"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">WEm-So-oMu</string>
+						<reference key="object" ref="611468027"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">vsn-Ni-0gZ</string>
+						<reference key="object" ref="275623240"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">pP0-wY-p04</string>
+						<reference key="object" ref="807367118"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">lpc-g0-SKb</string>
+						<reference key="object" ref="210983381"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">fPL-nl-96S</string>
+						<reference key="object" ref="421935473"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">nRA-hm-Wo7</string>
+						<reference key="object" ref="985906374"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">cWE-2G-jVa</string>
+						<reference key="object" ref="604300433"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">TBr-Al-9mQ</string>
+						<reference key="object" ref="460723599"/>
+						<reference key="parent" ref="248708747"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">2rs-g7-BCp</string>
+						<reference key="object" ref="948535302"/>
+						<reference key="parent" ref="266671659"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">yLF-RD-QHM</string>
+						<reference key="object" ref="809575740"/>
+						<reference key="parent" ref="99699514"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">L32-OU-r3X</string>
+						<reference key="object" ref="955976439"/>
+						<reference key="parent" ref="99699514"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">wDt-rN-0ds</string>
+						<reference key="object" ref="596384736"/>
+						<reference key="parent" ref="978153954"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">PKp-ph-84K</string>
+						<reference key="object" ref="576685391"/>
+						<reference key="parent" ref="978153954"/>
+					</object>
+					<object class="IBObjectRecord">
+						<string key="id">t30-ez-Z9k</string>
+						<reference key="object" ref="563973898"/>
+						<reference key="parent" ref="815912907"/>
 					</object>
 				</array>
 			</object>
@@ -5015,7 +5045,25 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/DeviceLister.h</string>
+						<string key="minorKey">Pref360Control/DeviceLister.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">DeviceLister</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">done:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">done:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">done:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Pref360Control/DeviceLister.m</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -5023,7 +5071,7 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MyAnalogStick.h</string>
+						<string key="minorKey">Pref360Control/MyAnalogStick.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -5031,7 +5079,7 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MyCentreButtons.h</string>
+						<string key="minorKey">Pref360Control/MyCentreButtons.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -5039,7 +5087,7 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MyDigitalStick.h</string>
+						<string key="minorKey">Pref360Control/MyDigitalStick.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -5047,7 +5095,7 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MyMainButtons.h</string>
+						<string key="minorKey">Pref360Control/MyMainButtons.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -5055,47 +5103,7 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MyShoulderButton.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSLayoutConstraint</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSPreferencePane</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_firstKeyView">NSView</string>
-						<string key="_initialKeyView">NSView</string>
-						<string key="_lastKeyView">NSView</string>
-						<string key="_window">NSWindow</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_firstKeyView">
-							<string key="name">_firstKeyView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_initialKeyView">
-							<string key="name">_initialKeyView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_lastKeyView">
-							<string key="name">_lastKeyView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_window">
-							<string key="name">_window</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSPreferencePane.h</string>
+						<string key="minorKey">Pref360Control/MyShoulderButton.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -5236,7 +5244,296 @@ QSByZXN0YXJ0IHdpbGwgYmUgcmVxdWlyZWQgZm9yIGNoYW5nZXMgdG8gdGFrZSBlZmZlY3QuA</strin
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/Pref360ControlPref.h</string>
+						<string key="minorKey">Pref360Control/Pref360ControlPref.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">Pref360ControlPref</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="changeSetting:">id</string>
+						<string key="powerOff:">id</string>
+						<string key="selectDevice:">id</string>
+						<string key="showDeviceList:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="changeSetting:">
+							<string key="name">changeSetting:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="powerOff:">
+							<string key="name">powerOff:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="selectDevice:">
+							<string key="name">selectDevice:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showDeviceList:">
+							<string key="name">showDeviceList:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Pref360Control/Pref360ControlPref.m</string>
+					</object>
+				</object>
+			</array>
+			<array class="NSMutableArray" key="referencedPartialClassDescriptionsV3.2+">
+				<object class="IBPartialClassDescription">
+					<string key="className">NSActionCell</string>
+					<string key="superclassName">NSCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSActionCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSBox</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSBox.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSButton</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSButtonCell</string>
+					<string key="superclassName">NSActionCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSButtonCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSCell</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSControl</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSControl.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSFormatter</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">Foundation.framework/Headers/NSFormatter.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSImageCell</string>
+					<string key="superclassName">NSCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSImageCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSImageView</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSImageView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSLayoutConstraint</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSLayoutConstraint.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSLevelIndicator</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSLevelIndicator.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSLevelIndicatorCell</string>
+					<string key="superclassName">NSActionCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSLevelIndicatorCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSMenu</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSMenu.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSMenuItem</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSMenuItem.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSMenuItemCell</string>
+					<string key="superclassName">NSButtonCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSMenuItemCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSPopUpButton</string>
+					<string key="superclassName">NSButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSPopUpButton.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSPopUpButtonCell</string>
+					<string key="superclassName">NSMenuItemCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSPopUpButtonCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSPreferencePane</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_firstKeyView">NSView</string>
+						<string key="_initialKeyView">NSView</string>
+						<string key="_lastKeyView">NSView</string>
+						<string key="_window">NSWindow</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_firstKeyView">
+							<string key="name">_firstKeyView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_initialKeyView">
+							<string key="name">_initialKeyView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_lastKeyView">
+							<string key="name">_lastKeyView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_window">
+							<string key="name">_window</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">PreferencePanes.framework/Headers/NSPreferencePane.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSResponder</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSResponder.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSScrollView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSScrollView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSScroller</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSScroller.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSSlider</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSSlider.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSSliderCell</string>
+					<string key="superclassName">NSActionCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSSliderCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSTableColumn</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSTableColumn.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSTableView</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSTableView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSTextField</string>
+					<string key="superclassName">NSControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSTextField.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSTextFieldCell</string>
+					<string key="superclassName">NSActionCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSTextFieldCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSView</string>
+					<string key="superclassName">NSResponder</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSWindow</string>
+					<string key="superclassName">NSResponder</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSWindow.h</string>
 					</object>
 				</object>
 			</array>
