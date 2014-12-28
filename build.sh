@@ -3,6 +3,7 @@ mkdir -p build
 zip -r build/360ControllerSource.zip * -x "build*"
 
 xcrun xcodebuild -configuration Release -target "Whole Driver"
+xcrun xcodebuild -configuration Release -target "Whole Driver" -sdk macosx10.7 SYMROOT="10.6Build" DEVELOPER_DIR=/Applications/Xcode4.app/
 if [ $? -ne 0 ]
   then
     echo "******** BUILD FAILED ********"

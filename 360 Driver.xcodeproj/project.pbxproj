@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		552878A01A4FC8F50084F70C /* Kexts */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 552878A11A4FC8F50084F70C /* Build configuration list for PBXAggregateTarget "Kexts" */;
+			buildPhases = (
+			);
+			dependencies = (
+				552878A51A4FC9030084F70C /* PBXTargetDependency */,
+				552878A71A4FC9030084F70C /* PBXTargetDependency */,
+				552878A91A4FC9030084F70C /* PBXTargetDependency */,
+			);
+			name = Kexts;
+			productName = Kexts;
+		};
 		55B6383818C10F8E00CE933D /* Whole Driver */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 55B6383918C10F8E00CE933D /* Build configuration list for PBXAggregateTarget "Whole Driver" */;
@@ -112,6 +125,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		552878A41A4FC9030084F70C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55B6370618C1057100CE933D;
+			remoteInfo = 360Controller;
+		};
+		552878A61A4FC9030084F70C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55B637E718C10D5000CE933D;
+			remoteInfo = Wireless360Controller;
+		};
+		552878A81A4FC9030084F70C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55B6380D18C10E8700CE933D;
+			remoteInfo = WirelessGamingReceiver;
+		};
 		55B6374D18C1097D00CE933D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
@@ -878,6 +912,11 @@
 			attributes = {
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = GitHub;
+				TargetAttributes = {
+					552878A01A4FC8F50084F70C = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
 			};
 			buildConfigurationList = 55B636AF18C104DB00CE933D /* Build configuration list for PBXProject "360 Driver" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -893,6 +932,7 @@
 			projectRoot = "";
 			targets = (
 				55B6383818C10F8E00CE933D /* Whole Driver */,
+				552878A01A4FC8F50084F70C /* Kexts */,
 				55B6375F18C10A3200CE933D /* DriverTool */,
 				55B636B318C104DB00CE933D /* 360Daemon */,
 				55B6371E18C108A500CE933D /* Feedback360 */,
@@ -1056,6 +1096,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		552878A51A4FC9030084F70C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55B6370618C1057100CE933D /* 360Controller */;
+			targetProxy = 552878A41A4FC9030084F70C /* PBXContainerItemProxy */;
+		};
+		552878A71A4FC9030084F70C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55B637E718C10D5000CE933D /* Wireless360Controller */;
+			targetProxy = 552878A61A4FC9030084F70C /* PBXContainerItemProxy */;
+		};
+		552878A91A4FC9030084F70C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55B6380D18C10E8700CE933D /* WirelessGamingReceiver */;
+			targetProxy = 552878A81A4FC9030084F70C /* PBXContainerItemProxy */;
+		};
 		55B6374E18C1097D00CE933D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55B6371E18C108A500CE933D /* Feedback360 */;
@@ -1174,6 +1229,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		552878A21A4FC8F50084F70C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		552878A31A4FC8F50084F70C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		55B636E318C104DB00CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1397,7 +1466,7 @@
 		55B6379118C10B0B00CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CLANG_ENABLE_OBJC_ARC[arch=i386]" = NO;
@@ -1422,7 +1491,7 @@
 		55B6379218C10B0B00CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CLANG_ENABLE_OBJC_ARC[arch=i386]" = NO;
@@ -1548,6 +1617,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		552878A11A4FC8F50084F70C /* Build configuration list for PBXAggregateTarget "Kexts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				552878A21A4FC8F50084F70C /* Debug */,
+				552878A31A4FC8F50084F70C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		55B636AF18C104DB00CE933D /* Build configuration list for PBXProject "360 Driver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
