@@ -1,0 +1,11 @@
+//
+//  CodeSign.xcconfig
+//  360 Driver
+//
+//  Created by C.W. Betts on 12/28/14.
+//  Copyright (c) 2014 GitHub. All rights reserved.
+//
+
+//Put the CODE_SIGN_IDENTITY method here.
+CODE_SIGN_IDENTITY
+

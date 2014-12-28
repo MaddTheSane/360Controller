@@ -9,7 +9,7 @@ if [ $? -ne 0 ]
     exit 1
 fi
 
-DEVELOPER_DIR=/Applications/Xcode4.app/ xcrun xcodebuild -configuration Release -target "Kexts" -sdk macosx10.7 SYMROOT="10.6Build"
+DEVELOPER_DIR=/Applications/Xcode4.app/ xcrun xcodebuild -configuration Release -target "Incompat" -sdk macosx10.7 SYMROOT="10.6Build"
 if [ $? -ne 0 ]
   then
     echo "******** BUILD FAILED ********"
