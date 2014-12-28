@@ -34,32 +34,80 @@
 #import "MyAnalogStick.h"
 #import "MyMainButtons.h"
 #import "MyShoulderButton.h"
+#import "ARCBridge.h"
 
 @class DeviceLister;
 
-@interface Pref360ControlPref : NSPreferencePane 
+@interface Pref360ControlPref : NSPreferencePane
+#ifdef __i386__
+{
+    // Window components
+    __arcweak MyCentreButtons *centreButtons;
+    __arcweak NSPopUpButton *deviceList;
+    __arcweak MyDigitalStick *digiStick;
+    __arcweak MyShoulderButton *leftShoulder;
+    __arcweak MyAnalogStick *leftStick;
+    __arcweak NSButton *leftLinked;
+    __arcweak NSSlider *leftStickDeadzone;
+    __arcweak NSButton *leftStickInvertX;
+    __arcweak NSButton *leftStickInvertY;
+    __arcweak NSLevelIndicator *leftTrigger;
+    __arcweak MyMainButtons *rightButtons;
+    __arcweak MyShoulderButton *rightShoulder;
+    __arcweak MyAnalogStick *rightStick;
+    __arcweak NSButton *rightLinked;
+    __arcweak NSSlider *rightStickDeadzone;
+    __arcweak NSButton *rightStickInvertX;
+    __arcweak NSButton *rightStickInvertY;
+    __arcweak NSLevelIndicator *rightTrigger;
+    __arcweak NSImageView *batteryLevel;
+    __arcweak DeviceLister *deviceLister;
+    __arcweak NSButton *powerOff;
+    // Internal info
+    mach_port_t masterPort;
+    NSMutableArray *deviceArray;
+    IOHIDElementCookie axis[6],buttons[15];
+    
+    IOHIDDeviceInterface122 **device;
+    IOHIDQueueInterface **hidQueue;
+    FFDeviceObjectReference ffDevice;
+    io_registry_entry_t registryEntry;
+    
+    int largeMotor,smallMotor;
+    
+    IONotificationPortRef notifyPort;
+    CFRunLoopSourceRef notifySource;
+    io_iterator_t onIteratorWired, offIteratorWired;
+    io_iterator_t onIteratorWireless, offIteratorWireless;
+    
+    FFEFFECT *effect;
+    FFCUSTOMFORCE *customforce;
+    FFEffectObjectReference effectRef;
+
+}
+#endif
 // Window components
-@property (weak) IBOutlet MyCentreButtons *centreButtons;
-@property (weak) IBOutlet NSPopUpButton *deviceList;
-@property (weak) IBOutlet MyDigitalStick *digiStick;
-@property (weak) IBOutlet MyShoulderButton *leftShoulder;
-@property (weak) IBOutlet MyAnalogStick *leftStick;
-@property (weak) IBOutlet NSButton *leftLinked;
-@property (weak) IBOutlet NSSlider *leftStickDeadzone;
-@property (weak) IBOutlet NSButton *leftStickInvertX;
-@property (weak) IBOutlet NSButton *leftStickInvertY;
-@property (weak) IBOutlet NSLevelIndicator *leftTrigger;
-@property (weak) IBOutlet MyMainButtons *rightButtons;
-@property (weak) IBOutlet MyShoulderButton *rightShoulder;
-@property (weak) IBOutlet MyAnalogStick *rightStick;
-@property (weak) IBOutlet NSButton *rightLinked;
-@property (weak) IBOutlet NSSlider *rightStickDeadzone;
-@property (weak) IBOutlet NSButton *rightStickInvertX;
-@property (weak) IBOutlet NSButton *rightStickInvertY;
-@property (weak) IBOutlet NSLevelIndicator *rightTrigger;
-@property (weak) IBOutlet NSImageView *batteryLevel;
-@property (weak) IBOutlet DeviceLister *deviceLister;
-@property (weak) IBOutlet NSButton *powerOff;
+@property (arcweak) IBOutlet MyCentreButtons *centreButtons;
+@property (arcweak) IBOutlet NSPopUpButton *deviceList;
+@property (arcweak) IBOutlet MyDigitalStick *digiStick;
+@property (arcweak) IBOutlet MyShoulderButton *leftShoulder;
+@property (arcweak) IBOutlet MyAnalogStick *leftStick;
+@property (arcweak) IBOutlet NSButton *leftLinked;
+@property (arcweak) IBOutlet NSSlider *leftStickDeadzone;
+@property (arcweak) IBOutlet NSButton *leftStickInvertX;
+@property (arcweak) IBOutlet NSButton *leftStickInvertY;
+@property (arcweak) IBOutlet NSLevelIndicator *leftTrigger;
+@property (arcweak) IBOutlet MyMainButtons *rightButtons;
+@property (arcweak) IBOutlet MyShoulderButton *rightShoulder;
+@property (arcweak) IBOutlet MyAnalogStick *rightStick;
+@property (arcweak) IBOutlet NSButton *rightLinked;
+@property (arcweak) IBOutlet NSSlider *rightStickDeadzone;
+@property (arcweak) IBOutlet NSButton *rightStickInvertX;
+@property (arcweak) IBOutlet NSButton *rightStickInvertY;
+@property (arcweak) IBOutlet NSLevelIndicator *rightTrigger;
+@property (arcweak) IBOutlet NSImageView *batteryLevel;
+@property (arcweak) IBOutlet DeviceLister *deviceLister;
+@property (arcweak) IBOutlet NSButton *powerOff;
 
 // Internal info
 @property (readonly) mach_port_t masterPort;

@@ -23,6 +23,12 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyDigitalStick : NSView
+#ifdef __i386__
+{
+    NSBezierPath *up, *down, *left, *right;
+    BOOL bUp, bDown, bLeft, bRight;
+}
+#endif
 @property BOOL up;
 @property BOOL down;
 @property BOOL left;

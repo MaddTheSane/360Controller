@@ -21,12 +21,13 @@
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 #import "ControlPrefs.h"
+#import "ARCBridge.h"
 
 void SetAlertDisabled(NSInteger index)
 {
     NSString *prop = [NSString stringWithFormat:@"%@%li", D_SHOWONCE, (long)index];
 
-    CFPreferencesSetValue((__bridge CFStringRef)prop, kCFBooleanTrue, DOM_DAEMON, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    CFPreferencesSetValue(BRIDGE(CFStringRef, prop), kCFBooleanTrue, DOM_DAEMON, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
     CFPreferencesSynchronize(DOM_DAEMON, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
 }
 
@@ -34,7 +35,7 @@ BOOL AlertDisabled(NSInteger index)
 {
     NSString *prop = [NSString stringWithFormat:@"%@%li", D_SHOWONCE, (long)index];
     BOOL result = NO;
-    CFPropertyListRef value = CFPreferencesCopyValue((__bridge CFStringRef)prop, DOM_DAEMON, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
+    CFPropertyListRef value = CFPreferencesCopyValue(BRIDGE(CFStringRef, prop), DOM_DAEMON, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost);
     
     if (value != NULL)
     {
@@ -45,7 +46,7 @@ BOOL AlertDisabled(NSInteger index)
 
 void SetController(NSString *serial, NSDictionary *data)
 {
-    CFPreferencesSetValue((__bridge CFStringRef)serial, (__bridge CFPropertyListRef)(data), DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
+    CFPreferencesSetValue(BRIDGE(CFStringRef, serial), BRIDGE(CFPropertyListRef, data), DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
     CFPreferencesSynchronize(DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 }
 
@@ -54,7 +55,7 @@ NSDictionary* GetController(NSString *serial)
     CFPropertyListRef value;
     
     CFPreferencesSynchronize(DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
-    value = CFPreferencesCopyValue((__bridge CFStringRef)serial, DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
+    value = CFPreferencesCopyValue(BRIDGE(CFStringRef, serial), DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
     return CFBridgingRelease(value);
 }
 
@@ -69,14 +70,14 @@ NSString* GetSerialNumber(io_service_t device)
 
 void ConfigController(io_service_t device, NSDictionary *config)
 {
-    IORegistryEntrySetCFProperties(device, (__bridge CFTypeRef)(config));
+    IORegistryEntrySetCFProperties(device, BRIDGE(CFTypeRef, config));
 }
 
 void SetKnownDevices(NSDictionary *devices)
 {
     // Setting the dictionary should work?
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:devices];
-    CFPreferencesSetValue((CFStringRef)D_KNOWNDEV, (__bridge CFPropertyListRef)(data), DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
+    CFPreferencesSetValue((CFStringRef)D_KNOWNDEV, BRIDGE(CFPropertyListRef, data), DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
     CFPreferencesSynchronize(DOM_CONTROLLERS, kCFPreferencesAnyUser, kCFPreferencesCurrentHost);
 }
 

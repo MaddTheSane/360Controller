@@ -21,14 +21,17 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #import "MyDigitalStick.h"
+#import "ARCBridge.h"
 
 #define INSET_AMOUNT 10
 
 @implementation MyDigitalStick
+#ifndef __i386__
 {
 @private
     NSBezierPath *up, *down, *left, *right;
 }
+#endif
 @synthesize up = bUp;
 @synthesize down = bDown;
 @synthesize left = bLeft;
@@ -99,6 +102,8 @@
     [self removeObserver:self forKeyPath:@"down"];
     [self removeObserver:self forKeyPath:@"left"];
     [self removeObserver:self forKeyPath:@"right"];
+    
+    SUPERDEALLOC;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

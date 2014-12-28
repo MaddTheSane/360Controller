@@ -21,6 +21,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #import "MyAnalogStick.h"
+#import "ARCBridge.h"
 
 #define PRESSED_INSET   5
 #define AREA_INSET      4
@@ -51,6 +52,8 @@
     [self removeObserver:self forKeyPath:@"positiony"];
     [self removeObserver:self forKeyPath:@"deadzone"];
     [self removeObserver:self forKeyPath:@"linked"];
+    
+    SUPERDEALLOC;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

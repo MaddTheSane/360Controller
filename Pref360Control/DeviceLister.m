@@ -32,7 +32,7 @@
 // Get some sort of CF type for a field in the IORegistry
 static id GetDeviceValue(io_service_t device, NSString *key)
 {
-    CFTypeRef value = IORegistryEntrySearchCFProperty(device, kIOServicePlane, (__bridge CFStringRef)key, kCFAllocatorDefault, kIORegistryIterateRecursively);
+    CFTypeRef value = IORegistryEntrySearchCFProperty(device, kIOServicePlane, BRIDGE(CFStringRef, key), kCFAllocatorDefault, kIORegistryIterateRecursively);
 	
     return CFBridgingRelease(value);
 }
@@ -170,13 +170,15 @@ static BOOL IsXBox360Controller(io_service_t device)
 @interface DeviceLister ()
 @property (getter = isChanged) BOOL changed;
 @property (strong) NSMutableDictionary *entries;
-@property (weak) Pref360ControlPref *owner;
+@property (arcweak) Pref360ControlPref *owner;
 @end
 
 @implementation DeviceLister
+#ifndef __i386__
 {
     NSMutableArray *connected, *enabled;
 }
+#endif
 @synthesize list;
 @synthesize sheet;
 @synthesize changed;
@@ -187,7 +189,7 @@ static BOOL IsXBox360Controller(io_service_t device)
 {
     if (self = [super init])
     {
-        self.entries = [[NSMutableDictionary alloc] initWithCapacity:10];
+        self.entries = AUTORELEASEOBJ([[NSMutableDictionary alloc] initWithCapacity:10]);
         connected = [[NSMutableArray alloc] initWithCapacity:10];
         enabled = [[NSMutableArray alloc] initWithCapacity:10];
     }
@@ -232,12 +234,14 @@ static BOOL IsXBox360Controller(io_service_t device)
     if ([task terminationStatus] != 0)
     {
         data = [[error fileHandleForReading] readDataToEndOfFile];
-        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        RELEASEOBJ(task);
+        return AUTORELEASEOBJ([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     }
     
     // Read the data back
     data = [[pipe fileHandleForReading] readDataToEndOfFile];
-    response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    RELEASEOBJ(task);
+    response = AUTORELEASEOBJ([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     // Parse the results
     lines = [response componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
@@ -330,7 +334,7 @@ static BOOL IsXBox360Controller(io_service_t device)
 
 - (BOOL)loadDevices
 {
-    NSString *error;
+    NSString *error = nil;
     
     // Initialise
     [entries removeAllObjects];
@@ -460,13 +464,15 @@ fail:
     if ([identifier compare:@"name"] == NSOrderedSame)
     {
         NSColor *colour;
+        NSAttributedString *attrS = nil;
         
         if ([connected containsObject:key])
             colour = [NSColor blueColor];
         else
             colour = [NSColor blackColor];
-        return [[NSAttributedString alloc] initWithString:entries[key]
+        attrS = [[NSAttributedString alloc] initWithString:entries[key]
                                                 attributes:@{NSForegroundColorAttributeName: colour}];
+        return AUTORELEASEOBJ(attrS);
     }
     return nil;
 }

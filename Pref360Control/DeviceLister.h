@@ -21,12 +21,23 @@
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 #import <Cocoa/Cocoa.h>
+#import "ARCBridge.h"
 
 @class Pref360ControlPref;
 
 @interface DeviceLister : NSObject <NSTableViewDataSource>
-@property (weak) IBOutlet NSWindow *sheet;
-@property (weak) IBOutlet NSTableView *list;
+#ifdef __i386__
+{
+    __arcweak NSWindow *sheet;
+    __arcweak NSTableView *list;
+    NSMutableArray *connected, *enabled;
+    BOOL changed;
+    __arcweak Pref360ControlPref *owner;
+    NSMutableDictionary *entries;
+}
+#endif
+@property (arcweak) IBOutlet NSWindow *sheet;
+@property (arcweak) IBOutlet NSTableView *list;
 
 - (void)showWithOwner:(Pref360ControlPref*)pane;
 - (IBAction)done:(id)sender;

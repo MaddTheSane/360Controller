@@ -32,7 +32,7 @@
 // Passes a C callback back to the Objective C class
 static void CallbackFunction(void *target,IOReturn result,void *refCon,void *sender)
 {
-    if (target) [((__bridge Pref360ControlPref*)target) eventQueueFired:sender withResult:result];
+    if (target) [BRIDGE(Pref360ControlPref*, target) eventQueueFired:sender withResult:result];
 }
 
 // Handle callback for when our device is connected or disconnected. Both events are
@@ -47,14 +47,15 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         update = YES;
     }
     
-    if (update) [(__bridge Pref360ControlPref*)param handleDeviceChange];
+    if (update) [BRIDGE(Pref360ControlPref*, param) handleDeviceChange];
 }
 
 @interface Pref360ControlPref ()
-@property (strong) NSMutableArray *deviceArray;
+@property (arcstrong) NSMutableArray *deviceArray;
 @end
 
 @implementation Pref360ControlPref
+#ifndef __i386__
 {
 @private
     // Internal info
@@ -76,6 +77,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     FFCUSTOMFORCE *customforce;
     FFEffectObjectReference effectRef;
 }
+#endif
 @synthesize centreButtons;
 @synthesize deviceList;
 @synthesize digiStick;

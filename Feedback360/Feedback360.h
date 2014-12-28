@@ -38,7 +38,7 @@
 #define FeedbackDriverVersionStage      developStage
 #define FeedbackDriverVersionNonRelRev  0
 
-class Feedback360 : IUnknown
+class Feedback360 : public IUnknown
 {
 public:
     // constructor/destructor

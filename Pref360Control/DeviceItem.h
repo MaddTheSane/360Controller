@@ -28,7 +28,15 @@
 #include <ForceFeedback/ForceFeedback.h>
 
 @interface DeviceItem : NSObject
-@property (strong, readonly) NSString *name;
+#ifdef __i386__
+{
+    NSString *deviceName;
+    io_service_t deviceHandle;
+    FFDeviceObjectReference forceFeedback;
+    IOHIDDeviceInterface122 **interface;
+}
+#endif
+@property (copy, readonly) NSString *name;
 @property (readonly) io_service_t rawDevice;
 @property (readonly) FFDeviceObjectReference ffDevice;
 @property (readonly) IOHIDDeviceInterface122 **hidDevice;

@@ -29,6 +29,7 @@
 		553BDB44196DF3BA00D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
 		553BDB45196DF41500D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
 		553BDB46196DF41600D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
+		5564282A1A4F9C68006A7269 /* ARCBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 556428291A4F9C68006A7269 /* ARCBridge.h */; };
 		55699CD61971D96E00C40A31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55699CD51971D96E00C40A31 /* Images.xcassets */; };
 		55699CD71971DA8100C40A31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55699CD51971D96E00C40A31 /* Images.xcassets */; };
 		55750C09190AFB5B0047FF41 /* DaemonLEDs.m in Sources */ = {isa = PBXBuildFile; fileRef = 55750C08190AFB5B0047FF41 /* DaemonLEDs.m */; };
@@ -212,6 +213,7 @@
 		551CE004196EFD34000869B6 /* Welcome.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Welcome.rtf; sourceTree = "<group>"; };
 		553BDB43196DF3BA00D1F569 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		556428281A4F9581006A7269 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Pref360ControlPref.xib; sourceTree = "<group>"; };
+		556428291A4F9C68006A7269 /* ARCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCBridge.h; sourceTree = "<group>"; };
 		55699CD51971D96E00C40A31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55750C07190AFB5B0047FF41 /* DaemonLEDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaemonLEDs.h; sourceTree = "<group>"; usesTabs = 1; };
 		55750C08190AFB5B0047FF41 /* DaemonLEDs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaemonLEDs.m; sourceTree = "<group>"; usesTabs = 1; };
@@ -601,6 +603,7 @@
 		55B6378118C10B0B00CE933D /* Pref360Control */ = {
 			isa = PBXGroup;
 			children = (
+				556428291A4F9C68006A7269 /* ARCBridge.h */,
 				55B6379A18C10C0C00CE933D /* DeviceItem.h */,
 				55B6379B18C10C0C00CE933D /* DeviceItem.m */,
 				55B6379C18C10C0C00CE933D /* DeviceLister.h */,
@@ -694,6 +697,7 @@
 				55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */,
 				55B637B018C10C0C00CE933D /* MyCentreButtons.h in Headers */,
 				55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */,
+				5564282A1A4F9C68006A7269 /* ARCBridge.h in Headers */,
 				55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */,
 				55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */,
 				55B637B218C10C0C00CE933D /* MyDigitalStick.h in Headers */,
@@ -1208,6 +1212,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1252,6 +1257,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.6;
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1292,6 +1298,8 @@
 		55B6371418C1057100CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
@@ -1304,6 +1312,8 @@
 		55B6371518C1057100CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
@@ -1372,7 +1382,11 @@
 		55B6379118C10B0B00CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				"CLANG_ENABLE_OBJC_ARC[arch=i386]" = NO;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.8]" = no;
+				"GCC_ENABLE_OBJC_GC[sdk=macosx10.8]" = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
@@ -1389,8 +1403,12 @@
 		55B6379218C10B0B00CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				"CLANG_ENABLE_OBJC_ARC[arch=i386]" = NO;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.8]" = no;
 				DEAD_CODE_STRIPPING = YES;
+				"GCC_ENABLE_OBJC_GC[sdk=macosx10.8]" = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
@@ -1407,6 +1425,8 @@
 		55B637F418C10D5000CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
@@ -1419,6 +1439,8 @@
 		55B637F518C10D5000CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
@@ -1431,6 +1453,8 @@
 		55B6381A18C10E9500CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
@@ -1443,6 +1467,8 @@
 		55B6381B18C10E9500CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;

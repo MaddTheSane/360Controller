@@ -21,6 +21,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #import "MyShoulderButton.h"
+#import "ARCBridge.h"
 
 #define INSET_AMOUNT 2
 
@@ -38,6 +39,8 @@
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"pressed"];
+    
+    SUPERDEALLOC;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

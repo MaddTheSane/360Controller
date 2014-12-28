@@ -21,6 +21,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #import "DeviceItem.h"
+#import "ARCBridge.h"
 
 static NSString* GetDeviceName(io_service_t device)
 {
@@ -38,7 +39,7 @@ static NSString* GetDeviceName(io_service_t device)
 }
 
 @interface DeviceItem ()
-@property (strong, readwrite) NSString *name;
+@property (copy, readwrite) NSString *name;
 @property (readwrite) io_service_t rawDevice;
 @property (readwrite) FFDeviceObjectReference ffDevice;
 @property (readwrite) IOHIDDeviceInterface122 **hidDevice;
@@ -79,7 +80,7 @@ static NSString* GetDeviceName(io_service_t device)
     DeviceItem *item = [[[self class] alloc] initWithItemForDevice:device];
     
     if (item)
-        return item;
+        return AUTORELEASEOBJ(item);
     
     IOObjectRelease(device);
     return nil;
@@ -93,6 +94,9 @@ static NSString* GetDeviceName(io_service_t device)
         (*interface)->Release(interface);
     if (forceFeedback)
         FFReleaseDevice(forceFeedback);
+    
+    RELEASEOBJ(deviceName);
+    SUPERDEALLOC;
 }
 
 @end

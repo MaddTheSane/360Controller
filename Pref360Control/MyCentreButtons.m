@@ -22,6 +22,7 @@
 */
 
 #import "MyCentreButtons.h"
+#import "ARCBridge.h"
 
 @implementation MyCentreButtons
 @synthesize back;
@@ -43,6 +44,8 @@
     [self removeObserver:self forKeyPath:@"back"];
     [self removeObserver:self forKeyPath:@"start"];
     [self removeObserver:self forKeyPath:@"specific"];
+    
+    SUPERDEALLOC;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

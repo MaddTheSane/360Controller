@@ -21,6 +21,7 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #import "MyMainButtons.h"
+#import "ARCBridge.h"
 
 #define MINI_OFFSET 2
 
@@ -44,6 +45,8 @@
     [self removeObserver:self forKeyPath:@"b"];
     [self removeObserver:self forKeyPath:@"x"];
     [self removeObserver:self forKeyPath:@"y"];
+    
+    SUPERDEALLOC;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

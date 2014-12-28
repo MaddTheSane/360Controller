@@ -23,11 +23,20 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyAnalogStick : NSView
+#ifdef __i386__
+{
+    int deadzone;
+    int x;
+    int y;
+    BOOL pressed;
+    BOOL linked;
+}
+#endif
 @property int deadzone;
 @property int positionX;
 @property int positionY;
-@property BOOL pressed;
-@property BOOL linked;
+@property (getter=isPressed) BOOL pressed;
+@property (getter=isLinked) BOOL linked;
 
 - (void)setPositionX:(int)xPos y:(int)yPos;
 
