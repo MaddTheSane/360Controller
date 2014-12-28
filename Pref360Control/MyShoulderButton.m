@@ -43,6 +43,15 @@
     SUPERDEALLOC;
 }
 
+#if !__has_feature(objc_arc)
+- (void)finalize
+{
+    [self removeObserver:self forKeyPath:@"pressed"];
+    
+    [super finalize];
+}
+#endif
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (object == self) {

@@ -114,6 +114,18 @@
     SUPERDEALLOC;
 }
 
+#if !__has_feature(objc_arc)
+- (void)finalize
+{
+    [self removeObserver:self forKeyPath:@"up"];
+    [self removeObserver:self forKeyPath:@"down"];
+    [self removeObserver:self forKeyPath:@"left"];
+    [self removeObserver:self forKeyPath:@"right"];
+    
+    [super finalize];
+}
+#endif
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if (object == self) {

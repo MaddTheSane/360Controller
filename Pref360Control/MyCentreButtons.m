@@ -48,6 +48,17 @@
     SUPERDEALLOC;
 }
 
+#if !__has_feature(objc_arc)
+- (void)finalize
+{
+    [self removeObserver:self forKeyPath:@"back"];
+    [self removeObserver:self forKeyPath:@"start"];
+    [self removeObserver:self forKeyPath:@"specific"];
+    
+    [super finalize];
+}
+#endif
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (object == self) {

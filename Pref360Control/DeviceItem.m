@@ -99,4 +99,18 @@ static NSString* GetDeviceName(io_service_t device)
     SUPERDEALLOC;
 }
 
+#if !__has_feature(objc_arc)
+- (void)finalize
+{
+    if (deviceHandle)
+        IOObjectRelease(deviceHandle);
+    if (interface)
+        (*interface)->Release(interface);
+    if (forceFeedback)
+        FFReleaseDevice(forceFeedback);
+    
+    [super finalize];
+}
+#endif
+
 @end
