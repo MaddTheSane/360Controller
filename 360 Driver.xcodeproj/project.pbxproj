@@ -1179,8 +1179,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "compiler-default";
 				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
+				"CLANG_CXX_LIBRARY[sdk=macosx10.7]" = "libstdc++";
 				"CLANG_CXX_LIBRARY[sdk=macosx10.8]" = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1212,6 +1214,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.7]" = 10.6;
 				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1229,8 +1232,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "compiler-default";
 				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
+				"CLANG_CXX_LIBRARY[sdk=macosx10.7]" = "libstdc++";
 				"CLANG_CXX_LIBRARY[sdk=macosx10.8]" = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1257,9 +1262,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.7]" = 10.6;
 				"MACOSX_DEPLOYMENT_TARGET[sdk=macosx10.8]" = 10.6;
 				SDKROOT = macosx;
-				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				VERSIONING_SYSTEM = "apple-generic";
 				WARNING_CFLAGS = (
 					"-Wno-unknown-warning-option",
@@ -1271,6 +1276,7 @@
 		55B636E618C104DB00CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "360Daemon/360DaemonApp-Prefix.pch";
@@ -1284,6 +1290,7 @@
 		55B636E718C104DB00CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1299,6 +1306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
@@ -1313,6 +1321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
@@ -1328,6 +1337,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "gnu++0x";
+				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "gnu++0x";
 				INFOPLIST_FILE = Feedback360/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1342,6 +1353,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.7]" = "gnu++0x";
+				"CLANG_CXX_LANGUAGE_STANDARD[sdk=macosx10.8]" = "gnu++0x";
 				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = Feedback360/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1355,6 +1368,7 @@
 		55B6376818C10A3200CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DriverTool/DriverTool_Prefix.pch;
@@ -1368,6 +1382,7 @@
 		55B6376918C10A3200CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1384,8 +1399,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CLANG_ENABLE_OBJC_ARC[arch=i386]" = NO;
-				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.8]" = no;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.10][arch=x86_64]" = YES;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.7]" = NO;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.8]" = NO;
+				"GCC_ENABLE_OBJC_GC[sdk=macosx10.7]" = supported;
 				"GCC_ENABLE_OBJC_GC[sdk=macosx10.8]" = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
@@ -1405,9 +1424,13 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CLANG_ENABLE_OBJC_ARC[arch=i386]" = NO;
-				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.8]" = no;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.10][arch=x86_64]" = YES;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.7]" = NO;
+				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.8]" = NO;
 				DEAD_CODE_STRIPPING = YES;
+				"GCC_ENABLE_OBJC_GC[sdk=macosx10.7]" = supported;
 				"GCC_ENABLE_OBJC_GC[sdk=macosx10.8]" = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
@@ -1426,6 +1449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
@@ -1440,6 +1464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
@@ -1454,6 +1479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
@@ -1468,6 +1494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				"ARCHS[sdk=macosx10.7]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"ARCHS[sdk=macosx10.8]" = "$(ARCHS_STANDARD_32_64_BIT)";
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;

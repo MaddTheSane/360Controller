@@ -32,9 +32,9 @@ static NSString* GetDeviceName(io_service_t device)
     if (IORegistryEntryCreateCFProperties(device, &serviceProperties, kCFAllocatorDefault, kNilOptions) != KERN_SUCCESS)
         return nil;
     properties = CFBridgingRelease(serviceProperties);
-    deviceName = properties[@kIOHIDProductKey];
+    deviceName = [properties objectForKey:@kIOHIDProductKey];
     if (deviceName == nil)
-        deviceName = properties[@"USB Product Name"];
+        deviceName = [properties objectForKey:@"USB Product Name"];
     return deviceName;
 }
 

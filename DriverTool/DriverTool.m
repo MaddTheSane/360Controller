@@ -21,6 +21,7 @@
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 #import <Foundation/Foundation.h>
+#import "ARCBridge.h"
 
 #define DRIVER_NAME @"360Controller.kext"
 
@@ -29,7 +30,7 @@ static NSDictionary *infoPlistAttributes = nil;
 static inline NSString* GetDriverDirectory(void)
 {
     NSArray *data = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSSystemDomainMask, YES);
-    return [data[0] stringByAppendingPathComponent:@"Extensions"];
+    return [[data objectAtIndex:0] stringByAppendingPathComponent:@"Extensions"];
 }
 
 static NSString* GetDriverConfigPath(NSString *driver)
@@ -80,8 +81,8 @@ static void ScrubDevices(NSMutableDictionary *devices)
     NSMutableArray *deviceKeys = [[NSMutableArray alloc] initWithCapacity:10];
     
     for (NSString *key in devices) {
-        NSDictionary *device = devices[key];
-        if ([(NSString*)device[@"IOClass"] compare:@"Xbox360Peripheral"] == NSOrderedSame)
+        NSDictionary *device = [devices objectForKey:key];
+        if ([(NSString*)[device objectForKey:@"IOClass"] compare:@"Xbox360Peripheral"] == NSOrderedSame)
             [deviceKeys addObject:key];
     }
     [devices removeObjectsForKeys:deviceKeys];
@@ -90,7 +91,7 @@ static void ScrubDevices(NSMutableDictionary *devices)
 static id MakeMutableCopy(id object)
 {
     return CFBridgingRelease(CFPropertyListCreateDeepCopy(kCFAllocatorDefault,
-                                                          (CFTypeRef)object,
+                                                          BRIDGE(CFTypeRef, object),
                                                           kCFPropertyListMutableContainers));
 }
 
@@ -99,18 +100,27 @@ static void AddDevice(NSMutableDictionary *personalities, NSString *name, int ve
     NSMutableDictionary *controller = [[NSMutableDictionary alloc] initWithCapacity:10];
     
     // Standard
-    controller[@"CFBundleIdentifier"] = @"com.mice.driver.Xbox360Controller";
-    controller[@"IOCFPlugInTypes"] = @{@"F4545CE5-BF5B-11D6-A4BB-0003933E3E3E": @"360Controller.kext/Contents/PlugIns/Feedback360.plugin"};
-    controller[@"IOClass"] = @"Xbox360Peripheral";
-    controller[@"IOProviderClass"] = @"IOUSBDevice";
-    controller[@"IOKitDebug"] = @65535;
+    [controller setObject:@"com.mice.driver.Xbox360Controller"
+                   forKey:@"CFBundleIdentifier"];
+    [controller setObject:[NSDictionary dictionaryWithObject:@"360Controller.kext/Contents/PlugIns/Feedback360.plugin"
+                                                      forKey:@"F4545CE5-BF5B-11D6-A4BB-0003933E3E3E"]
+                   forKey:@"IOCFPlugInTypes"];
+    [controller setObject:@"Xbox360Peripheral"
+                   forKey:@"IOClass"];
+    [controller setObject:@"IOUSBDevice"
+                   forKey:@"IOProviderClass"];
+    [controller setObject:[NSNumber numberWithInt:65535]
+                   forKey:@"IOKitDebug"];
     
     // Device-specific
-    controller[@"idVendor"] = @(vendor);
-    controller[@"idProduct"] = @(product);
+    [controller setObject:[NSNumber numberWithInt:vendor]
+                   forKey:@"idVendor"];
+    [controller setObject:[NSNumber numberWithInt:product]
+                   forKey:@"idProduct"];
     
     // Add it to the tree
-    personalities[name] = controller;
+    [personalities setObject:controller
+                      forKey:name];
 }
 
 static void AddDevices(NSMutableDictionary *personalities, int argc, const char *argv[])
@@ -131,23 +141,23 @@ int main (int argc, const char * argv[]) {
     if (argc == 1)
     {
         // Print out current types
-        NSDictionary *types = config[@"IOKitPersonalities"];
+        NSDictionary *types = [config objectForKey:@"IOKitPersonalities"];
 
         for (NSString *key in types) {
-            NSDictionary *device = types[key];
-            if ([(NSString*)device[@"IOClass"] compare:@"Xbox360Peripheral"] != NSOrderedSame)
+            NSDictionary *device = [types objectForKey:key];
+            if ([(NSString*)[device objectForKey:@"IOClass"] compare:@"Xbox360Peripheral"] != NSOrderedSame)
                 continue;
             fprintf(stdout, "%s,%i,%i\n",
                     [key UTF8String],
-                    [device[@"idVendor"] intValue],
-                    [device[@"idProduct"] intValue]);
+                    [[device objectForKey:@"idVendor"] intValue],
+                    [[device objectForKey:@"idProduct"] intValue]);
         }
     } else if ((argc > 1) && (strcmp(argv[1], "edit") == 0) && (((argc - 2) % 3) == 0)) {
         NSMutableDictionary *saving;
         NSMutableDictionary *devices;
         
         saving = MakeMutableCopy(config);
-        devices = saving[@"IOKitPersonalities"];
+        devices = [saving objectForKey:@"IOKitPersonalities"];
         ScrubDevices(devices);
         AddDevices(devices, argc, argv);
         WriteDriverConfig(DRIVER_NAME, saving);

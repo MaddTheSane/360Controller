@@ -250,12 +250,12 @@ static BOOL IsXBox360Controller(io_service_t device)
         NSArray *values = [line componentsSeparatedByString:@","];
         if ([values count] != 3)
             continue;
-        unsigned int vendor = [values[1] unsignedIntValue];
-        unsigned int product = [values[2] unsignedIntValue];
+        unsigned int vendor = [[values objectAtIndex:1] unsignedIntValue];
+        unsigned int product = [[values objectAtIndex:2] unsignedIntValue];
         NSNumber *key = @((UInt32)((vendor << 16) | product));
         [enabled addObject:key];
-        if (entries[key] == nil)
-            entries[key] = SanitiseName(values[0]);
+        if ([entries objectForKey:key] == nil)
+            [entries setObject:SanitiseName([values objectAtIndex:0]) forKey:key];
     }
     
     return nil;
@@ -271,8 +271,8 @@ static BOOL IsXBox360Controller(io_service_t device)
     keys = [known allKeys];
     for (NSNumber *key in keys)
     {
-        if (entries[key] == nil)
-            entries[key] = known[key];
+        if ([entries objectForKey:key] == nil)
+            [entries setObject:[known objectForKey:key] forKey:key];
     }
     return nil;
 }
@@ -304,14 +304,14 @@ static BOOL IsXBox360Controller(io_service_t device)
                     NSNumber *key = @((UInt32)((vendor << 16) | product));
                     
                     [connected addObject:key];
-                    if (entries[key] == nil)
+                    if ([entries objectForKey:key] == nil)
                     {
                         NSString *name = GetDeviceValue(object, @"USB Product Name");
                         if (name == nil)
                             name = [NSString stringWithFormat:@"Unknown_%.4x_%.4x", vendor, product];
                         else
                             name = SanitiseName(name);
-                        entries[key] = name;
+                        [entries setObject:name forKey:key];
                     }
                 }
             }
@@ -456,7 +456,7 @@ fail:
 - (id)tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex
 {
     NSString *identifier = [aTableColumn identifier];
-    NSString *key = [self allEntries][rowIndex];
+    NSString *key = [[self allEntries] objectAtIndex:rowIndex];
     if ([identifier compare:@"enable"] == NSOrderedSame)
     {
         return @([enabled containsObject:key]);
@@ -470,7 +470,7 @@ fail:
             colour = [NSColor blueColor];
         else
             colour = [NSColor blackColor];
-        attrS = [[NSAttributedString alloc] initWithString:entries[key]
+        attrS = [[NSAttributedString alloc] initWithString:[entries objectForKey:key]
                                                 attributes:@{NSForegroundColorAttributeName: colour}];
         return AUTORELEASEOBJ(attrS);
     }
@@ -481,7 +481,7 @@ fail:
 {
     if ([(NSString*)[aTableColumn identifier] compare:@"enable"] == NSOrderedSame)
     {
-        NSString *key = [self allEntries][rowIndex];
+        NSString *key = [[self allEntries] objectAtIndex:rowIndex];
         BOOL contains = [enabled containsObject:key];
         if ([(NSNumber*)anObject boolValue])
         {
