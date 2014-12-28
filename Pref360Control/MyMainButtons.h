@@ -25,6 +25,7 @@
 @interface MyMainButtons : NSView
 #ifdef __i386__
 {
+@private
     BOOL a, b, x, y;
 }
 #endif

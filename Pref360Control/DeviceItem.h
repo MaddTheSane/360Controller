@@ -30,6 +30,7 @@
 @interface DeviceItem : NSObject
 #ifdef __i386__
 {
+@private
     NSString *deviceName;
     io_service_t deviceHandle;
     FFDeviceObjectReference forceFeedback;

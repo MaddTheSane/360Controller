@@ -25,6 +25,10 @@
 
 #define INSET_AMOUNT 10
 
+@interface MyDigitalStick ()
++ (NSBezierPath*)makeTriangle:(int)start inRectangle:(NSRect)rect NS_RETURNS_RETAINED;
+@end
+
 @implementation MyDigitalStick
 #ifndef __i386__
 {
@@ -40,7 +44,7 @@
 + (NSBezierPath*)makeTriangle:(int)start inRectangle:(NSRect)rect;
 {
     // Create path
-    NSBezierPath *path = [NSBezierPath bezierPath];
+    NSBezierPath *path = [[NSBezierPath alloc] init];
     NSPoint centre, point;
     const int mult[][2]={
         {0,0},
@@ -103,6 +107,10 @@
     [self removeObserver:self forKeyPath:@"left"];
     [self removeObserver:self forKeyPath:@"right"];
     
+    RELEASEOBJ(up);
+    RELEASEOBJ(down);
+    RELEASEOBJ(left);
+    RELEASEOBJ(right);
     SUPERDEALLOC;
 }
 

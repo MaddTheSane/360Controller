@@ -25,6 +25,7 @@
 @interface MyDigitalStick : NSView
 #ifdef __i386__
 {
+@private
     NSBezierPath *up, *down, *left, *right;
     BOOL bUp, bDown, bLeft, bRight;
 }

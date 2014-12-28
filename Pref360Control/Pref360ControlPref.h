@@ -41,6 +41,7 @@
 @interface Pref360ControlPref : NSPreferencePane
 #ifdef __i386__
 {
+@private
     // Window components
     __arcweak MyCentreButtons *centreButtons;
     __arcweak NSPopUpButton *deviceList;

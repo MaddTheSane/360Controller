@@ -25,6 +25,7 @@
 @interface MyAnalogStick : NSView
 #ifdef __i386__
 {
+@private
     int deadzone;
     int x;
     int y;

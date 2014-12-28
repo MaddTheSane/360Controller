@@ -25,6 +25,7 @@
 @interface MyShoulderButton : NSView
 #ifdef __i386__
 {
+@private
     BOOL pressed;
 }
 #endif

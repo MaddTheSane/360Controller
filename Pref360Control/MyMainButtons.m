@@ -23,7 +23,7 @@
 #import "MyMainButtons.h"
 #import "ARCBridge.h"
 
-#define MINI_OFFSET 2
+#define MINI_OFFSET         2
 
 @implementation MyMainButtons
 @synthesize a, b, x, y;

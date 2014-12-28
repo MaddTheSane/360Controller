@@ -169,7 +169,7 @@ static BOOL IsXBox360Controller(io_service_t device)
 
 @interface DeviceLister ()
 @property (getter = isChanged) BOOL changed;
-@property (strong) NSMutableDictionary *entries;
+@property (arcstrong) NSMutableDictionary *entries;
 @property (arcweak) Pref360ControlPref *owner;
 @end
 
@@ -195,6 +195,16 @@ static BOOL IsXBox360Controller(io_service_t device)
     }
     return self;
 }
+
+#if !__has_feature(objc_arc)
+- (void)dealloc
+{
+    [entries release];
+    [connected release];
+    [enabled release];
+    [super dealloc];
+}
+#endif
 
 - (NSString*)toolPath
 {

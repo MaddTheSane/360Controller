@@ -23,7 +23,7 @@
 #import "MyShoulderButton.h"
 #import "ARCBridge.h"
 
-#define INSET_AMOUNT 2
+#define INSET_AMOUNT        2
 
 @implementation MyShoulderButton
 @synthesize pressed;

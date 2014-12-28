@@ -28,6 +28,7 @@
 @interface DeviceLister : NSObject <NSTableViewDataSource>
 #ifdef __i386__
 {
+@private
     __arcweak NSWindow *sheet;
     __arcweak NSTableView *list;
     NSMutableArray *connected, *enabled;

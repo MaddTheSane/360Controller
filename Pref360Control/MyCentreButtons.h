@@ -25,6 +25,7 @@
 @interface MyCentreButtons : NSView
 #ifdef __i386__
 {
+@private
     BOOL back;
     BOOL start;
     BOOL appSpecific;
