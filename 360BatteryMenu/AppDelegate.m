@@ -9,13 +9,14 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+@property BattMenuHandler* menuHandler;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application
+    self.menuHandler = [[BattMenuHandler alloc] init];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
