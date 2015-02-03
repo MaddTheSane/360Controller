@@ -23,6 +23,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyDigitalStick : NSView
+<<<<<<< HEAD
 #ifdef __i386__
 {
 @private
@@ -34,4 +35,10 @@
 @property BOOL down;
 @property BOOL left;
 @property BOOL right;
+=======
+@property (nonatomic) BOOL up;
+@property (nonatomic) BOOL down;
+@property (nonatomic) BOOL left;
+@property (nonatomic) BOOL right;
+>>>>>>> master
 @end

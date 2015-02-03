@@ -29,13 +29,12 @@
 #include <IOKit/hid/IOHIDKeys.h>
 #include <ForceFeedback/ForceFeedback.h>
 
-#import "MyCentreButtons.h"
-#import "MyDigitalStick.h"
-#import "MyAnalogStick.h"
-#import "MyMainButtons.h"
-#import "MyShoulderButton.h"
 #import "ARCBridge.h"
 
+@class MyWhole360Controller;
+@class MyTrigger;
+@class MyBatteryMonitor;
+@class MyDeadZoneViewer;
 @class DeviceLister;
 
 @interface Pref360ControlPref : NSPreferencePane
@@ -43,27 +42,25 @@
 {
 @private
     // Window components
-    __arcweak MyCentreButtons *centreButtons;
-    __arcweak NSPopUpButton *deviceList;
-    __arcweak MyDigitalStick *digiStick;
-    __arcweak MyShoulderButton *leftShoulder;
-    __arcweak MyAnalogStick *leftStick;
-    __arcweak NSButton *leftLinked;
-    __arcweak NSSlider *leftStickDeadzone;
-    __arcweak NSButton *leftStickInvertX;
-    __arcweak NSButton *leftStickInvertY;
-    __arcweak NSLevelIndicator *leftTrigger;
-    __arcweak MyMainButtons *rightButtons;
-    __arcweak MyShoulderButton *rightShoulder;
-    __arcweak MyAnalogStick *rightStick;
-    __arcweak NSButton *rightLinked;
-    __arcweak NSSlider *rightStickDeadzone;
-    __arcweak NSButton *rightStickInvertX;
-    __arcweak NSButton *rightStickInvertY;
-    __arcweak NSLevelIndicator *rightTrigger;
-    __arcweak NSImageView *batteryLevel;
-    __arcweak DeviceLister *deviceLister;
-    __arcweak NSButton *powerOff;
+    __arcweak NSPopUpButton *_deviceList;
+    __arcweak NSButton *_leftLinked;
+    __arcweak NSSlider *_leftStickDeadzone;
+    __arcweak NSButton *_leftStickInvertX;
+    __arcweak NSButton *_leftStickInvertY;
+    __arcweak NSButton *_rightLinked;
+    __arcweak NSSlider *_rightStickDeadzone;
+    __arcweak NSButton *_rightStickInvertX;
+    __arcweak NSButton *_rightStickInvertY;
+    __arcweak DeviceLister *_deviceLister;
+    __arcweak NSButton *_powerOff;
+    __arcweak MyWhole360Controller *_wholeController;
+    __arcweak MyTrigger *_leftTrigger;
+    __arcweak MyTrigger *_rightTrigger;
+    __arcweak MyBatteryMonitor *_batteryStatus;
+    __arcweak MyDeadZoneViewer *_leftDeadZone;
+    __arcweak MyDeadZoneViewer *_rightDeadZone;
+    NSPopover *_aboutPopover;
+
     // Internal info
     mach_port_t masterPort;
     NSMutableArray *deviceArray;
@@ -88,27 +85,24 @@
 }
 #endif
 // Window components
-@property (arcweak) IBOutlet MyCentreButtons *centreButtons;
 @property (arcweak) IBOutlet NSPopUpButton *deviceList;
-@property (arcweak) IBOutlet MyDigitalStick *digiStick;
-@property (arcweak) IBOutlet MyShoulderButton *leftShoulder;
-@property (arcweak) IBOutlet MyAnalogStick *leftStick;
 @property (arcweak) IBOutlet NSButton *leftLinked;
 @property (arcweak) IBOutlet NSSlider *leftStickDeadzone;
 @property (arcweak) IBOutlet NSButton *leftStickInvertX;
 @property (arcweak) IBOutlet NSButton *leftStickInvertY;
-@property (arcweak) IBOutlet NSLevelIndicator *leftTrigger;
-@property (arcweak) IBOutlet MyMainButtons *rightButtons;
-@property (arcweak) IBOutlet MyShoulderButton *rightShoulder;
-@property (arcweak) IBOutlet MyAnalogStick *rightStick;
 @property (arcweak) IBOutlet NSButton *rightLinked;
 @property (arcweak) IBOutlet NSSlider *rightStickDeadzone;
 @property (arcweak) IBOutlet NSButton *rightStickInvertX;
 @property (arcweak) IBOutlet NSButton *rightStickInvertY;
-@property (arcweak) IBOutlet NSLevelIndicator *rightTrigger;
-@property (arcweak) IBOutlet NSImageView *batteryLevel;
 @property (arcweak) IBOutlet DeviceLister *deviceLister;
 @property (arcweak) IBOutlet NSButton *powerOff;
+@property (arcweak) IBOutlet MyWhole360Controller *wholeController;
+@property (arcweak) IBOutlet MyTrigger *leftTrigger;
+@property (arcweak) IBOutlet MyTrigger *rightTrigger;
+@property (arcweak) IBOutlet MyBatteryMonitor *batteryStatus;
+@property (arcweak) IBOutlet MyDeadZoneViewer *leftDeadZone;
+@property (arcweak) IBOutlet MyDeadZoneViewer *rightDeadZone;
+@property (strong) IBOutlet NSPopover *aboutPopover;
 
 // Internal info
 @property (readonly) mach_port_t masterPort;
@@ -117,9 +111,9 @@
 
 - (void)handleDeviceChange;
 
-- (IBAction)showDeviceList:(id)sender;
 - (IBAction)powerOff:(id)sender;
 - (IBAction)selectDevice:(id)sender;
 - (IBAction)changeSetting:(id)sender;
+- (IBAction)showAboutPopover:(id)sender;
 
 @end

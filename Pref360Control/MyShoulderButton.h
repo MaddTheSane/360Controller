@@ -23,6 +23,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyShoulderButton : NSView
+<<<<<<< HEAD
 #ifdef __i386__
 {
 @private
@@ -30,4 +31,7 @@
 }
 #endif
 @property (getter = isPressed) BOOL pressed;
+=======
+@property (nonatomic, getter = isPressed) BOOL pressed;
+>>>>>>> master
 @end

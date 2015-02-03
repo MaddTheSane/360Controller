@@ -28,8 +28,9 @@
 @implementation MyShoulderButton
 @synthesize pressed;
 
-- (id)initWithFrame:(NSRect)frameRect
+- (void)setPressed:(BOOL)apressed
 {
+<<<<<<< HEAD
     if (self = [super initWithFrame:frameRect]) {
         [self addObserver:self forKeyPath:@"pressed" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
     }
@@ -57,6 +58,10 @@
     if (object == self) {
         [self setNeedsDisplay:YES];
     }
+=======
+    pressed = apressed;
+    self.needsDisplay = YES;
+>>>>>>> master
 }
 
 - (void)drawRect:(NSRect)rect

@@ -41,6 +41,30 @@
 @synthesize left = bLeft;
 @synthesize right = bRight;
 
+- (void)setUp:(BOOL)anup
+{
+    bUp = anup;
+    self.needsDisplay = YES;
+}
+
+- (void)setDown:(BOOL)adown
+{
+    bDown = adown;
+    self.needsDisplay = YES;
+}
+
+- (void)setLeft:(BOOL)aleft
+{
+    bLeft = aleft;
+    self.needsDisplay = YES;
+}
+
+- (void)setRight:(BOOL)aright
+{
+    bRight = aright;
+    self.needsDisplay = YES;
+}
+
 + (NSBezierPath*)makeTriangle:(int)start inRectangle:(NSRect)rect;
 {
     // Create path
@@ -75,11 +99,6 @@
     if ((self = [super initWithFrame:frameRect]) != nil) {
         NSRect rect = [self bounds], triangle;
         
-        [self addObserver:self forKeyPath:@"up" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-        [self addObserver:self forKeyPath:@"down" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-        [self addObserver:self forKeyPath:@"left" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-        [self addObserver:self forKeyPath:@"right" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-        
         triangle.origin.x = INSET_AMOUNT;
         triangle.origin.y = INSET_AMOUNT;
         triangle.size.width =- INSET_AMOUNT * 2;
@@ -100,6 +119,7 @@
     return self;
 }
 
+<<<<<<< HEAD
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"up"];
@@ -133,6 +153,8 @@
 	}
 }
 
+=======
+>>>>>>> master
 - (void)drawRect:(NSRect)rect
 {
     NSRect area = [self bounds];

@@ -23,6 +23,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyCentreButtons : NSView
+<<<<<<< HEAD
 #ifdef __i386__
 {
 @private
@@ -34,4 +35,9 @@
 @property BOOL back;
 @property BOOL start;
 @property BOOL specific;
+=======
+@property (nonatomic) BOOL back;
+@property (nonatomic) BOOL start;
+@property (nonatomic) BOOL specific;
+>>>>>>> master
 @end
