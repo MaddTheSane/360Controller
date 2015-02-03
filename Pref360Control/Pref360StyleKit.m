@@ -9,7 +9,7 @@
 //
 
 #import "Pref360StyleKit.h"
-
+#import "ARCBridge.h"
 
 @implementation Pref360StyleKit
 
@@ -952,6 +952,7 @@
                 toCenter: NSMakePoint(-0.5, 0.5) radius: 26.54
                 options: NSGradientDrawsBeforeStartingLocation | NSGradientDrawsAfterEndingLocation];
             [NSGraphicsContext restoreGraphicsState];
+            RELEASEOBJ(gradient);
         }
 
 
@@ -1039,6 +1040,7 @@
     oval18Style.alignment = NSCenterTextAlignment;
 
     NSDictionary* oval18FontAttributes = @{NSFontAttributeName: [NSFont boldSystemFontOfSize: NSFont.systemFontSize], NSForegroundColorAttributeName: NSColor.whiteColor, NSParagraphStyleAttributeName: oval18Style};
+    RELEASEOBJ(oval18Style);
 
     CGFloat oval18TextHeight = NSHeight([triggerTitle boundingRectWithSize: oval18Rect.size options: NSStringDrawingUsesLineFragmentOrigin attributes: oval18FontAttributes]);
     NSRect oval18TextRect = NSMakeRect(NSMinX(oval18Rect), NSMinY(oval18Rect) + (NSHeight(oval18Rect) - oval18TextHeight) / 2, NSWidth(oval18Rect), oval18TextHeight);

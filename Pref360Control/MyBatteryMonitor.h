@@ -8,7 +8,11 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyBatteryMonitor : NSView
-
+#ifdef __i386__
+{
+    int _bars;
+}
+#endif
 @property (nonatomic) int bars;
 
 @end

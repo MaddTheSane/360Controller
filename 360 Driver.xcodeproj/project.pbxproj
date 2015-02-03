@@ -13,7 +13,6 @@
 			buildPhases = (
 			);
 			dependencies = (
-				553ED2511A50ABA6005222E3 /* PBXTargetDependency */,
 				552878A51A4FC9030084F70C /* PBXTargetDependency */,
 				552878A71A4FC9030084F70C /* PBXTargetDependency */,
 				552878A91A4FC9030084F70C /* PBXTargetDependency */,
@@ -139,13 +138,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 55B6380D18C10E8700CE933D;
 			remoteInfo = WirelessGamingReceiver;
-		};
-		553ED2501A50ABA6005222E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 55B6377C18C10B0B00CE933D;
-			remoteInfo = Pref360Control;
 		};
 		55B6374D18C1097D00CE933D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1091,11 +1083,6 @@
 			target = 55B6380D18C10E8700CE933D /* WirelessGamingReceiver */;
 			targetProxy = 552878A81A4FC9030084F70C /* PBXContainerItemProxy */;
 		};
-		553ED2511A50ABA6005222E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 55B6377C18C10B0B00CE933D /* Pref360Control */;
-			targetProxy = 553ED2501A50ABA6005222E3 /* PBXContainerItemProxy */;
-		};
 		55B6374E18C1097D00CE933D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55B6371E18C108A500CE933D /* Feedback360 */;
@@ -1456,7 +1443,7 @@
 		55B6379118C10B0B00CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.10][arch=x86_64]" = YES;
@@ -1480,7 +1467,7 @@
 		55B6379218C10B0B00CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CLANG_ENABLE_OBJC_ARC[sdk=macosx10.10][arch=x86_64]" = YES;

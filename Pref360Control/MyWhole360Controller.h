@@ -8,6 +8,36 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyWhole360Controller : NSView
+#ifdef __i386__
+{
+    BOOL _aPressed;
+    BOOL _bPressed;
+    BOOL _xPressed;
+    BOOL _yPressed;
+    
+    BOOL _leftPressed;
+    BOOL _upPressed;
+    BOOL _rightPressed;
+    BOOL _downPressed;
+    
+    BOOL _backPressed;
+    BOOL _startPressed;
+    BOOL _homePressed;
+    
+    BOOL _lbPressed;
+    BOOL _rbPressed;
+    BOOL _leftStickPressed;
+    BOOL _rightStickPressed;
+    
+    CGPoint _leftStickPosition;
+    CGPoint _rightStickPosition;
+    
+    int _leftStickXPos;
+    int _leftStickYPos;
+    int _rightStickXPos;
+    int _rightStickYPos;
+}
+#endif
 
 @property (nonatomic) BOOL aPressed;
 @property (nonatomic) BOOL bPressed;

@@ -8,7 +8,12 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyDeadZoneViewer : NSView
-
+#ifdef __i386__
+{
+    double _val;
+    BOOL _linked;
+}
+#endif
 @property (nonatomic) double val;
 @property (nonatomic) BOOL linked;
 

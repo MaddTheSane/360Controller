@@ -7,12 +7,19 @@
 
 #import "MyTrigger.h"
 #import "Pref360StyleKit.h"
+#import "ARCBridge.h"
 
 @implementation MyTrigger
-
+@synthesize name = _name;
+@synthesize val = _val;
 
 - (void)setName:(NSString *)name {
+#if __has_feature(objc_arc)
     _name = name;
+#else
+    [_name autorelease];
+    _name = [name retain];
+#endif
     [self setNeedsDisplay:YES];
 }
 
@@ -25,7 +32,7 @@
     [super drawRect:dirtyRect];
     
     if (_name == NULL)
-        _name = @"";
+        _name = RETAINOBJ(@"");
     [Pref360StyleKit drawTriggerMetterWithIntensity:(_val / 255.0) triggerTitle:_name];
 }
 

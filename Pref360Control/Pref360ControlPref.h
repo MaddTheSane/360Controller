@@ -62,8 +62,8 @@
     NSPopover *_aboutPopover;
 
     // Internal info
-    mach_port_t masterPort;
-    NSMutableArray *deviceArray;
+    mach_port_t _masterPort;
+    NSMutableArray *_deviceArray;
     IOHIDElementCookie axis[6],buttons[15];
     
     IOHIDDeviceInterface122 **device;
@@ -102,7 +102,7 @@
 @property (arcweak) IBOutlet MyBatteryMonitor *batteryStatus;
 @property (arcweak) IBOutlet MyDeadZoneViewer *leftDeadZone;
 @property (arcweak) IBOutlet MyDeadZoneViewer *rightDeadZone;
-@property (strong) IBOutlet NSPopover *aboutPopover;
+@property (arcstrong) IBOutlet NSPopover *aboutPopover;
 
 // Internal info
 @property (readonly) mach_port_t masterPort;

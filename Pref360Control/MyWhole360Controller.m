@@ -9,6 +9,32 @@
 #import "Pref360StyleKit.h"
 
 @implementation MyWhole360Controller
+@synthesize aPressed = _aPressed;
+@synthesize bPressed = _bPressed;
+@synthesize xPressed = _xPressed;
+@synthesize yPressed = _yPressed;
+
+@synthesize leftPressed = _leftPressed;
+@synthesize upPressed = _upPressed;
+@synthesize rightPressed = _rightPressed;
+@synthesize downPressed = _downPressed;
+
+@synthesize backPressed = _backPressed;
+@synthesize startPressed = _startPressed;
+@synthesize homePressed = _homePressed;
+
+@synthesize lbPressed = _lbPressed;
+@synthesize rbPressed = _rbPressed;
+@synthesize leftStickPressed = _leftStickPressed;
+@synthesize rightStickPressed = _rightStickPressed;
+
+@synthesize leftStickPosition = _leftStickPosition;
+@synthesize rightStickPosition = _rightStickPosition;
+
+@synthesize leftStickXPos = _leftStickXPos;
+@synthesize leftStickYPos = _leftStickYPos;
+@synthesize rightStickXPos = _rightStickXPos;
+@synthesize rightStickYPos = _rightStickYPos;
 
 
 - (void)setAPressed:(BOOL)pressed {
@@ -136,19 +162,19 @@
     [self setRbPressed:NO];
     [self setLeftStickPressed:NO];
     [self setRightStickPressed:NO];
-    [self setLeftStickPosition:NSZeroPoint];
-    [self setRightStickPosition:NSZeroPoint];
+    [self setLeftStickPosition:CGPointZero];
+    [self setRightStickPosition:CGPointZero];
 }
 
 - (void)awakeFromNib {
-    _leftStickPosition = NSZeroPoint;
-    _rightStickPosition = NSZeroPoint;
+    _leftStickPosition = CGPointZero;
+    _rightStickPosition = CGPointZero;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    [Pref360StyleKit drawX360ControllerWithControllerNumber:0 aPressed:_aPressed bPressed:_bPressed xPressed:_xPressed yPressed:_yPressed leftPressed:_leftPressed upPressed:_upPressed rightPressed:_rightPressed downPressed:_downPressed backPressed:_backPressed startPressed:_startPressed lbPressed:_lbPressed rbPressed:_rbPressed homePressed:_homePressed leftStickPressed:_leftStickPressed rightStickPressed:_rightStickPressed leftStick:_leftStickPosition rightStick:_rightStickPosition];
+    [Pref360StyleKit drawX360ControllerWithControllerNumber:0 aPressed:_aPressed bPressed:_bPressed xPressed:_xPressed yPressed:_yPressed leftPressed:_leftPressed upPressed:_upPressed rightPressed:_rightPressed downPressed:_downPressed backPressed:_backPressed startPressed:_startPressed lbPressed:_lbPressed rbPressed:_rbPressed homePressed:_homePressed leftStickPressed:_leftStickPressed rightStickPressed:_rightStickPressed leftStick:NSPointFromCGPoint(_leftStickPosition) rightStick:NSPointFromCGPoint(_rightStickPosition)];
 }
 
 @end

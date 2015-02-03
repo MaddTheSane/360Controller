@@ -9,6 +9,7 @@
 #import "Pref360StyleKit.h"
 
 @implementation MyBatteryMonitor
+@synthesize bars = _bars;
 
 - (void)setBars:(int)value {
     _bars = value;

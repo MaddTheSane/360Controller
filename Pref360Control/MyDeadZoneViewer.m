@@ -9,6 +9,8 @@
 #import "Pref360StyleKit.h"
 
 @implementation MyDeadZoneViewer
+@synthesize val = _val;
+@synthesize linked = _linked;
 
 -(void)setVal:(double)value {
     _val = value;

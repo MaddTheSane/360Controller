@@ -8,8 +8,13 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MyTrigger : NSView
-
-@property (nonatomic, strong) NSString *name;
+#ifdef __i386__
+{
+    NSString *_name;
+    int _val;
+}
+#endif
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic) int val;
 
 @end

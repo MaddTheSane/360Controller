@@ -81,6 +81,28 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     FFCUSTOMFORCE *customforce;
     FFEffectObjectReference effectRef;
 }
+#else
+@synthesize deviceList = _deviceList;
+@synthesize leftLinked = _leftLinked;
+@synthesize leftStickDeadzone = _leftStickDeadzone;
+@synthesize leftDeadZone = _leftDeadZone;
+@synthesize wholeController = _wholeController;
+@synthesize powerOff = _powerOff;
+@synthesize aboutPopover = _aboutPopover;
+@synthesize leftStickInvertX = _leftStickInvertX;
+@synthesize leftStickInvertY = _leftStickInvertY;
+@synthesize leftTrigger = _leftTrigger;
+@synthesize rightLinked = _rightLinked;
+@synthesize rightStickDeadzone = _rightStickDeadzone;
+@synthesize rightStickInvertX = _rightStickInvertX;
+@synthesize rightStickInvertY = _rightStickInvertY;
+@synthesize rightTrigger = _rightTrigger;
+@synthesize rightDeadZone = _rightDeadZone;
+@synthesize batteryStatus = _batteryStatus;
+@synthesize deviceLister = _deviceLister;
+@synthesize masterPort = _masterPort;
+@synthesize deviceArray = _deviceArray;
+
 #endif
 
 -(void)awakeFromNib {

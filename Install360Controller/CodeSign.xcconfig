@@ -7,5 +7,5 @@
 //
 
 //Put the CODE_SIGN_IDENTITY method here.
-CODE_SIGN_IDENTITY
+CODE_SIGN_IDENTITY = 
 
