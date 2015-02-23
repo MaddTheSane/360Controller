@@ -178,7 +178,13 @@ OSNumber* Xbox360ControllerClass::newProductIDNumber() const
 
 OSString* Xbox360ControllerClass::newProductString() const
 {
-    return OSString::withCString("Xbox 360 Wired Controller");
+    OSString *retString = getDeviceString(GetOwnerProvider(this)->GetProductStringIndex(), "Controller");
+    if (retString->isEqualTo("Controller")) {
+        retString->release();
+        return OSString::withCString("Xbox 360 Wired Controller");
+    } else {
+        return retString;
+    }
 }
 
 OSString* Xbox360ControllerClass::newSerialNumberString() const
@@ -283,7 +289,7 @@ OSNumber* XboxOriginalControllerClass::newVendorIDNumber() const
 
 OSString* XboxOriginalControllerClass::newManufacturerString() const
 {
-    return OSString::withCString("Holtek");
+    return getDeviceString(GetOwnerProvider(this)->GetManufacturerStringIndex(), "Holtek");
 }
 
 OSNumber* XboxOriginalControllerClass::newProductIDNumber() const
@@ -447,7 +453,7 @@ OSNumber* XboxOneControllerClass::newVendorIDNumber() const
 
 OSString* XboxOneControllerClass::newManufacturerString() const
 {
-    return OSString::withCString("Microsoft");
+    return getDeviceString(GetOwnerProvider(this)->GetManufacturerStringIndex(), "Microsoft");
 }
 
 OSNumber* XboxOneControllerClass::newProductIDNumber() const
