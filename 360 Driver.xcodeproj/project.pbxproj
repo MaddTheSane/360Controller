@@ -40,6 +40,12 @@
 		553BDB44196DF3BA00D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
 		553BDB45196DF41500D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
 		553BDB46196DF41600D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
+		554922BE1B20C14500676D29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 554922BD1B20C14500676D29 /* AppDelegate.m */; };
+		554922C01B20C14500676D29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 554922BF1B20C14500676D29 /* main.m */; };
+		554922C21B20C14500676D29 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554922C11B20C14500676D29 /* Images.xcassets */; };
+		554922C51B20C14500676D29 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554922C31B20C14500676D29 /* MainMenu.xib */; };
+		554922F51B20C31100676D29 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554922E51B20C22A00676D29 /* Sparkle.framework */; };
+		554922F61B20C31100676D29 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 554922E51B20C22A00676D29 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55699CD61971D96E00C40A31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55699CD51971D96E00C40A31 /* Images.xcassets */; };
 		55699CD71971DA8100C40A31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55699CD51971D96E00C40A31 /* Images.xcassets */; };
 		55750C09190AFB5B0047FF41 /* DaemonLEDs.m in Sources */ = {isa = PBXBuildFile; fileRef = 55750C08190AFB5B0047FF41 /* DaemonLEDs.m */; };
@@ -110,6 +116,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		554922E41B20C22A00676D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = Sparkle;
+		};
+		554922E61B20C22A00676D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 61B5F90209C4CEE200B25A18;
+			remoteInfo = "Sparkle Test App";
+		};
+		554922E81B20C22A00676D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 612279D90DB5470200AB99EA;
+			remoteInfo = "Sparkle Unit Tests";
+		};
+		554922EA1B20C22A00676D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D06E8D00FD68C7C005AE3F6;
+			remoteInfo = BinaryDelta;
+		};
+		554922EC1B20C22A00676D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55C14BB7136EEF1500649790;
+			remoteInfo = Autoupdate;
+		};
+		554922F21B20C25D00676D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = Sparkle;
+		};
+		554922F71B20C31100676D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = Sparkle;
+		};
 		55B6374D18C1097D00CE933D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
@@ -169,6 +224,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		554922F91B20C31100676D29 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				554922F61B20C31100676D29 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A2B8DC18C11A21006829A2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 8;
@@ -222,6 +288,14 @@
 		551CE002196EFD34000869B6 /* upgrade.sh */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.sh; path = upgrade.sh; sourceTree = "<group>"; };
 		551CE004196EFD34000869B6 /* Welcome.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Welcome.rtf; sourceTree = "<group>"; };
 		553BDB43196DF3BA00D1F569 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		554922B81B20C14500676D29 /* UpdateChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UpdateChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		554922BB1B20C14500676D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		554922BC1B20C14500676D29 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		554922BD1B20C14500676D29 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		554922BF1B20C14500676D29 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		554922C11B20C14500676D29 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		554922C41B20C14500676D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		554922D91B20C22A00676D29 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		55699CD51971D96E00C40A31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		55750C07190AFB5B0047FF41 /* DaemonLEDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaemonLEDs.h; sourceTree = "<group>"; usesTabs = 1; };
 		55750C08190AFB5B0047FF41 /* DaemonLEDs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaemonLEDs.m; sourceTree = "<group>"; usesTabs = 1; };
@@ -314,6 +388,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		554922B51B20C14500676D29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554922F51B20C31100676D29 /* Sparkle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55B636B118C104DB00CE933D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,6 +500,48 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		554922B91B20C14500676D29 /* UpdateChecker */ = {
+			isa = PBXGroup;
+			children = (
+				554922BC1B20C14500676D29 /* AppDelegate.h */,
+				554922BD1B20C14500676D29 /* AppDelegate.m */,
+				554922C11B20C14500676D29 /* Images.xcassets */,
+				554922C31B20C14500676D29 /* MainMenu.xib */,
+				554922BA1B20C14500676D29 /* Supporting Files */,
+			);
+			path = UpdateChecker;
+			sourceTree = "<group>";
+		};
+		554922BA1B20C14500676D29 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				554922BB1B20C14500676D29 /* Info.plist */,
+				554922BF1B20C14500676D29 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		554922D81B20C20A00676D29 /* Third-party */ = {
+			isa = PBXGroup;
+			children = (
+				554922D91B20C22A00676D29 /* Sparkle.xcodeproj */,
+			);
+			name = "Third-party";
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		554922DA1B20C22A00676D29 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				554922E51B20C22A00676D29 /* Sparkle.framework */,
+				554922E71B20C22A00676D29 /* Sparkle Test App.app */,
+				554922E91B20C22A00676D29 /* Sparkle Unit Tests.xctest */,
+				554922EB1B20C22A00676D29 /* BinaryDelta */,
+				554922ED1B20C22A00676D29 /* Autoupdate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		55A2B8E018C11C7E006829A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +595,7 @@
 		55B636AB18C104DB00CE933D = {
 			isa = PBXGroup;
 			children = (
+				554922D81B20C20A00676D29 /* Third-party */,
 				55B6372C18C108D200CE933D /* Feedback360 */,
 				55B636EB18C1054F00CE933D /* 360Controller */,
 				55B637F618C10DA300CE933D /* Wireless360Controller */,
@@ -496,6 +621,7 @@
 				55B637E818C10D5000CE933D /* Wireless360Controller.kext */,
 				55B6380E18C10E8700CE933D /* WirelessGamingReceiver.kext */,
 				55FE3CA118D7B77800D69E84 /* testhaptic */,
+				554922B81B20C14500676D29 /* UpdateChecker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -621,6 +747,7 @@
 				55B637A918C10C0C00CE933D /* Pref360ControlPref.m */,
 				551CDFFB196EEE76000869B6 /* Pref360ControlPref.xib */,
 				55B6378218C10B0B00CE933D /* Supporting Files */,
+				554922B91B20C14500676D29 /* UpdateChecker */,
 			);
 			path = Pref360Control;
 			sourceTree = "<group>";
@@ -720,6 +847,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		554922B71B20C14500676D29 /* UpdateChecker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 554922D61B20C14700676D29 /* Build configuration list for PBXNativeTarget "UpdateChecker" */;
+			buildPhases = (
+				554922B41B20C14500676D29 /* Sources */,
+				554922B51B20C14500676D29 /* Frameworks */,
+				554922B61B20C14500676D29 /* Resources */,
+				554922F91B20C31100676D29 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				554922F31B20C25D00676D29 /* PBXTargetDependency */,
+				554922F81B20C31100676D29 /* PBXTargetDependency */,
+			);
+			name = UpdateChecker;
+			productName = UpdateChecker;
+			productReference = 554922B81B20C14500676D29 /* UpdateChecker.app */;
+			productType = "com.apple.product-type.application";
+		};
 		55B636B318C104DB00CE933D /* 360Daemon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55B636E518C104DB00CE933D /* Build configuration list for PBXNativeTarget "360Daemon" */;
@@ -872,6 +1019,11 @@
 			attributes = {
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = GitHub;
+				TargetAttributes = {
+					554922B71B20C14500676D29 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
 			};
 			buildConfigurationList = 55B636AF18C104DB00CE933D /* Build configuration list for PBXProject "360 Driver" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -885,6 +1037,12 @@
 			mainGroup = 55B636AB18C104DB00CE933D;
 			productRefGroup = 55B636B518C104DB00CE933D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 554922DA1B20C22A00676D29 /* Products */;
+					ProjectRef = 554922D91B20C22A00676D29 /* Sparkle.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				55B6383818C10F8E00CE933D /* Whole Driver */,
@@ -892,6 +1050,7 @@
 				55B636B318C104DB00CE933D /* 360Daemon */,
 				55B6371E18C108A500CE933D /* Feedback360 */,
 				55B6377C18C10B0B00CE933D /* Pref360Control */,
+				554922B71B20C14500676D29 /* UpdateChecker */,
 				55B6370618C1057100CE933D /* 360Controller */,
 				55B637E718C10D5000CE933D /* Wireless360Controller */,
 				55B6380D18C10E8700CE933D /* WirelessGamingReceiver */,
@@ -900,7 +1059,54 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		554922E51B20C22A00676D29 /* Sparkle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sparkle.framework;
+			remoteRef = 554922E41B20C22A00676D29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		554922E71B20C22A00676D29 /* Sparkle Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Sparkle Test App.app";
+			remoteRef = 554922E61B20C22A00676D29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		554922E91B20C22A00676D29 /* Sparkle Unit Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Sparkle Unit Tests.xctest";
+			remoteRef = 554922E81B20C22A00676D29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		554922EB1B20C22A00676D29 /* BinaryDelta */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = BinaryDelta;
+			remoteRef = 554922EA1B20C22A00676D29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		554922ED1B20C22A00676D29 /* Autoupdate.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Autoupdate.app;
+			remoteRef = 554922EC1B20C22A00676D29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		554922B61B20C14500676D29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554922C21B20C14500676D29 /* Images.xcassets in Resources */,
+				554922C51B20C14500676D29 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55B636B218C104DB00CE933D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -960,6 +1166,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		554922B41B20C14500676D29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				554922C01B20C14500676D29 /* main.m in Sources */,
+				554922BE1B20C14500676D29 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55B636B018C104DB00CE933D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1047,6 +1262,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		554922F31B20C25D00676D29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Sparkle;
+			targetProxy = 554922F21B20C25D00676D29 /* PBXContainerItemProxy */;
+		};
+		554922F81B20C31100676D29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Sparkle;
+			targetProxy = 554922F71B20C31100676D29 /* PBXContainerItemProxy */;
+		};
 		55B6374E18C1097D00CE933D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55B6371E18C108A500CE933D /* Feedback360 */;
@@ -1096,6 +1321,14 @@
 				551B911F1A68BDB000EA6527 /* en */,
 			);
 			name = Pref360ControlPref.xib;
+			sourceTree = "<group>";
+		};
+		554922C31B20C14500676D29 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				554922C41B20C14500676D29 /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		55852E2118D6B5580009BF55 /* Localizable.strings */ = {
@@ -1165,6 +1398,37 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		554922D21B20C14700676D29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Pref360Control/UpdateChecker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		554922D31B20C14700676D29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = Pref360Control/UpdateChecker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		55B636E318C104DB00CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1490,6 +1754,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		554922D61B20C14700676D29 /* Build configuration list for PBXNativeTarget "UpdateChecker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				554922D21B20C14700676D29 /* Debug */,
+				554922D31B20C14700676D29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		55B636AF18C104DB00CE933D /* Build configuration list for PBXProject "360 Driver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
