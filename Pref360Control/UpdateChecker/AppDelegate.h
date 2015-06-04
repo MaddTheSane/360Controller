@@ -16,7 +16,7 @@
 #define UPDATE_STATUS_NOTIFICATION @"org.mice.UpdateCheckStatus"
 #define TIME_INTERVAL_TIL_NEXT_RUN 7*24*60*60
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, SUUpdaterDelegate>
 - (void)doUpdateCheck;
 
 

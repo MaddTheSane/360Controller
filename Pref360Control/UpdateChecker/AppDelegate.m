@@ -14,7 +14,7 @@
 @property (strong) SUAppcastItem *latest;
 @property (strong) NSString *downloadPath;
 @property (strong) SUAppcast *appcast;
-
+@property (strong) SUUpdater *updater;
 @end
 
 @implementation AppDelegate
@@ -52,25 +52,19 @@ static id SUInfoValueForKey(NSString *key)
 
 - (void)doUpdateCheck
 {
-    NSString *updateUrlString = SUInfoValueForKey(UPDATE_URL_KEY);
+    self.updater = [[SUUpdater alloc] initForBundle:[NSBundle mainBundle]];
+    _updater.delegate = self;
     
-    if (!updateUrlString) { [NSException raise:@"NoFeedURL" format:@"No feed URL is specified in the Info.plist!"]; }
-    
-#ifdef betaAppcastUrl
-    updateUrlString = [[updateUrlString substringToIndex:[updateUrlString length]-4] stringByAppendingFormat:@"-%@.xml", betaAppcastUrl];
-#endif
-    if(manualRun)
-        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:UPDATE_STATUS_NOTIFICATION object:@"Starting"];
-    
-    self.appcast = [[SUAppcast alloc] init];
-    [appcast fetchAppcastFromURL:[NSURL URLWithString:updateUrlString] completionBlock:^(NSError *err) {
-        if (err == nil) {
-            
-        } else {
-            
-        }
-    }];
+    if (manualRun) {
+        [self.updater checkForUpdates:nil];
+    } else {
+        [self.updater checkForUpdatesInBackground];
+    }
 }
 
+- (NSString *)feedURLStringForUpdater:(SUUpdater *)updater
+{
+    return SUInfoValueForKey(UPDATE_URL_KEY);
+}
 
 @end

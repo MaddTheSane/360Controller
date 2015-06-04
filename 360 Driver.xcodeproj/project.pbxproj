@@ -1761,6 +1761,7 @@
 				554922D31B20C14700676D29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55B636AF18C104DB00CE933D /* Build configuration list for PBXProject "360 Driver" */ = {
 			isa = XCConfigurationList;
