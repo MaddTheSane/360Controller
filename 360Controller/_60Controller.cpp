@@ -53,9 +53,9 @@ public:
 };
 
 // Find the maximum packet size of this pipe
-static UInt32 GetMaxPacketSize(IOUSBPipe *pipe)
+static UInt32 GetMaxPacketSize(IOUSBHostPipe *pipe)
 {
-    const IOUSBEndpointDescriptor *ed = pipe->GetEndpointDescriptor();
+    const EndpointDescriptor *ed = pipe->getEndpointDescriptor();
     
     if(ed==NULL) return 0;
     else return ed->wMaxPacketSize;
@@ -63,9 +63,9 @@ static UInt32 GetMaxPacketSize(IOUSBPipe *pipe)
 
 void Xbox360Peripheral::SendSpecial(UInt16 value)
 {
-	IOUSBDevRequest controlReq;
+	DeviceRequest controlReq;
 
-	controlReq.bmRequestType = USBmakebmRequestType(kUSBOut, kUSBVendor, kUSBInterface);
+	controlReq.bmRequestType = makeDeviceRequestbmRequestType(kRequestDirectionOut, kRequestTypeVendor, kRequestRecipientInterface);
 	controlReq.bRequest = 0x00;
 	controlReq.wValue = value;
 	controlReq.wIndex = 0x0002;
@@ -77,9 +77,9 @@ void Xbox360Peripheral::SendSpecial(UInt16 value)
 
 void Xbox360Peripheral::SendInit(UInt16 value, UInt16 index)
 {
-	IOUSBDevRequest controlReq;
+	DeviceRequest controlReq;
 	
-	controlReq.bmRequestType = USBmakebmRequestType(kUSBOut, kUSBVendor, kUSBDevice);
+	controlReq.bmRequestType = makeDeviceRequestbmRequestType(kRequestDirectionOut, kRequestTypeVendor, kRequestRecipientDevice);
 	controlReq.bRequest = 0xa9;
 	controlReq.wValue = value;
 	controlReq.wIndex = index;
@@ -90,9 +90,9 @@ void Xbox360Peripheral::SendInit(UInt16 value, UInt16 index)
 
 bool Xbox360Peripheral::SendSwitch(bool sendOut)
 {
-	IOUSBDevRequest controlReq;
+	DeviceRequest controlReq;
 
-	controlReq.bmRequestType = USBmakebmRequestType(sendOut ? kUSBOut : kUSBIn, kUSBVendor, kUSBDevice);
+	controlReq.bmRequestType = makeDeviceRequestbmRequestType(sendOut ? kRequestDirectionOut : kRequestDirectionIn, kRequestTypeVendor, kRequestRecipientDevice);
 	controlReq.bRequest = 0xa1;
 	controlReq.wValue = 0x0000;
 	controlReq.wIndex = 0xe416;
@@ -340,7 +340,7 @@ void Xbox360Peripheral::free(void)
 
 bool Xbox360Peripheral::start(IOService *provider)
 {
-    const IOUSBConfigurationDescriptor *cd;
+    const ConfigurationDescriptor *cd;
     IOUSBFindInterfaceRequest intf;
     IOUSBFindEndpointRequest pipe;
     XBOX360_OUT_LED led;
@@ -358,7 +358,7 @@ bool Xbox360Peripheral::start(IOService *provider)
     if (!super::start(provider))
 		return false;
     // Get device
-    device=OSDynamicCast(IOUSBDevice,provider);
+    device=OSDynamicCast(IOUSBHostDevice,provider);
     if(device==NULL) {
         IOLog("start - invalid provider\n");
         goto fail;

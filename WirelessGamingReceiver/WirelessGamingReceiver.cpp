@@ -36,9 +36,9 @@ typedef struct WGRREAD
 } WGRREAD;
 
 // Get maximum packet size for a pipe
-static UInt32 GetMaxPacketSize(IOUSBPipe *pipe)
+static UInt32 GetMaxPacketSize(IOUSBHostPipe *pipe)
 {
-    const IOUSBEndpointDescriptor *ed = pipe->GetEndpointDescriptor();
+    const EndpointDescriptor *ed = pipe->getEndpointDescriptor();
     
     if (ed == NULL) return 0;
     else return ed->wMaxPacketSize;
@@ -47,10 +47,10 @@ static UInt32 GetMaxPacketSize(IOUSBPipe *pipe)
 // Start device
 bool WirelessGamingReceiver::start(IOService *provider)
 {
-    const IOUSBConfigurationDescriptor *cd;
+    const ConfigurationDescriptor *cd;
     IOUSBFindInterfaceRequest interfaceRequest;
     IOUSBFindEndpointRequest pipeRequest;
-    IOUSBInterface *interface;
+    IOUSBHostInterface *interface;
     int iConnection, iOther, i;
     
     if (!IOService::start(provider))
@@ -59,7 +59,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
         return false;
     }
 
-    device = OSDynamicCast(IOUSBDevice, provider);
+    device = OSDynamicCast(IOUSBHostDevice, provider);
     if (device == NULL)
     {
         // IOLog("start - invalid provider\n");
@@ -248,7 +248,7 @@ IOReturn WirelessGamingReceiver::message(UInt32 type,IOService *provider,void *a
 // Queue a read on a controller
 bool WirelessGamingReceiver::QueueRead(int index)
 {
-    IOUSBCompletion complete;
+    IOUSBHostCompletion complete;
     IOReturn err;
     WGRREAD *data = (WGRREAD*)IOMalloc(sizeof(WGRREAD));
     
@@ -262,7 +262,7 @@ bool WirelessGamingReceiver::QueueRead(int index)
         return false;
     }
 
-    complete.target = this;
+    complete.owner = this;
     complete.action = _ReadComplete;
     complete.parameter = data;
     
@@ -287,7 +287,7 @@ void WirelessGamingReceiver::ReadComplete(void *parameter, IOReturn status, UInt
     {
         case kIOReturnOverrun:
             // IOLog("read - kIOReturnOverrun, clearing stall\n");
-            connections[data->index].controllerIn->ClearStall();
+            connections[data->index].controllerIn->clearStall(false);
             // fall through
         case kIOReturnSuccess:
             ProcessMessage(data->index, (unsigned char*)data->buffer->getBytesNoCopy(), (int)data->buffer->getLength() - bufferSizeRemaining);
@@ -313,7 +313,7 @@ void WirelessGamingReceiver::ReadComplete(void *parameter, IOReturn status, UInt
 bool WirelessGamingReceiver::QueueWrite(int index, const void *bytes, UInt32 length)
 {
     IOBufferMemoryDescriptor *outBuffer;
-    IOUSBCompletion complete;
+    IOUSBHostCompletion complete;
     IOReturn err;
     
     outBuffer = IOBufferMemoryDescriptor::inTaskWithOptions(kernel_task, 0, length);
@@ -324,7 +324,7 @@ bool WirelessGamingReceiver::QueueWrite(int index, const void *bytes, UInt32 len
     }
     outBuffer->writeBytes(0, bytes, length);
     
-    complete.target = this;
+    complete.owner = this;
     complete.action = _WriteComplete;
     complete.parameter = outBuffer;
     
@@ -362,13 +362,13 @@ void WirelessGamingReceiver::ReleaseAll(void)
         }
         if (connections[i].controllerIn != NULL)
         {
-            connections[i].controllerIn->Abort();
+            connections[i].controllerIn->abort();
             connections[i].controllerIn->release();
             connections[i].controllerIn = NULL;
         }
         if (connections[i].controllerOut != NULL)
         {
-            connections[i].controllerOut->Abort();
+            connections[i].controllerOut->abort();
             connections[i].controllerOut->release();
             connections[i].controllerOut = NULL;
         }
@@ -379,7 +379,7 @@ void WirelessGamingReceiver::ReleaseAll(void)
         }
         if (connections[i].otherIn != NULL)
         {
-            connections[i].otherIn->Abort();
+            connections[i].otherIn->abort();
             connections[i].otherIn->release();
             connections[i].otherIn = NULL;
         }

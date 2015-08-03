@@ -21,14 +21,16 @@
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <IOKit/usb/IOUSBDevice.h>
-#include <IOKit/usb/IOUSBInterface.h>
+#include <IOKit/usb/IOUSBHostDevice.h>
+#include <IOKit/usb/IOUSBHostInterface.h>
 #include "Controller.h"
 #include "ControlStruct.h"
 namespace HID_360 {
 #include "xbox360hid.h"
 }
 #include "_60Controller.h"
+
+#include <sys/utfconv.h>
 
 OSDefineMetaClassAndStructors(Xbox360ControllerClass, IOHIDDevice)
 
@@ -41,7 +43,7 @@ static Xbox360Peripheral* GetOwner(IOService *us)
 	return OSDynamicCast(Xbox360Peripheral, prov);
 }
 
-static IOUSBDevice* GetOwnerProvider(const IOService *us)
+static IOUSBHostDevice* GetOwnerProvider(const IOService *us)
 {
 	IOService *prov = us->getProvider(), *provprov;
 	
@@ -50,7 +52,7 @@ static IOUSBDevice* GetOwnerProvider(const IOService *us)
 	provprov = prov->getProvider();
 	if (provprov == NULL)
 		return NULL;
-	return OSDynamicCast(IOUSBDevice, provprov);
+	return OSDynamicCast(IOUSBHostDevice, provprov);
 }
 
 bool Xbox360ControllerClass::start(IOService *provider)
@@ -141,26 +143,40 @@ IOReturn Xbox360ControllerClass::handleReport(IOMemoryDescriptor * descriptor, I
     return ret;
 }
 
+static OSString* StringDescriptorToOSString(const StringDescriptor *stringDescriptor) {
+     char stringBuffer[256] = { 0 };
+     size_t utf8len = 0;
+     if(   stringDescriptor != NULL
+        && stringDescriptor->bLength > StandardUSB::kDescriptorSize)
+     {
+         utf8_encodestr(reinterpret_cast<const u_int16_t*>(stringDescriptor->bString), stringDescriptor->bLength - kDescriptorSize,
+                        reinterpret_cast<u_int8_t*>(stringBuffer), &utf8len, sizeof(stringBuffer), '/', UTF_LITTLE_ENDIAN);
+}
+    return OSString::withCString(stringBuffer);
+}
 
 // Returns the string for the specified index from the USB device's string list, with an optional default
 OSString* Xbox360ControllerClass::getDeviceString(UInt8 index,const char *def) const
 {
-    IOReturn err;
-    char buf[1024];
     const char *string;
     
-    err = GetOwnerProvider(this)->GetStringDescriptor(index, buf, sizeof(buf));
-    if(err==kIOReturnSuccess) string=buf;
-    else {
-        if(def == NULL) string = "Unknown";
-        else string = def;
+    const StringDescriptor *aStr = GetOwnerProvider(this)->getStringDescriptor(index);
+    //(index, buf, sizeof(buf));
+    if (aStr == NULL) {
+        if (def == NULL) {
+            string = "Unknown";
+        } else {
+            string = def;
+        }
+        return OSString::withCString(string);
     }
-    return OSString::withCString(string);
+    
+    return StringDescriptorToOSString(aStr);
 }
 
 OSString* Xbox360ControllerClass::newManufacturerString() const
 {
-    return getDeviceString(GetOwnerProvider(this)->GetManufacturerStringIndex());
+    return getDeviceString(GetOwnerProvider(this)->getDeviceDescriptor()->iManufacturer);
 }
 
 OSNumber* Xbox360ControllerClass::newPrimaryUsageNumber() const
@@ -175,7 +191,7 @@ OSNumber* Xbox360ControllerClass::newPrimaryUsagePageNumber() const
 
 OSNumber* Xbox360ControllerClass::newProductIDNumber() const
 {
-    return OSNumber::withNumber(GetOwnerProvider(this)->GetProductID(),16);
+    return OSNumber::withNumber(GetOwnerProvider(this)->getDeviceDescriptor()->idProduct,16);
 }
 
 OSString* Xbox360ControllerClass::newProductString() const
@@ -185,7 +201,7 @@ OSString* Xbox360ControllerClass::newProductString() const
 
 OSString* Xbox360ControllerClass::newSerialNumberString() const
 {
-    return getDeviceString(GetOwnerProvider(this)->GetSerialNumberStringIndex());
+    return getDeviceString(GetOwnerProvider(this)->getDeviceDescriptor()->iSerialNumber);
 }
 
 OSString* Xbox360ControllerClass::newTransportString() const
@@ -195,12 +211,12 @@ OSString* Xbox360ControllerClass::newTransportString() const
 
 OSNumber* Xbox360ControllerClass::newVendorIDNumber() const
 {
-    return OSNumber::withNumber(GetOwnerProvider(this)->GetVendorID(),16);
+    return OSNumber::withNumber(GetOwnerProvider(this)->getDeviceDescriptor()->idVendor,16);
 }
 
 OSNumber* Xbox360ControllerClass::newLocationIDNumber() const
 {
-	IOUSBDevice *device;
+	IOUSBHostDevice *device;
     OSNumber *number;
     UInt32 location = 0;
     
