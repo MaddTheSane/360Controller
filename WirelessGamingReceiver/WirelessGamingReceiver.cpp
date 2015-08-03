@@ -67,7 +67,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
     }
 
     // Check for configurations
-    if (device->GetNumConfigurations() < 1)
+    if (device->getDeviceDescriptor()->bNumConfigurations < 1)
     {
         device = NULL;
         // IOLog("start - device has no configurations!\n");
@@ -75,7 +75,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
     }
     
     // Set configuration
-    cd = device->GetFullConfigurationDescriptor(0);
+    cd = device->getConfigurationDescriptor(0);
     if (cd == NULL)
     {
         device = NULL;
@@ -120,7 +120,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
     iOther = 0;
     while ((interface = device->FindNextInterface(interface, &interfaceRequest)) != NULL)
     {
-        switch (interface->GetInterfaceProtocol())
+        switch (interface->getInterfaceDescriptor()->bInterfaceProtocol)
         {
             case 129:   // Controller
                 if (!interface->open(this))
@@ -328,7 +328,7 @@ bool WirelessGamingReceiver::QueueWrite(int index, const void *bytes, UInt32 len
     complete.action = _WriteComplete;
     complete.parameter = outBuffer;
     
-    err = connections[index].controllerOut->Write(outBuffer, 0, 0, length, &complete);
+    err = connections[index].controllerOut->io(outBuffer, length, &complete);
     if (err == kIOReturnSuccess)
         return true;
     else
@@ -385,7 +385,7 @@ void WirelessGamingReceiver::ReleaseAll(void)
         }
         if (connections[i].otherOut != NULL)
         {
-            connections[i].otherOut->Abort();
+            connections[i].otherOut->abort();
             connections[i].otherOut->release();
             connections[i].otherOut = NULL;
         }

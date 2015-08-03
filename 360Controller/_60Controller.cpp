@@ -70,7 +70,8 @@ void Xbox360Peripheral::SendSpecial(UInt16 value)
 	controlReq.wValue = value;
 	controlReq.wIndex = 0x0002;
 	controlReq.wLength = 0;
-	controlReq.pData = NULL;
+	//controlReq.pData = NULL;
+    device->deviceRequest(NULL, controlReq,   NULL, NULL, 100, 100);
 	if (device->DeviceRequest(&controlReq, 100, 100, NULL) != kIOReturnSuccess)
 		IOLog("Failed to send special message %.4x\n", value);
 }
@@ -364,13 +365,13 @@ bool Xbox360Peripheral::start(IOService *provider)
         goto fail;
     }
     // Check for configurations
-    if(device->GetNumConfigurations()<1) {
+    if(device->getDeviceDescriptor()->bNumConfigurations<1) {
         device=NULL;
         IOLog("start - device has no configurations!\n");
         goto fail;
     }
     // Set configuration
-    cd=device->GetFullConfigurationDescriptor(0);
+    cd=device->getConfigurationDescriptor(0);
     if(cd==NULL) {
         device=NULL;
         IOLog("start - couldn't get configuration descriptor\n");
@@ -388,7 +389,7 @@ bool Xbox360Peripheral::start(IOService *provider)
     }
     // Get release
     {
-        UInt16 release = device->GetDeviceRelease();
+        UInt16 release = USBToHost16(device->getDeviceDescriptor()->bcdDevice);
         switch (release) {
             default:
                 IOLog("Unknown device release %.4x\n", release);
