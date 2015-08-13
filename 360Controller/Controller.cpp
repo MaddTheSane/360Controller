@@ -481,7 +481,7 @@ OSString* XboxOneControllerClass::newProductString() const
 }
 
 // This converts Xbox One controller report into Xbox360 form
-void XboxOneControllerClass::convertFromXboxOne(void *buffer, void* override) {
+void XboxOneControllerClass::convertFromXboxOne(void *buffer, void* overrideData) {
     
 //    if (data[0] != 0x00 || data[1] != 0x14) {
 //        IOLog("Unknown report command %d, length %d\n", (int)data[0], (int)data[1]);
@@ -493,7 +493,7 @@ void XboxOneControllerClass::convertFromXboxOne(void *buffer, void* override) {
     UInt16 new_buttons = 0;
     XBOX360_HAT left, right;
     
-    if (override == NULL) {
+    if (overrideData == NULL) {
         XBOXONE_IN_REPORT *reportXone = (XBOXONE_IN_REPORT*)buffer;
         report360->header.command = reportXone->header.command - 0x20; // Change 0x20 into 0x00
         report360->header.size = reportXone->header.size + 0x06; // Change 0x0E into 0x14
@@ -524,7 +524,7 @@ void XboxOneControllerClass::convertFromXboxOne(void *buffer, void* override) {
         report360->left = left;
         report360->right = right;
     } else {
-        XBOX360_IN_REPORT *reportOverride = (XBOX360_IN_REPORT*)override;
+        XBOX360_IN_REPORT *reportOverride = (XBOX360_IN_REPORT*)overrideData;
         report360->header = reportOverride->header;
         report360->buttons = reportOverride->buttons;
         report360->buttons |= (isXboxOneGuideButtonPressed) << 10;

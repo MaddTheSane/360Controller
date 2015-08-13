@@ -31,29 +31,29 @@ private:
     OSString* getDeviceString(UInt8 index,const char *def=NULL) const;
 
 public:
-    virtual bool start(IOService *provider);
+    virtual bool start(IOService *provider) override;
 
-    virtual IOReturn setProperties(OSObject *properties);
+    virtual IOReturn setProperties(OSObject *properties) override;
 
-    virtual IOReturn newReportDescriptor(IOMemoryDescriptor **descriptor) const;
+    virtual IOReturn newReportDescriptor(IOMemoryDescriptor **descriptor) const override;
     
-    virtual IOReturn setReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options=0);
-    virtual IOReturn getReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options);
+    virtual IOReturn setReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options=0) override;
+    virtual IOReturn getReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options) override;
     virtual IOReturn handleReport(
                                   IOMemoryDescriptor * report,
                                   IOHIDReportType      reportType = kIOHIDReportTypeInput,
-                                  IOOptionBits         options    = 0 );
+                                  IOOptionBits         options    = 0 ) override;
 	
-    virtual OSString* newManufacturerString() const;
-    virtual OSNumber* newPrimaryUsageNumber() const;
-    virtual OSNumber* newPrimaryUsagePageNumber() const;
-    virtual OSNumber* newProductIDNumber() const;
-    virtual OSString* newProductString() const;
-    virtual OSString* newSerialNumberString() const;
-    virtual OSString* newTransportString() const;
-    virtual OSNumber* newVendorIDNumber() const;
+    virtual OSString* newManufacturerString() const override;
+    virtual OSNumber* newPrimaryUsageNumber() const override;
+    virtual OSNumber* newPrimaryUsagePageNumber() const override;
+    virtual OSNumber* newProductIDNumber() const override;
+    virtual OSString* newProductString() const override;
+    virtual OSString* newSerialNumberString() const override;
+    virtual OSString* newTransportString() const override;
+    virtual OSNumber* newVendorIDNumber() const override;
 	
-    virtual OSNumber* newLocationIDNumber() const;
+    virtual OSNumber* newLocationIDNumber() const override;
     
     virtual void remapButtons(void *buffer);
 };
@@ -68,16 +68,16 @@ private:
     UInt32 repeatCount;
     
 public:
-    virtual IOReturn setReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options=0);
+    virtual IOReturn setReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options=0) override;
     virtual IOReturn handleReport(
                                   IOMemoryDescriptor * report,
                                   IOHIDReportType      reportType = kIOHIDReportTypeInput,
-                                  IOOptionBits         options    = 0 );
+                                  IOOptionBits         options    = 0 ) override;
     
-    virtual OSString* newManufacturerString() const;
-    virtual OSNumber* newProductIDNumber() const;
-    virtual OSNumber* newVendorIDNumber() const;
-    virtual OSString* newProductString() const;
+    virtual OSString* newManufacturerString() const override;
+    virtual OSNumber* newProductIDNumber() const override;
+    virtual OSNumber* newVendorIDNumber() const override;
+    virtual OSString* newProductString() const override;
 };
 
 
@@ -92,15 +92,15 @@ private:
     bool isXboxOneGuideButtonPressed;
     
 public:
-    virtual IOReturn setReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options=0);
+    virtual IOReturn setReport(IOMemoryDescriptor *report,IOHIDReportType reportType,IOOptionBits options=0) override;
     virtual IOReturn handleReport(
                                   IOMemoryDescriptor * report,
                                   IOHIDReportType      reportType = kIOHIDReportTypeInput,
-                                  IOOptionBits         options    = 0 );
+                                  IOOptionBits         options    = 0 ) override;
     
-    virtual OSString* newManufacturerString() const;
-    virtual OSNumber* newProductIDNumber() const;
-    virtual OSNumber* newVendorIDNumber() const;
-    virtual OSString* newProductString() const;
-    virtual void convertFromXboxOne(void *buffer, void* override);
+    virtual OSString* newManufacturerString() const override;
+    virtual OSNumber* newProductIDNumber() const override;
+    virtual OSNumber* newVendorIDNumber() const override;
+    virtual OSString* newProductString() const override;
+    virtual void convertFromXboxOne(void *buffer, void* overrideData);
 };

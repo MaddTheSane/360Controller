@@ -71,8 +71,9 @@ void Xbox360Peripheral::SendSpecial(UInt16 value)
 	controlReq.wIndex = 0x0002;
 	controlReq.wLength = 0;
 	//controlReq.pData = NULL;
-    device->deviceRequest(NULL, controlReq,   NULL, NULL, 100, 100);
-	if (device->DeviceRequest(&controlReq, 100, 100, NULL) != kIOReturnSuccess)
+    //    virtual IOReturn deviceRequest(IOService* forClient, StandardUSB::DeviceRequest& request, IOMemoryDescriptor* dataBuffer, IOUSBHostCompletion* completion, uint32_t completionTimeoutMs = kUSBHostDefaultControlCompletionTimeoutMS);
+
+    if (device->deviceRequest(this, controlReq, (void*)NULL, NULL, 100) != kIOReturnSuccess)
 		IOLog("Failed to send special message %.4x\n", value);
 }
 
@@ -85,8 +86,7 @@ void Xbox360Peripheral::SendInit(UInt16 value, UInt16 index)
 	controlReq.wValue = value;
 	controlReq.wIndex = index;
 	controlReq.wLength = 0;
-	controlReq.pData = NULL;
-	device->DeviceRequest(&controlReq, 100, 100, NULL);	// Will fail - but device should still act on it
+    device->deviceRequest(this, controlReq, (void*)NULL, NULL, 100);	// Will fail - but device should still act on it
 }
 
 bool Xbox360Peripheral::SendSwitch(bool sendOut)
@@ -98,8 +98,7 @@ bool Xbox360Peripheral::SendSwitch(bool sendOut)
 	controlReq.wValue = 0x0000;
 	controlReq.wIndex = 0xe416;
 	controlReq.wLength = sizeof(chatpadInit);
-	controlReq.pData = chatpadInit;
-    IOReturn err = device->DeviceRequest(&controlReq, 100, 100, NULL);
+    IOReturn err = device->deviceRequest(this, controlReq, (void*)&chatpadInit, NULL, 100);
     if (err == kIOReturnSuccess)
         return true;
 
@@ -383,7 +382,7 @@ bool Xbox360Peripheral::start(IOService *provider)
         IOLog("start - unable to open device\n");
         goto fail;
     }
-    if(device->SetConfiguration(this,cd->bConfigurationValue,true)!=kIOReturnSuccess) {
+    if(device->setConfiguration(cd->bConfigurationValue,true)!=kIOReturnSuccess) {
         IOLog("start - unable to set configuration\n");
         goto fail;
     }
