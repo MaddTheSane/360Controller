@@ -48,9 +48,9 @@ static UInt32 GetMaxPacketSize(IOUSBHostPipe *pipe)
 bool WirelessGamingReceiver::start(IOService *provider)
 {
     const ConfigurationDescriptor *cd;
-    IOUSBFindInterfaceRequest interfaceRequest;
-    IOUSBFindEndpointRequest pipeRequest;
-    IOUSBHostInterface *interface;
+    const InterfaceDescriptor *interfaceRequest;
+    EndpointDescriptor pipeRequest = {};
+    IOUSBHostInterface *interface = NULL;
     int iConnection, iOther, i;
     
     if (!IOService::start(provider))
@@ -89,7 +89,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
         // IOLog("start - failed to open device\n");
         goto fail;
     }
-    if (device->SetConfiguration(this, cd->bConfigurationValue, true) != kIOReturnSuccess)
+    if (device->setConfiguration(cd->bConfigurationValue, true) != kIOReturnSuccess)
     {
         // IOLog("start - unable to set configuration\n");
         goto fail;
@@ -108,6 +108,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
         connections[i].controllerStarted = false;
     }
     
+    /*
     pipeRequest.interval = 0;
     pipeRequest.maxPacketSize = 0;
     pipeRequest.type = kUSBInterrupt;
@@ -118,9 +119,13 @@ bool WirelessGamingReceiver::start(IOService *provider)
     interface = NULL;
     iConnection = 0;
     iOther = 0;
-    while ((interface = device->FindNextInterface(interface, &interfaceRequest)) != NULL)
+     */
+    iConnection = 0;
+    iOther = 0;
+     cd = device->getConfigurationDescriptor(1);
+     while((interfaceRequest = getNextInterfaceDescriptor(cd, interfaceRequest)) != NULL)
     {
-        switch (interface->getInterfaceDescriptor()->bInterfaceProtocol)
+        switch (interfaceRequest->bInterfaceProtocol)
         {
             case 129:   // Controller
                 if (!interface->open(this))
@@ -129,7 +134,12 @@ bool WirelessGamingReceiver::start(IOService *provider)
                     goto fail;
                 }
                 connections[iConnection].controller = interface;
-                pipeRequest.direction = kUSBIn;
+                pipeRequest.bDescriptorType = kDescriptorTypeEndpoint;
+                pipeRequest.bLength = kDescriptorSizeEndpoint;
+                pipeRequest.bmAttributes=kEndpointDescriptorDirectionIn;
+                //pipeRequest.bmAttributes |= kEndpointDescriptorTransferTypeInterrupt;
+                pipeRequest.bInterval = 0;
+                pipeRequest.wMaxPacketSize = 0;
                 connections[iConnection].controllerIn = interface->FindNextPipe(NULL, &pipeRequest);
                 if (connections[iConnection].controllerIn == NULL)
                 {
@@ -138,7 +148,7 @@ bool WirelessGamingReceiver::start(IOService *provider)
                 }
                 else
                     connections[iConnection].controllerIn->retain();
-                pipeRequest.direction = kUSBOut;
+                pipeRequest.bmAttributes=kEndpointDescriptorDirectionOut;
                 connections[iConnection].controllerOut = interface->FindNextPipe(NULL, &pipeRequest);
                 if (connections[iConnection].controllerOut == NULL)
                 {
@@ -266,7 +276,7 @@ bool WirelessGamingReceiver::QueueRead(int index)
     complete.action = _ReadComplete;
     complete.parameter = data;
     
-    err = connections[index].controllerIn->Read(data->buffer, 0, 0, data->buffer->getLength(), &complete);
+    err = connections[index].controllerIn->io(data->buffer, data->buffer->getLength(), &complete);
     if (err == kIOReturnSuccess)
         return true;
         

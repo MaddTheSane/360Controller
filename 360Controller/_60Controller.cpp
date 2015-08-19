@@ -471,23 +471,40 @@ bool Xbox360Peripheral::start(IOService *provider)
 interfacefound:
     interface->open(this);
     // Find pipes
-    pipe.direction=kUSBIn;
-    pipe.interval=0;
-    pipe.type=kUSBInterrupt;
-    pipe.maxPacketSize=0;
-    inPipe=interface->FindNextPipe(NULL,&pipe);
+    // virtual IOUSBHostPipe* FindNextPipe(IOUSBHostPipe* current, IOUSBFindEndpointRequest* request) __attribute__((deprecated));
+    // virtual IOUSBHostPipe* FindNextPipe(IOUSBHostPipe* current, IOUSBFindEndpointRequest* request, bool withRetain) __attribute__((deprecated));
+    // Replacement: getInterfaceDescriptor and StandardUSB::getNextAssociatedDescriptorWithType to find an endpoint descriptor,
+    // then use copyPipe to retrieve the pipe object
+
+    intf = interface->getInterfaceDescriptor();
+    pipe.bLength = kDescriptorSizeEndpoint;
+    pipe.bDescriptorType = kDescriptorTypeEndpoint;
+    pipe.bmAttributes=kEndpointDescriptorDirectionIn;
+    pipe.bmAttributes |= kEndpointDescriptorTransferTypeInterrupt;
+    pipe.bInterval=0;
+    pipe.wMaxPacketSize=0;
+    const Descriptor *aDes;
+    {
+        //Descriptor des = {0};
+        aDes = getNextAssociatedDescriptorWithType(cd, intf, &pipe, kDescriptorTypeEndpoint);
+    }
+    inPipe=interface->copyPipe(((const EndpointDescriptor*)aDes)->bEndpointAddress);
     if(inPipe==NULL) {
         IOLog("start - unable to find in pipe\n");
         goto fail;
     }
-    inPipe->retain();
-    pipe.direction=kUSBOut;
-    outPipe=interface->FindNextPipe(NULL,&pipe);
+    {
+        //Descriptor des = {0};
+        aDes = getNextAssociatedDescriptorWithType(cd, intf, &pipe, kDescriptorTypeEndpoint);
+    }
+
+    pipe.bmAttributes=kEndpointDescriptorDirectionOut;
+    pipe.bmAttributes |= kEndpointDescriptorTransferTypeInterrupt;
+    outPipe=interface->copyPipe(((const EndpointDescriptor*)aDes)->bEndpointAddress);
     if(outPipe==NULL) {
         IOLog("start - unable to find out pipe\n");
         goto fail;
     }
-    outPipe->retain();
     // Get a buffer
     inBuffer=IOBufferMemoryDescriptor::inTaskWithOptions(kernel_task,0,GetMaxPacketSize(inPipe));
     if(inBuffer==NULL) {
@@ -516,18 +533,26 @@ interfacefound:
         goto nochat;
     }
 	serialIn->open(this);
+    
 	// Find chatpad pipe
-	pipe.direction = kUSBIn;
-	pipe.interval = 0;
-	pipe.type = kUSBInterrupt;
-	pipe.maxPacketSize = 0;
-	serialInPipe = serialIn->FindNextPipe(NULL, &pipe);
+    bzero(&pipe, sizeof(pipe));
+    pipe.bLength = kDescriptorSizeEndpoint;
+    pipe.bDescriptorType = kDescriptorTypeEndpoint;
+    pipe.bmAttributes=kEndpointDescriptorDirectionIn;
+    pipe.bmAttributes |= kEndpointDescriptorTransferTypeInterrupt;
+	pipe.bInterval = 0;
+	pipe.wMaxPacketSize = 0;
+    {
+        //Descriptor des = {0};
+        aDes = getNextAssociatedDescriptorWithType(cd, intf, &pipe, kDescriptorTypeEndpoint);
+    }
+
+	serialInPipe = serialIn->copyPipe(((const EndpointDescriptor*)aDes)->bEndpointAddress);
 	if (serialInPipe == NULL)
 	{
 		IOLog("start - unable to find chatpad in pipe\n");
 		goto fail;
 	}
-	serialInPipe->retain();
 	// Get a buffer for the chatpad
 	serialInBuffer = IOBufferMemoryDescriptor::inTaskWithOptions(kernel_task, 0, GetMaxPacketSize(serialInPipe));
 	if (serialInBuffer == NULL)
