@@ -28,13 +28,11 @@
 #ifndef Feedback360_Feedback360Effect_h
 #define Feedback360_Feedback360Effect_h
 
-#include <IOKit/IOCFPlugin.h>
+#include <IOKit/IOCFPlugIn.h>
 #include <ForceFeedback/IOForceFeedbackLib.h>
 #include <math.h>
 #include <string.h>
-
-#define MIN(a,b) (((a)<(b))?(a):(b))
-#define MAX(a,b) (((a)>(b))?(a):(b))
+#include <algorithm>
 
 //----------------------------------------------------------------------------------------------
 //	Effects
@@ -53,35 +51,39 @@
 #define	FRICTION		0x0A
 #define	CUSTOM_FORCE	0x0B
 
-#define SCALE_MAX 255
+#define SCALE_MAX (LONG)255
+
+double CurrentTimeUsingMach();
 
 class Feedback360Effect
 {
 public:
-    Feedback360Effect();
-    
+    Feedback360Effect(FFEffectDownloadID theHand);
+    Feedback360Effect(const Feedback360Effect &src);
+
     LONG Calc(LONG *LeftLevel, LONG *RightLevel);
-    
-    CFUUIDRef		Type;
+
+	CFUUIDRef		Type;
     FFEffectDownloadID Handle;
-    
-    FFEFFECT		DiEffect;
+
+	FFEFFECT		DiEffect;
     FFENVELOPE		DiEnvelope;
-    FFCONSTANTFORCE	DiConstantForce;
+	FFCONSTANTFORCE	DiConstantForce;
     FFCUSTOMFORCE   DiCustomForce;
-    FFPERIODIC		DiPeriodic;
-    FFRAMPFORCE		DiRampforce;
-    
+	FFPERIODIC		DiPeriodic;
+	FFRAMPFORCE		DiRampforce;
+
     DWORD			Status;
     DWORD			PlayCount;
-    CFAbsoluteTime	StartTime;
-    
-    CFAbsoluteTime  LastTime;
+    double			StartTime;
+
+    double			LastTime;
     DWORD           Index;
-    
+
 private:
+    Feedback360Effect();
     void CalcEnvelope(ULONG Duration, ULONG CurrentPos, LONG *NormalRate, LONG *AttackLevel, LONG *FadeLevel);
-    void CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalRate, LONG AttackLevel, LONG FadeLevel, LONG * NormalLevel);    
+    void CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalRate, LONG AttackLevel, LONG FadeLevel, LONG * NormalLevel);
 };
 
 #endif

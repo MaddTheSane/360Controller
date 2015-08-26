@@ -25,12 +25,28 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3F9B7C0A1A729C1600149949 /* artworks.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9B7C091A729C1600149949 /* artworks.xcassets */; };
+		3FE789A01A701F3400FF4065 /* Pref360StyleKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE7899E1A701F3400FF4065 /* Pref360StyleKit.h */; };
+		3FE789A11A701F3400FF4065 /* Pref360StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7899F1A701F3400FF4065 /* Pref360StyleKit.m */; };
+		3FE789A41A701FE200FF4065 /* MyWhole360Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE789A21A701FE200FF4065 /* MyWhole360Controller.h */; };
+		3FE789A51A701FE200FF4065 /* MyWhole360Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE789A31A701FE200FF4065 /* MyWhole360Controller.m */; };
+		3FE789A81A70281200FF4065 /* MyBatteryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE789A61A70281200FF4065 /* MyBatteryMonitor.h */; };
+		3FE789A91A70281200FF4065 /* MyBatteryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE789A71A70281200FF4065 /* MyBatteryMonitor.m */; };
+		3FE789AC1A70288F00FF4065 /* MyDeadZoneViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE789AA1A70288F00FF4065 /* MyDeadZoneViewer.h */; };
+		3FE789AD1A70288F00FF4065 /* MyDeadZoneViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE789AB1A70288F00FF4065 /* MyDeadZoneViewer.m */; };
+		3FE789B01A70331C00FF4065 /* MyTrigger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE789AE1A70331C00FF4065 /* MyTrigger.h */; };
+		3FE789B11A70331C00FF4065 /* MyTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE789AF1A70331C00FF4065 /* MyTrigger.m */; };
+		551CDFF9196EEE76000869B6 /* Pref360ControlPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551CDFFB196EEE76000869B6 /* Pref360ControlPref.xib */; };
+		553BDB44196DF3BA00D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
+		553BDB45196DF41500D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
+		553BDB46196DF41600D1F569 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
+		55699CD61971D96E00C40A31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55699CD51971D96E00C40A31 /* Images.xcassets */; };
+		55699CD71971DA8100C40A31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55699CD51971D96E00C40A31 /* Images.xcassets */; };
+		55750C09190AFB5B0047FF41 /* DaemonLEDs.m in Sources */ = {isa = PBXBuildFile; fileRef = 55750C08190AFB5B0047FF41 /* DaemonLEDs.m */; };
 		55852E1F18D6B5580009BF55 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55852E2118D6B5580009BF55 /* Localizable.strings */; };
 		55A2B8D518C116BD006829A2 /* 360Daemon.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637C718C10CB400CE933D /* 360Daemon.m */; };
 		55A2B8D818C116E0006829A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55A2B8DA18C116E0006829A2 /* Localizable.strings */; };
 		55A2B8DD18C11A2F006829A2 /* com.mice.360Daemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B637CD18C10CB400CE933D /* com.mice.360Daemon.plist */; };
-		55B13FC218C51F0600ACD9AC /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B13FC118C51F0600ACD9AC /* Media.xcassets */; };
-		55B13FC318C51F0600ACD9AC /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B13FC118C51F0600ACD9AC /* Media.xcassets */; };
 		55B636B818C104DB00CE933D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B636B718C104DB00CE933D /* Cocoa.framework */; };
 		55B636C218C104DB00CE933D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B636C018C104DB00CE933D /* InfoPlist.strings */; };
 		55B6371618C1058E00CE933D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B636F918C1054F00CE933D /* InfoPlist.strings */; };
@@ -50,40 +66,25 @@
 		55B6375318C1098D00CE933D /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B636F718C1054F00CE933D /* Controller.h */; };
 		55B6375418C1098D00CE933D /* ControlStruct.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B636F818C1054F00CE933D /* ControlStruct.h */; };
 		55B6375518C1098D00CE933D /* xbox360hid.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B636FD18C1054F00CE933D /* xbox360hid.h */; };
-		55B6375718C1099F00CE933D /* Feedback360.plugin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B6371F18C108A500CE933D /* Feedback360.plugin */; };
+		55B6375718C1099F00CE933D /* Feedback360.plugin in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 55B6371F18C108A500CE933D /* Feedback360.plugin */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55B6375918C109E600CE933D /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375818C109E600CE933D /* ForceFeedback.framework */; };
-		55B6375B18C109ED00CE933D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375A18C109ED00CE933D /* IOKit.framework */; };
 		55B6377218C10A5400CE933D /* DriverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6376C18C10A5400CE933D /* DriverTool.m */; };
 		55B6377618C10ACC00CE933D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B636BC18C104DB00CE933D /* Foundation.framework */; };
 		55B6377E18C10B0B00CE933D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B636B718C104DB00CE933D /* Cocoa.framework */; };
 		55B6378018C10B0B00CE933D /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6377F18C10B0B00CE933D /* PreferencePanes.framework */; };
 		55B6378618C10B0B00CE933D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B6378418C10B0B00CE933D /* InfoPlist.strings */; };
-		55B6379718C10B8700CE933D /* Pref360ControlPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B6379318C10B8700CE933D /* Pref360ControlPref.xib */; };
 		55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379A18C10C0C00CE933D /* DeviceItem.h */; };
 		55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379B18C10C0C00CE933D /* DeviceItem.m */; };
 		55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379C18C10C0C00CE933D /* DeviceLister.h */; };
 		55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379D18C10C0C00CE933D /* DeviceLister.m */; };
-		55B637AE18C10C0C00CE933D /* MyAnalogStick.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6379E18C10C0C00CE933D /* MyAnalogStick.h */; };
-		55B637AF18C10C0C00CE933D /* MyAnalogStick.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B6379F18C10C0C00CE933D /* MyAnalogStick.m */; };
-		55B637B018C10C0C00CE933D /* MyCentreButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A018C10C0C00CE933D /* MyCentreButtons.h */; };
-		55B637B118C10C0C00CE933D /* MyCentreButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A118C10C0C00CE933D /* MyCentreButtons.m */; };
-		55B637B218C10C0C00CE933D /* MyDigitalStick.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A218C10C0C00CE933D /* MyDigitalStick.h */; };
-		55B637B318C10C0C00CE933D /* MyDigitalStick.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A318C10C0C00CE933D /* MyDigitalStick.m */; };
-		55B637B418C10C0C00CE933D /* MyMainButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A418C10C0C00CE933D /* MyMainButtons.h */; };
-		55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A518C10C0C00CE933D /* MyMainButtons.m */; };
-		55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A618C10C0C00CE933D /* MyShoulderButton.h */; };
-		55B637B718C10C0C00CE933D /* MyShoulderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A718C10C0C00CE933D /* MyShoulderButton.m */; };
 		55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637A818C10C0C00CE933D /* Pref360ControlPref.h */; };
 		55B637B918C10C0C00CE933D /* Pref360ControlPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637A918C10C0C00CE933D /* Pref360ControlPref.m */; };
-		55B637BE18C10C2400CE933D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B637BA18C10C2400CE933D /* Images.xcassets */; };
 		55B637C018C10C2400CE933D /* pref360controlpref.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 55B637BC18C10C2400CE933D /* pref360controlpref.tiff */; };
-		55B637C418C10C5E00CE933D /* DriverTool in Resources */ = {isa = PBXBuildFile; fileRef = 55B6376018C10A3200CE933D /* DriverTool */; };
 		55B637D318C10CB400CE933D /* Alert.tif in Resources */ = {isa = PBXBuildFile; fileRef = 55B637CC18C10CB400CE933D /* Alert.tif */; };
 		55B637D518C10CB400CE933D /* ControlPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637CF18C10CB400CE933D /* ControlPrefs.m */; };
 		55B637DD18C10CCC00CE933D /* ControlPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B637CF18C10CB400CE933D /* ControlPrefs.m */; };
 		55B637DF18C10CFE00CE933D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B637DE18C10CFE00CE933D /* Security.framework */; };
 		55B637E018C10D0D00CE933D /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375818C109E600CE933D /* ForceFeedback.framework */; };
-		55B637E118C10D1400CE933D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375A18C109ED00CE933D /* IOKit.framework */; };
 		55B6380018C10DA300CE933D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B637F718C10DA300CE933D /* InfoPlist.strings */; };
 		55B6380318C10DA300CE933D /* Wireless360Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55B637FB18C10DA300CE933D /* Wireless360Controller.cpp */; };
 		55B6380418C10DA300CE933D /* Wireless360Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B637FC18C10DA300CE933D /* Wireless360Controller.h */; };
@@ -96,14 +97,23 @@
 		55B6383318C10EBE00CE933D /* WirelessHIDDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55B6382918C10EBE00CE933D /* WirelessHIDDevice.cpp */; };
 		55B6383418C10EBE00CE933D /* WirelessHIDDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6382A18C10EBE00CE933D /* WirelessHIDDevice.h */; };
 		55B6384618C10FE200CE933D /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375818C109E600CE933D /* ForceFeedback.framework */; };
-		55B6384718C10FE700CE933D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375A18C109ED00CE933D /* IOKit.framework */; };
 		55BD614018F0878900F36FA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55BD613E18F0878900F36FA4 /* InfoPlist.strings */; };
 		55BD614318F0878900F36FA4 /* _60Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD614218F0878900F36FA4 /* _60Audio.cpp */; };
 		55BD614F18F087E500F36FA4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6372018C108A500CE933D /* CoreFoundation.framework */; };
 		55BD615518F087E500F36FA4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55BD615318F087E500F36FA4 /* InfoPlist.strings */; };
 		55BD615B18F0880400F36FA4 /* 360AudioDriver.bundle in Copy Plug-ins */ = {isa = PBXBuildFile; fileRef = 55BD614E18F087E500F36FA4 /* 360AudioDriver.bundle */; };
-		55BD615E18F0883200F36FA4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375A18C109ED00CE933D /* IOKit.framework */; };
+		55BD615E18F0883200F36FA4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553BDB43196DF3BA00D1F569 /* IOKit.framework */; };
 		55BD616118F08ACE00F36FA4 /* 360Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD615F18F08ACE00F36FA4 /* 360Driver.cpp */; };
+		55F7E7C319D8C32000525388 /* DriverTool in Copy Tools */ = {isa = PBXBuildFile; fileRef = 55B6376018C10A3200CE933D /* DriverTool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		55FE3CA218D7B77800D69E84 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6372018C108A500CE933D /* CoreFoundation.framework */; };
+		55FE3CAB18D7B78D00D69E84 /* testhaptic.c in Sources */ = {isa = PBXBuildFile; fileRef = 55B6373918C108D200CE933D /* testhaptic.c */; };
+		55FE3CAD18D7B7B600D69E84 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FE3CAC18D7B7B600D69E84 /* SDL2.framework */; };
+		5B943BE11A83EC6600E77A79 /* MyAnalogStick.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B943BDF1A83EC6600E77A79 /* MyAnalogStick.h */; };
+		5B943BE21A83EC6600E77A79 /* MyAnalogStick.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B943BE01A83EC6600E77A79 /* MyAnalogStick.m */; };
+		622A73C21A7C339000784C02 /* MyWhole360ControllerMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 622A73C01A7C339000784C02 /* MyWhole360ControllerMapper.h */; };
+		622A73C31A7C339000784C02 /* MyWhole360ControllerMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 622A73C11A7C339000784C02 /* MyWhole360ControllerMapper.m */; };
+		622A73CE1A7C879300784C02 /* BindingTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 622A73CC1A7C879300784C02 /* BindingTableView.h */; };
+		622A73CF1A7C879300784C02 /* BindingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 622A73CD1A7C879300784C02 /* BindingTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +180,13 @@
 			remoteGlobalIDString = 55BD614D18F087E500F36FA4;
 			remoteInfo = 360AudioDriver;
 		};
+		55DA7C6C1926BED3002F6A3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55B636AC18C104DB00CE933D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55B6371E18C108A500CE933D;
+			remoteInfo = Feedback360;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -183,14 +200,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
-		55B6375618C1099700CE933D /* CopyFiles */ = {
+		55B6375618C1099700CE933D /* Copy PlugIns */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				55B6375718C1099F00CE933D /* Feedback360.plugin in CopyFiles */,
+				55B6375718C1099F00CE933D /* Feedback360.plugin in Copy PlugIns */,
 			);
+			name = "Copy PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		55BD615A18F087F500F36FA4 /* Copy Plug-ins */ = {
@@ -204,13 +222,44 @@
 			name = "Copy Plug-ins";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55F7E7C219D8C31300525388 /* Copy Tools */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				55F7E7C319D8C32000525388 /* DriverTool in Copy Tools */,
+			);
+			name = "Copy Tools";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F9B7C091A729C1600149949 /* artworks.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = artworks.xcassets; path = Resources/artworks.xcassets; sourceTree = "<group>"; };
+		3FE7899E1A701F3400FF4065 /* Pref360StyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pref360StyleKit.h; sourceTree = "<group>"; };
+		3FE7899F1A701F3400FF4065 /* Pref360StyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pref360StyleKit.m; sourceTree = "<group>"; };
+		3FE789A21A701FE200FF4065 /* MyWhole360Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWhole360Controller.h; sourceTree = "<group>"; };
+		3FE789A31A701FE200FF4065 /* MyWhole360Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWhole360Controller.m; sourceTree = "<group>"; };
+		3FE789A61A70281200FF4065 /* MyBatteryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBatteryMonitor.h; sourceTree = "<group>"; };
+		3FE789A71A70281200FF4065 /* MyBatteryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBatteryMonitor.m; sourceTree = "<group>"; };
+		3FE789AA1A70288F00FF4065 /* MyDeadZoneViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDeadZoneViewer.h; sourceTree = "<group>"; };
+		3FE789AB1A70288F00FF4065 /* MyDeadZoneViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDeadZoneViewer.m; sourceTree = "<group>"; };
+		3FE789AE1A70331C00FF4065 /* MyTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrigger.h; sourceTree = "<group>"; };
+		3FE789AF1A70331C00FF4065 /* MyTrigger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTrigger.m; sourceTree = "<group>"; };
+		551B911F1A68BDB000EA6527 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Pref360ControlPref.xib; sourceTree = "<group>"; };
+		551CDFFD196EF52F000869B6 /* Pref360Control_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pref360Control_Prefix.pch; sourceTree = "<group>"; };
+		551CDFFF196EFD34000869B6 /* Install360Controller.pkgproj */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Install360Controller.pkgproj; sourceTree = "<group>"; };
+		551CE001196EFD34000869B6 /* finish.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = finish.sh; sourceTree = "<group>"; };
+		551CE002196EFD34000869B6 /* upgrade.sh */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = text.script.sh; path = upgrade.sh; sourceTree = "<group>"; };
+		551CE004196EFD34000869B6 /* Welcome.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Welcome.rtf; sourceTree = "<group>"; };
+		553BDB43196DF3BA00D1F569 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		55699CD51971D96E00C40A31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		55750C07190AFB5B0047FF41 /* DaemonLEDs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaemonLEDs.h; sourceTree = "<group>"; usesTabs = 1; };
+		55750C08190AFB5B0047FF41 /* DaemonLEDs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaemonLEDs.m; sourceTree = "<group>"; usesTabs = 1; };
 		55852E2018D6B5580009BF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55A2B8DB18C116E2006829A2 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55B13FC018C51DD400ACD9AC /* Feedback360.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; path = Feedback360.exp; sourceTree = "<group>"; };
-		55B13FC118C51F0600ACD9AC /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55B636B418C104DB00CE933D /* 360Daemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 360Daemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B636B718C104DB00CE933D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		55B636BA18C104DB00CE933D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -219,85 +268,70 @@
 		55B636BF18C104DB00CE933D /* 360DaemonApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "360DaemonApp-Info.plist"; sourceTree = "<group>"; };
 		55B636C118C104DB00CE933D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B636C518C104DB00CE933D /* 360DaemonApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "360DaemonApp-Prefix.pch"; sourceTree = "<group>"; };
-		55B636D618C104DB00CE933D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		55B636EF18C1054F00CE933D /* _60Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _60Controller.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F018C1054F00CE933D /* _60Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _60Controller.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F118C1054F00CE933D /* ChatPad.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChatPad.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F218C1054F00CE933D /* ChatPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatPad.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F318C1054F00CE933D /* chatpadhid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chatpadhid.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F418C1054F00CE933D /* chatpadkeys.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = chatpadkeys.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F518C1054F00CE933D /* chatpadkeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chatpadkeys.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F618C1054F00CE933D /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F718C1054F00CE933D /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B636F818C1054F00CE933D /* ControlStruct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlStruct.h; sourceTree = "<group>"; usesTabs = 0; };
+		55B636EF18C1054F00CE933D /* _60Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _60Controller.cpp; sourceTree = "<group>"; };
+		55B636F018C1054F00CE933D /* _60Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _60Controller.h; sourceTree = "<group>"; };
+		55B636F118C1054F00CE933D /* ChatPad.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChatPad.cpp; sourceTree = "<group>"; };
+		55B636F218C1054F00CE933D /* ChatPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatPad.h; sourceTree = "<group>"; };
+		55B636F318C1054F00CE933D /* chatpadhid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chatpadhid.h; sourceTree = "<group>"; };
+		55B636F418C1054F00CE933D /* chatpadkeys.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = chatpadkeys.cpp; sourceTree = "<group>"; usesTabs = 1; };
+		55B636F518C1054F00CE933D /* chatpadkeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chatpadkeys.h; sourceTree = "<group>"; };
+		55B636F618C1054F00CE933D /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
+		55B636F718C1054F00CE933D /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		55B636F818C1054F00CE933D /* ControlStruct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlStruct.h; sourceTree = "<group>"; };
 		55B636FA18C1054F00CE933D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B636FB18C1054F00CE933D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55B636FD18C1054F00CE933D /* xbox360hid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xbox360hid.h; sourceTree = "<group>"; usesTabs = 0; };
+		55B636FD18C1054F00CE933D /* xbox360hid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xbox360hid.h; sourceTree = "<group>"; };
 		55B6370718C1057100CE933D /* 360Controller.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 360Controller.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B6370818C1057100CE933D /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		55B6371F18C108A500CE933D /* Feedback360.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Feedback360.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B6372018C108A500CE933D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		55B6372D18C108D200CE933D /* devlink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = devlink.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B6372E18C108D200CE933D /* devlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = devlink.h; sourceTree = "<group>"; usesTabs = 0; };
+		55B6372D18C108D200CE933D /* devlink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = devlink.cpp; sourceTree = "<group>"; };
+		55B6372E18C108D200CE933D /* devlink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = devlink.h; sourceTree = "<group>"; };
 		55B6373018C108D200CE933D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		55B6373118C108D200CE933D /* Feedback360.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Feedback360.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B6373218C108D200CE933D /* Feedback360.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feedback360.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B6373618C108D200CE933D /* Feedback360Effect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Feedback360Effect.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B6373718C108D200CE933D /* Feedback360Effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feedback360Effect.h; sourceTree = "<group>"; usesTabs = 0; };
+		55B6373118C108D200CE933D /* Feedback360.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Feedback360.cpp; sourceTree = "<group>"; };
+		55B6373218C108D200CE933D /* Feedback360.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feedback360.h; sourceTree = "<group>"; };
+		55B6373618C108D200CE933D /* Feedback360Effect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Feedback360Effect.cpp; sourceTree = "<group>"; };
+		55B6373718C108D200CE933D /* Feedback360Effect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feedback360Effect.h; sourceTree = "<group>"; usesTabs = 1; };
 		55B6373818C108D200CE933D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55B6373918C108D200CE933D /* testhaptic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testhaptic.c; sourceTree = "<group>"; };
 		55B6373A18C108D200CE933D /* testrumble.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = testrumble.c; sourceTree = "<group>"; };
 		55B6375818C109E600CE933D /* ForceFeedback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ForceFeedback.framework; path = System/Library/Frameworks/ForceFeedback.framework; sourceTree = SDKROOT; };
-		55B6375A18C109ED00CE933D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		55B6376018C10A3200CE933D /* DriverTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DriverTool; sourceTree = BUILT_PRODUCTS_DIR; };
-		55B6376C18C10A5400CE933D /* DriverTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverTool.m; sourceTree = "<group>"; usesTabs = 0; };
+		55B6376C18C10A5400CE933D /* DriverTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverTool.m; sourceTree = "<group>"; };
 		55B6377018C10A5400CE933D /* DriverTool_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverTool_Prefix.pch; sourceTree = "<group>"; };
 		55B6377118C10A5400CE933D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55B6377D18C10B0B00CE933D /* Pref360Control.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pref360Control.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B6377F18C10B0B00CE933D /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
 		55B6378518C10B0B00CE933D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		55B6379418C10B8700CE933D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Pref360ControlPref.xib; sourceTree = "<group>"; };
-		55B6379918C10B9F00CE933D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Pref360ControlPref.strings; sourceTree = "<group>"; };
-		55B6379A18C10C0C00CE933D /* DeviceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceItem.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B6379B18C10C0C00CE933D /* DeviceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceItem.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B6379C18C10C0C00CE933D /* DeviceLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLister.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B6379D18C10C0C00CE933D /* DeviceLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLister.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B6379E18C10C0C00CE933D /* MyAnalogStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnalogStick.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B6379F18C10C0C00CE933D /* MyAnalogStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnalogStick.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A018C10C0C00CE933D /* MyCentreButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCentreButtons.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A118C10C0C00CE933D /* MyCentreButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCentreButtons.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A218C10C0C00CE933D /* MyDigitalStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDigitalStick.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A318C10C0C00CE933D /* MyDigitalStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDigitalStick.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A418C10C0C00CE933D /* MyMainButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMainButtons.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A518C10C0C00CE933D /* MyMainButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMainButtons.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A618C10C0C00CE933D /* MyShoulderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyShoulderButton.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A718C10C0C00CE933D /* MyShoulderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyShoulderButton.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A818C10C0C00CE933D /* Pref360ControlPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pref360ControlPref.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B637A918C10C0C00CE933D /* Pref360ControlPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pref360ControlPref.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B637BA18C10C2400CE933D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		55B6379A18C10C0C00CE933D /* DeviceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceItem.h; sourceTree = "<group>"; };
+		55B6379B18C10C0C00CE933D /* DeviceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceItem.m; sourceTree = "<group>"; };
+		55B6379C18C10C0C00CE933D /* DeviceLister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceLister.h; sourceTree = "<group>"; };
+		55B6379D18C10C0C00CE933D /* DeviceLister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceLister.m; sourceTree = "<group>"; };
+		55B637A818C10C0C00CE933D /* Pref360ControlPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pref360ControlPref.h; sourceTree = "<group>"; };
+		55B637A918C10C0C00CE933D /* Pref360ControlPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pref360ControlPref.m; sourceTree = "<group>"; };
 		55B637BB18C10C2400CE933D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55B637BC18C10C2400CE933D /* pref360controlpref.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = pref360controlpref.tiff; sourceTree = "<group>"; };
-		55B637C718C10CB400CE933D /* 360Daemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = 360Daemon.m; path = ../360Daemon/360Daemon.m; sourceTree = "<group>"; usesTabs = 0; };
-		55B637CC18C10CB400CE933D /* Alert.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = Alert.tif; path = ../360Daemon/Alert.tif; sourceTree = "<group>"; };
-		55B637CD18C10CB400CE933D /* com.mice.360Daemon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = com.mice.360Daemon.plist; path = ../360Daemon/com.mice.360Daemon.plist; sourceTree = "<group>"; };
-		55B637CE18C10CB400CE933D /* ControlPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlPrefs.h; path = ../360Daemon/ControlPrefs.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B637CF18C10CB400CE933D /* ControlPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControlPrefs.m; path = ../360Daemon/ControlPrefs.m; sourceTree = "<group>"; usesTabs = 0; };
+		55B637C718C10CB400CE933D /* 360Daemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = 360Daemon.m; sourceTree = "<group>"; };
+		55B637CC18C10CB400CE933D /* Alert.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Alert.tif; sourceTree = "<group>"; };
+		55B637CD18C10CB400CE933D /* com.mice.360Daemon.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.mice.360Daemon.plist; sourceTree = "<group>"; };
+		55B637CE18C10CB400CE933D /* ControlPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPrefs.h; sourceTree = "<group>"; };
+		55B637CF18C10CB400CE933D /* ControlPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPrefs.m; sourceTree = "<group>"; };
 		55B637DE18C10CFE00CE933D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		55B637E818C10D5000CE933D /* Wireless360Controller.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wireless360Controller.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B637F818C10DA300CE933D /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B637F918C10DA300CE933D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55B637FB18C10DA300CE933D /* Wireless360Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wireless360Controller.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B637FC18C10DA300CE933D /* Wireless360Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wireless360Controller.h; sourceTree = "<group>"; usesTabs = 0; };
+		55B637FB18C10DA300CE933D /* Wireless360Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wireless360Controller.cpp; sourceTree = "<group>"; };
+		55B637FC18C10DA300CE933D /* Wireless360Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wireless360Controller.h; sourceTree = "<group>"; };
 		55B6380E18C10E8700CE933D /* WirelessGamingReceiver.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WirelessGamingReceiver.kext; sourceTree = BUILT_PRODUCTS_DIR; };
-		55B6381D18C10EBE00CE933D /* devices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = devices.h; sourceTree = "<group>"; usesTabs = 0; };
+		55B6381D18C10EBE00CE933D /* devices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = devices.h; sourceTree = "<group>"; };
 		55B6381F18C10EBE00CE933D /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B6382018C10EBE00CE933D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55B6382218C10EBE00CE933D /* WirelessDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessDevice.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B6382318C10EBE00CE933D /* WirelessDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessDevice.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B6382418C10EBE00CE933D /* WirelessGamingReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessGamingReceiver.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B6382518C10EBE00CE933D /* WirelessGamingReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessGamingReceiver.h; sourceTree = "<group>"; usesTabs = 0; };
-		55B6382918C10EBE00CE933D /* WirelessHIDDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessHIDDevice.cpp; sourceTree = "<group>"; usesTabs = 0; };
-		55B6382A18C10EBE00CE933D /* WirelessHIDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessHIDDevice.h; sourceTree = "<group>"; usesTabs = 0; };
+		55B6382218C10EBE00CE933D /* WirelessDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessDevice.cpp; sourceTree = "<group>"; };
+		55B6382318C10EBE00CE933D /* WirelessDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessDevice.h; sourceTree = "<group>"; };
+		55B6382418C10EBE00CE933D /* WirelessGamingReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessGamingReceiver.cpp; sourceTree = "<group>"; };
+		55B6382518C10EBE00CE933D /* WirelessGamingReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessGamingReceiver.h; sourceTree = "<group>"; };
+		55B6382918C10EBE00CE933D /* WirelessHIDDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessHIDDevice.cpp; sourceTree = "<group>"; };
+		55B6382A18C10EBE00CE933D /* WirelessHIDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessHIDDevice.h; sourceTree = "<group>"; };
 		55BD613A18F0878900F36FA4 /* 360Audio.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 360Audio.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BD613D18F0878900F36FA4 /* 360Audio-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "360Audio-Info.plist"; sourceTree = "<group>"; };
 		55BD613F18F0878900F36FA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -310,6 +344,17 @@
 		55BD615618F087E500F36FA4 /* 360AudioDriver-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "360AudioDriver-Prefix.pch"; sourceTree = "<group>"; };
 		55BD615F18F08ACE00F36FA4 /* 360Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = 360Driver.cpp; sourceTree = "<group>"; };
 		55BD616018F08ACE00F36FA4 /* 360Driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 360Driver.h; sourceTree = "<group>"; };
+		55E1C62819708E7300EC9DD8 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = SOURCE_ROOT; };
+		55E1C62919708E7300EC9DD8 /* clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = clean.sh; sourceTree = SOURCE_ROOT; };
+		55E1C62A19708F8600EC9DD8 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.md; sourceTree = SOURCE_ROOT; };
+		55FE3CA118D7B77800D69E84 /* testhaptic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testhaptic; sourceTree = BUILT_PRODUCTS_DIR; };
+		55FE3CAC18D7B7B600D69E84 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
+		5B943BDF1A83EC6600E77A79 /* MyAnalogStick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnalogStick.h; sourceTree = "<group>"; };
+		5B943BE01A83EC6600E77A79 /* MyAnalogStick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnalogStick.m; sourceTree = "<group>"; };
+		622A73C01A7C339000784C02 /* MyWhole360ControllerMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWhole360ControllerMapper.h; sourceTree = "<group>"; };
+		622A73C11A7C339000784C02 /* MyWhole360ControllerMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWhole360ControllerMapper.m; sourceTree = "<group>"; };
+		622A73CC1A7C879300784C02 /* BindingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingTableView.h; sourceTree = "<group>"; };
+		622A73CD1A7C879300784C02 /* BindingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,7 +364,7 @@
 			files = (
 				55B636B818C104DB00CE933D /* Cocoa.framework in Frameworks */,
 				55B6384618C10FE200CE933D /* ForceFeedback.framework in Frameworks */,
-				55B6384718C10FE700CE933D /* IOKit.framework in Frameworks */,
+				553BDB45196DF41500D1F569 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +379,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B6375B18C109ED00CE933D /* IOKit.framework in Frameworks */,
+				553BDB44196DF3BA00D1F569 /* IOKit.framework in Frameworks */,
 				55B6375918C109E600CE933D /* ForceFeedback.framework in Frameworks */,
 				55B6372118C108A500CE933D /* CoreFoundation.framework in Frameworks */,
 			);
@@ -352,11 +397,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637E118C10D1400CE933D /* IOKit.framework in Frameworks */,
 				55B637E018C10D0D00CE933D /* ForceFeedback.framework in Frameworks */,
 				55B637DF18C10CFE00CE933D /* Security.framework in Frameworks */,
 				55B6377E18C10B0B00CE933D /* Cocoa.framework in Frameworks */,
 				55B6378018C10B0B00CE933D /* PreferencePanes.framework in Frameworks */,
+				553BDB46196DF41600D1F569 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,9 +435,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55FE3C9E18D7B77800D69E84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55FE3CAD18D7B7B600D69E84 /* SDL2.framework in Frameworks */,
+				55FE3CA218D7B77800D69E84 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		551CDFFE196EFD0A000869B6 /* Distribution */ = {
+			isa = PBXGroup;
+			children = (
+				551CDFFF196EFD34000869B6 /* Install360Controller.pkgproj */,
+				551CE000196EFD34000869B6 /* Scripts */,
+				551CE003196EFD34000869B6 /* Text */,
+			);
+			name = Distribution;
+			path = Install360Controller;
+			sourceTree = "<group>";
+		};
+		551CE000196EFD34000869B6 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				55E1C62819708E7300EC9DD8 /* build.sh */,
+				55E1C62919708E7300EC9DD8 /* clean.sh */,
+				551CE001196EFD34000869B6 /* finish.sh */,
+				551CE002196EFD34000869B6 /* upgrade.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		551CE003196EFD34000869B6 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				55E1C62A19708F8600EC9DD8 /* Readme.md */,
+				551CE004196EFD34000869B6 /* Welcome.rtf */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		55A2B8E018C11C7E006829A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,15 +535,17 @@
 				55B636EB18C1054F00CE933D /* 360Controller */,
 				55B637F618C10DA300CE933D /* Wireless360Controller */,
 				55B6381C18C10EBE00CE933D /* WirelessGamingReceiver */,
-				55B636BD18C104DB00CE933D /* 360DaemonApp */,
+				55B636BD18C104DB00CE933D /* 360Daemon */,
 				55B6376A18C10A5400CE933D /* DriverTool */,
 				55B6378118C10B0B00CE933D /* Pref360Control */,
 				55BD613B18F0878900F36FA4 /* 360Audio */,
 				55BD615018F087E500F36FA4 /* 360AudioDriver */,
+				551CDFFE196EFD0A000869B6 /* Distribution */,
 				55B636B618C104DB00CE933D /* Frameworks */,
 				55B636B518C104DB00CE933D /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		55B636B518C104DB00CE933D /* Products */ = {
 			isa = PBXGroup;
@@ -472,6 +559,7 @@
 				55B6380E18C10E8700CE933D /* WirelessGamingReceiver.kext */,
 				55BD613A18F0878900F36FA4 /* 360Audio.kext */,
 				55BD614E18F087E500F36FA4 /* 360AudioDriver.bundle */,
+				55FE3CA118D7B77800D69E84 /* testhaptic */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -479,17 +567,18 @@
 		55B636B618C104DB00CE933D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55FE3CAC18D7B7B600D69E84 /* SDL2.framework */,
+				553BDB43196DF3BA00D1F569 /* IOKit.framework */,
 				55B637DE18C10CFE00CE933D /* Security.framework */,
-				55B6375A18C109ED00CE933D /* IOKit.framework */,
 				55B6375818C109E600CE933D /* ForceFeedback.framework */,
 				55B636B718C104DB00CE933D /* Cocoa.framework */,
-				55B636D618C104DB00CE933D /* XCTest.framework */,
 				55B6372018C108A500CE933D /* CoreFoundation.framework */,
 				55B6377F18C10B0B00CE933D /* PreferencePanes.framework */,
 				55B636B918C104DB00CE933D /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
+			path = System/Library/Frameworks;
+			sourceTree = SDKROOT;
 		};
 		55B636B918C104DB00CE933D /* Other Frameworks */ = {
 			isa = PBXGroup;
@@ -502,15 +591,18 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		55B636BD18C104DB00CE933D /* 360DaemonApp */ = {
+		55B636BD18C104DB00CE933D /* 360Daemon */ = {
 			isa = PBXGroup;
 			children = (
 				55B637C718C10CB400CE933D /* 360Daemon.m */,
 				55B637CE18C10CB400CE933D /* ControlPrefs.h */,
 				55B637CF18C10CB400CE933D /* ControlPrefs.m */,
+				55750C07190AFB5B0047FF41 /* DaemonLEDs.h */,
+				55750C08190AFB5B0047FF41 /* DaemonLEDs.m */,
+				55699CD51971D96E00C40A31 /* Images.xcassets */,
 				55B636BE18C104DB00CE933D /* Supporting Files */,
 			);
-			path = 360DaemonApp;
+			path = 360Daemon;
 			sourceTree = "<group>";
 		};
 		55B636BE18C104DB00CE933D /* Supporting Files */ = {
@@ -522,7 +614,6 @@
 				55B636C018C104DB00CE933D /* InfoPlist.strings */,
 				55B636C518C104DB00CE933D /* 360DaemonApp-Prefix.pch */,
 				55A2B8DA18C116E0006829A2 /* Localizable.strings */,
-				55B13FC118C51F0600ACD9AC /* Media.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -570,23 +661,29 @@
 		55B6378118C10B0B00CE933D /* Pref360Control */ = {
 			isa = PBXGroup;
 			children = (
+				3FE7899E1A701F3400FF4065 /* Pref360StyleKit.h */,
+				3FE7899F1A701F3400FF4065 /* Pref360StyleKit.m */,
 				55B6379A18C10C0C00CE933D /* DeviceItem.h */,
 				55B6379B18C10C0C00CE933D /* DeviceItem.m */,
 				55B6379C18C10C0C00CE933D /* DeviceLister.h */,
 				55B6379D18C10C0C00CE933D /* DeviceLister.m */,
-				55B6379E18C10C0C00CE933D /* MyAnalogStick.h */,
-				55B6379F18C10C0C00CE933D /* MyAnalogStick.m */,
-				55B637A018C10C0C00CE933D /* MyCentreButtons.h */,
-				55B637A118C10C0C00CE933D /* MyCentreButtons.m */,
-				55B637A218C10C0C00CE933D /* MyDigitalStick.h */,
-				55B637A318C10C0C00CE933D /* MyDigitalStick.m */,
-				55B637A418C10C0C00CE933D /* MyMainButtons.h */,
-				55B637A518C10C0C00CE933D /* MyMainButtons.m */,
-				55B637A618C10C0C00CE933D /* MyShoulderButton.h */,
-				55B637A718C10C0C00CE933D /* MyShoulderButton.m */,
+				3FE789A21A701FE200FF4065 /* MyWhole360Controller.h */,
+				3FE789A31A701FE200FF4065 /* MyWhole360Controller.m */,
+				622A73C01A7C339000784C02 /* MyWhole360ControllerMapper.h */,
+				622A73C11A7C339000784C02 /* MyWhole360ControllerMapper.m */,
+				622A73CC1A7C879300784C02 /* BindingTableView.h */,
+				622A73CD1A7C879300784C02 /* BindingTableView.m */,
+				3FE789A61A70281200FF4065 /* MyBatteryMonitor.h */,
+				3FE789A71A70281200FF4065 /* MyBatteryMonitor.m */,
+				3FE789AA1A70288F00FF4065 /* MyDeadZoneViewer.h */,
+				3FE789AB1A70288F00FF4065 /* MyDeadZoneViewer.m */,
+				5B943BDF1A83EC6600E77A79 /* MyAnalogStick.h */,
+				5B943BE01A83EC6600E77A79 /* MyAnalogStick.m */,
+				3FE789AE1A70331C00FF4065 /* MyTrigger.h */,
+				3FE789AF1A70331C00FF4065 /* MyTrigger.m */,
 				55B637A818C10C0C00CE933D /* Pref360ControlPref.h */,
 				55B637A918C10C0C00CE933D /* Pref360ControlPref.m */,
-				55B6379318C10B8700CE933D /* Pref360ControlPref.xib */,
+				551CDFFB196EEE76000869B6 /* Pref360ControlPref.xib */,
 				55B6378218C10B0B00CE933D /* Supporting Files */,
 			);
 			path = Pref360Control;
@@ -595,11 +692,12 @@
 		55B6378218C10B0B00CE933D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				55B637BA18C10C2400CE933D /* Images.xcassets */,
 				55B637BB18C10C2400CE933D /* Info.plist */,
+				551CDFFD196EF52F000869B6 /* Pref360Control_Prefix.pch */,
 				55B637BC18C10C2400CE933D /* pref360controlpref.tiff */,
 				55B6378418C10B0B00CE933D /* InfoPlist.strings */,
 				55852E2118D6B5580009BF55 /* Localizable.strings */,
+				3F9B7C091A729C1600149949 /* artworks.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -658,6 +756,7 @@
 			);
 			path = 360AudioDriver;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		55BD615118F087E500F36FA4 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -690,14 +789,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637AE18C10C0C00CE933D /* MyAnalogStick.h in Headers */,
-				55B637B418C10C0C00CE933D /* MyMainButtons.h in Headers */,
-				55B637B618C10C0C00CE933D /* MyShoulderButton.h in Headers */,
-				55B637B018C10C0C00CE933D /* MyCentreButtons.h in Headers */,
+				5B943BE11A83EC6600E77A79 /* MyAnalogStick.h in Headers */,
+				3FE789A81A70281200FF4065 /* MyBatteryMonitor.h in Headers */,
+				3FE789A01A701F3400FF4065 /* Pref360StyleKit.h in Headers */,
+				3FE789AC1A70288F00FF4065 /* MyDeadZoneViewer.h in Headers */,
+				3FE789B01A70331C00FF4065 /* MyTrigger.h in Headers */,
+				3FE789A41A701FE200FF4065 /* MyWhole360Controller.h in Headers */,
+				622A73C21A7C339000784C02 /* MyWhole360ControllerMapper.h in Headers */,
 				55B637AA18C10C0C00CE933D /* DeviceItem.h in Headers */,
 				55B637AC18C10C0C00CE933D /* DeviceLister.h in Headers */,
 				55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */,
-				55B637B218C10C0C00CE933D /* MyDigitalStick.h in Headers */,
+				622A73CE1A7C879300784C02 /* BindingTableView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,7 +858,7 @@
 				55B6370218C1057100CE933D /* Frameworks */,
 				55B6370318C1057100CE933D /* Headers */,
 				55B6370418C1057100CE933D /* Resources */,
-				55B6375618C1099700CE933D /* CopyFiles */,
+				55B6375618C1099700CE933D /* Copy PlugIns */,
 			);
 			buildRules = (
 			);
@@ -810,6 +912,7 @@
 				55B6377818C10B0B00CE933D /* Frameworks */,
 				55B6377918C10B0B00CE933D /* Headers */,
 				55B6377A18C10B0B00CE933D /* Resources */,
+				55F7E7C219D8C31300525388 /* Copy Tools */,
 			);
 			buildRules = (
 			);
@@ -847,7 +950,6 @@
 				55B6380918C10E8700CE933D /* Frameworks */,
 				55B6380A18C10E8700CE933D /* Headers */,
 				55B6380B18C10E8700CE933D /* Resources */,
-				55B6380C18C10E8700CE933D /* Rez */,
 			);
 			buildRules = (
 			);
@@ -895,13 +997,30 @@
 			productReference = 55BD614E18F087E500F36FA4 /* 360AudioDriver.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		55FE3CA018D7B77800D69E84 /* testhaptic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55FE3CAA18D7B77800D69E84 /* Build configuration list for PBXNativeTarget "testhaptic" */;
+			buildPhases = (
+				55FE3C9D18D7B77800D69E84 /* Sources */,
+				55FE3C9E18D7B77800D69E84 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55DA7C6D1926BED3002F6A3A /* PBXTargetDependency */,
+			);
+			name = testhaptic;
+			productName = testhaptic;
+			productReference = 55FE3CA118D7B77800D69E84 /* testhaptic */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		55B636AC18C104DB00CE933D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = GitHub;
 			};
 			buildConfigurationList = 55B636AF18C104DB00CE933D /* Build configuration list for PBXProject "360 Driver" */;
@@ -918,6 +1037,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				55B6383818C10F8E00CE933D /* Whole Driver */,
 				55B6375F18C10A3200CE933D /* DriverTool */,
 				55B636B318C104DB00CE933D /* 360Daemon */,
 				55B6371E18C108A500CE933D /* Feedback360 */,
@@ -927,7 +1047,7 @@
 				55B6380D18C10E8700CE933D /* WirelessGamingReceiver */,
 				55BD613918F0878900F36FA4 /* 360Audio */,
 				55BD614D18F087E500F36FA4 /* 360AudioDriver */,
-				55B6383818C10F8E00CE933D /* Whole Driver */,
+				55FE3CA018D7B77800D69E84 /* testhaptic */,
 			);
 		};
 /* End PBXProject section */
@@ -937,9 +1057,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55699CD61971D96E00C40A31 /* Images.xcassets in Resources */,
 				55B636C218C104DB00CE933D /* InfoPlist.strings in Resources */,
 				55A2B8D818C116E0006829A2 /* Localizable.strings in Resources */,
-				55B13FC218C51F0600ACD9AC /* Media.xcassets in Resources */,
 				55B637D318C10CB400CE933D /* Alert.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -964,13 +1084,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637BE18C10C2400CE933D /* Images.xcassets in Resources */,
 				55B6378618C10B0B00CE933D /* InfoPlist.strings in Resources */,
+				55699CD71971DA8100C40A31 /* Images.xcassets in Resources */,
+				3F9B7C0A1A729C1600149949 /* artworks.xcassets in Resources */,
 				55B637C018C10C2400CE933D /* pref360controlpref.tiff in Resources */,
 				55852E1F18D6B5580009BF55 /* Localizable.strings in Resources */,
-				55B6379718C10B8700CE933D /* Pref360ControlPref.xib in Resources */,
-				55B13FC318C51F0600ACD9AC /* Media.xcassets in Resources */,
-				55B637C418C10C5E00CE933D /* DriverTool in Resources */,
+				551CDFF9196EEE76000869B6 /* Pref360ControlPref.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,16 +1127,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXRezBuildPhase section */
-		55B6380C18C10E8700CE933D /* Rez */ = {
-			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXRezBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		55B636B018C104DB00CE933D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1025,6 +1134,7 @@
 			files = (
 				55B637D518C10CB400CE933D /* ControlPrefs.m in Sources */,
 				55A2B8D518C116BD006829A2 /* 360Daemon.m in Sources */,
+				55750C09190AFB5B0047FF41 /* DaemonLEDs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,15 +1171,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B637AF18C10C0C00CE933D /* MyAnalogStick.m in Sources */,
+				5B943BE21A83EC6600E77A79 /* MyAnalogStick.m in Sources */,
 				55B637AD18C10C0C00CE933D /* DeviceLister.m in Sources */,
-				55B637B118C10C0C00CE933D /* MyCentreButtons.m in Sources */,
+				3FE789A51A701FE200FF4065 /* MyWhole360Controller.m in Sources */,
+				3FE789AD1A70288F00FF4065 /* MyDeadZoneViewer.m in Sources */,
+				3FE789A11A701F3400FF4065 /* Pref360StyleKit.m in Sources */,
 				55B637B918C10C0C00CE933D /* Pref360ControlPref.m in Sources */,
+				3FE789A91A70281200FF4065 /* MyBatteryMonitor.m in Sources */,
+				622A73CF1A7C879300784C02 /* BindingTableView.m in Sources */,
 				55B637AB18C10C0C00CE933D /* DeviceItem.m in Sources */,
-				55B637B518C10C0C00CE933D /* MyMainButtons.m in Sources */,
-				55B637B718C10C0C00CE933D /* MyShoulderButton.m in Sources */,
 				55B637DD18C10CCC00CE933D /* ControlPrefs.m in Sources */,
-				55B637B318C10C0C00CE933D /* MyDigitalStick.m in Sources */,
+				622A73C31A7C339000784C02 /* MyWhole360ControllerMapper.m in Sources */,
+				3FE789B11A70331C00FF4065 /* MyTrigger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,6 +1217,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				55BD616118F08ACE00F36FA4 /* 360Driver.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55FE3C9D18D7B77800D69E84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55FE3CAB18D7B78D00D69E84 /* testhaptic.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1155,9 +1276,22 @@
 			target = 55BD614D18F087E500F36FA4 /* 360AudioDriver */;
 			targetProxy = 55BD615C18F0880B00F36FA4 /* PBXContainerItemProxy */;
 		};
+		55DA7C6D1926BED3002F6A3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55B6371E18C108A500CE933D /* Feedback360 */;
+			targetProxy = 55DA7C6C1926BED3002F6A3A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		551CDFFB196EEE76000869B6 /* Pref360ControlPref.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				551B911F1A68BDB000EA6527 /* en */,
+			);
+			name = Pref360ControlPref.xib;
+			sourceTree = "<group>";
+		};
 		55852E2118D6B5580009BF55 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1204,15 +1338,6 @@
 				55B6378518C10B0B00CE933D /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		55B6379318C10B8700CE933D /* Pref360ControlPref.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55B6379418C10B8700CE933D /* Base */,
-				55B6379918C10B9F00CE933D /* en */,
-			);
-			name = Pref360ControlPref.xib;
 			sourceTree = "<group>";
 		};
 		55B637F718C10DA300CE933D /* InfoPlist.strings */ = {
@@ -1266,7 +1391,6 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1.0.0d15;
@@ -1286,11 +1410,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
 				VERSIONING_SYSTEM = "apple-generic";
+				WARNING_CFLAGS = (
+					"-Wno-unknown-warning-option",
+					"-Wno-deprecated-register",
+				);
 			};
 			name = Debug;
 		};
@@ -1310,7 +1438,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d15;
@@ -1324,10 +1452,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = binary;
 				VERSIONING_SYSTEM = "apple-generic";
+				WARNING_CFLAGS = (
+					"-Wno-unknown-warning-option",
+					"-Wno-deprecated-register",
+				);
 			};
 			name = Release;
 		};
@@ -1336,8 +1468,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "360DaemonApp/360DaemonApp-Prefix.pch";
-				INFOPLIST_FILE = "360DaemonApp/360DaemonApp-Info.plist";
+				GCC_PREFIX_HEADER = "360Daemon/360DaemonApp-Prefix.pch";
+				INFOPLIST_FILE = "360Daemon/360DaemonApp-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application Support/MICE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1348,9 +1480,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "360DaemonApp/360DaemonApp-Prefix.pch";
-				INFOPLIST_FILE = "360DaemonApp/360DaemonApp-Info.plist";
+				GCC_PREFIX_HEADER = "360Daemon/360DaemonApp-Prefix.pch";
+				INFOPLIST_FILE = "360Daemon/360DaemonApp-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Application Support/MICE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -1360,6 +1493,7 @@
 		55B6371418C1057100CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
@@ -1372,6 +1506,7 @@
 		55B6371518C1057100CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				INFOPLIST_FILE = 360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
@@ -1384,6 +1519,7 @@
 		55B6372A18C108A500CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				EXPORTED_SYMBOLS_FILE = Feedback360/Feedback360.exp;
 				INFOPLIST_FILE = Feedback360/Info.plist;
@@ -1397,7 +1533,9 @@
 		55B6372B18C108A500CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				DEAD_CODE_STRIPPING = YES;
 				EXPORTED_SYMBOLS_FILE = Feedback360/Feedback360.exp;
 				INFOPLIST_FILE = Feedback360/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
@@ -1424,6 +1562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				DEAD_CODE_STRIPPING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DriverTool/DriverTool_Prefix.pch;
 				INFOPLIST_FILE = DriverTool/Info.plist;
@@ -1437,11 +1576,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				DEPLOYMENT_LOCATION = NO;
+				DSTROOT = /;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
 					"$(SRCROOT)/360Daemon",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = Pref360Control/Info.plist;
 				INSTALL_PATH = "${LOCAL_LIBRARY_DIR}/PreferencePanes";
@@ -1454,11 +1595,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = 360Control;
+				DEAD_CODE_STRIPPING = YES;
+				DEPLOYMENT_LOCATION = NO;
+				DSTROOT = /;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Pref360Control/Pref360Control_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
 					"$(SRCROOT)/360Daemon",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = Pref360Control/Info.plist;
 				INSTALL_PATH = "${LOCAL_LIBRARY_DIR}/PreferencePanes";
@@ -1470,6 +1614,7 @@
 		55B637F418C10D5000CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1481,6 +1626,7 @@
 		55B637F518C10D5000CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1492,6 +1638,7 @@
 		55B6381A18C10E9500CE933D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1503,6 +1650,7 @@
 		55B6381B18C10E9500CE933D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
@@ -1586,6 +1734,32 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		55FE3CA818D7B77800D69E84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = /Library/Frameworks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		55FE3CA918D7B77800D69E84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = /Library/Frameworks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1680,6 +1854,7 @@
 				55BD614718F0878900F36FA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55BD615718F087E500F36FA4 /* Build configuration list for PBXNativeTarget "360AudioDriver" */ = {
 			isa = XCConfigurationList;
@@ -1688,6 +1863,16 @@
 				55BD615918F087E500F36FA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55FE3CAA18D7B77800D69E84 /* Build configuration list for PBXNativeTarget "testhaptic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55FE3CA818D7B77800D69E84 /* Debug */,
+				55FE3CA918D7B77800D69E84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

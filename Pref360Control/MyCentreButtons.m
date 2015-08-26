@@ -20,6 +20,7 @@
     along with Foobar; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
 #import "MyCentreButtons.h"
 
 @implementation MyCentreButtons
@@ -27,71 +28,62 @@
 @synthesize start;
 @synthesize specific = appSpecific;
 
-- (id)initWithFrame:(NSRect)frameRect
+- (void)setBack:(BOOL)aback
 {
-    if ((self = [super initWithFrame:frameRect]) != nil) {
-        [self addObserver:self forKeyPath:@"back" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-        [self addObserver:self forKeyPath:@"start" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-        [self addObserver:self forKeyPath:@"specific" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-    }
-    return self;
+    back = aback;
+    self.needsDisplay = YES;
 }
 
-- (void)dealloc
+- (void)setStart:(BOOL)astart
 {
-    [self removeObserver:self forKeyPath:@"back"];
-    [self removeObserver:self forKeyPath:@"start"];
-    [self removeObserver:self forKeyPath:@"specific"];
+    start = astart;
+    self.needsDisplay = YES;
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+- (void)setSpecific:(BOOL)specific
 {
-    if (object == self) {
-        [self setNeedsDisplay:YES];
-    }
+    appSpecific = specific;
+    self.needsDisplay = YES;
 }
 
-- (void)drawButton:(NSString*)button inRectangle:(NSRect)rect pressed:(BOOL)down
++ (void)drawButton:(NSString*)button inRectangle:(NSRect)rect pressed:(BOOL)down
 {
-    NSBezierPath *path;
+    NSBezierPath *path = [NSBezierPath bezierPathWithOvalInRect:rect];
     NSSize size;
     NSDictionary *attributes;
     NSPoint point;
-    NSColor *colour;
+    NSColor *colour = [NSColor blackColor];
     
     // Draw circle
-    path=[NSBezierPath bezierPathWithOvalInRect:rect];
-    colour=[NSColor blackColor];
     [colour set];
     if(down) {
         [path fill];
-        colour=[NSColor whiteColor];
+        colour = [NSColor whiteColor];
     } else [path stroke];
     // Draw text
-    attributes=@{NSForegroundColorAttributeName: colour};
-    size=[button sizeWithAttributes:attributes];
-    point.x=rect.origin.x+((rect.size.width-size.width)/2);
-    point.y=rect.origin.y+((rect.size.height-size.height)/2);
+    attributes = @{NSForegroundColorAttributeName: colour};
+    size = [button sizeWithAttributes:attributes];
+    point.x = rect.origin.x + ((rect.size.width - size.width) / 2);
+    point.y = rect.origin.y + ((rect.size.height - size.height) / 2);
     [button drawAtPoint:point withAttributes:attributes];
 }
 
 - (void)drawRect:(NSRect)rect
 {
-    NSRect area,button;
-    
-    area=[self bounds];
-    button.size.height=area.size.height/2;
-    button.size.width=area.size.width/4;
-    button.origin.x=area.origin.x;
-    button.origin.y=area.origin.y+((area.size.height-button.size.height)/2);
-    [self drawButton:@"Back" inRectangle:button pressed:back];
-    button.origin.x=area.origin.x+area.size.width-button.size.width;
-    [self drawButton:@"Start" inRectangle:button pressed:start];
-    button.size.height=area.size.height-2;
-    button.size.width=button.size.height;
-    button.origin.x=area.origin.x+((area.size.width-button.size.width)/2);
-    button.origin.y=area.origin.y+1;
-    [self drawButton:@"" inRectangle:button pressed:appSpecific];
+    NSRect area = [self bounds], button;
+
+    button.size.height = area.size.height / 2;
+    button.size.width = area.size.width / 4;
+    button.origin.x = area.origin.x;
+    button.origin.y = area.origin.y + ((area.size.height - button.size.height) / 2);
+    [MyCentreButtons drawButton:@"Back" inRectangle:button pressed:back];
+    button.origin.x = area.origin.x + area.size.width - button.size.width;
+    [MyCentreButtons drawButton:@"Start" inRectangle:button pressed:start];
+    button.size.height = area.size.height - 2;
+    button.size.width = button.size.height;
+    button.origin.x = area.origin.x + ((area.size.width-button.size.width) / 2);
+    button.origin.y = area.origin.y + 1;
+    [MyCentreButtons drawButton:@"" inRectangle:button pressed:appSpecific];
 }
 
 @end

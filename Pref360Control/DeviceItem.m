@@ -50,20 +50,22 @@ static NSString* GetDeviceName(io_service_t device)
 @synthesize ffDevice = forceFeedback;
 @synthesize hidDevice = interface;
 
-- (instancetype)initFromItemForDevice:(io_service_t)device
+- (instancetype)initWithItemForDevice:(io_service_t)device
 {
     if (self = [super init]) {
         IOReturn ret;
         IOCFPlugInInterface **plugInInterface;
         SInt32 score=0;
         
-        ret = IOCreatePlugInInterfaceForService(device,kIOHIDDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &plugInInterface, &score);
-        if (ret != kIOReturnSuccess)
+        ret = IOCreatePlugInInterfaceForService(device, kIOHIDDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &plugInInterface, &score);
+        if (ret != kIOReturnSuccess) {
             return nil;
+        }
         ret = (*plugInInterface)->QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID122), (LPVOID)&interface);
         (*plugInInterface)->Release(plugInInterface);
-        if (ret != kIOReturnSuccess)
+        if (ret != kIOReturnSuccess) {
             return nil;
+        }
         forceFeedback = 0;
         FFCreateDevice(device, &forceFeedback);
         self.rawDevice = device;
@@ -74,7 +76,7 @@ static NSString* GetDeviceName(io_service_t device)
 
 + (instancetype)allocateDeviceItemForDevice:(io_service_t)device
 {
-    DeviceItem *item = [[DeviceItem alloc] initFromItemForDevice:device];
+    DeviceItem *item = [[[self class] alloc] initWithItemForDevice:device];
     
     if (item)
         return item;

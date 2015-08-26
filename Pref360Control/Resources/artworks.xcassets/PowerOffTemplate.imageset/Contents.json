@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "mac",
       "scale" : "1x",
-      "filename" : "bat3.png"
+      "filename" : "PowerOffTemplate.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "mac",
       "scale" : "2x",
-      "filename" : "bat3 2.png"
+      "filename" : "PowerOffTemplate@2x.png"
     }
   ],
   "info" : {

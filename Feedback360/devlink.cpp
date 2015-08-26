@@ -20,7 +20,8 @@
     along with Foobar; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-#include <IOKit/IOCFPlugin.h>
+
+#include <IOKit/IOCFPlugIn.h>
 #include "devlink.h"
 
 // Initialise the link
@@ -28,17 +29,14 @@ bool Device_Initialise(DeviceLink *link,io_object_t device)
 {
     IOCFPlugInInterface **plugInInterface = NULL;
     SInt32 score = 0;
-    IOReturn ret;
+    IOReturn ret = IOCreatePlugInInterfaceForService(device, kIOHIDDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &plugInInterface, &score);
     
-    ret=IOCreatePlugInInterfaceForService(device,kIOHIDDeviceUserClientTypeID,kIOCFPlugInInterfaceID,&plugInInterface,&score);
-    if (ret!=kIOReturnSuccess)
-        return FALSE;
-    ret=(*plugInInterface)->QueryInterface(plugInInterface,CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID121),(LPVOID*)(&link->interface));
+    if (ret!=kIOReturnSuccess) return false;
+    ret=(*plugInInterface)->QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID121), (LPVOID*)(&link->interface));
     (*plugInInterface)->Release(plugInInterface);
-    if (ret!=kIOReturnSuccess)
-        return FALSE;
-    (*link->interface)->open(link->interface,0);
-    return TRUE;
+    if (ret!=kIOReturnSuccess) return false;
+    (*link->interface)->open(link->interface, 0);
+    return true;
 }
 
 // Finish the link
@@ -54,12 +52,13 @@ bool Device_Send(DeviceLink *link,void *data,int length)
 {
     if(link->interface==NULL) {
         fprintf(stderr, "Attempting to send to a closed link!\n");
-        return FALSE;
-    } else {
+        return false;
+    }
+    else {
         //fprintf(stderr, "Attempting to send: %d %d %d %d\n",((unsigned char*)data)[0], ((unsigned char*)data)[1], ((unsigned char*)data)[2], ((unsigned char*)data)[3]);
         IOReturn res=(*link->interface)->setReport(link->interface,kIOHIDReportTypeOutput,0,data,length,10000,NULL,NULL,NULL);
         if (res != kIOReturnSuccess)
             fprintf(stderr, "Device_Send failed: 0x%.8x\n", res);
-        return res==kIOReturnSuccess;
+        return res == kIOReturnSuccess;
     }
 }

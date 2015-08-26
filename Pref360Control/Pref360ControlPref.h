@@ -29,37 +29,72 @@
 #include <IOKit/hid/IOHIDKeys.h>
 #include <ForceFeedback/ForceFeedback.h>
 
-#import "MyCentreButtons.h"
-#import "MyDigitalStick.h"
-#import "MyAnalogStick.h"
-#import "MyMainButtons.h"
-#import "MyShoulderButton.h"
-
+@class MyWhole360Controller;
+@class MyWhole360ControllerMapper;
+@class MyTrigger;
+@class MyBatteryMonitor;
+@class MyDeadZoneViewer;
+@class MyAnalogStick;
 @class DeviceLister;
 
-@interface Pref360ControlPref : NSPreferencePane 
+typedef NS_ENUM(NSUInteger, ControllerType) {
+    Xbox360Controller = 0,
+    XboxOriginalController = 1,
+    XboxOneController = 2
+} controllerType;
+
+@interface Pref360ControlPref : NSPreferencePane
 // Window components
-@property (weak) IBOutlet MyCentreButtons *centreButtons;
 @property (weak) IBOutlet NSPopUpButton *deviceList;
-@property (weak) IBOutlet MyDigitalStick *digiStick;
-@property (weak) IBOutlet MyShoulderButton *leftShoulder;
-@property (weak) IBOutlet MyAnalogStick *leftStick;
 @property (weak) IBOutlet NSButton *leftLinked;
 @property (weak) IBOutlet NSSlider *leftStickDeadzone;
 @property (weak) IBOutlet NSButton *leftStickInvertX;
 @property (weak) IBOutlet NSButton *leftStickInvertY;
-@property (weak) IBOutlet NSLevelIndicator *leftTrigger;
-@property (weak) IBOutlet MyMainButtons *rightButtons;
-@property (weak) IBOutlet MyShoulderButton *rightShoulder;
-@property (weak) IBOutlet MyAnalogStick *rightStick;
 @property (weak) IBOutlet NSButton *rightLinked;
 @property (weak) IBOutlet NSSlider *rightStickDeadzone;
 @property (weak) IBOutlet NSButton *rightStickInvertX;
 @property (weak) IBOutlet NSButton *rightStickInvertY;
-@property (weak) IBOutlet NSLevelIndicator *rightTrigger;
-@property (weak) IBOutlet NSImageView *batteryLevel;
 @property (weak) IBOutlet DeviceLister *deviceLister;
 @property (weak) IBOutlet NSButton *powerOff;
+@property (weak) IBOutlet MyWhole360Controller *wholeController;
+@property (weak) IBOutlet MyTrigger *leftTrigger;
+@property (weak) IBOutlet MyTrigger *rightTrigger;
+@property (weak) IBOutlet MyBatteryMonitor *batteryStatus;
+@property (weak) IBOutlet MyDeadZoneViewer *leftDeadZone;
+@property (weak) IBOutlet MyDeadZoneViewer *rightDeadZone;
+@property (strong) IBOutlet NSPopover *aboutPopover;
+@property (weak) IBOutlet NSPopUpButton *rumbleOptions;
+@property (weak) IBOutlet NSButton *swapSticks;
+
+// Binding Tab
+@property (weak) IBOutlet NSPopUpButton *deviceListBinding;
+@property (weak) IBOutlet MyWhole360ControllerMapper *wholeControllerMapper;
+@property (weak) IBOutlet NSTabView *tabView;
+@property (weak) IBOutlet NSButton *remappingButton;
+@property (weak) IBOutlet NSTableView *mappingTable;
+@property (weak) IBOutlet NSButton *remappingResetButton;
+
+// Advanced Tab
+@property (weak) IBOutlet NSPopUpButton *deviceListAdvanced;
+// Advanced Tab - Options
+@property (weak) IBOutlet NSButton *enableDriverCheckBox;
+@property (weak) IBOutlet NSButton *uninstallDriverButton;
+// Advanced Tab - Deadzones
+@property (weak) IBOutlet MyAnalogStick *leftStickAnalog;
+@property (weak) IBOutlet MyAnalogStick *rightStickAnalog;
+@property (weak) IBOutlet NSButton *leftLinkedAlt;
+@property (weak) IBOutlet NSSlider *leftStickDeadzoneAlt;
+@property (weak) IBOutlet NSButton *leftStickInvertXAlt;
+@property (weak) IBOutlet NSButton *leftStickInvertYAlt;
+@property (weak) IBOutlet NSButton *rightLinkedAlt;
+@property (weak) IBOutlet NSSlider *rightStickDeadzoneAlt;
+@property (weak) IBOutlet NSButton *rightStickInvertXAlt;
+@property (weak) IBOutlet NSButton *rightStickInvertYAlt;
+@property (weak) IBOutlet NSButton *normalizeDeadzoneLeft;
+@property (weak) IBOutlet NSButton *normalizeDeadzoneRight;
+
+// About Tab
+/* put About Tab's @properties here */
 
 // Internal info
 @property (readonly) mach_port_t masterPort;
@@ -68,9 +103,11 @@
 
 - (void)handleDeviceChange;
 
-- (IBAction)showDeviceList:(id)sender;
 - (IBAction)powerOff:(id)sender;
 - (IBAction)selectDevice:(id)sender;
 - (IBAction)changeSetting:(id)sender;
+
+- (IBAction)toggleDriverEnabled:(NSButton *)sender;
+- (IBAction)willPerformUninstallation:(id)sender;
 
 @end

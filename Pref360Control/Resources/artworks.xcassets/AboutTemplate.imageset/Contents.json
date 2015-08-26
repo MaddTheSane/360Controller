@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "mac",
       "scale" : "1x",
-      "filename" : "bat1.png"
+      "filename" : "AboutTemplate.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "mac",
       "scale" : "2x",
-      "filename" : "bat1 2.png"
+      "filename" : "AboutTemplate@2x.png"
     }
   ],
   "info" : {

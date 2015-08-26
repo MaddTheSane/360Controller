@@ -27,29 +27,16 @@
 @implementation MyShoulderButton
 @synthesize pressed;
 
-- (id)initWithFrame:(NSRect)frameRect
+- (void)setPressed:(BOOL)apressed
 {
-    if ((self = [super initWithFrame:frameRect]) != nil) {
-        [self addObserver:self forKeyPath:@"pressed" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [self removeObserver:self forKeyPath:@"pressed"];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (object == self) {
-        [self setNeedsDisplay:YES];
-    }
+    pressed = apressed;
+    self.needsDisplay = YES;
 }
 
 - (void)drawRect:(NSRect)rect
 {
     NSRect area = [self bounds];
+    
     NSDrawLightBezel(area, area);
     if (pressed) {
         area.origin.x += INSET_AMOUNT;
