@@ -26,14 +26,14 @@
 	<string>NO</string>
 	<key>CFPlugInFactories</key>
 	<dict>
-		<key>00000000-0000-0000-0000-000000000000</key>
+		<key>CD4E2F92-C3C7-414D-A622-6431A41B0447</key>
 		<string>Audio360Factory</string>
 	</dict>
 	<key>CFPlugInTypes</key>
 	<dict>
 		<key>443ABAB8-E7B3-491A-B985-BEB9187030DB</key>
 		<array>
-			<string>00000000-0000-0000-0000-000000000000</string>
+			<string>CD4E2F92-C3C7-414D-A622-6431A41B0447</string>
 		</array>
 	</dict>
 	<key>CFPlugInUnloadFunction</key>
