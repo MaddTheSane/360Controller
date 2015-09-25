@@ -140,23 +140,35 @@ bool WirelessGamingReceiver::start(IOService *provider)
                 //pipeRequest.bmAttributes |= kEndpointDescriptorTransferTypeInterrupt;
                 pipeRequest.bInterval = 0;
                 pipeRequest.wMaxPacketSize = 0;
-                connections[iConnection].controllerIn = interface->FindNextPipe(NULL, &pipeRequest);
+            {
+                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
+                const Descriptor *tmpDes =
+                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
+                connections[iConnection].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
+                // Replacement: getInterfaceDescriptor and StandardUSB::getNextAssociatedDescriptorWithType to find an endpoint descriptor,
+                // then use copyPipe to retrieve the pipe object
+            }
                 if (connections[iConnection].controllerIn == NULL)
                 {
                     // IOLog("start: Failed to open control input pipe\n");
                     goto fail;
                 }
-                else
-                    connections[iConnection].controllerIn->retain();
+                //else
+                //    connections[iConnection].controllerIn->retain();
                 pipeRequest.bmAttributes=kEndpointDescriptorDirectionOut;
-                connections[iConnection].controllerOut = interface->FindNextPipe(NULL, &pipeRequest);
+            {
+                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
+                const Descriptor *tmpDes =
+                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
+                connections[iConnection].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
+            }
                 if (connections[iConnection].controllerOut == NULL)
                 {
                     // IOLog("start: Failed to open control output pipe\n");
                     goto fail;
                 }
-                else
-                    connections[iConnection].controllerOut->retain();
+                //else
+                //    connections[iConnection].controllerOut->retain();
                 iConnection++;
                 break;
 				
@@ -167,24 +179,35 @@ bool WirelessGamingReceiver::start(IOService *provider)
                     goto fail;
                 }
                 connections[iOther].other = interface;
-                pipeRequest.direction = kUSBIn;
-                connections[iOther].otherIn = interface->FindNextPipe(NULL, &pipeRequest);
+                pipeRequest.bmAttributes=kEndpointDescriptorDirectionIn;
+            {
+                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
+                const Descriptor *tmpDes =
+                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
+                connections[iOther].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
+            }
+
                 if (connections[iOther].otherIn == NULL)
                 {
                     // IOLog("start: Failed to open mystery input pipe\n");
                     goto fail;
                 }
-                else
-                    connections[iOther].otherIn->retain();
-                pipeRequest.direction = kUSBOut;
-                connections[iOther].otherOut = interface->FindNextPipe(NULL, &pipeRequest);
+                //else
+                //    connections[iOther].otherIn->retain();
+                pipeRequest.bmAttributes=kEndpointDescriptorDirectionOut;
+            {
+                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
+                const Descriptor *tmpDes =
+                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
+                connections[iOther].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
+            }
                 if (connections[iOther].otherOut == NULL)
                 {
                     // IOLog("start: Failed to open mystery output pipe\n");
                     goto fail;
                 }
-                else
-                    connections[iOther].otherOut->retain();
+                //else
+                //    connections[iOther].otherOut->retain();
                 iOther++;
                 break;
 				
