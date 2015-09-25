@@ -1285,6 +1285,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1297,6 +1298,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = 360Controller/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = com.mice.driver.Xbox360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1404,6 +1406,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1416,6 +1419,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = Wireless360Controller/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = com.mice.driver.Wireless360Controller;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1428,6 +1432,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1440,6 +1445,7 @@
 			buildSettings = {
 				"CLANG_CXX_LANGUAGE_STANDARD[arch=i386]" = "compiler-default";
 				INFOPLIST_FILE = WirelessGamingReceiver/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MODULE_NAME = com.mice.driver.WirelessGamingReceiver;
 				MODULE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
