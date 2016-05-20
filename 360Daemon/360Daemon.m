@@ -1,21 +1,21 @@
 /*
  MICE Xbox 360 Controller driver for Mac OS X
  Copyright (C) 2006-2013 Colin Munro
- 
+
  360Daemon.m - main functionality of the support daemon
- 
+
  This file is part of Xbox360Controller.
- 
+
  Xbox360Controller is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
- 
+
  Xbox360Controller is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
- 
+
  You should have received a copy of the GNU General Public License
  along with Foobar; if not, write to the Free Software
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
@@ -26,6 +26,8 @@
 #include <IOKit/hid/IOHIDLib.h>
 #include <IOKit/hid/IOHIDKeys.h>
 #include <IOKit/usb/IOUSBLib.h>
+#include <IOKit/pwr_mgt/IOPMLib.h>
+#include <IOKit/IOMessage.h>
 #include <ForceFeedback/ForceFeedback.h>
 #import "ControlPrefs.h"
 #import "DaemonLEDs.h"
@@ -43,6 +45,8 @@ static io_iterator_t onIteratorWireless;
 static io_iterator_t onIteratorOther;
 static io_iterator_t offIteratorWired;
 static io_iterator_t offIteratorWireless;
+static io_object_t powerNotifier;
+static io_connect_t root_power_port; // a reference to the Root Power Domain IOService
 static BOOL foundWirelessReceiver;
 static DaemonLEDs *leds;
 
@@ -84,7 +88,7 @@ static void ShowAlert(NSInteger index)
                                  (NSString*)kCFUserNotificationAlertMessageKey: NSLocalizedString(alertStrings[index], nil),
                                  (NSString*)kCFUserNotificationCheckBoxTitlesKey: checkBoxes,
                                  (NSString*)kCFUserNotificationIconURLKey: [[NSBundle mainBundle] URLForImageResource:@"Alert"]};
-    
+
     if (AlertDisabled(index))
         return;
 
@@ -106,7 +110,7 @@ static void ConfigureDevice(io_service_t object)
     IOUSBDeviceInterface **dev;
     IOReturn err;
     SInt32 score;
-    
+
     if ((!IOCreatePlugInInterfaceForService(object, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &iodev, &score))&&iodev)
     {
         err = (*iodev)->QueryInterface(iodev, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), (LPVOID)&dev);
@@ -116,7 +120,7 @@ static void ConfigureDevice(io_service_t object)
             if ((*dev)->USBDeviceOpen(dev) == 0)
             {
                 IOUSBConfigurationDescriptorPtr confDesc;
-                
+
                 if ((*dev)->GetConfigurationDescriptorPtr(dev, 0, &confDesc) == 0)
                 {
                     (*dev)->SetConfiguration(dev, confDesc->bConfigurationValue);
@@ -134,7 +138,7 @@ static void callbackConnected(void *param,io_iterator_t iterator)
 {
 @autoreleasepool {
     io_service_t object = 0;
-    
+
     while ((object = IOIteratorNext(iterator)) != 0)
     {
 #if 0
@@ -146,7 +150,7 @@ static void callbackConnected(void *param,io_iterator_t iterator)
         {
             FFDeviceObjectReference forceFeedback = 0;
             NSString *serialNumber = GetSerialNumber(object);
-            
+
             // Supported device - load settings
             ConfigController(object, GetController(serialNumber));
             // Set LEDs
@@ -157,7 +161,7 @@ static void callbackConnected(void *param,io_iterator_t iterator)
                 FFEFFESCAPE escape = {0};
                 unsigned char c;
                 int i;
-    
+
                 c = 0x0a;
                 if (serialNumber != nil)
                 {
@@ -220,7 +224,7 @@ static void callbackDisconnected(void *param, io_iterator_t iterator)
     io_service_t object = 0;
     NSString *serial;
     int i;
-    
+
     while ((object = IOIteratorNext(iterator)) != 0)
     {
 #if 0
@@ -247,12 +251,50 @@ static void callbackDisconnected(void *param, io_iterator_t iterator)
 }
 }
 
+static void callbackPower(void *refCon, io_service_t service, natural_t messageType, void *messageArgument)
+{
+    switch (messageType)
+    {
+        case kIOMessageCanSystemSleep:
+            // we will allow idle sleep
+            IOAllowPowerChange(root_power_port, (long)messageArgument);
+            break;
+            
+        case kIOMessageSystemWillSleep:
+            IOAllowPowerChange(root_power_port, (long)messageArgument);
+            break;
+            
+        case kIOMessageSystemHasPoweredOn:
+            //System has finished waking up...
+        {
+            io_iterator_t newItr;
+            IOServiceGetMatchingServices(masterPort, IOServiceMatching(kIOUSBDeviceClassName), &newItr);
+            callbackConnected(NULL, newItr);
+            IOObjectRelease(newItr);
+            // Wired 360 devices
+            IOServiceGetMatchingServices(masterPort, IOServiceMatching("Xbox360ControllerClass"), &newItr);
+            callbackConnected(NULL, newItr);
+            IOObjectRelease(newItr);
+            // Wireless 360 devices
+            IOServiceGetMatchingServices(masterPort, IOServiceMatching("WirelessHIDDevice"), &newItr);
+            callbackConnected(NULL, newItr);
+            IOObjectRelease(newItr);
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 // Entry point
 int main (int argc, const char * argv[])
 {
 @autoreleasepool {
     foundWirelessReceiver = NO;
     leds = [[DaemonLEDs alloc] init];
+    // notification port allocated by IORegisterForSystemPower
+    IONotificationPortRef sleepNotifyPort;
     // Get master port, for accessing I/O Kit
     IOMasterPort(MACH_PORT_NULL,&masterPort);
     // Set up notification of USB device addition/removal
@@ -273,6 +315,18 @@ int main (int argc, const char * argv[])
     callbackConnected(NULL, onIteratorWireless);
     IOServiceAddMatchingNotification(notifyPort, kIOTerminatedNotification, IOServiceMatching("WirelessHIDDevice"), callbackDisconnected, NULL, &offIteratorWireless);
     callbackDisconnected(NULL, offIteratorWireless);
+    // wake/sleep watching
+    root_power_port = IORegisterForSystemPower(NULL, &sleepNotifyPort, callbackPower, &powerNotifier);
+    if (root_power_port == 0)
+    {
+        printf("IORegisterForSystemPower failed\n");
+    }
+    else
+    {
+        CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                           IONotificationPortGetRunLoopSource(sleepNotifyPort), kCFRunLoopCommonModes);
+    }
+
     // Run loop
     CFRunLoopRun();
     // Stop listening
@@ -284,6 +338,14 @@ int main (int argc, const char * argv[])
     CFRunLoopRemoveSource(CFRunLoopGetCurrent(), notifySource, kCFRunLoopCommonModes);
     CFRunLoopSourceInvalidate(notifySource);
     IONotificationPortDestroy(notifyPort);
+    if (root_power_port) {
+        CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
+                              IONotificationPortGetRunLoopSource(sleepNotifyPort),
+                              kCFRunLoopCommonModes);
+        IODeregisterForSystemPower(&powerNotifier);
+        IOServiceClose(root_power_port);
+        IONotificationPortDestroy(sleepNotifyPort);
+    }
     // End
 }
     return 0;

@@ -29,8 +29,8 @@ private func DrawButton(button: NSString, inRectangle rect: NSRect, pressed down
 	var path = NSBezierPath(ovalInRect: rect)
 	var size = NSZeroSize
 	var point = NSZeroPoint
-	var colour = NSColor.blackColor()
-	var attributes = [NSForegroundColorAttributeName: colour]
+	let colour = NSColor.blackColor()
+	let attributes = [NSForegroundColorAttributeName: colour]
 	var bling = rect
 	
 	// Draw circle
@@ -39,10 +39,7 @@ private func DrawButton(button: NSString, inRectangle rect: NSRect, pressed down
 	} else {
 		path.stroke()
 	}
-	bling.origin.x -= 1
-	bling.origin.y -= 1
-	bling.size.width += 2
-	bling.size.height += 2
+	bling.insetInPlace(dx: -1, dy: -1)
 	path = NSBezierPath(ovalInRect: bling)
 	colour.set()
 	path.stroke()

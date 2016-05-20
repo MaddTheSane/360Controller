@@ -5,7 +5,7 @@
     based on xi, Copyright (C) 2011 Masahiko Morii
 
     Feedback360Effect.cpp - Main code for the FF plugin
-    
+
     This file is part of Xbox360Controller.
 
     Xbox360Controller is free software; you can redistribute it and/or modify
@@ -32,9 +32,7 @@
 #include <ForceFeedback/IOForceFeedbackLib.h>
 #include <math.h>
 #include <string.h>
-
-#define MIN(a,b) (((a)<(b))?(a):(b))
-#define MAX(a,b) (((a)>(b))?(a):(b))
+#include <algorithm>
 
 //----------------------------------------------------------------------------------------------
 //	Effects
@@ -53,7 +51,9 @@
 #define	FRICTION		0x0A
 #define	CUSTOM_FORCE	0x0B
 
-#define SCALE_MAX 255
+#define SCALE_MAX (LONG)255
+
+double CurrentTimeUsingMach();
 
 class Feedback360Effect
 {
@@ -75,9 +75,9 @@ public:
 
     DWORD			Status;
     DWORD			PlayCount;
-    CFAbsoluteTime	StartTime;
+    double			StartTime;
 
-    CFAbsoluteTime  LastTime;
+    double			LastTime;
     DWORD           Index;
 
 private:

@@ -1,10 +1,10 @@
 /*
-    MICE Xbox 360 Controller driver for Mac OS X
-    Force Feedback module
-    Copyright (C) 2013 David Ryskalczyk
-    based on xi, Copyright (C) 2011 Masahiko Morii
+ MICE Xbox 360 Controller driver for Mac OS X
+ Force Feedback module
+ Copyright (C) 2013 David Ryskalczyk
+ based on xi, Copyright (C) 2011 Masahiko Morii
 
-    Feedback360.cpp - Main code for the FF plugin
+ Feedback360.cpp - Main code for the FF plugin
 
  This file is part of Xbox360Controller.
 
@@ -24,8 +24,31 @@
  */
 
 #include "Feedback360.h"
+#include <mach/mach.h>
+#include <mach/mach_time.h>
+using std::max;
+using std::min;
 
 #define LoopGranularity 10000 // Microseconds
+
+double CurrentTimeUsingMach()
+{
+    static mach_timebase_info_data_t info = {0};
+    if (!info.denom)
+    {
+        if (mach_timebase_info(&info) != KERN_SUCCESS)
+        {
+            //Generally it can't fail here. Look at XNU sources //FIXME
+            info.denom  = 0;
+            return -1.0;
+        }
+    }
+
+    uint64_t start = mach_absolute_time();
+
+    uint64_t nanos = start * info.numer / info.denom;
+    return (double)nanos / NSEC_PER_SEC;
+}
 
 static IOCFPlugInInterface functionMap360_IOCFPlugInInterface = {
     // Padding required for COM
@@ -167,7 +190,7 @@ HRESULT Feedback360::SetProperty(FFProperty property, void *value)
         {
             Gain = NewGain;
         } else {
-            Gain = MAX(1, MIN(NewGain, 10000));
+            Gain = max((UInt32)1, min(NewGain, (UInt32)10000));
             Result = FF_TRUNCATED;
         }
     });
@@ -184,7 +207,7 @@ HRESULT Feedback360::StartEffect(FFEffectDownloadID EffectHandle, FFEffectStartF
             {
                 effectIterator->Status  = FFEGES_PLAYING;
                 effectIterator->PlayCount = Count;
-                effectIterator->StartTime = CFAbsoluteTimeGetCurrent();
+                effectIterator->StartTime = CurrentTimeUsingMach();
                 Stopped = false;
             } else {
                 if (Mode & FFES_SOLO) {
@@ -334,7 +357,7 @@ HRESULT Feedback360::DownloadEffect(CFUUIDRef EffectType, FFEffectDownloadID *Ef
             {
                 Effect->Status  = FFEGES_PLAYING;
                 Effect->PlayCount = 1;
-                Effect->StartTime = CFAbsoluteTimeGetCurrent();
+                Effect->StartTime = CurrentTimeUsingMach();
             }
 
             if( Flags & FFEP_NORESTART )
@@ -436,13 +459,13 @@ HRESULT Feedback360::SendForceFeedbackCommand(FFCommandFlag state)
 
             case FFSFFC_PAUSE:
                 Paused  = true;
-                PausedTime = CFAbsoluteTimeGetCurrent();
+                PausedTime = CurrentTimeUsingMach();
                 break;
 
             case FFSFFC_CONTINUE:
                 for (Feedback360EffectIterator effectIterator = EffectList.begin() ; effectIterator != EffectList.end(); ++effectIterator)
                 {
-                    effectIterator->StartTime += ( CFAbsoluteTimeGetCurrent() - PausedTime );
+                    effectIterator->StartTime += ( CurrentTimeUsingMach() - PausedTime );
                 }
                 Paused = false;
                 break;
@@ -530,7 +553,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
                 Manual=((unsigned char*)escape->lpvInBuffer)[0]!=0x00;
             });
             break;
-            
+
         case 0x01:  // Set motors
             if (escape->cbInBuffer!=2) return FFERR_INVALIDPARAM;
             dispatch_sync(Queue, ^{
@@ -541,7 +564,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
                 }
             });
             break;
-            
+
         case 0x02:  // Set LED
             if (escape->cbInBuffer!=1) return FFERR_INVALIDPARAM;
         {
@@ -552,7 +575,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
             });
         }
             break;
-            
+
         case 0x03:  // Power off
         {
             dispatch_sync(Queue, ^{
@@ -561,7 +584,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
             });
         }
             break;
-            
+
         default:
             fprintf(stderr, "Xbox360Controller FF plugin: Unknown escape (%i)\n", (int)escape->dwCommand);
             return FFERR_UNSUPPORTED;
@@ -572,7 +595,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
 void Feedback360::SetForce(LONG LeftLevel, LONG RightLevel)
 {
     //fprintf(stderr, "LS: %d; RS: %d\n", (unsigned char)MIN( 255, LeftLevel * Gain / 10000 ), (unsigned char)MIN( 255, RightLevel * Gain / 10000 ));
-    unsigned char buf[] = {0x00, 0x04, (unsigned char)MIN(255, LeftLevel * Gain / 10000 ), (unsigned char)MIN(255, RightLevel * Gain / 10000 )};
+    unsigned char buf[] = {0x00, 0x04, (unsigned char)min(SCALE_MAX, LeftLevel * (LONG)Gain / 10000 ), (unsigned char)min(SCALE_MAX, RightLevel * (LONG)Gain / 10000 )};
     if (!Manual) Device_Send(&device, buf, sizeof(buf));
 }
 
@@ -583,13 +606,13 @@ void Feedback360::EffectProc( void *params )
     LONG LeftLevel = 0;
     LONG RightLevel = 0;
     LONG Gain  = cThis->Gain;
-    LONG CalcResult =0;
+    LONG CalcResult = 0;
 
     if (cThis->Actuator == true)
     {
         for (Feedback360EffectIterator effectIterator = cThis->EffectList.begin(); effectIterator != cThis->EffectList.end(); ++effectIterator)
         {
-            if((CFAbsoluteTimeGetCurrent() - cThis->LastTime*1000*1000) >= effectIterator->DiEffect.dwSamplePeriod) {
+            if(((CurrentTimeUsingMach() - cThis->LastTime)*1000*1000) >= effectIterator->DiEffect.dwSamplePeriod) {
                 CalcResult = effectIterator->Calc(&LeftLevel, &RightLevel);
             }
         }
@@ -598,7 +621,7 @@ void Feedback360::EffectProc( void *params )
     if ((cThis->PrvLeftLevel != LeftLevel || cThis->PrvRightLevel != RightLevel) && (CalcResult != -1))
     {
         //fprintf(stderr, "PL: %d, PR: %d; L: %d, R: %d; \n", cThis->PrvLeftLevel, cThis->PrvRightLevel, LeftLevel, RightLevel);
-        cThis->SetForce((unsigned char)MIN(255, LeftLevel * Gain / 10000),(unsigned char)MIN( 255, RightLevel * Gain / 10000 ));
+        cThis->SetForce((unsigned char)min(SCALE_MAX, LeftLevel * Gain / 10000),(unsigned char)min(SCALE_MAX, RightLevel * Gain / 10000 ));
 
         cThis->PrvLeftLevel = LeftLevel;
         cThis->PrvRightLevel = RightLevel;

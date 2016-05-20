@@ -13,9 +13,47 @@ import IOKit.hid
 import IOKit.usb.IOUSBLib
 import ForceFeedback
 
+private func getControllerType(device: io_service_t) -> ControllerType {
+	var parent = io_service_t(0)
+	var serviceProperties: Unmanaged<CFMutableDictionaryRef>?
+	
+	// Check for the DeviceData dictionary in device
+	if (IORegistryEntryCreateCFProperties(device, &serviceProperties, kCFAllocatorDefault, 0/*kNilOptions*/) == KERN_SUCCESS)
+	{
+		let properties = serviceProperties!.takeRetainedValue() as NSDictionary as [NSObject: AnyObject]
+		if let deviceData = properties["DeviceData"] as? [String: AnyObject] {
+			if let aControllerType = deviceData["ControllerType"] {
+				if let bController = aControllerType.intValue {
+					return ControllerType(rawValue: UInt(bController)) ?? .Xbox360Controller
+				}
+			}
+		}
+	}
+	
+	// Check for the DeviceData dictionary in the device's parent
+	if (IORegistryEntryGetParentEntry(device, kIOServicePlane, &parent) == KERN_SUCCESS)
+	{
+		if(IORegistryEntryCreateCFProperties(parent, &serviceProperties, kCFAllocatorDefault, 0 /*kNilOptions*/) == KERN_SUCCESS)
+		{
+			let properties = serviceProperties!.takeRetainedValue() as NSDictionary as [NSObject: AnyObject]
+			if let deviceData = properties["DeviceData"] as? [String: AnyObject] {
+				if let aControllerType = deviceData["ControllerType"] {
+					if let bController = aControllerType.intValue {
+						return ControllerType(rawValue: UInt(bController)) ?? .Xbox360Controller
+					}
+				}
+			}
+		}
+	}
+	
+	NSLog("Error: couldn't find ControllerType");
+	return .Xbox360Controller;
+}
+
 final class DeviceItem: NSObject {
-	let name: String
+	let displayName: String
 	let rawDevice: io_service_t
+	let controllerType: ControllerType
 	let ffDevice: FFDeviceObjectReference
 	let hidDevice: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDDeviceInterface122>>
 	
@@ -26,24 +64,14 @@ final class DeviceItem: NSObject {
 		
 		ret = IOCreatePlugInInterfaceForService(device, kIOHIDDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &plugInInterface, &score)
 		if ret != kIOReturnSuccess {
-			name = ""
-			rawDevice = 0
-			ffDevice = nil
-			hidDevice = nil
-			super.init()
 			return nil
 		}
 		
-		var tmpHIDDevice: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDDeviceInterface122>> = nil
+		let tmpHIDDevice: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDDeviceInterface122>> = nil
 		
-		ret = QueryIOKitInterface(plugInInterface.memory.memory.QueryInterface, plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID122), tmpHIDDevice)
+		ret = plugInInterface.memory.memory.QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID122), UnsafeMutablePointer<LPVOID>(tmpHIDDevice))
 		ReleaseIOKitInterface(plugInInterface.memory.memory.Release, plugInInterface)
 		if ret != kIOReturnSuccess {
-			name = ""
-			rawDevice = 0
-			ffDevice = nil
-			hidDevice = nil
-			super.init()
 			return nil
 		}
 		var tmpFFdevice: FFDeviceObjectReference = nil
@@ -51,13 +79,14 @@ final class DeviceItem: NSObject {
 		ffDevice = tmpFFdevice
 		rawDevice = device
 		hidDevice = tmpHIDDevice
-		name = GetDeviceName(device)
+		displayName = GetDeviceName(device)
+		controllerType = getControllerType(device)
 		
 		super.init()
 	}
 	
 	@objc(allocateDeviceItemForDevice:) class func allocateDeviceItem(device: io_service_t) -> Self? {
-		if let item = self(device: device) {
+		if let item = self.init(device: device) {
 			return item
 		} else {
 			IOObjectRelease(device)
@@ -70,7 +99,7 @@ final class DeviceItem: NSObject {
 			IOObjectRelease(rawDevice)
 		}
 		if hidDevice != nil {
-			ReleaseIOKitInterface(hidDevice.memory.memory.Release, hidDevice)
+			hidDevice.memory.memory.Release(hidDevice)
 		}
 		if ffDevice != nil {
 			FFReleaseDevice(ffDevice)

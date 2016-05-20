@@ -5,7 +5,7 @@
     Based on xi, Copyright (C) 2011 Masahiko Morii
 
     Feedback360Effect.cpp - Main code for the FF plugin
-    
+
     This file is part of Xbox360Controller.
 
     Xbox360Controller is free software; you can redistribute it and/or modify
@@ -24,6 +24,8 @@
 */
 
 #include "Feedback360Effect.h"
+using std::max;
+using std::min;
 
 //----------------------------------------------------------------------------------------------
 // CEffect
@@ -32,7 +34,7 @@ Feedback360Effect::Feedback360Effect() : Type(NULL), Status(0), PlayCount(0),
 StartTime(0), Index(0), LastTime(0), Handle(0), DiEffect({0}), DiEnvelope({0}),
 DiCustomForce({0}), DiConstantForce({0}), DiPeriodic({0}), DiRampforce({0})
 {
-    
+
 }
 
 Feedback360Effect::Feedback360Effect(FFEffectDownloadID theHand) : Feedback360Effect()
@@ -57,19 +59,19 @@ StartTime(src.StartTime), Index(src.Index), LastTime(src.LastTime)
 //----------------------------------------------------------------------------------------------
 LONG Feedback360Effect::Calc(LONG *LeftLevel, LONG *RightLevel)
 {
-    CFTimeInterval Duration = NULL;
+    CFTimeInterval Duration = 0;
     if(DiEffect.dwDuration != FF_INFINITE) {
-        Duration = MAX(1, DiEffect.dwDuration / 1000 ) / 1000;
+        Duration = max(1., DiEffect.dwDuration / 1000.) / 1000.;
     } else {
         Duration = DBL_MAX;
     }
-    CFAbsoluteTime BeginTime = StartTime + ( DiEffect.dwStartDelay / (1000*1000) );
-    CFAbsoluteTime EndTime  = DBL_MAX;
+    double BeginTime = StartTime + ( DiEffect.dwStartDelay / 1000. / 1000.);
+    double EndTime  = DBL_MAX;
     if (PlayCount != -1)
     {
         EndTime = BeginTime + Duration * PlayCount;
     }
-    CFAbsoluteTime CurrentTime = CFAbsoluteTimeGetCurrent();
+    double CurrentTime = CurrentTimeUsingMach();
 
     if (Status == FFEGES_PLAYING && BeginTime <= CurrentTime && CurrentTime <= EndTime)
     {
@@ -91,7 +93,7 @@ LONG Feedback360Effect::Calc(LONG *LeftLevel, LONG *RightLevel)
 
         // CustomForce allows setting each channel separately
         if(CFEqual(Type, kFFEffectType_CustomForce_ID)) {
-            if((CFAbsoluteTimeGetCurrent() - LastTime)*1000*1000 < DiCustomForce.dwSamplePeriod) {
+            if((CurrentTimeUsingMach() - LastTime)*1000*1000 < DiCustomForce.dwSamplePeriod) {
                 return -1;
             }
             else {
@@ -99,7 +101,7 @@ LONG Feedback360Effect::Calc(LONG *LeftLevel, LONG *RightLevel)
                 WorkRightLevel = ((DiCustomForce.rglForceData[2*Index + 1] * NormalRate + AttackLevel + FadeLevel) / 100) * DiEffect.dwGain / 10000;
                 //fprintf(stderr, "L:%d; R:%d\n", WorkLeftLevel, WorkRightLevel);
                 Index = (Index + 1) % (DiCustomForce.cSamples/2);
-                LastTime = CFAbsoluteTimeGetCurrent();
+                LastTime = CurrentTimeUsingMach();
             }
         }
         // Regular commands treat controller as a single output (both channels are together as one)
@@ -117,8 +119,8 @@ LONG Feedback360Effect::Calc(LONG *LeftLevel, LONG *RightLevel)
             WorkLeftLevel = (NormalLevel > 0) ? NormalLevel : -NormalLevel;
             WorkRightLevel = (NormalLevel > 0) ? NormalLevel : -NormalLevel;
         }
-        WorkLeftLevel = MIN( SCALE_MAX, WorkLeftLevel * SCALE_MAX / 10000 );
-        WorkRightLevel = MIN( SCALE_MAX, WorkRightLevel * SCALE_MAX / 10000 );
+        WorkLeftLevel = min( SCALE_MAX, WorkLeftLevel * SCALE_MAX / 10000 );
+        WorkRightLevel = min( SCALE_MAX, WorkRightLevel * SCALE_MAX / 10000 );
 
         *LeftLevel = *LeftLevel + WorkLeftLevel;
         *RightLevel = *RightLevel + WorkRightLevel;
@@ -135,7 +137,7 @@ void Feedback360Effect::CalcEnvelope(ULONG Duration, ULONG CurrentPos, LONG *Nor
 	{
         // Calculate attack factor
 		LONG	AttackRate	= 0;
-		ULONG	AttackTime	= MAX( 1, DiEnvelope.dwAttackTime / 1000 );
+		ULONG	AttackTime	= max( (DWORD)1, DiEnvelope.dwAttackTime / 1000 );
 		if (CurrentPos < AttackTime)
         {
 			AttackRate	= ( AttackTime - CurrentPos ) * 100 / AttackTime;
@@ -143,7 +145,7 @@ void Feedback360Effect::CalcEnvelope(ULONG Duration, ULONG CurrentPos, LONG *Nor
 
         // Calculate fade factor
         LONG	FadeRate	= 0;
-		ULONG	FadeTime	= MAX( 1, DiEnvelope.dwFadeTime / 1000 );
+		ULONG	FadeTime	= max( (DWORD)1, DiEnvelope.dwFadeTime / 1000 );
 		ULONG	FadePos		= Duration - FadeTime;
 		if (FadePos < CurrentPos)
         {
@@ -172,7 +174,7 @@ void Feedback360Effect::CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalR
         Magnitude	= ( Magnitude * NormalRate + AttackLevel + FadeLevel ) / 100;
     }
     else if (CFEqual(Type, kFFEffectType_Square_ID)) {
-        Period	= MAX( 1, ( DiPeriodic.dwPeriod / 1000 ) );
+        Period	= max( (DWORD)1, ( DiPeriodic.dwPeriod / 1000 ) );
         R		= ( CurrentPos%Period) * 360 / Period;
         R	= ( R + ( DiPeriodic.dwPhase / 100 ) ) % 360;
 
@@ -187,7 +189,7 @@ void Feedback360Effect::CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalR
         Magnitude	= Magnitude + DiPeriodic.lOffset;
     }
     else if (CFEqual(Type, kFFEffectType_Sine_ID)) {
-        Period	= MAX( 1, ( DiPeriodic.dwPeriod / 1000 ) );
+        Period	= max( (DWORD)1, ( DiPeriodic.dwPeriod / 1000 ) );
         R		= (CurrentPos%Period) * 360 / Period;
         R		= ( R + ( DiPeriodic.dwPhase / 100 ) ) % 360;
 
@@ -199,7 +201,7 @@ void Feedback360Effect::CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalR
         Magnitude	= Magnitude + DiPeriodic.lOffset;
     }
     else if (CFEqual(Type, kFFEffectType_Triangle_ID)) {
-        Period	= MAX( 1, ( DiPeriodic.dwPeriod / 1000 ) );
+        Period	= max( (DWORD)1, ( DiPeriodic.dwPeriod / 1000 ) );
         R		= (CurrentPos%Period) * 360 / Period;
         R		= ( R + ( DiPeriodic.dwPhase / 100 ) ) % 360;
 
@@ -226,7 +228,7 @@ void Feedback360Effect::CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalR
         Magnitude	= Magnitude + DiPeriodic.lOffset;
     }
     else if(CFEqual(Type, kFFEffectType_SawtoothUp_ID)) {
-        Period	= MAX( 1, ( DiPeriodic.dwPeriod / 1000 ) );
+        Period	= max( (DWORD)1, ( DiPeriodic.dwPeriod / 1000 ) );
         R		= (CurrentPos%Period) * 360 / Period;
         R		= ( R + ( DiPeriodic.dwPhase / 100 ) ) % 360;
 
@@ -245,7 +247,7 @@ void Feedback360Effect::CalcForce(ULONG Duration, ULONG CurrentPos, LONG NormalR
         Magnitude	= Magnitude + DiPeriodic.lOffset;
     }
     else if (CFEqual(Type, kFFEffectType_SawtoothDown_ID)) {
-        Period	= MAX( 1, ( DiPeriodic.dwPeriod / 1000 ) );
+        Period	= max( (DWORD)1, ( DiPeriodic.dwPeriod / 1000 ) );
         R		= (CurrentPos%Period) * 360 / Period;
         R		= ( R + ( DiPeriodic.dwPhase / 100 ) ) % 360;
 

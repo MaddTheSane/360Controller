@@ -17,7 +17,7 @@ private let TOOL_FILENAME = "DriverTool"
 
 /// Get some sort of CF type for a field in the IORegistry
 private func GetDeviceValue(device: io_service_t, key: String) -> AnyObject? {
-	var value: AnyObject! = IORegistryEntrySearchCFProperty(device, kIOServicePlane, key, kCFAllocatorDefault, IOOptionBits(kIORegistryIterateRecursively))
+	let value: AnyObject! = IORegistryEntrySearchCFProperty(device, kIOServicePlane, key, kCFAllocatorDefault, IOOptionBits(kIORegistryIterateRecursively))
 	
 	return value
 }
@@ -25,7 +25,7 @@ private func GetDeviceValue(device: io_service_t, key: String) -> AnyObject? {
 /// Make sure a name is as nice as possible for eventually going into the XML for the driver
 private func SanitiseName(name: String) -> String {
 	var output = String()
-	for char in name {
+	for char in name.characters {
 		switch char {
 		case " ":
 			output += "_"
@@ -105,7 +105,7 @@ private let ControllerInterfaces: [ControllerInterface] = [
 
 /// Detect if an IO service object is a Microsoft controller by running through and checking some things
 private func IsXBox360Controller(device: io_service_t) -> Bool {
-	var interface = GetDeviceInterface(device)
+	let interface = GetDeviceInterface(device)
 	if interface == nil {
 		return false
 	}
@@ -125,9 +125,9 @@ private func IsXBox360Controller(device: io_service_t) -> Bool {
 	
 	
 	// Get the interface to the device
-	GetIOKitDeviceType(interface.memory.memory.GetDeviceClass, interface, &classNum)
-	GetIOKitDeviceType(interface.memory.memory.GetDeviceSubClass, interface, &subClassNum)
-	GetIOKitDeviceType(interface.memory.memory.GetDeviceProtocol, interface, &protocolNum)
+	interface.memory.memory.GetDeviceClass(interface, &classNum)
+	interface.memory.memory.GetDeviceSubClass(interface, &subClassNum)
+	interface.memory.memory.GetDeviceProtocol(interface, &protocolNum)
 	devValid = (classNum == 0xFF) && (subClassNum == 0xFF) && (protocolNum == 0xFF)
 	
 	if CreateIOKitInterfaceIterator(interface.memory.memory.CreateInterfaceIterator, interface, &iRq, &iterator) == kIOReturnSuccess {
@@ -139,11 +139,11 @@ private func IsXBox360Controller(device: io_service_t) -> Bool {
 			interfaceInterface = GetInterfaceInterface(devInterface)
 			
 			if interfaceInterface != nil {
-				GetIOKitDeviceType(interfaceInterface.memory.memory.GetInterfaceNumber, interfaceInterface, &interfaceNum)
-				GetIOKitDeviceType(interfaceInterface.memory.memory.GetInterfaceClass, interfaceInterface, &classNum)
-				GetIOKitDeviceType(interfaceInterface.memory.memory.GetInterfaceSubClass, interfaceInterface, &subClassNum)
-				GetIOKitDeviceType(interfaceInterface.memory.memory.GetInterfaceProtocol, interfaceInterface, &protocolNum)
-				GetIOKitDeviceType(interfaceInterface.memory.memory.GetNumEndpoints, interfaceInterface, &endpointCount)
+				interfaceInterface.memory.memory.GetInterfaceNumber(interfaceInterface, &interfaceNum)
+				interfaceInterface.memory.memory.GetInterfaceClass(interfaceInterface, &classNum)
+				interfaceInterface.memory.memory.GetInterfaceSubClass(interfaceInterface, &subClassNum)
+				interfaceInterface.memory.memory.GetInterfaceProtocol(interfaceInterface, &protocolNum)
+				interfaceInterface.memory.memory.GetNumEndpoints(interfaceInterface, &endpointCount)
 				
 				if Int(interfaceNum) < ControllerInterfaces.count {
 					let castedInterface = Int(interfaceNum)
@@ -153,7 +153,7 @@ private func IsXBox360Controller(device: io_service_t) -> Bool {
 						interfaceCount++
 					}
 				}
-				ReleaseIOKitInterface(interfaceInterface.memory.memory.Release, interfaceInterface)
+				interfaceInterface.memory.memory.Release(interfaceInterface)
 			}
 			IOObjectRelease(devInterface);
 		}
@@ -161,7 +161,7 @@ private func IsXBox360Controller(device: io_service_t) -> Bool {
 	}
 	
 	// Done
-	ReleaseIOKitInterface(interface.memory.memory.Release, interface)
+	interface.memory.memory.Release(interface)
 
 	return devValid && (interfaceCount >= 3)   // Only 3 in case the security descriptor is missing?
 }
@@ -177,7 +177,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 	
 	var toolPath: String {
 		// Find the path of our tool in our bundle - should it be in the driver's bundle?
-		return owner?.bundle.resourcePath?.stringByAppendingPathExtension(TOOL_FILENAME) ?? TOOL_FILENAME
+		return (owner!.bundle.resourcePath! as NSString).stringByAppendingPathExtension(TOOL_FILENAME) ?? TOOL_FILENAME
 	}
 	
 	func writeToolWithAuthorisation(authorisationRef: AuthorizationRef) -> OSStatus {
@@ -203,7 +203,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 		// Check result
 		if task.terminationStatus != 0 {
 			let data = error.fileHandleForReading.readDataToEndOfFile()
-			return NSString(data: data, encoding: NSUTF8StringEncoding)
+			return String(data: data, encoding: NSUTF8StringEncoding)
 		}
 		
 		// Read the data back
@@ -219,9 +219,9 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 				let product = UInt32(values[2].intValue)
 				let akey = UInt32((vendor << 16) | product)
 				enabled.append(akey)
-				var entry = entries[akey]
+				//var entry = entries[akey]
 				if entries[akey] == nil {
-					entries[akey] = SanitiseName(values[0])
+					entries[akey] = SanitiseName(values[0] as String)
 				}
 			}
 		}
@@ -249,7 +249,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 		var iterator: io_iterator_t = 0
 		var object: io_service_t
 		
-		IOServiceGetMatchingServices(owner!.masterPort, IOServiceMatching(kIOUSBDeviceClassName).takeUnretainedValue(), &iterator)
+		IOServiceGetMatchingServices(owner!.masterPort, IOServiceMatching(kIOUSBDeviceClassName), &iterator)
 		if iterator != 0 {
 			while true {
 				object = IOIteratorNext(iterator)
@@ -258,8 +258,8 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 				}
 				if IsXBox360Controller(object) {
 					
-					let vendorValue = GetDeviceValue(object, "idVendor") as? NSNumber
-					let productValue = GetDeviceValue(object, "idProduct") as? NSNumber
+					let vendorValue = GetDeviceValue(object, key: "idVendor") as? NSNumber
+					let productValue = GetDeviceValue(object, key: "idProduct") as? NSNumber
 					if productValue != nil && vendorValue != nil {
 						let vendor = vendorValue!.unsignedShortValue
 						let product = productValue!.unsignedShortValue
@@ -267,9 +267,9 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 						
 						connected.append(aKey)
 						if entries[aKey] == nil {
-							var name = GetDeviceValue(object, "USB Product Name") as? String
+							var name = GetDeviceValue(object, key: "USB Product Name") as? String
 							if name == nil {
-								name = NSString(format: "Unknown_%.4x_%.4x", vendor, product)
+								name = String(format: "Unknown_%.4x_%.4x", vendor, product)
 							} else {
 								name = SanitiseName(name!)
 							}
@@ -294,7 +294,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 	}
 	
 	func loadDevices() -> Bool {
-		func sanitizeEntries() -> NSDictionary {
+		func sanitizeEntries() -> [Int : String] {
 			let entries = self.entries
 			var toRet = [Int : String]()
 			for (key, entry) in entries {
@@ -332,13 +332,13 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 	}
 	
 	var allEntries: [UInt32] {
-		var anEtries = entries.keys.array
+		var anEtries = Array(entries.keys)
 		var moreEntries = [Int]()
 		for anEntry in anEtries {
 			moreEntries.append(Int(anEntry))
 		}
 		
-		anEtries.sort { (lhs, rhs) -> Bool in
+		anEtries.sortInPlace { (lhs, rhs) -> Bool in
 			return lhs > rhs
 		}
 		
@@ -354,7 +354,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 			let key = allEntries[row]
 			switch aTableColumn.identifier {
 			case "enable":
-				if let aFind = find(enabled, key) {
+				if enabled.indexOf(key) != nil {
 					return true
 				} else {
 					return false
@@ -362,7 +362,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 				
 			case "name":
 				var colour: NSColor
-				if let aConnected = find(connected, key) {
+				if connected.indexOf(key) != nil {
 					colour = NSColor.blueColor()
 				} else {
 					colour = NSColor.blackColor()
@@ -382,7 +382,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 			if let anObject: AnyObject = object {
 				let key = allEntries[row]
 				var contains: Bool
-				if let isFound = find(enabled, key) {
+				if let isFound = enabled.indexOf(key) {
 					contains = true
 				} else {
 					contains = false
@@ -396,7 +396,7 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 					} else {
 						if contains {
 							func removeObject(value: UInt32) {
-								let index = find(enabled, value)!
+								let index = enabled.indexOf(value)!
 								self.enabled.removeAtIndex(index)
 							}
 							removeObject(key)
@@ -428,30 +428,30 @@ class DeviceLister: NSObject, NSTableViewDataSource {
 		var authorisationRef: AuthorizationRef = nil
 		var success = false
 		
-		status = AuthorizationCreate(nil, nil, AuthorizationFlags(kAuthorizationFlagDefaults), &authorisationRef)
+		status = AuthorizationCreate(nil, nil, AuthorizationFlags.Defaults, &authorisationRef)
 		
 		if status != OSStatus(errAuthorizationSuccess) {
-			showFailure(Three60LocalizedString("Unable to create authorisation request", ""))
+			showFailure(Three60LocalizedString("Unable to create authorisation request", comment: ""))
 			return false
 		}
 		var right = AuthorizationItem(name: kAuthorizationRightExecute, valueLength: 0, value: nil, flags: 0)
 		var rights = AuthorizationRights(count: 1, items: &right)
 		
-		status = AuthorizationCopyRights(authorisationRef, &rights, nil, AuthorizationFlags(kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights), nil)
+		status = AuthorizationCopyRights(authorisationRef, &rights, nil, AuthorizationFlags([.Defaults, .InteractionAllowed, .PreAuthorize, .ExtendRights]), nil)
 		
 		func gotoFail() -> Bool {
-			AuthorizationFree(authorisationRef, AuthorizationFlags(kAuthorizationFlagDestroyRights))
+			AuthorizationFree(authorisationRef, AuthorizationFlags.DestroyRights)
 			return success
 		}
 		
 		if status != OSStatus(errAuthorizationSuccess) {
-			showFailure(Three60LocalizedString("Unable to acquire authorisation", ""))
+			showFailure(Three60LocalizedString("Unable to acquire authorisation", comment: ""))
 			return gotoFail()
 		}
 		
 		status = writeToolWithAuthorisation(authorisationRef)
 		if status != OSStatus(errAuthorizationSuccess) {
-			showFailure(Three60LocalizedString("Failed to execute the driver tool", ""))
+			showFailure(Three60LocalizedString("Failed to execute the driver tool", comment: ""))
 			return gotoFail()
 		}
 		
