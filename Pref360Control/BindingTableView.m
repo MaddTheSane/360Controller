@@ -6,7 +6,7 @@
 //
 
 #import "BindingTableView.h"
-#import "MyWhole360ControllerMapper.h"
+#import "Pref360Control-Swift.h"
 
 @implementation BindingTableView
 
@@ -27,7 +27,7 @@ static NSTableView *tblView;
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
     if ([[aTableColumn identifier] isEqualToString:@"input"]) {
-        return [NSNumber numberWithInt:[MyWhole360ControllerMapper mapping][rowIndex]];
+        return @([MyWhole360ControllerMapper mapping][rowIndex]);
     }
     else
         return _buttonArr[rowIndex];

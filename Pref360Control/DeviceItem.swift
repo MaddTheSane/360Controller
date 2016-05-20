@@ -13,6 +13,21 @@ import IOKit.hid
 import IOKit.usb.IOUSBLib
 import ForceFeedback
 
+private func getDeviceName(device: io_service_t) -> String? {
+	var serviceProperties: Unmanaged<CFMutableDictionary>? = nil
+	var deviceName: String? = nil
+	
+	if (IORegistryEntryCreateCFProperties(device, &serviceProperties, kCFAllocatorDefault, 0 /*kNilOptions*/) != KERN_SUCCESS) {
+		return nil;
+	}
+	let properties = serviceProperties!.takeRetainedValue() as NSDictionary
+	deviceName = properties[kIOHIDProductKey] as? String
+	if (deviceName == nil) {
+		deviceName = properties["USB Product Name"] as? String
+	}
+	return deviceName
+}
+
 private func getControllerType(device: io_service_t) -> ControllerType {
 	var parent = io_service_t(0)
 	var serviceProperties: Unmanaged<CFMutableDictionaryRef>?
@@ -67,10 +82,10 @@ final class DeviceItem: NSObject {
 			return nil
 		}
 		
-		let tmpHIDDevice: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDDeviceInterface122>> = nil
+		var tmpHIDDevice: UnsafeMutablePointer<UnsafeMutablePointer<IOHIDDeviceInterface122>> = nil
 		
-		ret = plugInInterface.memory.memory.QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID122), UnsafeMutablePointer<LPVOID>(tmpHIDDevice))
-		ReleaseIOKitInterface(plugInInterface.memory.memory.Release, plugInInterface)
+		ret = plugInInterface.memory.memory.QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID122), withUnsafeMutablePointer(&tmpHIDDevice, {return UnsafeMutablePointer<LPVOID>($0)}))
+		plugInInterface.memory.memory.Release(plugInInterface)
 		if ret != kIOReturnSuccess {
 			return nil
 		}
@@ -79,7 +94,7 @@ final class DeviceItem: NSObject {
 		ffDevice = tmpFFdevice
 		rawDevice = device
 		hidDevice = tmpHIDDevice
-		displayName = GetDeviceName(device)
+		displayName = getDeviceName(device)!
 		controllerType = getControllerType(device)
 		
 		super.init()

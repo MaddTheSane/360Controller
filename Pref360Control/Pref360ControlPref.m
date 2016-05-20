@@ -26,8 +26,6 @@
 //#import "DeviceItem.h"
 #import "ControlPrefs.h"
 #import "Pref360Control-Swift.h"
-#import "MyWhole360Controller.h"
-#import "MyWhole360ControllerMapper.h"
 #import "MyTrigger.h"
 #import "MyDeadZoneViewer.h"
 #import "MyBatteryMonitor.h"

@@ -48,8 +48,8 @@ private func GetDeviceInterface(device: io_service_t) -> UnsafeMutablePointer<Un
 	var dev: UnsafeMutablePointer<UnsafeMutablePointer<IOUSBDeviceInterface>> = nil
 	var score: Int32 = 0
 	if IOCreatePlugInInterfaceForService(device, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &ioDev, &score) == kIOReturnSuccess && ioDev != nil {
-		err = QueryIOKitInterface(ioDev.memory.memory.QueryInterface, ioDev, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), &dev)
-		ReleaseIOKitInterface(ioDev.memory.memory.Release, ioDev)
+		err = ioDev.memory.memory.QueryInterface(ioDev, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), withUnsafeMutablePointer(&dev, {return UnsafeMutablePointer<LPVOID>($0)}))
+		ioDev.memory.memory.Release(ioDev)
 		if err == kIOReturnSuccess {
 			return dev
 		}
@@ -65,8 +65,8 @@ private func GetInterfaceInterface(interface: io_service_t) -> UnsafeMutablePoin
 	var score: Int32 = 0
 	
 	if IOCreatePlugInInterfaceForService(interface, kIOUSBInterfaceUserClientTypeID, kIOCFPlugInInterfaceID, &ioDev, &score) == kIOReturnSuccess && ioDev != nil {
-		err = QueryIOKitInterface(ioDev.memory.memory.QueryInterface, ioDev, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), &dev)
-		ReleaseIOKitInterface(ioDev.memory.memory.Release, ioDev)
+		err = ioDev.memory.memory.QueryInterface(ioDev, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), withUnsafeMutablePointer(&dev, {return UnsafeMutablePointer<LPVOID>($0)}))
+		ioDev.memory.memory.Release(ioDev)
 		if err == kIOReturnSuccess {
 			return dev
 		}
@@ -130,7 +130,7 @@ private func IsXBox360Controller(device: io_service_t) -> Bool {
 	interface.memory.memory.GetDeviceProtocol(interface, &protocolNum)
 	devValid = (classNum == 0xFF) && (subClassNum == 0xFF) && (protocolNum == 0xFF)
 	
-	if CreateIOKitInterfaceIterator(interface.memory.memory.CreateInterfaceIterator, interface, &iRq, &iterator) == kIOReturnSuccess {
+	if interface.memory.memory.CreateInterfaceIterator(interface, &iRq, &iterator) == kIOReturnSuccess {
 		while true {
 			devInterface = IOIteratorNext(iterator)
 			if devInterface == 0 {
@@ -150,7 +150,7 @@ private func IsXBox360Controller(device: io_service_t) -> Bool {
 					let ci = ControllerInterfaces[castedInterface]
 					if ci.classNum == classNum && ci.subClassNum == subClassNum && ci.protocolNum == protocolNum && ci.numEndpoints == Int32(endpointCount) {
 						// Found another interface in the right place
-						interfaceCount++
+						interfaceCount += 1
 					}
 				}
 				interfaceInterface.memory.memory.Release(interfaceInterface)

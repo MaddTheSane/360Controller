@@ -125,7 +125,7 @@
                                                 <action selector="selectDevice:" target="-2" id="gsM-0x-TTV"/>
                                             </connections>
                                         </popUpButton>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="ILA-Sd-ahY" customClass="MyWhole360Controller">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="ILA-Sd-ahY" customClass="MyWhole360Controller" customModule="Pref360Control" customModuleProvider="target">
                                             <rect key="frame" x="20" y="20" width="465" height="330"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="auT-ii-eXB" customClass="MyTrigger">
@@ -403,7 +403,7 @@
                                                 <action selector="selectDevice:" target="-2" id="hQP-9h-SV0"/>
                                             </connections>
                                         </popUpButton>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="jmX-SJ-ewe" customClass="MyWhole360ControllerMapper">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="jmX-SJ-ewe" customClass="MyWhole360ControllerMapper" customModule="Pref360Control" customModuleProvider="target">
                                             <rect key="frame" x="20" y="20" width="465" height="330"/>
                                             <subviews>
                                                 <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aM0-GE-bqq">

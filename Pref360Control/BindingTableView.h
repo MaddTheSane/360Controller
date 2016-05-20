@@ -9,7 +9,7 @@
 
 @interface BindingTableView : NSObject <NSTableViewDelegate, NSTableViewDataSource>
 
-@property NSArray *buttonArr;
+@property NSArray<NSString*> *buttonArr;
 
 + (NSTableView *)tableView;
 
