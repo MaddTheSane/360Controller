@@ -8,6 +8,7 @@
 
 import Cocoa
 
+@IBDesignable
 class MyWhole360Controller: NSView {
     var aPressed: Bool = false {
         didSet {
@@ -186,5 +187,4 @@ class MyWhole360Controller: NSView {
         
         Pref360StyleKit.drawX360ControllerWithControllerNumber(0, aPressed: aPressed, bPressed: bPressed, xPressed: xPressed, yPressed: yPressed, leftPressed: leftPressed, upPressed: upPressed, rightPressed: rightPressed, downPressed: downPressed, backPressed: backPressed, startPressed: startPressed, lbPressed: lbPressed, rbPressed: rbPressed, homePressed: homePressed, leftStickPressed: leftStickPressed, rightStickPressed: rightStickPressed, leftStick: leftStickPosition, rightStick: rightStickPosition, leftStickDeadzone: leftStickDeadzone, rightStickDeadzone: rightStickDeadzone, isLeftNormalized: leftNormalized, isRightNormalized: rightNormalized)
     }
-
 }

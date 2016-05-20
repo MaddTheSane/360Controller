@@ -46,22 +46,27 @@ private func DrawButton(button: NSString, inRectangle rect: NSRect, pressed down
 	button.drawAtPoint(point, withAttributes: attributes)
 }
 
+@IBDesignable
 final class MyCentreButtons: NSView {
+	@IBInspectable
 	var back: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var start: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var specific: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	
 	override func drawRect(dirtyRect: NSRect) {
 		let area = self.bounds
 		var button = NSZeroRect

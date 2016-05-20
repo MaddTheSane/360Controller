@@ -685,6 +685,8 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
             if(CFDictionaryGetValueIfPresent(dict,CFSTR("Pretend360"),(void*)&boolValue)) {
                 [_pretend360Button setState:CFBooleanGetValue(boolValue)?NSOnState:NSOffState];
             } else NSLog(@"No value for Pretend360");
+            
+            CFRelease(dict);
         } else NSLog(@"No settings found\n");
     }
     // Enable GUI components

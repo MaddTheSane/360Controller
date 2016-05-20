@@ -11,7 +11,9 @@ import Cocoa
 private let INSET_AMOUNT: CGFloat = 2
 
 
+@IBDesignable
 class MyShoulderButton: NSView {
+	@IBInspectable
 	var pressed: Bool = false {
 		didSet {
 			self.needsDisplay = true

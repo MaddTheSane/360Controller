@@ -8,12 +8,15 @@
 
 import Cocoa
 
+@IBDesignable
 class MyTrigger: NSView {
+    @IBInspectable
     var name: String = "" {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var val: Int32 = 0 {
         didSet {
             needsDisplay = true

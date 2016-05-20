@@ -51,22 +51,27 @@ private func DrawButton(button: NSString, inRectangle rect: NSRect, pressed down
 	button.drawAtPoint(point, withAttributes: attributes)
 }
 
+@IBDesignable
 final class MyMainButtons: NSView {
+	@IBInspectable
 	var a: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var b: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var x: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var y: Bool = false {
 		didSet {
 			self.needsDisplay = true

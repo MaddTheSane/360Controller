@@ -51,22 +51,27 @@ private func MakeTriangle(start: Int, inRectangle rect: NSRect) -> NSBezierPath 
 	return path;
 }
 
+@IBDesignable
 final class MyDigitalStick: NSView {
+	@IBInspectable
 	var up: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var down: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var left: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var right: Bool = false {
 		didSet {
 			self.needsDisplay = true

@@ -63,6 +63,7 @@ private func realignButtonToByte(index: Int32) -> UInt8 {
     }
 }
 
+@IBDesignable
 class MyWhole360ControllerMapper: MyWhole360Controller {
     var isMapping: Bool = false
     private var currentMappingIndex = 0

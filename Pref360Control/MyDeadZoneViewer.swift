@@ -8,12 +8,15 @@
 
 import Cocoa
 
+@IBDesignable
 class MyDeadZoneViewer: NSView {
+    @IBInspectable
     var val: Double = 0.0 {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var linked: Bool = false {
         didSet {
             needsDisplay = true
@@ -25,5 +28,4 @@ class MyDeadZoneViewer: NSView {
 
         Pref360StyleKit.drawDeadZoneViewerWithValue(CGFloat(val / 32768.0), linked: linked)
     }
-    
 }

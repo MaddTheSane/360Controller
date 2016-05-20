@@ -26,12 +26,15 @@ import Cocoa
 let PRESSED_INSET: CGFloat = 5
 let AREA_INSET: CGFloat = 4
 
+@IBDesignable
 final class MyAnalogStick: NSView {
+	@IBInspectable
 	var deadzone: Int32 = 0 {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var positionX: Int32 = 0{
 		didSet {
 			if (normalized) {
@@ -55,6 +58,7 @@ final class MyAnalogStick: NSView {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var positionY: Int32 = 0{
 		didSet {
 			if (normalized) {
@@ -75,16 +79,19 @@ final class MyAnalogStick: NSView {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var pressed: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var linked: Bool = false {
 		didSet {
 			self.needsDisplay = true
 		}
 	}
+	@IBInspectable
 	var normalized: Bool = false {
 		didSet {
 			self.needsDisplay = true

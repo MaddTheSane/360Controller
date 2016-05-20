@@ -8,7 +8,9 @@
 
 import Cocoa
 
+@IBDesignable
 class MyBatteryMonitor: NSView {
+    @IBInspectable
     var bars: Int32 = 0 {
         didSet {
             needsDisplay = true
@@ -20,5 +22,4 @@ class MyBatteryMonitor: NSView {
 
         Pref360StyleKit.drawBatteryMonitorWithBars(CGFloat(bars))
     }
-    
 }
