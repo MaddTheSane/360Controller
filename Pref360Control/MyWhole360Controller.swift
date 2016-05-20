@@ -10,95 +10,113 @@ import Cocoa
 
 @IBDesignable
 class MyWhole360Controller: NSView {
+    @IBInspectable
     var aPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var bPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var xPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var yPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
     
+    @IBInspectable
     var leftPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var upPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var rightPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var downPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
     
+    @IBInspectable
     var backPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var startPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var homePressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
     
+    @IBInspectable
     var lbPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var rbPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var leftStickPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var rightStickPressed: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
     
+    @IBInspectable
     var leftStickPosition: CGPoint = .zero {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var rightStickPosition: CGPoint = .zero {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var leftStickDeadzone: CGFloat {
         set(deadzone) {
             _leftStickDeadzone = deadzone / 32768.0;
@@ -108,6 +126,7 @@ class MyWhole360Controller: NSView {
             return _leftStickDeadzone
         }
     }
+    @IBInspectable
     var rightStickDeadzone: CGFloat {
         set(deadzone) {
             _rightStickDeadzone = deadzone / 32768.0;
@@ -117,11 +136,13 @@ class MyWhole360Controller: NSView {
             return _rightStickDeadzone
         }
     }
+    @IBInspectable
     var leftNormalized: Bool = false {
         didSet {
             needsDisplay = true
         }
     }
+    @IBInspectable
     var rightNormalized: Bool = false {
         didSet {
             needsDisplay = true
