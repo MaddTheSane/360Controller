@@ -26,9 +26,6 @@
 //#import "DeviceItem.h"
 #import "ControlPrefs.h"
 #import "Pref360Control-Swift.h"
-#import "MyTrigger.h"
-#import "MyDeadZoneViewer.h"
-#import "MyBatteryMonitor.h"
 
 #define NO_ITEMS @"No devices found"
 

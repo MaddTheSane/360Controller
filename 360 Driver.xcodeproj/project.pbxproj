@@ -28,12 +28,6 @@
 		3F9B7C0A1A729C1600149949 /* artworks.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9B7C091A729C1600149949 /* artworks.xcassets */; };
 		3FE789A01A701F3400FF4065 /* Pref360StyleKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE7899E1A701F3400FF4065 /* Pref360StyleKit.h */; };
 		3FE789A11A701F3400FF4065 /* Pref360StyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE7899F1A701F3400FF4065 /* Pref360StyleKit.m */; };
-		3FE789A81A70281200FF4065 /* MyBatteryMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE789A61A70281200FF4065 /* MyBatteryMonitor.h */; };
-		3FE789A91A70281200FF4065 /* MyBatteryMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE789A71A70281200FF4065 /* MyBatteryMonitor.m */; };
-		3FE789AC1A70288F00FF4065 /* MyDeadZoneViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE789AA1A70288F00FF4065 /* MyDeadZoneViewer.h */; };
-		3FE789AD1A70288F00FF4065 /* MyDeadZoneViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE789AB1A70288F00FF4065 /* MyDeadZoneViewer.m */; };
-		3FE789B01A70331C00FF4065 /* MyTrigger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FE789AE1A70331C00FF4065 /* MyTrigger.h */; };
-		3FE789B11A70331C00FF4065 /* MyTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE789AF1A70331C00FF4065 /* MyTrigger.m */; };
 		550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */; };
 		550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */; };
 		550B04A61A0D60D5002BD56E /* MyCentreButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B04A51A0D60D5002BD56E /* MyCentreButtons.swift */; };
@@ -99,6 +93,9 @@
 		55B6383318C10EBE00CE933D /* WirelessHIDDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55B6382918C10EBE00CE933D /* WirelessHIDDevice.cpp */; };
 		55B6383418C10EBE00CE933D /* WirelessHIDDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 55B6382A18C10EBE00CE933D /* WirelessHIDDevice.h */; };
 		55B6384618C10FE200CE933D /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B6375818C109E600CE933D /* ForceFeedback.framework */; };
+		55D9788E1CEFB8EB00AAEE05 /* MyTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9788D1CEFB8EB00AAEE05 /* MyTrigger.swift */; };
+		55D978901CEFB9D700AAEE05 /* MyDeadZoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D9788F1CEFB9D700AAEE05 /* MyDeadZoneViewer.swift */; };
+		55D978921CEFBA9D00AAEE05 /* MyBatteryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D978911CEFBA9D00AAEE05 /* MyBatteryMonitor.swift */; };
 		55F37AB31A0D707A0091256A /* MyMainButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F37AB21A0D707A0091256A /* MyMainButtons.swift */; };
 		55F37AB51A0D75960091256A /* MyShoulderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F37AB41A0D75960091256A /* MyShoulderButton.swift */; };
 		55F7E7C319D8C32000525388 /* DriverTool in Copy Tools */ = {isa = PBXBuildFile; fileRef = 55B6376018C10A3200CE933D /* DriverTool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -207,12 +204,6 @@
 		3F9B7C091A729C1600149949 /* artworks.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = artworks.xcassets; path = Resources/artworks.xcassets; sourceTree = "<group>"; };
 		3FE7899E1A701F3400FF4065 /* Pref360StyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pref360StyleKit.h; sourceTree = "<group>"; };
 		3FE7899F1A701F3400FF4065 /* Pref360StyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pref360StyleKit.m; sourceTree = "<group>"; };
-		3FE789A61A70281200FF4065 /* MyBatteryMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBatteryMonitor.h; sourceTree = "<group>"; };
-		3FE789A71A70281200FF4065 /* MyBatteryMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBatteryMonitor.m; sourceTree = "<group>"; };
-		3FE789AA1A70288F00FF4065 /* MyDeadZoneViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDeadZoneViewer.h; sourceTree = "<group>"; };
-		3FE789AB1A70288F00FF4065 /* MyDeadZoneViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDeadZoneViewer.m; sourceTree = "<group>"; };
-		3FE789AE1A70331C00FF4065 /* MyTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTrigger.h; sourceTree = "<group>"; };
-		3FE789AF1A70331C00FF4065 /* MyTrigger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTrigger.m; sourceTree = "<group>"; };
 		550B04A11A0D5AFB002BD56E /* COMUUIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = COMUUIDs.swift; sourceTree = "<group>"; };
 		550B04A31A0D5BDD002BD56E /* MyAnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAnalogStick.swift; sourceTree = "<group>"; usesTabs = 1; };
 		550B04A51A0D60D5002BD56E /* MyCentreButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCentreButtons.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -303,6 +294,9 @@
 		55B6382518C10EBE00CE933D /* WirelessGamingReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessGamingReceiver.h; sourceTree = "<group>"; };
 		55B6382918C10EBE00CE933D /* WirelessHIDDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WirelessHIDDevice.cpp; sourceTree = "<group>"; };
 		55B6382A18C10EBE00CE933D /* WirelessHIDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WirelessHIDDevice.h; sourceTree = "<group>"; };
+		55D9788D1CEFB8EB00AAEE05 /* MyTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTrigger.swift; sourceTree = "<group>"; };
+		55D9788F1CEFB9D700AAEE05 /* MyDeadZoneViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDeadZoneViewer.swift; sourceTree = "<group>"; };
+		55D978911CEFBA9D00AAEE05 /* MyBatteryMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBatteryMonitor.swift; sourceTree = "<group>"; };
 		55E1C62819708E7300EC9DD8 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = SOURCE_ROOT; };
 		55E1C62919708E7300EC9DD8 /* clean.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = clean.sh; sourceTree = SOURCE_ROOT; };
 		55E1C62A19708F8600EC9DD8 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.md; sourceTree = SOURCE_ROOT; };
@@ -613,12 +607,9 @@
 				55A6C3531CEFA3550049D381 /* MyWhole360ControllerMapper.swift */,
 				622A73CC1A7C879300784C02 /* BindingTableView.h */,
 				622A73CD1A7C879300784C02 /* BindingTableView.m */,
-				3FE789A61A70281200FF4065 /* MyBatteryMonitor.h */,
-				3FE789A71A70281200FF4065 /* MyBatteryMonitor.m */,
-				3FE789AA1A70288F00FF4065 /* MyDeadZoneViewer.h */,
-				3FE789AB1A70288F00FF4065 /* MyDeadZoneViewer.m */,
-				3FE789AE1A70331C00FF4065 /* MyTrigger.h */,
-				3FE789AF1A70331C00FF4065 /* MyTrigger.m */,
+				55D978911CEFBA9D00AAEE05 /* MyBatteryMonitor.swift */,
+				55D9788F1CEFB9D700AAEE05 /* MyDeadZoneViewer.swift */,
+				55D9788D1CEFB8EB00AAEE05 /* MyTrigger.swift */,
 				55B637A818C10C0C00CE933D /* Pref360ControlPref.h */,
 				55B637A918C10C0C00CE933D /* Pref360ControlPref.m */,
 				551CDFFB196EEE76000869B6 /* Pref360ControlPref.xib */,
@@ -686,10 +677,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE789A81A70281200FF4065 /* MyBatteryMonitor.h in Headers */,
 				3FE789A01A701F3400FF4065 /* Pref360StyleKit.h in Headers */,
-				3FE789AC1A70288F00FF4065 /* MyDeadZoneViewer.h in Headers */,
-				3FE789B01A70331C00FF4065 /* MyTrigger.h in Headers */,
 				55B637B818C10C0C00CE933D /* Pref360ControlPref.h in Headers */,
 				622A73CE1A7C879300784C02 /* BindingTableView.h in Headers */,
 			);
@@ -1003,22 +991,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				5587258B1A1C1EC4009FE9BF /* DeviceLister.swift in Sources */,
-				3FE789AD1A70288F00FF4065 /* MyDeadZoneViewer.m in Sources */,
 				3FE789A11A701F3400FF4065 /* Pref360StyleKit.m in Sources */,
 				55B637B918C10C0C00CE933D /* Pref360ControlPref.m in Sources */,
-				3FE789A91A70281200FF4065 /* MyBatteryMonitor.m in Sources */,
 				622A73CF1A7C879300784C02 /* BindingTableView.m in Sources */,
 				550B04A41A0D5BDD002BD56E /* MyAnalogStick.swift in Sources */,
 				550B04A21A0D5AFB002BD56E /* COMUUIDs.swift in Sources */,
 				550B04A81A0D66DE002BD56E /* MyDigitalStick.swift in Sources */,
 				55F37AB51A0D75960091256A /* MyShoulderButton.swift in Sources */,
 				550B04A61A0D60D5002BD56E /* MyCentreButtons.swift in Sources */,
+				55D978921CEFBA9D00AAEE05 /* MyBatteryMonitor.swift in Sources */,
 				55A6C3541CEFA3550049D381 /* MyWhole360ControllerMapper.swift in Sources */,
+				55D9788E1CEFB8EB00AAEE05 /* MyTrigger.swift in Sources */,
 				55B637DD18C10CCC00CE933D /* ControlPrefs.m in Sources */,
 				55A6C3521CEFA2DA0049D381 /* MyWhole360Controller.swift in Sources */,
 				558725891A1C15A2009FE9BF /* DeviceItem.swift in Sources */,
 				55F37AB31A0D707A0091256A /* MyMainButtons.swift in Sources */,
-				3FE789B11A70331C00FF4065 /* MyTrigger.m in Sources */,
+				55D978901CEFB9D700AAEE05 /* MyDeadZoneViewer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

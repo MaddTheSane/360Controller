@@ -128,7 +128,7 @@
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="ILA-Sd-ahY" customClass="MyWhole360Controller" customModule="Pref360Control" customModuleProvider="target">
                                             <rect key="frame" x="20" y="20" width="465" height="330"/>
                                             <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="auT-ii-eXB" customClass="MyTrigger">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="auT-ii-eXB" customClass="MyTrigger" customModule="Pref360Control" customModuleProvider="target">
                                                     <rect key="frame" x="4" y="281" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="EUb-Mv-6nt"/>
@@ -138,7 +138,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="name" value="LT"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="BLH-hs-koP" customClass="MyTrigger">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="BLH-hs-koP" customClass="MyTrigger" customModule="Pref360Control" customModuleProvider="target">
                                                     <rect key="frame" x="416" y="281" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="12A-ul-ceu"/>
@@ -148,21 +148,21 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="name" value="RT"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nr-yn-Nnu" customClass="MyBatteryMonitor">
+                                                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nr-yn-Nnu" customClass="MyBatteryMonitor" customModule="Pref360Control" customModuleProvider="target">
                                                     <rect key="frame" x="212" y="58" width="41" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="41" id="MvK-ee-hFK"/>
                                                         <constraint firstAttribute="height" constant="21" id="XUK-gL-Tyy"/>
                                                     </constraints>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PUC-ti-HkQ" customClass="MyDeadZoneViewer">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PUC-ti-HkQ" customClass="MyDeadZoneViewer" customModule="Pref360Control" customModuleProvider="target">
                                                     <rect key="frame" x="71" y="208" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="1GI-Lc-QXY"/>
                                                         <constraint firstAttribute="width" constant="65" id="bom-jS-DHk"/>
                                                     </constraints>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PVh-uO-wxu" customClass="MyDeadZoneViewer">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PVh-uO-wxu" customClass="MyDeadZoneViewer" customModule="Pref360Control" customModuleProvider="target">
                                                     <rect key="frame" x="261" y="131" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="3q8-IT-9jt"/>
