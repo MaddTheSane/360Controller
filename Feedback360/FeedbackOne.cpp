@@ -22,7 +22,7 @@ IOCFPlugInInterface** FeedbackOne::Alloc(void)
 
 FeedbackOne::FeedbackOne(): FeedbackBase(), EffectIndex(1), Stopped(true),
 Paused(false), PausedTime(0), LastTime(0), Gain(10000), PrvLeftLevel(0),
-PrvRightLevel(0), Actuator(true), Manual(false)
+PrvRightLevel(0), PrvTriggerLevel(0), Actuator(true), Manual(false)
 {
     EffectList = Feedback360EffectVector();
     
@@ -513,6 +513,7 @@ void FeedbackOne::EffectProc( void *params )
     
     LONG LeftLevel = 0;
     LONG RightLevel = 0;
+    LONG TriggerLevel = 0;
     LONG Gain  = cThis->Gain;
     LONG CalcResult = 0;
     
@@ -526,13 +527,14 @@ void FeedbackOne::EffectProc( void *params )
         }
     }
     
-    if ((cThis->PrvLeftLevel != LeftLevel || cThis->PrvRightLevel != RightLevel) && (CalcResult != -1))
+    if ((cThis->PrvLeftLevel != LeftLevel || cThis->PrvRightLevel != RightLevel || cThis->PrvTriggerLevel != TriggerLevel) && (CalcResult != -1))
     {
         //fprintf(stderr, "PL: %d, PR: %d; L: %d, R: %d; \n", cThis->PrvLeftLevel, cThis->PrvRightLevel, LeftLevel, RightLevel);
-        cThis->SetForce((unsigned char)min(SCALE_MAX, LeftLevel * Gain / 10000),(unsigned char)min(SCALE_MAX, RightLevel * Gain / 10000 ), 0);
+        cThis->SetForce((unsigned char)min(SCALE_MAX, LeftLevel * Gain / 10000),(unsigned char)min(SCALE_MAX, RightLevel * Gain / 10000 ), (unsigned char)min(SCALE_MAX, TriggerLevel * Gain / 10000));
         
         cThis->PrvLeftLevel = LeftLevel;
         cThis->PrvRightLevel = RightLevel;
+        cThis->PrvTriggerLevel = TriggerLevel;
     }
 }
 
