@@ -14,6 +14,10 @@
 #include <ForceFeedback/IOForceFeedbackLib.h>
 #include <IOKit/IOCFPlugIn.h>
 
+#define FeedbackDriverVersionMajor      1
+#define FeedbackDriverVersionMinor      0
+#define FeedbackDriverVersionStage      developStage
+#define FeedbackDriverVersionNonRelRev  0
 
 class FeedbackBase : public IUnknown
 {

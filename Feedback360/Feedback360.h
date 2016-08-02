@@ -34,11 +34,6 @@
 #include "devlink.h"
 #include "Feedback360Effect.h"
 
-#define FeedbackDriverVersionMajor      1
-#define FeedbackDriverVersionMinor      0
-#define FeedbackDriverVersionStage      developStage
-#define FeedbackDriverVersionNonRelRev  0
-
 class Feedback360 : public FeedbackBase
 {
 public:

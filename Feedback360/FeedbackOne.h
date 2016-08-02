@@ -10,10 +10,16 @@
 #define ___60_Driver__FeedbackOne__
 
 #include "FeedbackBase.h"
+#include "Feedback360Effect.h"
+#include <ForceFeedback/IOForceFeedbackLib.h>
+#include <IOKit/IOCFPlugIn.h>
+#include <vector>
+#include "devlink.h"
 
 class FeedbackOne : public FeedbackBase {
     CFUUIDRef FactoryID;
     
+
     virtual IOReturn Probe ( CFDictionaryRef propertyTable, io_service_t service, SInt32 * order );
     virtual IOReturn Start ( CFDictionaryRef propertyTable, io_service_t service );
     virtual IOReturn Stop ( void );
@@ -36,6 +42,41 @@ public:
     
     FeedbackOne();
     ~FeedbackOne();
+    
+private:
+    //disable copy constructor
+    FeedbackOne(FeedbackOne &src);
+    void operator = (FeedbackOne &src);
+    
+    typedef std::vector<Feedback360Effect> Feedback360EffectVector;
+    typedef Feedback360EffectVector::iterator Feedback360EffectIterator;
+    
+    // interfacing
+    DeviceLink          device;
+    
+    // GCD queue and timer
+    dispatch_queue_t    Queue;
+    dispatch_source_t   Timer;
+    
+    // effects handling
+    Feedback360EffectVector EffectList;
+    UInt32              EffectIndex;
+    
+    DWORD   Gain;
+    bool    Actuator;
+    
+    LONG            PrvLeftLevel, PrvRightLevel, PrvTriggerLevel;
+    bool            Stopped;
+    bool            Paused;
+    bool            Manual;
+    double          LastTime;
+    double          PausedTime;
+    
+    // event loop func
+    static void EffectProc( void *params );
+    
+    void            SetForce(LONG LeftLevel, LONG RightLevel, LONG triggerLevel);
+
 };
 
 
