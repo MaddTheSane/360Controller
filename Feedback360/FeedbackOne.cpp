@@ -127,9 +127,9 @@ HRESULT FeedbackOne::InitializeTerminate(NumVersion forceFeedbackAPIVersion, io_
             return FFERR_INVALIDPARAM;
         }
         // From probe
-        if( (hidDevice==0) || IOObjectConformsTo(hidDevice,"XboxOneControllerClass")
-           || ((!IOObjectConformsTo(hidDevice,"Xbox360ControllerClass"))
-               &&  (!IOObjectConformsTo(hidDevice,"Wireless360Controller"))) )
+        if( (hidDevice==0) || IOObjectConformsTo(hidDevice,"Xbox360ControllerClass")
+               ||  IOObjectConformsTo(hidDevice,"Wireless360Controller") ||
+           !IOObjectConformsTo(hidDevice,"XboxOneControllerClass"))
         {
             // fprintf(stderr,"Feedback: Invalid device\n");
             return FFERR_INVALIDPARAM;
