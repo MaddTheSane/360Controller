@@ -100,7 +100,7 @@ class MyWhole360ControllerMapper: MyWhole360Controller {
         mapping = previousMapping
     }
 
-    func runMapperWithButton(button: NSButton!, andOwner prefPref: Pref360ControlPref!) {
+    func runMapperWithButton(button: NSButton?, andOwner prefPref: Pref360ControlPref?) {
         pref = prefPref;
         remappingButton = button;
         saveCurrentMapping()
@@ -109,7 +109,7 @@ class MyWhole360ControllerMapper: MyWhole360Controller {
         startMapping()
     }
     
-    func cancelMappingWithButton(button: NSButton!, andOwner prefPref: Pref360ControlPref!) {
+    func cancelMappingWithButton(button: NSButton?, andOwner prefPref: Pref360ControlPref?) {
         pref = prefPref;
         remappingButton = button;
         
@@ -202,7 +202,7 @@ class MyWhole360ControllerMapper: MyWhole360Controller {
         }
     }
 
-    func resetWithOwner(prefPref: Pref360ControlPref!) {
+    func resetWithOwner(prefPref: Pref360ControlPref?) {
         pref = prefPref;
         reset()
     }
