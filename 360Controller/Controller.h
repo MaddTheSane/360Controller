@@ -68,9 +68,9 @@ class Xbox360Pretend360Class : public Xbox360ControllerClass
     OSDeclareDefaultStructors(Xbox360Pretend360Class)
     
 public:
-    virtual OSString* newProductString() const;
-    virtual OSNumber* newProductIDNumber() const;
-    virtual OSNumber* newVendorIDNumber() const;
+    virtual OSString* newProductString() const override;
+    virtual OSNumber* newProductIDNumber() const override;
+    virtual OSNumber* newVendorIDNumber() const override;
 };
 
 
@@ -129,7 +129,7 @@ class XboxOnePretend360Class : public XboxOneControllerClass
     OSDeclareDefaultStructors(XboxOnePretend360Class)
 
 public:
-    virtual OSString* newProductString() const;
-    virtual OSNumber* newProductIDNumber() const;
-    virtual OSNumber* newVendorIDNumber() const;
+    virtual OSString* newProductString() const override;
+    virtual OSNumber* newProductIDNumber() const override;
+    virtual OSNumber* newVendorIDNumber() const override;
 };
