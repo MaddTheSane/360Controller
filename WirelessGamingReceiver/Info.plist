@@ -33,7 +33,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 		</dict>
 		<key>WirelessGamingReceiverForWindowsAlternate</key>
 		<dict>
@@ -48,7 +48,7 @@
 			<key>IOKitDebug</key>
 			<integer>65535</integer>
 			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
+			<string>IOUSBHostDevice</string>
 		</dict>
 	</dict>
 	<key>OSBundleCompatibleVersion</key>
