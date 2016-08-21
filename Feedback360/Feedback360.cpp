@@ -1,10 +1,10 @@
 /*
-    MICE Xbox 360 Controller driver for Mac OS X
-    Force Feedback module
-    Copyright (C) 2013 David Ryskalczyk
-    based on xi, Copyright (C) 2011 Masahiko Morii
+ MICE Xbox 360 Controller driver for Mac OS X
+ Force Feedback module
+ Copyright (C) 2013 David Ryskalczyk
+ based on xi, Copyright (C) 2011 Masahiko Morii
 
-    Feedback360.cpp - Main code for the FF plugin
+ Feedback360.cpp - Main code for the FF plugin
 
  This file is part of Xbox360Controller.
 
@@ -33,12 +33,17 @@ using std::min;
 
 double CurrentTimeUsingMach()
 {
-    mach_timebase_info_data_t info = {0};
-	if (mach_timebase_info(&info) != KERN_SUCCESS) {
-		//FIXME: why would this fail/set to fail more gracefully.
-        return -1.0;
-	}
-	
+    static mach_timebase_info_data_t info = {0};
+    if (!info.denom)
+    {
+        if (mach_timebase_info(&info) != KERN_SUCCESS)
+        {
+            //Generally it can't fail here. Look at XNU sources //FIXME
+            info.denom  = 0;
+            return -1.0;
+        }
+    }
+
     uint64_t start = mach_absolute_time();
 
     uint64_t nanos = start * info.numer / info.denom;
@@ -548,7 +553,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
                 Manual=((unsigned char*)escape->lpvInBuffer)[0]!=0x00;
             });
             break;
-            
+
         case 0x01:  // Set motors
             if (escape->cbInBuffer!=2) return FFERR_INVALIDPARAM;
             dispatch_sync(Queue, ^{
@@ -559,7 +564,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
                 }
             });
             break;
-            
+
         case 0x02:  // Set LED
             if (escape->cbInBuffer!=1) return FFERR_INVALIDPARAM;
         {
@@ -570,7 +575,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
             });
         }
             break;
-            
+
         case 0x03:  // Power off
         {
             dispatch_sync(Queue, ^{
@@ -579,7 +584,7 @@ HRESULT Feedback360::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
             });
         }
             break;
-            
+
         default:
             fprintf(stderr, "Xbox360Controller FF plugin: Unknown escape (%i)\n", (int)escape->dwCommand);
             return FFERR_UNSUPPORTED;
@@ -607,7 +612,7 @@ void Feedback360::EffectProc( void *params )
     {
         for (Feedback360EffectIterator effectIterator = cThis->EffectList.begin(); effectIterator != cThis->EffectList.end(); ++effectIterator)
         {
-            if((CurrentTimeUsingMach() - cThis->LastTime*1000*1000) >= effectIterator->DiEffect.dwSamplePeriod) {
+            if(((CurrentTimeUsingMach() - cThis->LastTime)*1000*1000) >= effectIterator->DiEffect.dwSamplePeriod) {
                 CalcResult = effectIterator->Calc(&LeftLevel, &RightLevel);
             }
         }

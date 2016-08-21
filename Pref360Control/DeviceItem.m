@@ -1,9 +1,9 @@
 /*
     MICE Xbox 360 Controller driver for Mac OS X
     Copyright (C) 2006-2013 Colin Munro
-    
+
     DeviceItem.m - implementation of device wrapper class
-    
+
     This file is part of Xbox360Controller.
 
     Xbox360Controller is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@ static NSString* GetDeviceName(io_service_t device)
     CFMutableDictionaryRef serviceProperties;
     NSDictionary *properties;
     NSString *deviceName = nil;
-    
+
     if (IORegistryEntryCreateCFProperties(device, &serviceProperties, kCFAllocatorDefault, kNilOptions) != KERN_SUCCESS)
         return nil;
     properties = CFBridgingRelease(serviceProperties);
@@ -37,15 +37,56 @@ static NSString* GetDeviceName(io_service_t device)
     return deviceName;
 }
 
+static ControllerType GetControllerType(io_service_t device)
+{
+    io_service_t parent;
+    CFMutableDictionaryRef serviceProperties;
+    
+    // Check for the DeviceData dictionary in device
+    if (IORegistryEntryCreateCFProperties(device, &serviceProperties, kCFAllocatorDefault, kNilOptions) == KERN_SUCCESS)
+    {
+        NSDictionary *properties = CFBridgingRelease(serviceProperties);
+        NSDictionary *deviceData = properties[@"DeviceData"];
+        
+        if (deviceData != nil)
+        {
+            NSNumber *controllerType = deviceData[@"ControllerType"];
+            if (controllerType != nil)
+                return (ControllerType)[controllerType intValue];
+        }
+    }
+    
+    // Check for the DeviceData dictionary in the device's parent
+    if (IORegistryEntryGetParentEntry(device, kIOServicePlane, &parent) == KERN_SUCCESS)
+    {
+        if(IORegistryEntryCreateCFProperties(parent, &serviceProperties, kCFAllocatorDefault, kNilOptions) == KERN_SUCCESS)
+        {
+            NSDictionary *properties = CFBridgingRelease(serviceProperties);
+            NSDictionary *deviceData = properties[@"DeviceData"];
+            
+            if (deviceData != nil)
+            {
+                NSNumber *controllerType = deviceData[@"ControllerType"];
+                if (controllerType != nil)
+                    return (ControllerType)[controllerType intValue];
+            }
+        }
+    }
+    
+    NSLog(@"Error: couldn't find ControllerType");
+    return Xbox360Controller;
+}
+
 @interface DeviceItem ()
-@property (strong, readwrite) NSString *name;
+@property (strong, readwrite) NSString *deviceName;
+@property (readwrite) ControllerType controllerType;
 @property (readwrite) io_service_t rawDevice;
 @property (readwrite) FFDeviceObjectReference ffDevice;
 @property (readwrite) IOHIDDeviceInterface122 **hidDevice;
 @end
 
 @implementation DeviceItem
-@synthesize name = deviceName;
+@synthesize controllerType = controllerType;
 @synthesize rawDevice = deviceHandle;
 @synthesize ffDevice = forceFeedback;
 @synthesize hidDevice = interface;
@@ -56,7 +97,7 @@ static NSString* GetDeviceName(io_service_t device)
         IOReturn ret;
         IOCFPlugInInterface **plugInInterface;
         SInt32 score=0;
-        
+
         ret = IOCreatePlugInInterfaceForService(device, kIOHIDDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &plugInInterface, &score);
         if (ret != kIOReturnSuccess) {
             return nil;
@@ -69,7 +110,8 @@ static NSString* GetDeviceName(io_service_t device)
         forceFeedback = 0;
         FFCreateDevice(device, &forceFeedback);
         self.rawDevice = device;
-        self.name = GetDeviceName(device);
+        self.deviceName = GetDeviceName(device);
+        self.controllerType = GetControllerType(device);
     }
     return self;
 }
@@ -77,10 +119,10 @@ static NSString* GetDeviceName(io_service_t device)
 + (instancetype)allocateDeviceItemForDevice:(io_service_t)device
 {
     DeviceItem *item = [[[self class] alloc] initWithItemForDevice:device];
-    
+
     if (item)
         return item;
-    
+
     IOObjectRelease(device);
     return nil;
 }
@@ -93,6 +135,15 @@ static NSString* GetDeviceName(io_service_t device)
         (*interface)->Release(interface);
     if (forceFeedback)
         FFReleaseDevice(forceFeedback);
+}
+
+- (NSString *)displayName {
+    if (self.deviceName == nil)
+        return @"Generic Controller";
+    else if (self.controllerType == XboxOnePretend360Controller || self.controllerType == Xbox360Pretend360Controller)
+        return [self.deviceName stringByAppendingString:@" (Xbox 360)"];
+    else
+        return self.deviceName;
 }
 
 @end

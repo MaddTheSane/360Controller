@@ -1,9 +1,9 @@
 /*
     MICE Xbox 360 Controller driver for Mac OS X
     Copyright (C) 2006-2013 Colin Munro
-    
+
     Pref360ControlPref.m - main source of the pref pane
-    
+
     This file is part of Xbox360Controller.
 
     Xbox360Controller is free software; you can redistribute it and/or modify
@@ -35,6 +35,18 @@
 
 #define NO_ITEMS @"No devices found"
 
+@interface NSLayoutConstraint (Description)
+
+@end
+
+@implementation NSLayoutConstraint (Description)
+
+-(NSString *)description {
+    return [NSString stringWithFormat:@"id: %@, constant: %f", self.identifier, self.constant];
+}
+
+@end
+
 // Passes a C callback back to the Objective C class
 static void CallbackFunction(void *target,IOReturn result,void *refCon,void *sender)
 {
@@ -47,12 +59,12 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 {
     io_service_t object = 0;
     BOOL update = NO;
-    
+
     while ((object = IOIteratorNext(iterator))) {
         IOObjectRelease(object);
         update = YES;
     }
-    
+
     if (update) [(__bridge Pref360ControlPref*)param handleDeviceChange];
 }
 
@@ -65,19 +77,19 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 @private
     // Internal info
     IOHIDElementCookie axis[6],buttons[15];
-    
+
     IOHIDDeviceInterface122 **device;
     IOHIDQueueInterface **hidQueue;
     FFDeviceObjectReference ffDevice;
     io_registry_entry_t registryEntry;
-    
+
     int largeMotor, smallMotor;
-    
+
     IONotificationPortRef notifyPort;
     CFRunLoopSourceRef notifySource;
     io_iterator_t onIteratorWired, offIteratorWired;
     io_iterator_t onIteratorWireless, offIteratorWireless;
-    
+
     FFEFFECT *effect;
     FFCUSTOMFORCE *customforce;
     FFEffectObjectReference effectRef;
@@ -88,8 +100,6 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     [_aboutPopover setAppearance:NSPopoverAppearanceHUD];
     [_rumbleOptions removeAllItems];
     [_rumbleOptions addItemsWithTitles:@[@"Default", @"None"]];
-    if (controllerType == XboxOneController)
-        [_rumbleOptions addItemsWithTitles:@[@"Triggers Only", @"Both"]];
 }
 
 // Set the pattern on the LEDs
@@ -97,7 +107,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 {
     FFEFFESCAPE escape = {0};
     unsigned char c = ledIndex;
-    
+
     if (ffDevice == 0) return;
     escape.dwSize = sizeof(escape);
     escape.dwCommand = 0x02;
@@ -172,28 +182,28 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 - (void)axisChanged:(int)index newValue:(int)value
 {
     NSInteger tabIndex = [_tabView indexOfTabViewItem:[_tabView selectedTabViewItem]];
-    
+
     switch(index) {
         case 0:
             [_wholeController setLeftStickXPos:value];
             [_leftStickAnalog setPositionX:value];
             break;
-            
+
         case 1:
             [_wholeController setLeftStickYPos:value];
             [_leftStickAnalog setPositionY:value];
             break;
-            
+
         case 2:
             [_wholeController setRightStickXPos:value];
             [_rightStickAnalog setPositionX:value];
             break;
-            
+
         case 3:
             [_wholeController setRightStickYPos:value];
             [_rightStickAnalog setPositionY:value];
             break;
-            
+
         case 4:
             if (tabIndex == 0) { // Controller Test
                 [_leftTrigger setVal:value];
@@ -201,7 +211,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                 [self testMotorsLarge:largeMotor small:smallMotor];
             }
             break;
-            
+
         case 5:
             if (tabIndex == 0) {
                 [_rightTrigger setVal:value];
@@ -209,7 +219,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                 [self testMotorsLarge:largeMotor small:smallMotor];
             }
             break;
-            
+
         default:
             break;
     }
@@ -220,69 +230,69 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 {
     BOOL b = (value != 0);
     NSInteger tabIndex = [_tabView indexOfTabViewItem:[_tabView selectedTabViewItem]];
-    
+
     if (tabIndex == 0) { // Controller Test
         switch (index) {
             case 0:
                 [_wholeController setAPressed:b];
                 break;
-                
+
             case 1:
                 [_wholeController setBPressed:b];
                 break;
-                
+
             case 2:
                 [_wholeController setXPressed:b];
                 break;
-                
+
             case 3:
                 [_wholeController setYPressed:b];
                 break;
-                
+
             case 4:
                 [_wholeController setLbPressed:b];
                 break;
-                
+
             case 5:
                 [_wholeController setRbPressed:b];
                 break;
-                
+
             case 6:
                 [_wholeController setLeftStickPressed:b];
                 break;
-                
+
             case 7:
                 [_wholeController setRightStickPressed:b];
                 break;
-                
+
             case 8:
                 [_wholeController setStartPressed:b];
                 break;
-                
+
             case 9:
                 [_wholeController setBackPressed:b];
                 break;
-                
+
             case 10:
                 [_wholeController setHomePressed:b];
                 break;
-                
+
             case 11:
                 [_wholeController setUpPressed:b];
                 break;
-                
+
             case 12:
                 [_wholeController setDownPressed:b];
                 break;
-                
+
             case 13:
                 [_wholeController setLeftPressed:b];
                 break;
-                
+
             case 14:
                 [_wholeController setRightPressed:b];
                 break;
-                
+
             default:
                 break;
         }
@@ -303,7 +313,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     IOHIDEventStruct event;
     BOOL found = NO;
     int i;
-    
+
     if (sender != hidQueue) return;
     while (result == kIOReturnSuccess) {
         result = (*hidQueue)->getNextEvent(hidQueue,&event,zeroTime,0);
@@ -339,6 +349,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     [_leftStickInvertYAlt setEnabled:enable];
     [_leftLinked setEnabled:enable];
     [_leftLinkedAlt setEnabled:enable];
+    [_leftStickNormalize setEnabled:enable];
     [_rightStickDeadzone setEnabled:enable];
     [_rightStickDeadzoneAlt setEnabled:enable];
     [_rightStickInvertX setEnabled:enable];
@@ -347,9 +358,10 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     [_rightStickInvertYAlt setEnabled:enable];
     [_rightLinked setEnabled:enable];
     [_rightLinkedAlt setEnabled:enable];
-    [_normalizeDeadzoneLeft setEnabled:enable];
-    [_normalizeDeadzoneRight setEnabled:enable];
+    [_rightStickNormalize setEnabled:enable];
     [_rumbleOptions setEnabled:enable];
+    [_swapSticks setEnabled:enable];
+    [_pretend360Button setEnabled:enable];
 }
 
 // Reset GUI components
@@ -379,6 +391,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     [_rightStickInvertXAlt setState:NSOffState];
     [_rightStickInvertY setState:NSOffState];
     [_rightStickInvertYAlt setState:NSOffState];
+    [_swapSticks setState:NSOffState];
     // Disable inputs
     [self inputEnable:NO];
     [_powerOff setHidden:YES];
@@ -394,7 +407,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     [self testMotorsCleanUp];
     if (hidQueue) {
         CFRunLoopSourceRef eventSource;
-        
+
         (*hidQueue)->stop(hidQueue);
         eventSource=(*hidQueue)->getAsyncEventSource(hidQueue);
         if((eventSource!=NULL)&&CFRunLoopContainsSource(CFRunLoopGetCurrent(),eventSource,kCFRunLoopCommonModes))
@@ -419,7 +432,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     long usage,usagePage;
     CFRunLoopSourceRef eventSource;
     IOReturn ret;
-    
+
     [self resetDisplay];
     if(([_deviceArray count]==0)||(i==-1)) {
         NSLog(@"No devices found? :( device count==%i, i==%i",(int)[_deviceArray count], i);
@@ -427,20 +440,32 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     }
     {
         DeviceItem *item = _deviceArray[i];
-        
+
         device = [item hidDevice];
         ffDevice = [item ffDevice];
         registryEntry = [item rawDevice];
+        controllerType = [item controllerType];
+        
+        if (controllerType == XboxOneController || controllerType == XboxOnePretend360Controller)
+        {
+            [_rumbleOptions removeAllItems];
+            [_rumbleOptions addItemsWithTitles:@[@"Default", @"None", @"Triggers Only", @"Both"]];
+        }
+        else
+        {
+            [_rumbleOptions removeAllItems];
+            [_rumbleOptions addItemsWithTitles:@[@"Default", @"None"]];
+        }
     }
-    
+
     if((*device)->copyMatchingElements(device,NULL,&CFelements)!=kIOReturnSuccess) {
         NSLog(@"Can't get elements list");
         // Make note of failure?
         return;
     }
-    
+
     NSArray *elements = CFBridgingRelease(CFelements);
-    
+
     for (NSDictionary *element in elements) {
         id object;
         // Get cookie
@@ -546,7 +571,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         if(dict) {
             CFBooleanRef boolValue;
             CFNumberRef intValue;
-            
+
             if(CFDictionaryGetValueIfPresent(dict,CFSTR("InvertLeftX"),(void*)&boolValue)) {
                 [_leftStickInvertX setState:CFBooleanGetValue(boolValue)?NSOnState:NSOffState];
                 [_leftStickInvertXAlt setState:CFBooleanGetValue(boolValue)?NSOnState:NSOffState];
@@ -562,9 +587,15 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                 [_leftDeadZone setLinked:enable];
                 [_leftStickAnalog setLinked:enable];
             } else NSLog(@"No value for RelativeLeft\n");
+            if(CFDictionaryGetValueIfPresent(dict,CFSTR("DeadOffLeft"),(void*)&boolValue)) {
+                BOOL enable=CFBooleanGetValue(boolValue);
+                [_leftStickNormalize setState:enable];
+                [_wholeController setLeftNormalized:enable];
+                [_leftStickAnalog setNormalized:enable];
+            } else NSLog(@"No value for DeadOffLeft\n");
             if(CFDictionaryGetValueIfPresent(dict,CFSTR("DeadzoneLeft"),(void*)&intValue)) {
                 UInt16 i;
-                
+
                 CFNumberGetValue(intValue,kCFNumberShortType,&i);
                 [_leftStickDeadzone setIntValue:i];
                 [_leftStickDeadzoneAlt setIntValue:i];
@@ -588,25 +619,34 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                 [_wholeController setRightStickDeadzone:i];
                 [_rightStickAnalog setLinked:enable];
             } else NSLog(@"No value for RelativeRight\n");
+            if(CFDictionaryGetValueIfPresent(dict,CFSTR("DeadOffRight"),(void*)&boolValue)) {
+                BOOL enable=CFBooleanGetValue(boolValue);
+                [_rightStickNormalize setState:enable];
+                [_wholeController setRightNormalized:enable];
+                [_rightStickAnalog setNormalized:enable];
+            } else NSLog(@"No value for DeadOffRight\n");
             if(CFDictionaryGetValueIfPresent(dict,CFSTR("DeadzoneRight"),(void*)&intValue)) {
                 UInt16 i;
-                
+
                 CFNumberGetValue(intValue,kCFNumberShortType,&i);
                 [_rightStickDeadzone setIntValue:i];
                 [_rightStickDeadzoneAlt setIntValue:i];
                 [_rightDeadZone setVal:i];
                 [_rightStickAnalog setDeadzone:i];
             } else NSLog(@"No value for DeadzoneRight\n");
-            
+
             if(CFDictionaryGetValueIfPresent(dict,CFSTR("ControllerType"),(void*)&intValue)) {
                 NSNumber *num = (__bridge NSNumber *)intValue;
-                controllerType = (ControllerType)[num integerValue];
+                ControllerType controllerTypePrefs = (ControllerType)[num integerValue];
+                if (controllerTypePrefs != controllerType)
+                    NSLog(@"ControllerType from prefs was %d, expected %d", (int)controllerTypePrefs, (int)controllerType);
             } else NSLog(@"No value for ControllerType\n");
             if(CFDictionaryGetValueIfPresent(dict,CFSTR("RumbleType"),(void*)&intValue)) {
                 NSNumber *num = (__bridge NSNumber *)intValue;
-                [_rumbleOptions setState:[num integerValue]];
+                [_rumbleOptions selectItemAtIndex:[num integerValue]];
+//                [_rumbleOptions setState:[num integerValue]];
             } else NSLog(@"No value for RumbleType\n");
-            
+
             if(CFDictionaryGetValueIfPresent(dict,CFSTR("BindingUp"),(void*)&intValue)) {
                 NSNumber *num = (__bridge NSNumber *)intValue;
                 [MyWhole360ControllerMapper mapping][0] = [num intValue];
@@ -667,6 +707,14 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                 NSNumber *num = (__bridge NSNumber *)intValue;
                 [MyWhole360ControllerMapper mapping][14] = [num intValue];
             } else NSLog(@"No value for BindingY\n");
+
+            if(CFDictionaryGetValueIfPresent(dict,CFSTR("SwapSticks"),(void*)&boolValue)) {
+                [_swapSticks setState:CFBooleanGetValue(boolValue)?NSOnState:NSOffState];
+            } else NSLog(@"No value for SwapSticks\n");
+
+            if(CFDictionaryGetValueIfPresent(dict,CFSTR("Pretend360"),(void*)&boolValue)) {
+                [_pretend360Button setState:CFBooleanGetValue(boolValue)?NSOnState:NSOffState];
+            } else NSLog(@"No value for Pretend360");
         } else NSLog(@"No settings found\n");
     }
     // Enable GUI components
@@ -680,27 +728,31 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     // Battery level?
     {
         int batteryLevel = -1;
+        int batteryPercentage = -1;
         CFTypeRef prop;
-        
+
         if (IOObjectConformsTo(registryEntry, "WirelessHIDDevice")) {
             prop = IORegistryEntryCreateCFProperty(registryEntry, CFSTR("BatteryLevel"), NULL, 0);
             if (prop != nil) {
                 unsigned char level;
-                
-                if (CFNumberGetValue(prop, kCFNumberCharType, &level))
+
+                if (CFNumberGetValue(prop, kCFNumberCharType, &level)) {
                     batteryLevel = level / 64;
+                    batteryPercentage = level * 100 / 255.0f + 0.5f;
+                }
                 CFRelease(prop);
             }
             [_powerOff setHidden:NO];
         }
         if ( batteryLevel >= 0) {
             [_batteryStatus setBars:batteryLevel];
+            [_batteryStatus setPercentage:batteryPercentage];
             [_batteryStatus setHidden:NO];
         } else {
             [_batteryStatus setHidden:YES];
         }
     }
-    
+
     [_mappingTable reloadData];
 
     // Allows the kext to be disabled when you connect a controller once
@@ -725,7 +777,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     io_iterator_t iterator;
     io_object_t hidDevice;
     int count = 0;
-    
+
     // Scrub old items
     [self stopDevice];
     [self deleteDeviceList];
@@ -738,7 +790,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         [_deviceListAdvanced addItemWithTitle:NO_ITEMS];
         return;
     }
-    
+
     while ((hidDevice = IOIteratorNext(iterator))) {
 		io_object_t parent = 0;
 		IORegistryEntryGetParentEntry(hidDevice, kIOServicePlane, &parent);
@@ -752,9 +804,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         DeviceItem *item = [DeviceItem allocateDeviceItemForDevice:hidDevice];
         if (item == nil) continue;
         // Add to item
-        NSString *name = item.name;
-        if (name == nil)
-            name = @"Generic Controller";
+        NSString *name = item.displayName;
         [_deviceList addItemWithTitle:[NSString stringWithFormat:@"%i: %@ (%@)", ++count, name, deviceWireless ? @"Wireless" : @"Wired"]];
         [_deviceListBinding addItemWithTitle:[NSString stringWithFormat:@"%i: %@ (%@)", count, name, deviceWireless ? @"Wireless" : @"Wired"]];
         [_deviceListAdvanced addItemWithTitle:[NSString stringWithFormat:@"%i: %@ (%@)", count, name, deviceWireless ? @"Wireless" : @"Wired"]];
@@ -773,7 +823,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 - (void)didSelect
 {
     io_object_t object;
-    
+
     // Get master port, for accessing I/O Kit
     IOMasterPort(MACH_PORT_NULL,&_masterPort);
     // Set up notification of USB device addition/removal
@@ -857,7 +907,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         [_deviceList selectItemAtIndex:[_deviceListAdvanced indexOfSelectedItem]];
         [_deviceListBinding selectItemAtIndex:[_deviceListAdvanced indexOfSelectedItem]];
     }
-    
+
     [self startDevice];
 }
 
@@ -865,14 +915,14 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 - (IBAction)changeSetting:(id)sender
 {
     // Send normalize to joysticks
-    [_wholeController setLeftNormalized:(BOOL)[_normalizeDeadzoneLeft state]];
-    [_leftStickAnalog setNormalized:(BOOL)[_normalizeDeadzoneLeft state]];
-    [_wholeController setRightNormalized:(BOOL)[_normalizeDeadzoneRight state]];
-    [_rightStickAnalog setNormalized:(BOOL)[_normalizeDeadzoneRight state]];
-    
+    [_wholeController setLeftNormalized:(BOOL)[_leftStickNormalize state]];
+    [_leftStickAnalog setNormalized:(BOOL)[_leftStickNormalize state]];
+    [_wholeController setRightNormalized:(BOOL)[_rightStickNormalize state]];
+    [_rightStickAnalog setNormalized:(BOOL)[_rightStickNormalize state]];
+
     // Sync settings between tabs
     NSInteger tabIndex = [_tabView indexOfTabViewItem:[_tabView selectedTabViewItem]];
-    
+
     if (tabIndex == 0) { // Controller Test
         [_leftLinkedAlt setState:[_leftLinked state]];
         [_leftStickDeadzoneAlt setDoubleValue:[_leftStickDeadzone doubleValue]];
@@ -894,6 +944,15 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         [_rightStickInvertY setState:[_rightStickInvertYAlt state]];
     }
     
+    BOOL pretend360 = ([_pretend360Button state] == NSOnState);
+    if (controllerType == XboxOneController || controllerType == XboxOnePretend360Controller)
+    {
+        if (pretend360)
+            controllerType = XboxOnePretend360Controller;
+        else
+            controllerType = XboxOneController;
+    }
+
     // Create dictionary
     NSDictionary *dict = @{@"InvertLeftX": @((BOOL)([_leftStickInvertX state]==NSOnState)),
                            @"InvertLeftY": @((BOOL)([_leftStickInvertY state]==NSOnState)),
@@ -903,8 +962,8 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                            @"DeadzoneRight": @((UInt16)[_rightStickDeadzone doubleValue]),
                            @"RelativeLeft": @((BOOL)([_leftLinked state]==NSOnState)),
                            @"RelativeRight": @((BOOL)([_rightLinked state]==NSOnState)),
-                           @"DeadOffLeft": @((BOOL)([_normalizeDeadzoneLeft state]==NSOnState)),
-                           @"DeadOffRight": @((BOOL)([_normalizeDeadzoneRight state]==NSOnState)),
+                           @"DeadOffLeft": @((BOOL)([_leftStickNormalize state]==NSOnState)),
+                           @"DeadOffRight": @((BOOL)([_rightStickNormalize state]==NSOnState)),
                            @"ControllerType": @((UInt8)(controllerType)),
                            @"RumbleType": @((UInt8)([_rumbleOptions indexOfSelectedItem])),
                            @"BindingUp": @((UInt8)([MyWhole360ControllerMapper mapping][0])),
@@ -921,8 +980,10 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
                            @"BindingA": @((UInt8)([MyWhole360ControllerMapper mapping][11])),
                            @"BindingB": @((UInt8)([MyWhole360ControllerMapper mapping][12])),
                            @"BindingX": @((UInt8)([MyWhole360ControllerMapper mapping][13])),
-                           @"BindingY": @((UInt8)([MyWhole360ControllerMapper mapping][14]))};
-    
+                           @"BindingY": @((UInt8)([MyWhole360ControllerMapper mapping][14])),
+                           @"SwapSticks": @((BOOL)([_swapSticks state]==NSOnState)),
+                           @"Pretend360": @((BOOL)pretend360)};
+
     // Set property
     IORegistryEntrySetCFProperties(registryEntry, (__bridge CFTypeRef)(dict));
     SetController(GetSerialNumber(registryEntry), dict);
@@ -1101,7 +1162,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 - (IBAction)powerOff:(id)sender
 {
     FFEFFESCAPE escape = {0};
-    
+
     if (ffDevice == 0) return;
     escape.dwSize=sizeof(escape);
     escape.dwCommand=0x03;
@@ -1112,12 +1173,17 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     if (![_wholeControllerMapper isMapping])
         [_wholeControllerMapper runMapperWithButton:_remappingButton andOwner:self];
     else
-        [_wholeControllerMapper reset];
+        [_wholeControllerMapper cancelMappingWithButton:_remappingButton andOwner:self];
 }
 
 - (IBAction)resetRemappingPressed:(id)sender {
     [_remappingButton setState:NSOffState];
-    [_wholeControllerMapper reset];
+    [_wholeControllerMapper resetWithOwner:self];
+}
+
+- (IBAction)pretend360Checked:(id)sender {
+    [self changeSetting:NULL];
+    [self performSelector:@selector(updateDeviceList) withObject:nil afterDelay:0.5];
 }
 
 @end

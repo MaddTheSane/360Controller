@@ -20,7 +20,7 @@
 	<string>${CURRENT_PROJECT_VERSION}</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>AfterglowGamepad1</key>
+		<key>AfterglowGamepadForXbox360</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.mice.driver.Xbox360Controller</string>
@@ -37,6 +37,86 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>1043</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
+		<key>AfterglowGamepad1</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>64252</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
+		<key>AfterglowGamepad2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>63751</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
+		</dict>
+		<key>AfterglowGamepad3</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>64253</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
+		<key>AfterglowPrismaticOne</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>313</integer>
 			<key>idVendor</key>
 			<integer>3695</integer>
 		</dict>
@@ -171,6 +251,46 @@
 			<key>idVendor</key>
 			<integer>1118</integer>
 		</dict>
+		<key>Controller2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>655</integer>
+			<key>idVendor</key>
+			<integer>1118</integer>
+		</dict>
+		<key>Counterfeit360Controller1</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>672</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
 		<key>DOA4Stick</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -190,6 +310,26 @@
 			<integer>10</integer>
 			<key>idVendor</key>
 			<integer>3853</integer>
+		</dict>
+		<key>GEMPADEX</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>21773</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
 		</dict>
 		<key>GameStopGamepad3</key>
 		<dict>
@@ -311,6 +451,26 @@
 			<key>idVendor</key>
 			<integer>5168</integer>
 		</dict>
+		<key>HoriEX2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>13</integer>
+			<key>idVendor</key>
+			<integer>3853</integer>
+		</dict>
 		<key>HoriFSVX</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -330,6 +490,26 @@
 			<integer>62723</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
+		</dict>
+		<key>HoriFSVXAlt</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>21762</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
 		</dict>
 		<key>HoriFightingStickEX2</key>
 		<dict>
@@ -391,7 +571,7 @@
 			<key>idVendor</key>
 			<integer>3853</integer>
 		</dict>
-		<key>HoriPadEX2Turbo</key>
+		<key>HoriPadEX2Turbo1</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.mice.driver.Xbox360Controller</string>
@@ -410,6 +590,26 @@
 			<integer>62721</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
+		</dict>
+		<key>HoriPadEX2Turbo2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>21760</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
 		</dict>
 		<key>HoriPadEXTurbo</key>
 		<dict>
@@ -431,6 +631,26 @@
 			<key>idVendor</key>
 			<integer>3853</integer>
 		</dict>
+		<key>HoriPadOne</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>103</integer>
+			<key>idVendor</key>
+			<integer>3853</integer>
+		</dict>
 		<key>HoriRAPHayabusaXboxOne</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -447,9 +667,69 @@
 			<key>IOProviderClass</key>
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
-			<integer>62722</integer>
+			<integer>99</integer>
 			<key>idVendor</key>
-			<integer>7085</integer>
+			<integer>3853</integer>
+		</dict>
+		<key>HoriRAPVKai360</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>21774</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
+		<key>HoriRAPVKaiXboxOne</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>120</integer>
+			<key>idVendor</key>
+			<integer>3853</integer>
+		</dict>
+		<key>HoriRAPVX</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>27</integer>
+			<key>idVendor</key>
+			<integer>3853</integer>
 		</dict>
 		<key>HoriRAPVXSA</key>
 		<dict>
@@ -571,6 +851,26 @@
 			<key>idVendor</key>
 			<integer>4779</integer>
 		</dict>
+		<key>LogitechChillStream</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>49730</integer>
+			<key>idVendor</key>
+			<integer>1133</integer>
+		</dict>
 		<key>LogitechF310</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -628,6 +928,26 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>49695</integer>
+			<key>idVendor</key>
+			<integer>1133</integer>
+		</dict>
+		<key>LogitechG920</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>49761</integer>
 			<key>idVendor</key>
 			<integer>1133</integer>
 		</dict>
@@ -708,6 +1028,26 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>61465</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
+		</dict>
+		<key>MadCatzCallOfDuty</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>61477</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
 		</dict>
@@ -808,6 +1148,46 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>61568</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
+		</dict>
+		<key>MadCatzFightStickTES+</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>61506</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
+		</dict>
+		<key>MadCatzMLGFightStickTE</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>61502</integer>
 			<key>idVendor</key>
 			<integer>7085</integer>
 		</dict>
@@ -971,7 +1351,27 @@
 			<key>idVendor</key>
 			<integer>1848</integer>
 		</dict>
-		<key>MicrosoftCorp.XboxControllerS</key>
+		<key>MicrosoftBigButtonController</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>672</integer>
+			<key>idVendor</key>
+			<integer>1118</integer>
+		</dict>
+		<key>MicrosoftCorp.XboxControllerS - 2</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.mice.driver.Xbox360Controller</string>
@@ -1071,6 +1471,26 @@
 			<key>idVendor</key>
 			<integer>1118</integer>
 		</dict>
+		<key>MicrosoftXboxControllerS - 2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>648</integer>
+			<key>idVendor</key>
+			<integer>1118</integer>
+		</dict>
 		<key>MicrosoftXboxOneController2013</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -1090,6 +1510,86 @@
 			<integer>721</integer>
 			<key>idVendor</key>
 			<integer>1118</integer>
+		</dict>
+		<key>MicrosoftXboxOneController2015</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>733</integer>
+			<key>idVendor</key>
+			<integer>1118</integer>
+		</dict>
+		<key>MicrosoftXboxOneController2016</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>746</integer>
+			<key>idVendor</key>
+			<integer>1118</integer>
+		</dict>
+		<key>MicrosoftXboxOneControllerElite</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>739</integer>
+			<key>idVendor</key>
+			<integer>1118</integer>
+		</dict>
+		<key>NaconGC100XF</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>22000</integer>
+			<key>idVendor</key>
+			<integer>4553</integer>
 		</dict>
 		<key>PDPAfterglow</key>
 		<dict>
@@ -1131,6 +1631,26 @@
 			<key>idVendor</key>
 			<integer>3695</integer>
 		</dict>
+		<key>PDPAfterglowAX.1</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>63744</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
 		<key>PDPAfterglowV2</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -1148,6 +1668,46 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>531</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
+		<key>PDPAfterglowV3</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>769</integer>
+			<key>idVendor</key>
+			<integer>4779</integer>
+		</dict>
+		<key>PDPEASports</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>305</integer>
 			<key>idVendor</key>
 			<integer>3695</integer>
 		</dict>
@@ -1211,6 +1771,46 @@
 			<key>idVendor</key>
 			<integer>7085</integer>
 		</dict>
+		<key>PDPXboxOne</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>314</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
+		<key>PDPXboxOneArcadeStick</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>348</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
 		<key>PowerAAirflow</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -1230,6 +1830,26 @@
 			<integer>16138</integer>
 			<key>idVendor</key>
 			<integer>5604</integer>
+		</dict>
+		<key>PowerAFUS1ONTournament</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>21399</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
 		</dict>
 		<key>PowerAMiniProEXGreen</key>
 		<dict>
@@ -1311,6 +1931,26 @@
 			<key>idVendor</key>
 			<integer>9414</integer>
 		</dict>
+		<key>PowerAMiniXboxOne2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>21562</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
 		<key>PowerASpectraIlluminatedXboxOne</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -1370,6 +2010,86 @@
 			<integer>22</integer>
 			<key>idVendor</key>
 			<integer>3853</integer>
+		</dict>
+		<key>REALARCADEPROEX</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>62724</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
+		</dict>
+		<key>HORI Real Arcade Pro.EX Premium VLX</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>62726</integer>
+			<key>idVendor</key>
+			<integer>7085</integer>
+		</dict>
+		<key>RazerAtrox</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>2560</integer>
+			<key>idVendor</key>
+			<integer>5426</integer>
+		</dict>
+		<key>RazerAtrox2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>20480</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
 		</dict>
 		<key>RazerOnza</key>
 		<dict>
@@ -1491,6 +2211,26 @@
 			<key>idVendor</key>
 			<integer>9414</integer>
 		</dict>
+		<key>RazerWildcat</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>2563</integer>
+			<key>idVendor</key>
+			<integer>5426</integer>
+		</dict>
 		<key>RedOctaneController</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -1508,6 +2248,26 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>63489</integer>
+			<key>idVendor</key>
+			<integer>5168</integer>
+		</dict>
+		<key>RedOctaneControllerAdapter</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>672</integer>
 			<key>idVendor</key>
 			<integer>5168</integer>
 		</dict>
@@ -1591,7 +2351,27 @@
 			<key>idVendor</key>
 			<integer>3695</integer>
 		</dict>
-		<key>RockCandyGamepadforXboxOne</key>
+		<key>RockCandyGamepadForXbox360 - 2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>64254</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
+		<key>RockCandyGamepadforXboxOne2013</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
 			<string>com.mice.driver.Xbox360Controller</string>
@@ -1608,6 +2388,46 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>326</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
+		<key>RockCandyGamepadforXboxOne2015</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>582</integer>
+			<key>idVendor</key>
+			<integer>3695</integer>
+		</dict>
+		<key>RockCandyGamepadforXboxOne2016</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>838</integer>
 			<key>idVendor</key>
 			<integer>3695</integer>
 		</dict>
@@ -1771,6 +2591,26 @@
 			<key>idVendor</key>
 			<integer>7085</integer>
 		</dict>
+		<key>SaitekAV8R02</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>52009</integer>
+			<key>idVendor</key>
+			<integer>1848</integer>
+		</dict>
 		<key>SaitekCB360</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -1811,6 +2651,26 @@
 			<key>idVendor</key>
 			<integer>5769</integer>
 		</dict>
+		<key>TrustPredator</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>3</integer>
+			<key>idVendor</key>
+			<integer>2064</integer>
+		</dict>
 		<key>TSZPelican</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -1830,6 +2690,46 @@
 			<integer>513</integer>
 			<key>idVendor</key>
 			<integer>3695</integer>
+		</dict>
+		<key>ThrustMasterFerrari458</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>23296</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
+		<key>ThrustMasterFerrari458Italia</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>23299</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
 		</dict>
 		<key>ThrustMasterGPXGamepad</key>
 		<dict>
@@ -1908,6 +2808,26 @@
 			<string>IOUSBDevice</string>
 			<key>idProduct</key>
 			<integer>21258</integer>
+			<key>idVendor</key>
+			<integer>9414</integer>
+		</dict>
+		<key>XboxOneProEXController</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.mice.driver.Xbox360Controller</string>
+			<key>IOCFPlugInTypes</key>
+			<dict>
+				<key>F4545CE5-BF5B-11D6-A4BB-0003933E3E3E</key>
+				<string>360Controller.kext/Contents/PlugIns/Feedback360.plugin</string>
+			</dict>
+			<key>IOClass</key>
+			<string>Xbox360Peripheral</string>
+			<key>IOKitDebug</key>
+			<integer>65535</integer>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>idProduct</key>
+			<integer>21562</integer>
 			<key>idVendor</key>
 			<integer>9414</integer>
 		</dict>

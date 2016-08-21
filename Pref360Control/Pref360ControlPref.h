@@ -1,9 +1,9 @@
 /*
     MICE Xbox 360 Controller driver for Mac OS X
     Copyright (C) 2006-2013 Colin Munro
-    
+
     Pref360ControlPref.h - definition for the pref pane class
-    
+
     This file is part of Xbox360Controller.
 
     Xbox360Controller is free software; you can redistribute it and/or modify
@@ -40,7 +40,9 @@
 typedef NS_ENUM(NSUInteger, ControllerType) {
     Xbox360Controller = 0,
     XboxOriginalController = 1,
-    XboxOneController = 2
+    XboxOneController = 2,
+    XboxOnePretend360Controller = 3,
+    Xbox360Pretend360Controller = 4
 } controllerType;
 
 @interface Pref360ControlPref : NSPreferencePane
@@ -64,6 +66,7 @@ typedef NS_ENUM(NSUInteger, ControllerType) {
 @property (weak) IBOutlet MyDeadZoneViewer *rightDeadZone;
 @property (strong) IBOutlet NSPopover *aboutPopover;
 @property (weak) IBOutlet NSPopUpButton *rumbleOptions;
+@property (weak) IBOutlet NSButton *swapSticks;
 
 // Binding Tab
 @property (weak) IBOutlet NSPopUpButton *deviceListBinding;
@@ -85,12 +88,13 @@ typedef NS_ENUM(NSUInteger, ControllerType) {
 @property (weak) IBOutlet NSSlider *leftStickDeadzoneAlt;
 @property (weak) IBOutlet NSButton *leftStickInvertXAlt;
 @property (weak) IBOutlet NSButton *leftStickInvertYAlt;
+@property (weak) IBOutlet NSButton *leftStickNormalize;
 @property (weak) IBOutlet NSButton *rightLinkedAlt;
 @property (weak) IBOutlet NSSlider *rightStickDeadzoneAlt;
 @property (weak) IBOutlet NSButton *rightStickInvertXAlt;
 @property (weak) IBOutlet NSButton *rightStickInvertYAlt;
-@property (weak) IBOutlet NSButton *normalizeDeadzoneLeft;
-@property (weak) IBOutlet NSButton *normalizeDeadzoneRight;
+@property (weak) IBOutlet NSButton *rightStickNormalize;
+@property (weak) IBOutlet NSButton *pretend360Button;
 
 // About Tab
 /* put About Tab's @properties here */

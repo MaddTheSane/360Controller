@@ -18,20 +18,59 @@
 }
 
 static UInt8 mapping[15];
+static UInt8 previousMapping[15];
 
 + (UInt8 *)mapping
 {
     return mapping;
 }
 
-- (void)runMapperWithButton:(NSButton *)button andOwner:(Pref360ControlPref *)prefPref {
-    pref = prefPref;
-    remappingButton = button;
-//    [self resetMapping];
-//    [pref changeSetting:nil];
+- (void)startMapping
+{
     currentMappingIndex = 0;
     _isMapping = YES;
     [self setUpPressed:YES];
+}
+
+- (void)stopMapping
+{
+    [super reset];
+    currentMappingIndex = 0;
+    _isMapping = NO;
+    if (remappingButton != nil)
+        [remappingButton setState:NSOffState];
+    [pref changeSetting:nil];
+    [[BindingTableView tableView] reloadData];
+    [pref changeSetting:nil];
+}
+
+- (void)saveCurrentMapping {
+    for (int i = 0; i < 15; i++) {
+        previousMapping[i] = mapping[i];
+    }
+}
+
+- (void)restorePreviousMapping {
+    for (int i = 0; i < 15; i++) {
+        mapping[i] = previousMapping[i];
+    }
+}
+
+- (void)runMapperWithButton:(NSButton *)button andOwner:(Pref360ControlPref *)prefPref {
+    pref = prefPref;
+    remappingButton = button;
+    [self saveCurrentMapping];
+    [self resetMapping];
+    [pref changeSetting:nil];
+    [self startMapping];
+}
+
+- (void)cancelMappingWithButton:(NSButton *)button andOwner:(Pref360ControlPref *)prefPref {
+    pref = prefPref;
+    remappingButton = button;
+    
+    [self restorePreviousMapping];
+    [self stopMapping];
 }
 
 - (int)realignButtonToByte:(int)index {
@@ -57,13 +96,8 @@ static UInt8 mapping[15];
     mapping[currentMappingIndex] = [self realignButtonToByte:index];
     currentMappingIndex++;
     [self setButtonAtIndex:currentMappingIndex];
-    if (currentMappingIndex == 15) {
-        _isMapping = NO;
-        currentMappingIndex = 0;
-        [remappingButton setState:NSOffState];
-        [[BindingTableView tableView] reloadData];
-        [pref changeSetting:nil];
-    }
+    if (currentMappingIndex == 15)
+        [self stopMapping];
 }
 
 - (void)setButtonAtIndex:(int)index {
@@ -72,76 +106,76 @@ static UInt8 mapping[15];
             [self setUpPressed:NO];
             [self setDownPressed:YES];
             break;
-            
+
         case 2:
             [self setDownPressed:NO];
             [self setLeftPressed:YES];
             break;
-            
+
         case 3:
             [self setLeftPressed:NO];
             [self setRightPressed:YES];
             break;
-            
+
         case 4:
             [self setRightPressed:NO];
             [self setStartPressed:YES];
             break;
-            
+
         case 5:
             [self setStartPressed:NO];
             [self setBackPressed:YES];
             break;
-            
+
         case 6:
             [self setBackPressed:NO];
             [self setLeftStickPressed:YES];
             break;
-            
+
         case 7:
             [self setLeftStickPressed:NO];
             [self setRightStickPressed:YES];
             break;
-            
+
         case 8:
             [self setRightStickPressed:NO];
             [self setLbPressed:YES];
             break;
-            
+
         case 9:
             [self setLbPressed:NO];
             [self setRbPressed:YES];
             break;
-            
+
         case 10:
             [self setRbPressed:NO];
             [self setHomePressed:YES];
             break;
-            
+
         case 11:
             [self setHomePressed:NO];
             [self setAPressed:YES];
             break;
-            
+
         case 12:
             [self setAPressed:NO];
             [self setBPressed:YES];
             break;
-            
+
         case 13:
             [self setBPressed:NO];
             [self setXPressed:YES];
             break;
-            
+
         case 14:
             [self setXPressed:NO];
             [self setYPressed:YES];
             break;
-            
+
         case 15:
             [self setYPressed:NO];
             break;
-            
+
         default:
             break;
     }
@@ -156,14 +190,16 @@ static UInt8 mapping[15];
     }
 }
 
+- (void)resetWithOwner:(Pref360ControlPref *)prefPref {
+    pref = prefPref;
+    [self reset];
+}
+
 - (void)reset {
-    [super reset];
-    _isMapping = NO;
+    if (pref == nil)
+        NSLog(@"Unable to reset remapping (pref is nil)");
     [self resetMapping];
-    [remappingButton setState:NSOffState];
-    [pref changeSetting:nil];
-    [[BindingTableView tableView] reloadData];
-//    [pref changeSetting:nil];
+    [self stopMapping];
 }
 
 - (void)awakeFromNib {
