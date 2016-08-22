@@ -57,7 +57,7 @@ public:
     virtual OSNumber* newVendorIDNumber() const override;
 
     virtual OSNumber* newLocationIDNumber() const override;
-    
+
     virtual void remapButtons(void *buffer);
     virtual void remapAxes(void *buffer);
 };
@@ -66,7 +66,7 @@ public:
 class Xbox360Pretend360Class : public Xbox360ControllerClass
 {
     OSDeclareDefaultStructors(Xbox360Pretend360Class)
-    
+
 public:
     virtual OSString* newProductString() const override;
     virtual OSNumber* newProductIDNumber() const override;

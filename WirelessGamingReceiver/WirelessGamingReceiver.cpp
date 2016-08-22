@@ -23,6 +23,7 @@
 #include "WirelessGamingReceiver.h"
 #include "WirelessDevice.h"
 #include "devices.h"
+#include <IOKit/usb/USBSpec.h>
 
 //#define PROTOCOL_DEBUG
 
@@ -47,11 +48,12 @@ static UInt32 GetMaxPacketSize(IOUSBHostPipe *pipe)
 // Start device
 bool WirelessGamingReceiver::start(IOService *provider)
 {
-    const ConfigurationDescriptor *cd;
-    const InterfaceDescriptor *interfaceRequest;
-    EndpointDescriptor pipeRequest = {};
-    IOUSBHostInterface *interface = NULL;
+    const ConfigurationDescriptor *cd = NULL;
+    const InterfaceDescriptor* intf = NULL;
+    const EndpointDescriptor* pipe = NULL;
     int iConnection, iOther, i;
+    OSIterator* iterator;
+    OSObject* candidate = NULL;
 
     if (!IOService::start(provider))
     {
@@ -107,116 +109,122 @@ bool WirelessGamingReceiver::start(IOService *provider)
         connections[i].service = NULL;
         connections[i].controllerStarted = false;
     }
-    
-    /*
 
-    pipeRequest.interval = 0;
-    pipeRequest.maxPacketSize = 0;
-    pipeRequest.type = kUSBInterrupt;
-    interfaceRequest.bInterfaceClass = kIOUSBFindInterfaceDontCare;
-    interfaceRequest.bInterfaceSubClass = kIOUSBFindInterfaceDontCare;
-    interfaceRequest.bInterfaceProtocol = kIOUSBFindInterfaceDontCare;
-    interfaceRequest.bAlternateSetting = 0;
-    interface = NULL;
     iConnection = 0;
     iOther = 0;
-     */
-    iConnection = 0;
-    iOther = 0;
-     cd = device->getConfigurationDescriptor(1);
-     while((interfaceRequest = getNextInterfaceDescriptor(cd, interfaceRequest)) != NULL)
+    iterator = device->getChildIterator(gIOServicePlane);
+    while(iterator != NULL && (candidate = iterator->getNextObject()) != NULL)
     {
-        switch (interfaceRequest->bInterfaceProtocol)
+        IOUSBHostInterface* interfaceCandidate = OSDynamicCast(IOUSBHostInterface, candidate);
+        if (interfaceCandidate != NULL)
         {
-            case 129:   // Controller
-                if (!interface->open(this))
-                {
-                    // IOLog("start: Failed to open control interface\n");
-                    goto fail;
-                }
-                connections[iConnection].controller = interface;
-                pipeRequest.bDescriptorType = kDescriptorTypeEndpoint;
-                pipeRequest.bLength = kDescriptorSizeEndpoint;
-                pipeRequest.bmAttributes=kEndpointDescriptorDirectionIn;
-                //pipeRequest.bmAttributes |= kEndpointDescriptorTransferTypeInterrupt;
-                pipeRequest.bInterval = 0;
-                pipeRequest.wMaxPacketSize = 0;
+            switch (interfaceCandidate->getInterfaceDescriptor()->bInterfaceProtocol)
             {
-                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
-                const Descriptor *tmpDes =
-                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
-                connections[iConnection].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
-                // Replacement: getInterfaceDescriptor and StandardUSB::getNextAssociatedDescriptorWithType to find an endpoint descriptor,
-                // then use copyPipe to retrieve the pipe object
-            }
-                if (connections[iConnection].controllerIn == NULL)
+                case 129:   // Controller
                 {
-                    // IOLog("start: Failed to open control input pipe\n");
-                    goto fail;
-                }
-                //else
-                //    connections[iConnection].controllerIn->retain();
-                pipeRequest.bmAttributes=kEndpointDescriptorDirectionOut;
-            {
-                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
-                const Descriptor *tmpDes =
-                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
-                connections[iConnection].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
-            }
-                if (connections[iConnection].controllerOut == NULL)
-                {
-                    // IOLog("start: Failed to open control output pipe\n");
-                    goto fail;
-                }
-                //else
-                //    connections[iConnection].controllerOut->retain();
-                iConnection++;
-                break;
+                    pipe = NULL;
+                    if (!interfaceCandidate->open(this))
+                    {
+                        // IOLog("start: Failed to open control interface\n");
+                        goto fail;
+                    }
+                    connections[iConnection].controller = interfaceCandidate;
 
-            case 130:   // It is a mystery
-                if (!interface->open(this))
-                {
-                    // IOLog("start: Failed to open mystery interface\n");
-                    goto fail;
-                }
-                connections[iOther].other = interface;
-                pipeRequest.bmAttributes=kEndpointDescriptorDirectionIn;
-            {
-                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
-                const Descriptor *tmpDes =
-                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
-                connections[iOther].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
-            }
+                    cd = interfaceCandidate->getConfigurationDescriptor();
+                    intf = interfaceCandidate->getInterfaceDescriptor();
 
-                if (connections[iOther].otherIn == NULL)
-                {
-                    // IOLog("start: Failed to open mystery input pipe\n");
-                    goto fail;
-                }
-                //else
-                //    connections[iOther].otherIn->retain();
-                pipeRequest.bmAttributes=kEndpointDescriptorDirectionOut;
-            {
-                const ConfigurationDescriptor *iDes = interface->getConfigurationDescriptor();
-                const Descriptor *tmpDes =
-                getNextAssociatedDescriptorWithType(iDes, &pipeRequest, NULL, kDescriptorTypeEndpoint);
-                connections[iOther].controllerIn = interface->copyPipe(((const EndpointDescriptor*)tmpDes)->bEndpointAddress);
-            }
-                if (connections[iOther].otherOut == NULL)
-                {
-                    // IOLog("start: Failed to open mystery output pipe\n");
-                    goto fail;
-                }
-                //else
-                //    connections[iOther].otherOut->retain();
-                iOther++;
-                break;
+                    if (!cd || !intf)
+                    {
+                        goto fail;
+                    }
+                    while ((pipe = StandardUSB::getNextEndpointDescriptor(cd, intf, pipe)))
+                    {
+                        uint8_t pipeDirection = StandardUSB::getEndpointDirection(pipe);
 
-            default:
-                // IOLog("start: Ignoring interface (protocol %d)\n", interface->GetInterfaceProtocol());
-                break;
+                        if (pipeDirection == kUSBIn)
+                        {
+                            connections[iConnection].controllerIn = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
+                        }
+                        if (pipeDirection == kUSBOut)
+                        {
+                            connections[iConnection].controllerOut = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
+                        }
+                    }
+
+                    if (connections[iConnection].controllerIn == NULL)
+                    {
+                        // IOLog("start: Failed to open control input pipe\n");
+                        goto fail;
+                    }
+                    else
+                        connections[iConnection].controllerIn->retain();
+
+                    if (connections[iConnection].controllerOut == NULL)
+                    {
+                        // IOLog("start: Failed to open control output pipe\n");
+                        goto fail;
+                    }
+                    else
+                        connections[iConnection].controllerOut->retain();
+                    iConnection++;
+                } break;
+
+                case 130:   // It is a mystery
+                {
+                    pipe = NULL;
+                    if (!interfaceCandidate->open(this))
+                    {
+                        // IOLog("start: Failed to open mystery interface\n");
+                        goto fail;
+                    }
+                    connections[iOther].other = interfaceCandidate;
+
+                    cd = interfaceCandidate->getConfigurationDescriptor();
+                    intf = interfaceCandidate->getInterfaceDescriptor();
+
+                    if (!cd || !intf)
+                    {
+                        goto fail;
+                    }
+                    while ((pipe = StandardUSB::getNextEndpointDescriptor(cd, intf, pipe)))
+                    {
+                        uint8_t pipeDirection = StandardUSB::getEndpointDirection(pipe);
+
+                        if (pipeDirection == kUSBIn)
+                        {
+                            connections[iOther].otherIn = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
+                        }
+                        if (pipeDirection == kUSBOut)
+                        {
+                            connections[iOther].otherOut = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
+                        }
+                    }
+
+                    if (connections[iOther].otherIn == NULL)
+                    {
+                        // IOLog("start: Failed to open mystery input pipe\n");
+                        goto fail;
+                    }
+                    else
+                        connections[iOther].otherIn->retain();
+
+                    if (connections[iOther].otherOut == NULL)
+                    {
+                        // IOLog("start: Failed to open mystery output pipe\n");
+                        goto fail;
+                    }
+                    else
+                        connections[iOther].otherOut->retain();
+                    iOther++;
+                } break;
+
+                default:
+                    // IOLog("start: Ignoring interface (protocol %d)\n", interface->GetInterfaceProtocol());
+                    break;
+            }
         }
     }
+    OSSafeReleaseNULL(iterator);
 
     if (iConnection != iOther)
         IOLog("start - interface mismatch?\n");

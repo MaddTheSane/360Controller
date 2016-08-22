@@ -86,14 +86,14 @@ protected:
     IOUSBHostDevice *device;
     IOLock *mainLock;
 
-    // Joypad
+	// Joypad
     IOUSBHostInterface *interface;
     IOUSBHostPipe *inPipe,*outPipe;
     IOBufferMemoryDescriptor *inBuffer;
 
-    // Keyboard
-    IOUSBHostInterface *serialIn;
-    IOUSBHostPipe *serialInPipe;
+	// Keyboard
+	IOUSBHostInterface *serialIn;
+	IOUSBHostPipe *serialInPipe;
     IOBufferMemoryDescriptor *serialInBuffer;
     IOTimerEventSource *serialTimer;
     bool serialToggle, serialHeard, serialActive;
@@ -127,8 +127,8 @@ public:
     virtual bool init(OSDictionary *propTable) override;
     virtual void free(void) override;
 
-    bool start(IOService *provider) override;
-    void stop(IOService *provider) override;
+	bool start(IOService *provider) override;
+	void stop(IOService *provider) override;
 
     // IOKit methods. These methods are defines in <IOKit/IOService.h>
 
@@ -138,7 +138,7 @@ public:
 
     virtual bool didTerminate(IOService *provider, IOOptionBits options, bool *defer) override;
 
-    // Hooks
+	// Hooks
     virtual void ReadComplete(void *parameter,IOReturn status,UInt32 bufferSizeRemaining);
     virtual void WriteComplete(void *parameter,IOReturn status,UInt32 bufferSizeRemaining);
 
