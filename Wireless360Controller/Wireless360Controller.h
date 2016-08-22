@@ -29,25 +29,25 @@ class Wireless360Controller : public WirelessHIDDevice
 {
     OSDeclareDefaultStructors(Wireless360Controller);
 public:
-    bool init(OSDictionary *propTable = NULL);
+    bool init(OSDictionary *propTable = NULL) override;
 
     void SetRumbleMotors(unsigned char large, unsigned char small);
 
-    IOReturn setReport(IOMemoryDescriptor *report, IOHIDReportType reportType, IOOptionBits options);
-    IOReturn newReportDescriptor(IOMemoryDescriptor ** descriptor ) const;
+    IOReturn setReport(IOMemoryDescriptor *report, IOHIDReportType reportType, IOOptionBits options) override;
+    IOReturn newReportDescriptor(IOMemoryDescriptor ** descriptor ) const override;
 
-    IOReturn setProperties(OSObject *properties);
+    IOReturn setProperties(OSObject *properties) override;
 
-    virtual OSString* newManufacturerString() const;
-    virtual OSNumber* newPrimaryUsageNumber() const;
-    virtual OSNumber* newPrimaryUsagePageNumber() const;
-    virtual OSNumber* newProductIDNumber() const;
-    virtual OSString* newProductString() const;
-    virtual OSString* newTransportString() const;
-    virtual OSNumber* newVendorIDNumber() const;
+    virtual OSString* newManufacturerString() const override;
+    virtual OSNumber* newPrimaryUsageNumber() const override;
+    virtual OSNumber* newPrimaryUsagePageNumber() const override;
+    virtual OSNumber* newProductIDNumber() const override;
+    virtual OSString* newProductString() const override;
+    virtual OSString* newTransportString() const override;
+    virtual OSNumber* newVendorIDNumber() const override;
 protected:
     void readSettings(void);
-    void receivedHIDupdate(unsigned char *data, int length);
+    void receivedHIDupdate(unsigned char *data, int length) override;
 
     // Settings
     bool invertLeftX,invertLeftY;

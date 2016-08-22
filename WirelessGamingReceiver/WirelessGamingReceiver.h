@@ -23,8 +23,8 @@
 #ifndef __WIRELESSGAMINGRECEIVER_H__
 #define __WIRELESSGAMINGRECEIVER_H__
 
-#include <IOKit/usb/IOUSBDevice.h>
-#include <IOKit/usb/IOUSBInterface.h>
+#include <IOKit/usb/IOUSBHostDevice.h>
+#include <IOKit/usb/IOUSBHostInterface.h>
 
 // This value is defined by the hardware and fixed
 #define WIRELESS_CONNECTIONS        4
@@ -34,12 +34,12 @@ class WirelessDevice;
 typedef struct WIRELESS_CONNECTION
 {
     // Controller
-    IOUSBInterface *controller;
-    IOUSBPipe *controllerIn, *controllerOut;
+    IOUSBHostInterface *controller;
+    IOUSBHostPipe *controllerIn, *controllerOut;
 
     // Mystery
-    IOUSBInterface *other;
-    IOUSBPipe *otherIn, *otherOut;
+    IOUSBHostInterface *other;
+    IOUSBHostPipe *otherIn, *otherOut;
 
     // Runtime data
     OSArray *inputArray;
@@ -52,10 +52,10 @@ class WirelessGamingReceiver : public IOService
 {
     OSDeclareDefaultStructors(WirelessGamingReceiver);
 public:
-    bool start(IOService *provider);
-    void stop(IOService *provider);
+    bool start(IOService *provider) override;
+    void stop(IOService *provider) override;
 
-    IOReturn message(UInt32 type,IOService *provider,void *argument);
+    IOReturn message(UInt32 type,IOService *provider,void *argument) override;
 
     // For WirelessDevice to use
     OSNumber* newLocationIDNumber() const;
@@ -67,7 +67,7 @@ private:
     bool QueueWrite(int index, const void *bytes, UInt32 length);
 
 private:
-    IOUSBDevice *device;
+    IOUSBHostDevice *device;
     WIRELESS_CONNECTION connections[WIRELESS_CONNECTIONS];
     int connectionCount;
 
@@ -82,7 +82,7 @@ private:
 
     void ReleaseAll(void);
 
-    bool didTerminate(IOService *provider, IOOptionBits options, bool *defer);
+    bool didTerminate(IOService *provider, IOOptionBits options, bool *defer) override;
 
     static void _ReadComplete(void *target, void *parameter, IOReturn status, UInt32 bufferSizeRemaining);
     static void _WriteComplete(void *target, void *parameter, IOReturn status, UInt32 bufferSizeRemaining);

@@ -24,8 +24,8 @@
 #define __XBOX360CONTROLLER_H__
 
 #include <IOKit/hid/IOHIDDevice.h>
-#include <IOKit/usb/IOUSBDevice.h>
-#include <IOKit/usb/IOUSBInterface.h>
+#include <IOKit/usb/IOUSBHostDevice.h>
+#include <IOKit/usb/IOUSBHostInterface.h>
 #include "ControlStruct.h"
 
 class Xbox360ControllerClass;
@@ -83,17 +83,17 @@ protected:
         Xbox360Pretend360 = 4,
     } CONTROLLER_TYPE;
 
-    IOUSBDevice *device;
+    IOUSBHostDevice *device;
     IOLock *mainLock;
 
-    // Joypad
-    IOUSBInterface *interface;
-    IOUSBPipe *inPipe,*outPipe;
+	// Joypad
+    IOUSBHostInterface *interface;
+    IOUSBHostPipe *inPipe,*outPipe;
     IOBufferMemoryDescriptor *inBuffer;
 
-    // Keyboard
-    IOUSBInterface *serialIn;
-    IOUSBPipe *serialInPipe;
+	// Keyboard
+	IOUSBHostInterface *serialIn;
+	IOUSBHostPipe *serialInPipe;
     IOBufferMemoryDescriptor *serialInBuffer;
     IOTimerEventSource *serialTimer;
     bool serialToggle, serialHeard, serialActive;
@@ -124,21 +124,21 @@ public:
     UInt8 outCounter = 6;
 
     // this is from the IORegistryEntry - no provider yet
-    virtual bool init(OSDictionary *propTable);
-    virtual void free(void);
+    virtual bool init(OSDictionary *propTable) override;
+    virtual void free(void) override;
 
-    bool start(IOService *provider);
-    void stop(IOService *provider);
+	bool start(IOService *provider) override;
+	void stop(IOService *provider) override;
 
     // IOKit methods. These methods are defines in <IOKit/IOService.h>
 
-    virtual IOReturn setProperties(OSObject *properties);
+    virtual IOReturn setProperties(OSObject *properties) override;
 
-    virtual IOReturn message(UInt32 type, IOService *provider, void *argument);
+    virtual IOReturn message(UInt32 type, IOService *provider, void *argument) override;
 
-    virtual bool didTerminate(IOService *provider, IOOptionBits options, bool *defer);
+    virtual bool didTerminate(IOService *provider, IOOptionBits options, bool *defer) override;
 
-    // Hooks
+	// Hooks
     virtual void ReadComplete(void *parameter,IOReturn status,UInt32 bufferSizeRemaining);
     virtual void WriteComplete(void *parameter,IOReturn status,UInt32 bufferSizeRemaining);
 

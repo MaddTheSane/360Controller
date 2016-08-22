@@ -34,7 +34,7 @@ class WirelessDevice : public IOService
     OSDeclareDefaultStructors(WirelessDevice);
 
 public:
-    bool init(OSDictionary *dictionary = 0);
+    bool init(OSDictionary *dictionary = 0) override;
 
     // Controller interface
     bool IsDataAvailable(void);

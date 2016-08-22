@@ -35,13 +35,13 @@ public:
     void PowerOff(void);
     unsigned char GetBatteryLevel(void);
 
-    IOReturn setReport(IOMemoryDescriptor *report, IOHIDReportType reportType, IOOptionBits options);
+    IOReturn setReport(IOMemoryDescriptor *report, IOHIDReportType reportType, IOOptionBits options) override;
 
-    OSNumber* newLocationIDNumber() const;
-    OSString* newSerialNumberString() const;
+    OSNumber* newLocationIDNumber() const override;
+    OSString* newSerialNumberString() const override;
 protected:
-    bool handleStart(IOService *provider);
-    void handleStop(IOService *provider);
+    bool handleStart(IOService *provider) override;
+    void handleStop(IOService *provider) override;
     virtual void receivedData(void);
     virtual void receivedMessage(IOMemoryDescriptor *data);
     virtual void receivedUpdate(unsigned char type, unsigned char *data);
