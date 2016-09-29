@@ -22,7 +22,7 @@ IOCFPlugInInterface** FeedbackOne::Alloc(void)
 
 FeedbackOne::FeedbackOne(): FeedbackBase(), EffectIndex(1), Stopped(true),
 Paused(false), PausedTime(0), LastTime(0), Gain(10000), PrvLeftLevel(0),
-PrvRightLevel(0), PrvTriggerLevel(0), Actuator(true), Manual(false)
+PrvRightLevel(0), PrvLTrigger(0), PrvRTrigger(0), Actuator(true), Manual(false)
 {
     EffectList = Feedback360EffectVector();
     
@@ -51,14 +51,31 @@ HRESULT FeedbackOne::Escape(FFEffectDownloadID downloadID, FFEFFESCAPE *escape)
             break;
             
         case 0x01:  // Set motors
-            if (escape->cbInBuffer!=2) return FFERR_INVALIDPARAM;
-            dispatch_sync(Queue, ^{
-                if(Manual) {
-                    unsigned char *data=(unsigned char *)escape->lpvInBuffer;
-                    unsigned char buf[]={0x00,0x04,data[0],data[1]};
-                    Device_Send(&this->device,buf,sizeof(buf));
-                }
-            });
+            switch (escape->cbInBuffer) {
+                case 2:
+                    dispatch_sync(Queue, ^{
+                        if(Manual) {
+                            unsigned char *data=(unsigned char *)escape->lpvInBuffer;
+                            unsigned char buf[]={0x00,0x04,data[0],data[1]};
+                            Device_Send(&this->device,buf,sizeof(buf));
+                        }
+                    });
+                    break;
+                    
+                case 4:
+                    dispatch_sync(Queue, ^{
+                        if(Manual) {
+                            unsigned char *data=(unsigned char *)escape->lpvInBuffer;
+                            unsigned char buf[]={0x09,0x08,0x00, 0x08,0x00,0x0f,data[2],data[3],data[0],data[1],0x80,0x00};
+                            Device_Send(&this->device,buf,sizeof(buf));
+                        }
+                    });
+                    break;
+                    
+                default:
+                    return FFERR_INVALIDPARAM;
+                    break;
+            }
             break;
             
         case 0x02:  // Set LED
@@ -147,7 +164,7 @@ HRESULT FeedbackOne::InitializeTerminate(NumVersion forceFeedbackAPIVersion, io_
     else {
         dispatch_sync(Queue, ^{
             dispatch_source_cancel(Timer);
-            SetForce(0, 0, 0);
+            SetForce(0, 0, 0, 0);
             Device_Finalise(&this->device);
         });
         
@@ -229,6 +246,7 @@ HRESULT FeedbackOne::DownloadEffect(CFUUIDRef effectType, FFEffectDownloadID *pD
             
             if( flags & FFEP_AXES )
             {
+                //TODO: implement
                 Effect->DiEffect.cAxes  = pEffect->cAxes;
                 Effect->DiEffect.rgdwAxes = NULL;
             }
@@ -365,13 +383,14 @@ HRESULT FeedbackOne::GetForceFeedbackCapabilities(FFCAPABILITIES *capabilities)
     capabilities->ffSpecVer.minorAndBugRev=kFFPlugInAPIMinorAndBugRev;
     capabilities->ffSpecVer.stage=kFFPlugInAPIStage;
     capabilities->ffSpecVer.nonRelRev=kFFPlugInAPINonRelRev;
-    capabilities->supportedEffects=FFCAP_ET_CUSTOMFORCE|FFCAP_ET_CONSTANTFORCE|FFCAP_ET_RAMPFORCE|FFCAP_ET_SQUARE|FFCAP_ET_SINE|FFCAP_ET_TRIANGLE|FFCAP_ET_SAWTOOTHUP|FFCAP_ET_SAWTOOTHDOWN;
+    capabilities->supportedEffects=FFCAP_ET_CUSTOMFORCE|FFCAP_ET_CONSTANTFORCE|FFCAP_ET_RAMPFORCE|FFCAP_ET_SQUARE|FFCAP_ET_SINE|FFCAP_ET_TRIANGLE|FFCAP_ET_SAWTOOTHUP|FFCAP_ET_SAWTOOTHDOWN|FFCAP_ET_SPRING;
     capabilities->emulatedEffects=0;
-    capabilities->subType=FFCAP_ST_VIBRATION;
-    capabilities->numFfAxes=3;
+    capabilities->subType=FFCAP_ST_VIBRATION|FFCAP_ST_KINESTHETIC;
+    capabilities->numFfAxes=4;
     capabilities->ffAxes[0]=FFJOFS_X;
     capabilities->ffAxes[1]=FFJOFS_Y;
-    capabilities->ffAxes[2]=FFJOFS_Z;
+    capabilities->ffAxes[2]=FFJOFS_SLIDER(2);
+    capabilities->ffAxes[2]=FFJOFS_SLIDER(5);
     capabilities->storageCapacity=256;
     capabilities->playbackCapacity=1;
     capabilities->driverVer.majorRev=FeedbackDriverVersionMajor;
@@ -512,7 +531,8 @@ void FeedbackOne::EffectProc( void *params )
     
     LONG LeftLevel = 0;
     LONG RightLevel = 0;
-    LONG TriggerLevel = 0;
+    LONG LTrigg = 0;
+    LONG RTrigg = 0;
     LONG Gain  = cThis->Gain;
     LONG CalcResult = 0;
     
@@ -526,20 +546,22 @@ void FeedbackOne::EffectProc( void *params )
         }
     }
     
-    if ((cThis->PrvLeftLevel != LeftLevel || cThis->PrvRightLevel != RightLevel || cThis->PrvTriggerLevel != TriggerLevel) && (CalcResult != -1))
+    if ((cThis->PrvLeftLevel != LeftLevel || cThis->PrvRightLevel != RightLevel || cThis->PrvRTrigger != RTrigg || cThis->PrvLTrigger != LTrigg) && (CalcResult != -1))
     {
         //fprintf(stderr, "PL: %d, PR: %d; L: %d, R: %d; \n", cThis->PrvLeftLevel, cThis->PrvRightLevel, LeftLevel, RightLevel);
-        cThis->SetForce((unsigned char)min(SCALE_MAX, LeftLevel * Gain / 10000),(unsigned char)min(SCALE_MAX, RightLevel * Gain / 10000 ), (unsigned char)min(SCALE_MAX, TriggerLevel * Gain / 10000));
+        cThis->SetForce((unsigned char)min(SCALE_MAX, LeftLevel * Gain / 10000),(unsigned char)min(SCALE_MAX, RightLevel * Gain / 10000 ), (unsigned char)min(SCALE_MAX, LTrigg * Gain / 10000), (unsigned char)min(SCALE_MAX, RTrigg * Gain / 10000));
         
         cThis->PrvLeftLevel = LeftLevel;
         cThis->PrvRightLevel = RightLevel;
-        cThis->PrvTriggerLevel = TriggerLevel;
+        cThis->PrvLTrigger = LTrigg;
+        cThis->PrvRTrigger = RTrigg;
     }
 }
 
-void FeedbackOne::SetForce(LONG LeftLevel, LONG RightLevel, LONG triggerLevel)
+void FeedbackOne::SetForce(LONG LeftLevel, LONG RightLevel, LONG LeftTrigger, LONG rightTrigger)
 {
     //fprintf(stderr, "LS: %d; RS: %d\n", (unsigned char)MIN( 255, LeftLevel * Gain / 10000 ), (unsigned char)MIN( 255, RightLevel * Gain / 10000 ));
-    unsigned char buf[] = {0x00, 0x04, (unsigned char)min(SCALE_MAX, LeftLevel * (LONG)Gain / 10000 ), (unsigned char)min(SCALE_MAX, RightLevel * (LONG)Gain / 10000 )};
+    //unsigned char buf[] = {0x00, 0x04, (unsigned char)min(SCALE_MAX, LeftLevel * (LONG)Gain / 10000 ), (unsigned char)min(SCALE_MAX, RightLevel * (LONG)Gain / 10000 )};
+    unsigned char buf[] = {0x09, 0x08, 0x00, 0x08, 0x00, 0x0f, (unsigned char)min(SCALE_MAX, LeftTrigger * (LONG)Gain / 10000 ), (unsigned char)min(SCALE_MAX, rightTrigger * (LONG)Gain / 10000 ), (unsigned char)min(SCALE_MAX, LeftLevel * (LONG)Gain / 10000 ), (unsigned char)min(SCALE_MAX, RightLevel * (LONG)Gain / 10000 ), 0x80, 0x00};
     if (!Manual) Device_Send(&device, buf, sizeof(buf));
 }

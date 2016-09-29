@@ -65,7 +65,7 @@ private:
     DWORD   Gain;
     bool    Actuator;
     
-    LONG            PrvLeftLevel, PrvRightLevel, PrvTriggerLevel;
+    LONG            PrvLeftLevel, PrvRightLevel, PrvLTrigger, PrvRTrigger;
     bool            Stopped;
     bool            Paused;
     bool            Manual;
@@ -75,7 +75,7 @@ private:
     // event loop func
     static void EffectProc( void *params );
     
-    void            SetForce(LONG LeftLevel, LONG RightLevel, LONG triggerLevel);
+    void            SetForce(LONG LeftLevel, LONG RightLevel, LONG LeftTrigger, LONG rightTrigger);
 
 };
 
