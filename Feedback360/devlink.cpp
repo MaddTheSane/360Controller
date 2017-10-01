@@ -28,11 +28,17 @@
 bool Device_Initialise(DeviceLink *link,io_object_t device)
 {
     IOHIDDeviceRef plugInInterface = IOHIDDeviceCreate(NULL, device);
-    if (!plugInInterface) {
+    if (!plugInInterface)
+    {
         return false;
     }
 
-    IOHIDDeviceOpen(plugInInterface, 0);
+    IOReturn ret = IOHIDDeviceOpen(plugInInterface, 0);
+    if (ret!=kIOReturnSuccess)
+    {
+        CFRelease(plugInInterface);
+        return false;
+    }
     link->interface = plugInInterface;
     return true;
 }
