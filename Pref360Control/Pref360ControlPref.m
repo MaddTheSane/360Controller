@@ -445,7 +445,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         ffDevice = [item ffDevice];
         registryEntry = [item rawDevice];
         controllerType = [item controllerType];
-        
+
         if (controllerType == XboxOneController || controllerType == XboxOnePretend360Controller)
         {
             [_rumbleOptions removeAllItems];
@@ -754,10 +754,6 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
     }
 
     [_mappingTable reloadData];
-
-    // Allows the kext to be disabled when you connect a controller once
-    // FIXME: Allow disabling the driver at any time.
-    [self.enableDriverCheckBox setEnabled:YES];
 }
 
 // Clear out the device lists
@@ -850,9 +846,11 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
 
     // TEMP: Enable the "enable driver" checkbox if the kext is loaded in the memory
     int result = system("kextstat | grep com.mice.driver.Xbox360Controller");
-    NSLog(@"Result of kextstat = %d", result);
+//    NSLog(@"Result of kextstat = %d", result);
     if (result == 0) {
-        [self.enableDriverCheckBox setEnabled:YES];
+        [self.enableDriverCheckBox setState:NSOnState];
+    } else {
+        [self.enableDriverCheckBox setState:NSOffState];
     }
 }
 
@@ -943,7 +941,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         [_rightStickInvertX setState:[_rightStickInvertXAlt state]];
         [_rightStickInvertY setState:[_rightStickInvertYAlt state]];
     }
-    
+
     BOOL pretend360 = ([_pretend360Button state] == NSOnState);
     if (controllerType == XboxOneController || controllerType == XboxOnePretend360Controller)
     {
@@ -1124,6 +1122,7 @@ static void callbackHandleDevice(void *param,io_iterator_t iterator)
         rm -rf /Library/Extensions/360Controller.kext\n\
         rm -rf /Library/Extensions/Wireless360Controller.kext\n\
         rm -rf /Library/Extensions/WirelessGamingReceiver.kext\n\
+        rm -rf /Library/Extensions/XboxOneBluetooth.kext\n\
         rm -rf /Library/PreferencePanes/Pref360Control.prefPane\n\
         pkgutil --forget com.mice.pkg.Xbox360controller\
         \" with administrator privileges";

@@ -31,9 +31,9 @@
 OSDefineMetaClassAndStructors(Wireless360Controller, WirelessHIDDevice)
 #define super WirelessHIDDevice
 
-static inline XBox360_SShort getAbsolute(XBox360_SShort value)
+static inline Xbox360_SShort getAbsolute(Xbox360_SShort value)
 {
-    XBox360_SShort reverse;
+    Xbox360_SShort reverse;
 
 #ifdef __LITTLE_ENDIAN__
     reverse=value;

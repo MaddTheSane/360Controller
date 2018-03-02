@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15G1421" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
@@ -88,7 +88,7 @@
                         <attributedString key="userComments">
                             <fragment content="This horizontal line is the width of a PreferencePane window.">
                                 <attributes>
-                                    <font key="NSFont" metaFont="smallSystem"/>
+                                    <font key="NSFont" metaFont="controlContent" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                 </attributes>
                             </fragment>
@@ -104,7 +104,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="658" height="379"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DoB-vG-8fZ">
+                                        <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DoB-vG-8fZ">
                                             <rect key="frame" x="18" y="355" width="623" height="26"/>
                                             <animations/>
                                             <popUpButtonCell key="cell" type="push" title="Item1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="l7B-sk-a7S" id="XEZ-Cj-WUE">
@@ -122,32 +122,32 @@
                                                 <action selector="selectDevice:" target="-2" id="gsM-0x-TTV"/>
                                             </connections>
                                         </popUpButton>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="ILA-Sd-ahY" customClass="MyWhole360Controller">
+                                        <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ILA-Sd-ahY" customClass="MyWhole360Controller">
                                             <rect key="frame" x="20" y="20" width="465" height="330"/>
                                             <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="auT-ii-eXB" customClass="MyTrigger">
+                                                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auT-ii-eXB" customClass="MyTrigger">
                                                     <rect key="frame" x="4" y="281" width="45" height="45"/>
                                                     <animations/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="name" value="LT"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="BLH-hs-koP" customClass="MyTrigger">
+                                                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLH-hs-koP" customClass="MyTrigger">
                                                     <rect key="frame" x="416" y="281" width="45" height="45"/>
                                                     <animations/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="name" value="RT"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nr-yn-Nnu" customClass="MyBatteryMonitor">
+                                                <customView hidden="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nr-yn-Nnu" customClass="MyBatteryMonitor">
                                                     <rect key="frame" x="212" y="58" width="41" height="21"/>
                                                     <animations/>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PUC-ti-HkQ" customClass="MyDeadZoneViewer">
+                                                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PUC-ti-HkQ" customClass="MyDeadZoneViewer">
                                                     <rect key="frame" x="71" y="208" width="65" height="65"/>
                                                     <animations/>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="PVh-uO-wxu" customClass="MyDeadZoneViewer">
+                                                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-uO-wxu" customClass="MyDeadZoneViewer">
                                                     <rect key="frame" x="261" y="131" width="65" height="65"/>
                                                     <animations/>
                                                 </customView>
@@ -189,7 +189,7 @@
                                             </constraints>
                                             <animations/>
                                         </customView>
-                                        <box autoresizesSubviews="NO" title="Right Stick" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="cqy-WX-TEQ">
+                                        <box autoresizesSubviews="NO" misplaced="YES" title="Right Stick" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="cqy-WX-TEQ">
                                             <rect key="frame" x="490" y="100" width="151" height="123"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="149" height="107"/>
@@ -257,7 +257,7 @@
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OTj-lL-cwP">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTj-lL-cwP">
                                             <rect key="frame" x="513" y="79" width="105" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Rumble Options:" id="eqi-tt-Lwa">
@@ -266,7 +266,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-0k-b7Y">
+                                        <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-0k-b7Y">
                                             <rect key="frame" x="491" y="47" width="150" height="26"/>
                                             <animations/>
                                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="o1g-Uv-SAa">
@@ -284,7 +284,7 @@
                                                 <action selector="changeSetting:" target="-2" id="v1h-mW-iCb"/>
                                             </connections>
                                         </popUpButton>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="PYW-Jo-Ujl">
+                                        <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PYW-Jo-Ujl">
                                             <rect key="frame" x="518" y="26" width="96" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Swap Sticks" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="7VQ-hw-19d">
@@ -295,7 +295,7 @@
                                                 <action selector="changeSetting:" target="-2" id="U7t-zK-Tia"/>
                                             </connections>
                                         </button>
-                                        <box autoresizesSubviews="NO" title="Left Stick" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ZlQ-UU-WB8">
+                                        <box autoresizesSubviews="NO" misplaced="YES" title="Left Stick" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="ZlQ-UU-WB8">
                                             <rect key="frame" x="490" y="227" width="151" height="123"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="149" height="107"/>
@@ -813,7 +813,7 @@ Due to some internal limitations, you need to connect your device once to be abl
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="bAx-wa-r7r">
                                                         <rect key="frame" x="16" y="292" width="103" height="18"/>
                                                         <animations/>
-                                                        <buttonCell key="cell" type="check" title="Enable Driver" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="FhM-1g-G1s">
+                                                        <buttonCell key="cell" type="check" title="Enable Driver" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FhM-1g-G1s">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -924,7 +924,7 @@ Due to some internal limitations, you need to connect your device once to be abl
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textView editable="NO" drawsBackground="NO" importsGraphics="NO" horizontallyResizable="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="3fX-WF-3zX">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="596" height="433.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="581" height="433.5"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <animations/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -932,7 +932,7 @@ Due to some internal limitations, you need to connect your device once to be abl
                                                                     <size key="maxSize" width="1342" height="10000000"/>
                                                                     <attributedString key="textStorage">
                                                                         <fragment>
-                                                                            <string key="content">XBox 360 Controller Driver
+                                                                            <string key="content">Xbox 360 Controller Driver
 </string>
                                                                             <attributes>
                                                                                 <font key="NSFont" size="21" name="Helvetica-Bold"/>
@@ -978,7 +978,7 @@ Due to some internal limitations, you need to connect your device once to be abl
                                                                                 </paragraphStyle>
                                                                             </attributes>
                                                                         </fragment>
-                                                                        <fragment content="Version 0.16.3">
+                                                                        <fragment content="Version 0.16.5">
                                                                             <attributes>
                                                                                 <font key="NSFont" size="12" name="Helvetica"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
@@ -1494,7 +1494,7 @@ This driver is licensed under the GNU Public License. A copy of this license is 
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <animations/>
                                                         </scroller>
-                                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="v6N-fu-NBq">
+                                                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="v6N-fu-NBq">
                                                             <rect key="frame" x="581" y="0.0" width="15" height="337"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <animations/>
