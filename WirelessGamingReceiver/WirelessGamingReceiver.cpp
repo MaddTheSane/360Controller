@@ -23,7 +23,7 @@
 #include "WirelessGamingReceiver.h"
 #include "WirelessDevice.h"
 #include "devices.h"
-#include <IOKit/usb/USBSpec.h>
+#include <IOKit/usb/IOUSBHostFamily.h>
 
 //#define PROTOCOL_DEBUG
 
@@ -141,11 +141,11 @@ bool WirelessGamingReceiver::start(IOService *provider)
                     {
                         uint8_t pipeDirection = StandardUSB::getEndpointDirection(pipe);
 
-                        if (pipeDirection == kUSBIn)
+                        if (pipeDirection == kEndpointDirectionIn)
                         {
                             connections[iConnection].controllerIn = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
                         }
-                        if (pipeDirection == kUSBOut)
+                        if (pipeDirection == kEndpointDirectionOut)
                         {
                             connections[iConnection].controllerOut = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
                         }
@@ -190,11 +190,11 @@ bool WirelessGamingReceiver::start(IOService *provider)
                     {
                         uint8_t pipeDirection = StandardUSB::getEndpointDirection(pipe);
 
-                        if (pipeDirection == kUSBIn)
+                        if (pipeDirection == kEndpointDirectionIn)
                         {
                             connections[iOther].otherIn = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
                         }
-                        if (pipeDirection == kUSBOut)
+                        if (pipeDirection == kEndpointDirectionOut)
                         {
                             connections[iOther].otherOut = interfaceCandidate->copyPipe(StandardUSB::getEndpointAddress(pipe));
                         }

@@ -50,7 +50,7 @@
 		<key>com.apple.kpi.mach</key>
 		<string>15.6</string>
 		<key>com.mice.driver.WirelessGamingReceiver</key>
-		<string>1.0d15</string>
+		<string>1.0.1d1</string>
 	</dict>
 </dict>
 </plist>

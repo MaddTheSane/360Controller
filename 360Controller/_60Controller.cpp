@@ -24,7 +24,7 @@
 #include <IOKit/IOLib.h>
 #include <IOKit/IOMessage.h>
 #include <IOKit/IOTimerEventSource.h>
-#include <IOKit/usb/USBSpec.h>
+#include <IOKit/usb/IOUSBHostFamily.h>
 #include "_60Controller.h"
 #include "ChatPad.h"
 #include "Controller.h"
@@ -463,11 +463,11 @@ bool Xbox360Peripheral::start(IOService *provider)
         uint8_t pipeDirection = StandardUSB::getEndpointDirection(pipe);
         uint8_t pipeType = StandardUSB::getEndpointType(pipe);
 
-        if (pipeDirection == kUSBIn && pipeType == kUSBInterrupt)
+        if (pipeDirection == kEndpointDirectionIn && pipeType == kEndpointTypeInterrupt)
         {
             inPipe = interface->copyPipe(StandardUSB::getEndpointAddress(pipe));
         }
-        else if (pipeDirection == kUSBOut && pipeType == kUSBInterrupt)
+        else if (pipeDirection == kEndpointDirectionOut && pipeType == kEndpointTypeInterrupt)
         {
             outPipe = interface->copyPipe(StandardUSB::getEndpointAddress(pipe));
         }
@@ -513,7 +513,7 @@ bool Xbox360Peripheral::start(IOService *provider)
         uint8_t pipeDirection = StandardUSB::getEndpointDirection(pipe);
         uint8_t pipeType = StandardUSB::getEndpointType(pipe);
 
-        if (pipeDirection == kUSBIn && pipeType == kUSBInterrupt)
+        if (pipeDirection == kEndpointDirectionIn && pipeType == kEndpointTypeInterrupt)
         {
             serialInPipe = interface->copyPipe(StandardUSB::getEndpointAddress(pipe));
         }
