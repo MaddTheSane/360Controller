@@ -115,12 +115,8 @@ public:
                                   IOHIDReportType      reportType = kIOHIDReportTypeInput,
                                   IOOptionBits         options    = 0 ) override;
 
-    virtual OSString* newManufacturerString() const override;
-    virtual OSNumber* newProductIDNumber() const override;
-    virtual OSNumber* newVendorIDNumber() const override;
-    virtual OSString* newProductString() const override;
-    virtual void convertFromXboxOne(void *buffer, void* overrideData);
     virtual void convertFromXboxOne(void *buffer, UInt8 packetSize);
+    virtual OSString* newProductString() const override;
 };
 
 

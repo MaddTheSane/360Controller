@@ -102,7 +102,7 @@ static void AddDevice(NSMutableDictionary *personalities, NSString *name, int ve
     controller[@"CFBundleIdentifier"] = @"com.mice.driver.Xbox360Controller";
     controller[@"IOCFPlugInTypes"] = @{@"F4545CE5-BF5B-11D6-A4BB-0003933E3E3E": @"360Controller.kext/Contents/PlugIns/Feedback360.plugin"};
     controller[@"IOClass"] = @"Xbox360Peripheral";
-    controller[@"IOProviderClass"] = @"IOUSBDevice";
+    controller[@"IOProviderClass"] = @"IOUSBHostDevice";
     controller[@"IOKitDebug"] = @65535;
 
     // Device-specific
