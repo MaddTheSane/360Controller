@@ -31,7 +31,6 @@ namespace HID_360 {
 
 #include <sys/utfconv.h>
 #pragma mark - Xbox360ControllerClass
-#include <sys/utfconv.h>
 
 OSDefineMetaClassAndStructors(Xbox360ControllerClass, IOHIDDevice)
 
@@ -46,14 +45,18 @@ static Xbox360Peripheral* GetOwner(IOService *us)
 
 static IOUSBHostDevice* GetOwnerProvider(const IOService *us)
 {
-	IOService *prov = us->getProvider(), *provprov;
+    // Function drivers should not assume the immediate provider of an IOUSBHostInterface is an IOUSBHostDevice.
+    IOService *deviceCandidate = us->getProvider();
+    IOUSBHostDevice *device = NULL;
+    while (deviceCandidate != NULL) {
+        device = OSDynamicCast(IOUSBHostDevice, deviceCandidate);
+        if (device != NULL) {
+            break;
+        }
 
-	if (prov == NULL)
-		return NULL;
-	provprov = prov->getProvider();
-	if (provprov == NULL)
-		return NULL;
-	return OSDynamicCast(IOUSBHostDevice, provprov);
+        deviceCandidate = deviceCandidate->getProvider();
+    }
+    return device;
 }
 
 bool Xbox360ControllerClass::start(IOService *provider)
