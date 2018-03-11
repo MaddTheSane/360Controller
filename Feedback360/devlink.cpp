@@ -27,23 +27,26 @@
 // Initialise the link
 bool Device_Initialise(DeviceLink *link,io_object_t device)
 {
-    IOCFPlugInInterface **plugInInterface = NULL;
-    SInt32 score = 0;
-    IOReturn ret = IOCreatePlugInInterfaceForService(device, kIOHIDDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &plugInInterface, &score);
-
-    if (ret!=kIOReturnSuccess) return false;
-    ret=(*plugInInterface)->QueryInterface(plugInInterface, CFUUIDGetUUIDBytes(kIOHIDDeviceInterfaceID121), (LPVOID*)(&link->interface));
-    (*plugInInterface)->Release(plugInInterface);
-    if (ret!=kIOReturnSuccess) return false;
-    (*link->interface)->open(link->interface, 0);
+    IOHIDDeviceRef devRef = IOHIDDeviceCreate(kCFAllocatorDefault, device);
+    if (!devRef) {
+        return false;
+    }
+    if (kIOReturnSuccess != IOHIDDeviceOpen(devRef, 0)) {
+        CFRelease(devRef);
+        return false;
+    }
+    link->interface = devRef;
     return true;
 }
 
 // Finish the link
 void Device_Finalise(DeviceLink *link)
 {
-    (*link->interface)->close(link->interface);
-    (*link->interface)->Release(link->interface);
+    if(link->interface==NULL) {
+        return;
+    }
+    IOHIDDeviceClose(link->interface, 0);
+    CFRelease(link->interface);
     link->interface = NULL;
 }
 
@@ -56,7 +59,7 @@ bool Device_Send(DeviceLink *link,void *data,int length)
     }
     else {
         //fprintf(stderr, "Attempting to send: %d %d %d %d\n",((unsigned char*)data)[0], ((unsigned char*)data)[1], ((unsigned char*)data)[2], ((unsigned char*)data)[3]);
-        IOReturn res=(*link->interface)->setReport(link->interface,kIOHIDReportTypeOutput,0,data,length,10000,NULL,NULL,NULL);
+        IOReturn res=IOHIDDeviceSetReportWithCallback(link->interface,kIOHIDReportTypeOutput,0,(const uint8_t*)data,length,10,NULL,NULL);
         if (res != kIOReturnSuccess)
             fprintf(stderr, "Device_Send failed: 0x%.8x\n", res);
         return res == kIOReturnSuccess;
