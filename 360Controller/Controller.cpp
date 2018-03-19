@@ -177,7 +177,6 @@ OSString* Xbox360ControllerClass::getDeviceString(UInt8 index,const char *def) c
         }
         return OSString::withCString(string);
     }
-
     return StringDescriptorToOSString(aStr);
 }
 
